@@ -1,0 +1,13 @@
+body {
+  font: 100% Helvetica, sans-serif;
+  text-align: center;
+  color: white;
+  background-color: #333;
+}
+
+#loginCont {
+  display: inline-block;
+  width: min-content;
+}
+
+/*# sourceMappingURL=main.css.map */

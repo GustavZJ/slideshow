@@ -1,0 +1,16 @@
+// Variables
+$fontStack: Helvetica, sans-serif;
+$primaryColor: #333;
+
+// Styling
+body {
+	font: 100% $fontStack;
+    text-align: center;
+    color: white;
+    background-color: $primaryColor;
+}
+
+#loginCont {
+    display: inline-block;
+    width: min-content;
+}
