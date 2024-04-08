@@ -1,1 +1,1 @@
-cp /var/www/slideshow/installFiles/rc.local etc
+cp /var/www/slideshow/installFiles/rc.local /etc
