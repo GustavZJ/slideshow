@@ -1,0 +1,1 @@
+cp /var/www/slideshow/installFiles/rc.local etc
