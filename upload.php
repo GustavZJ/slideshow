@@ -2,7 +2,6 @@
 <html>
 <body>
 <?php
-
 /* Get the name of the file uploaded to Apache */
 $filename = $_FILES['file']['name'];
 

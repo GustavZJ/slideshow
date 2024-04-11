@@ -10,9 +10,9 @@
     </head>
     <body>
         <!-- HTML5 Input Form  -->
-        <form action="upload.php" method="post" enctype="multipart/form-data" > 
+        <form action="/upload.php" method="post" enctype="multipart/form-data" > 
           <input id="file" type="file" name="file" /> 
           <input id="html5-upload-button" type="button" value="Upload" /> 
         </form> 
     </body>
-</html>
+</html> 
