@@ -41,6 +41,7 @@ if ($_FILES["fileToUpload"]["size"] > 500000) {
 
 // Check if $uploadOk is set to 0 by an error
 $uploadOk = 1;
+echo print_r($_FILES);
 if ($uploadOk == 0) {
   echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
