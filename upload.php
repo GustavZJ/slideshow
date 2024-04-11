@@ -16,7 +16,7 @@ if ( move_uploaded_file($_FILES['file']['tmp_name'], $location) ) {
   echo '<p>The php and HTML5 file upload failed.</p>';
   echo '<p>Location:'.$location.'</p>';
   echo '<p>Filename:'.$filename.'</p>';
-  echo $_FILES['file']['tmp_name'];
+  echo '<p> Something: '.$_FILES['file']['tmp_name'].'</p>';
 }
 
 ?>
