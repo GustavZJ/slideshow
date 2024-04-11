@@ -12,7 +12,7 @@
         <!-- HTML5 Input Form  -->
         <form action="/upload.php" method="post" enctype="multipart/form-data" > 
           <input id="file" type="file" name="file" /> 
-          <input id="html5-upload-button" type="submit  " value="Upload" /> 
+          <input id="html5-upload-button" type="submit" value="Upload" /> 
         </form> 
     </body>
 </html> 
