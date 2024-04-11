@@ -7,7 +7,7 @@
 $filename = $_FILES['file']['name'];
 
 /* Prepare to save the file upload to the upload folder */
-$location = "/home/panda/Pictures/".$filename;
+$location = "/home/panda/Pictures/";
 
 /* Permanently save the file upload to the upload folder */
 if ( move_uploaded_file($_FILES['file']['tmp_name'], $location) ) { 
