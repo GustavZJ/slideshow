@@ -17,6 +17,7 @@ if ( move_uploaded_file($_FILES['file']['tmp_name'], $location) ) {
   echo '<p>Location:'.$location.'</p>';
   echo '<p>Filename:'.$filename.'</p>';
   echo '<p> Something: '.var_dump($_FILES).'</p>';
+  echo '<p> Error: '.$_FILES['userfile']['error'].'</p>';
 }
 
 ?>
