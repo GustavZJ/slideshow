@@ -3,20 +3,19 @@
 <body>
 <?php
 
-$target_path = "/home/panda/Pictures/";
-$target_path = $target_path . basename( $_FILES['uploadedfile']['name']);
+/* Get the name of the file uploaded to Apache */
+$filename = $_FILES['file']['name'];
 
-echo "Source=" .      $_FILES['uploadedfile']['name'] . "<br />";
-echo "Destination=" .   $destination_path . "<br />";
-echo "Target path=" .   $target_path . "<br />";
-echo "Size=" .      $_FILES['uploadedfile']['size'] . "<br />";
+/* Prepare to save the file upload to the upload folder */
+$location = "/home/panda/Pictures/".$filename;
 
-if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
-echo "The file ".  basename( $_FILES['uploadedfile']['name']).
-" has been uploaded";
-} else{
-echo "There was an error uploading the file, please try again!";
+/* Permanently save the file upload to the upload folder */
+if ( move_uploaded_file($_FILES['file']['tmp_name'], $location) ) { 
+  echo '<p>The HTML5 and php file upload was a success!</p>'; 
+} else { 
+  echo '<p>The php and HTML5 file upload failed.</p>'; 
 }
-?> 
+
+?>
 </body>
 </html>
