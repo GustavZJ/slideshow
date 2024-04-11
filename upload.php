@@ -13,7 +13,9 @@ $location = "/home/panda/Pictures/".$filename;
 if ( move_uploaded_file($_FILES['file']['tmp_name'], $location) ) { 
   echo '<p>The HTML5 and php file upload was a success!</p>'; 
 } else { 
-  echo '<p>The php and HTML5 file upload failed.</p>'; 
+  echo '<p>The php and HTML5 file upload failed.</p>';
+  echo '<p>Location:'.$location.'</p>';
+  echo '<p>Filename:'.$filename.'</p>';
 }
 
 ?>
