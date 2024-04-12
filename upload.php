@@ -38,15 +38,6 @@ if ($_FILES["size"] > 500000) {
 //   $uploadOk = 0;
 // }
 
-echo 'File:'. $target_file;
-$dirFiles = scandir($target_dir);
-foreach ($dirFiles as $dirFile) {
-  $filePath = $dirPath . '/' . $file;
-  if (is_file($filePath)) {
-      echo $file . "<br>";
-  }
-}
-
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
   echo "Sorry, your file was not uploaded.";
@@ -56,6 +47,17 @@ if ($uploadOk == 0) {
     echo "The file " . htmlspecialchars(basename($_FILES["name"]["name"])) . " has been uploaded.";
   } else {
     echo "Sorry, there was an error uploading your file.";
+  }
+}
+
+echo '<br>BaseName:'.basename($_FILES["name"]["name"]);
+echo '<br>BaseName 2:'.basename($_FILES["name"]);
+echo '<br>File:'. $target_file.'<br>';
+$dirFiles = scandir($target_dir);
+foreach ($dirFiles as $dirFile) {
+  $filePath = $dirPath . '/' . $file;
+  if (is_file($filePath)) {
+      echo $file . "<br>";
   }
 }
 ?>
