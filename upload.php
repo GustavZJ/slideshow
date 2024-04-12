@@ -2,12 +2,10 @@
 <body>
 
 <?php
-$allowedFileTypes = array('png', 'jpg', 'heif', 'jpeg', 'hiec', 'gif');
-
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["file"]["name"]);
 $uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+$imageFileType = strtolower($_FILES['file']['type']);
 
 // Check if image file is an actual image or fake image
 if (isset($_POST["submit"])) {
@@ -34,8 +32,8 @@ if ($_FILES["file"]["size"] > 500000) {
 }
 
 // Allow certain file formats
-if (in_array(strtolower($imageFileType), $allowedFileTypes)) {
-  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+if (str_contains($imageFileType, 'image')) {
+  echo "Sorry," . $imageFileType . 'is not allowed';
   $uploadOk = 0;
 }
 
