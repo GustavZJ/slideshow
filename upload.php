@@ -2,6 +2,8 @@
 <body>
 
 <?php
+$allowedFileTypes = array('png', 'jpg', 'heif', 'jpeg', 'hiec', 'gif');
+
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["file"]["name"]);
 $uploadOk = 1;
@@ -32,11 +34,10 @@ if ($_FILES["file"]["size"] > 500000) {
 }
 
 // Allow certain file formats
-// if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-// && $imageFileType != "gif" ) {
-//   echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-//   $uploadOk = 0;
-// }
+if (in_array(strtolower($imageFileType), $allowedFileTypes)) {
+  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+  $uploadOk = 0;
+}
 
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
