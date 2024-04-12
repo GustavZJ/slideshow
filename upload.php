@@ -50,7 +50,7 @@ if ($uploadOk == 0) {
   }
 }
 
-echo "<script>console.log('" . json_encode($files) . "');</script>";
+echo "<script>console.log('" . json_encode($_FILES) . "');</script>";
 echo '<br>BaseName:'.$_FILES["name"]["name"];
 echo '<br>BaseName 2:'.$_FILES["name"];
 echo '<br>File:'. $target_file.'<br>';
