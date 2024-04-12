@@ -1,17 +1,16 @@
-
 <html>
 <body>
 
 <?php
-$target_dir = "/uploads/";
-$target_file = $target_dir.$_FILES["name"];
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["name"]["name"]);
 $uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
 // Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
-  $check = getimagesize($_FILES["tmp_name"]);
-  if($check !== false) {
+if (isset($_POST["submit"])) {
+  $check = getimagesize($_FILES["tmp_name"]["tmp_name"]);
+  if ($check !== false) {
     echo "File is an image - " . $check["mime"] . ".";
     $uploadOk = 1;
   } else {
@@ -21,13 +20,13 @@ if(isset($_POST["submit"])) {
 }
 
 // Check if file already exists
-// if (file_exists($target_file)) {
-//   echo "Sorry, file already exists.";
-//   $uploadOk = 0;
-// }
+if (file_exists($target_file)) {
+  echo "Sorry, file already exists.";
+  $uploadOk = 0;
+}
 
 // Check file size
-if ($_FILES["size"] > 500000) {
+if ($_FILES["size"]["size"] > 500000) {
   echo "Sorry, your file is too large.";
   $uploadOk = 0;
 }
@@ -40,20 +39,18 @@ if ($_FILES["size"] > 500000) {
 // }
 
 // Check if $uploadOk is set to 0 by an error
-$uploadOk = 1;
-echo "<script>console.log('" . $target_file . "');</script>";
-echo "<script>console.log('" . json_encode($_FILES) . "');</script>";
 if ($uploadOk == 0) {
   echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } else {
-  if (move_uploaded_file($_FILES["tmp_name"], $target_file)) {
-    echo "The file ". htmlspecialchars( basename( $_FILES["name"])). " has been uploaded.";
+  if (move_uploaded_file($_FILES["tmp_name"]["tmp_name"], $target_file)) {
+    echo "The file " . htmlspecialchars(basename($_FILES["name"]["name"])) . " has been uploaded.";
   } else {
     echo "Sorry, there was an error uploading your file.";
   }
 }
 ?>
+
 
 </body>
 </html>
