@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /home/panda/Pictures
+cd /var/www/slideshow/uploads
 
 
 #Iterate over all files of file type .HEIC and convert to jpeg. This is because HEIC is a shitty file format that iPhones use. 
@@ -45,11 +45,11 @@ do
 		str=$((str))
 		if [ $str -le $cdateint ];
 		then
-			mv $f /home/panda/Backup/
+			mv $f /var/www/slideshow/backup
 		
 		fi
 	fi
 done
-DISPLAY=:0.0 XAUTHORITY=/home/panda/.Xauthority /usr/bin/feh exif=1 --auto-rotate -q -p -Z -F -R 60 -Y -D 2.0 /home/panda/Pictures
+DISPLAY=:0.0 XAUTHORITY=/home/panda/.Xauthority /usr/bin/feh exif=1 --auto-rotate -q -p -Z -F -R 60 -Y -D 2.0 /var/www/slideshow/uploads
 
 
