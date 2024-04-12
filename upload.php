@@ -50,7 +50,7 @@ if ($uploadOk == 0) {
   }
 }
 
-echo '<br>File info: '.print_r($_FILES);
+echo '<script>console.log(print_r($_FILES)</script>';
 echo '<br>BaseName:'.$_FILES["name"]["name"];
 echo '<br>BaseName 2:'.$_FILES["name"];
 echo '<br>File:'. $target_file.'<br>';
