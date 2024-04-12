@@ -32,8 +32,8 @@ if ($_FILES["file"]["size"] > 500000) {
 }
 
 // Allow certain file formats
-if (str_contains($imageFileType, 'image')) {
-  echo "Sorry," . $imageFileType . 'is not allowed';
+if (!str_contains($imageFileType, 'image')) {
+  echo "Sorry, " . $imageFileType . ' is not allowed';
   $uploadOk = 0;
 }
 
