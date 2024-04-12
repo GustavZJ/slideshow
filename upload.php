@@ -50,8 +50,8 @@ if ($uploadOk == 0) {
   }
 }
 
-echo '<br>BaseName:'.basename($_FILES["name"]["name"]);
-echo '<br>BaseName 2:'.basename($_FILES["name"]);
+echo '<br>BaseName:'.$_FILES["name"]["name"];
+echo '<br>BaseName 2:'.$_FILES["name"];
 echo '<br>File:'. $target_file.'<br>';
 $dirFiles = scandir($target_dir);
 foreach ($dirFiles as $dirFile) {
