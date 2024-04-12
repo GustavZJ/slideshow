@@ -38,6 +38,15 @@ if ($_FILES["size"] > 500000) {
 //   $uploadOk = 0;
 // }
 
+echo 'File:'. $target_file;
+$dirFiles = scandir($target_dir);
+foreach ($dirFiles as $dirFile) {
+  $filePath = $dirPath . '/' . $file;
+  if (is_file($filePath)) {
+      echo $file . "<br>";
+  }
+}
+
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
   echo "Sorry, your file was not uploaded.";
