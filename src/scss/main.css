@@ -10,4 +10,8 @@ body {
   width: min-content;
 }
 
+a:visited {
+  color: white;
+}
+
 /*# sourceMappingURL=main.css.map */
