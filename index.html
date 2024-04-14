@@ -7,10 +7,24 @@
     <link rel="stylesheet" href="src/scss/main.css">
 </head>
 <body>
+    <div id="imageCont">
+        <h3>Image manager:</h3>
+        <div id="uploadImageFile">
+            <input type="file" id="uploadImageInput" multiple="multiple" accept="image/*" onchange="uploadImage(this)">
+            <label for="uploadImageInput" id="uploadLabel" ondragover="dragOver(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" ondrop="dropFile(event)">Click to upload, or drag images here</label>
+        </div>
+        <p>Or enter url here:</p>
+        <input id="imageURL" placeholder="Enter image URL">
+        <input type="submit" id="submitImageURL" value="Submit" onclick="uploadImage(this)">
+        <p>Images:</p>
+        <div id="uploadedImagesCont"></div>
+    </div>
+
     <!-- Image upload form  -->
     <form action="upload.php" method="post" enctype="multipart/form-data" > 
-        <input id="file" type="file" name="file" /> 
-        <input id="html5-upload-button" type="submit" value="Upload" /> 
-    </form> 
+        <input type="submit" value="Upload">
+    </form>
+    
+    <script src="src/js/imageManager.js"></script>
 </body>
 </html>

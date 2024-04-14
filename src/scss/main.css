@@ -14,4 +14,44 @@ a:visited {
   color: white;
 }
 
+#imageCont #uploadImageFile {
+  border: dashed gray;
+  width: 40svh;
+  height: 20svh;
+  margin: auto;
+  font-style: italic;
+}
+@media (orientation: portrait) {
+  #imageCont #uploadImageFile {
+    width: 100%;
+  }
+}
+#imageCont #uploadImageFile #uploadLabel {
+  width: 100%;
+  height: 100%;
+  font-size: 1.5svh;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#imageCont #uploadImageInput {
+  display: none;
+}
+#imageCont #uploadedImagesCont .imageCont {
+  width: 20vh;
+  position: relative;
+  display: inline-block;
+}
+#imageCont #uploadedImagesCont .previewImage {
+  width: 20svh;
+  height: 12.5vh;
+}
+#imageCont #uploadedImagesCont .deleteImageBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 /*# sourceMappingURL=main.css.map */
