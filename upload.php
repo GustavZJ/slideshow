@@ -2,7 +2,7 @@
 <body>
 
 <?php
-$target_dir = "/uploads/";
+$target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["file"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower($_FILES['file']['type']);
