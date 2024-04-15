@@ -16,7 +16,7 @@
             ondrop="dropFile(event)">Klik for at uploade, eller træk billeder her</label>
         </div>
         <p>Eller indtast billed-URL her:</p>
-        <input id="imageURL" placeholder="Intast billed-URL her">
+        <input id="imageURL" placeholder="Indtast billed-URL her">
         <input type="submit" id="submitImageURL" value="Submit" onclick="uploadImage(this)">
         <p>Billeder:</p>
         <div id="uploadedImagesCont"></div>
@@ -24,7 +24,7 @@
 
     <!-- Image upload form  -->
     <form action="upload.php" method="post" enctype="multipart/form-data" > 
-        <input placeholder="Intast billed-URL her" name="name">
+        <input placeholder="Intast billed-URL her" name="url">
         <input type="submit" value="Upload">
     </form>
     

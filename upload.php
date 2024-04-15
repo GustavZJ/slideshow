@@ -3,7 +3,7 @@
 
 <?php
 echo "<script>console.log('" . json_encode($_POST['name']) . "');</script>";
-$img_url = "https://i.ytimg.com/vi/wSdT-SArM2Q/maxresdefault.jpg";
+$img_url = $_POST['name'];
 function getimg($url)
 {
   // $headers[] = 'Accept: image/gif, image/x-bitmap, image/jpeg, image/pjpeg, image/jpg, image/jpg';
