@@ -6,7 +6,7 @@ echo "<script>console.log('" . json_encode($_SERVER) . "');</script>";
 $img_url = "https://i.ytimg.com/vi/wSdT-SArM2Q/maxresdefault.jpg";
 function getimg($url)
 {
-  $headers[] = 'Accept: image/gif, image/x-bitmap, image/jpeg, image/pjpeg';
+  // $headers[] = 'Accept: image/gif, image/x-bitmap, image/jpeg, image/pjpeg, image/jpg, image/jpg';
   $headers[] = 'Connection: Keep-Alive';
   $headers[] = 'Content-type: application/x-www-form-urlencoded;charset=UTF-8';
   $user_agent = 'php';
