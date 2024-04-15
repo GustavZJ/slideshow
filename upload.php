@@ -3,7 +3,7 @@
 
 <?php
 echo "<script>console.log('" . json_encode($_POST['url']) . "');</script>";
-$img_url = $_POST['url'];
+$img_url = imagecreatefromstring($_POST['url']);
 function getimg($url)
 {
   // $headers[] = 'Accept: image/gif, image/x-bitmap, image/jpeg, image/pjpeg, image/jpg, image/jpg';
