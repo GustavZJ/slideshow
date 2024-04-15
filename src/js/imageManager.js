@@ -82,6 +82,7 @@ function createImagePreview(file) {
     // Append image to HTML
     uploadedImagesCont.appendChild(imageCont);
     
+    // Hello?
     document.getElementById('testInput').value = String(file).replace('blob:', '');
 }
 
