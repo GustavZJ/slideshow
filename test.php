@@ -2,6 +2,7 @@
 $target_dir = "uploads/";
 
 foreach($_FILES as $x) {
+    echo print_r($x);
     $target_file = $target_dir . basename($x["name"]);
     $uploadOk = 1;
 $imageFileType = strtolower($_FILES['file']['type']);
