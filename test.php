@@ -5,11 +5,11 @@ foreach($_FILES as $x) {
     echo print_r($x);
     $target_file = $target_dir . basename($x["name"]);
     $uploadOk = 1;
-$imageFileType = strtolower($_FILES['file']['type']);
+$imageFileType = strtolower($x['type']);
 
 // Check if image file is an actual image or fake image
 if (isset($_POST["submit"])) {
-  $check = getimagesize($_FILES["file"]["tmp_name"]);
+  $check = getimagesize($x["tmp_name"]);
   if ($check !== false) {
     echo "File is an image - " . $check["mime"] . ".";
     $uploadOk = 1;
@@ -26,7 +26,7 @@ if (file_exists($target_file)) {
 }
 
 // Check file size
-if ($_FILES["file"]["size"] > 500000) {
+if ($x["size"] > 500000) {
   echo "Sorry, your file is too large.";
   $uploadOk = 0;
 }
@@ -42,8 +42,8 @@ if ($uploadOk == 0) {
   echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } else {
-  if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-    echo "The file " . htmlspecialchars(basename($_FILES["file"]["name"])) . " has been uploaded.";
+  if (move_uploaded_file($x["tmp_name"], $target_file)) {
+    echo "The file " . htmlspecialchars(basename($x["name"])) . " has been uploaded.";
   } else {
     echo "Sorry, there was an error uploading your file.";
   }
