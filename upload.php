@@ -4,7 +4,7 @@
 <?php
 echo "<script>console.log('" . json_encode($_POST['url']) . "');</script>";
 // $img_url = imagecreatefromstring($_POST['url']);
-$image = new \Imagick($_POST['url']);
+$image = new Imagick($_POST['url']);
 echo $image->getImagesBlob();
 //$image->readimageblob($_POST['url']);
 //echo '<img src="data:image/png;base64,' .  base64_encode($image->getimageblob())  . '" />';
