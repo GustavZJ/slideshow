@@ -2,19 +2,15 @@
 <body>
 
 <?php
-echo "<script>console.log('" . json_encode($_POST['url']) . "');</script>";
-// $img_url = imagecreatefromstring($_POST['url']);
 $image = new Imagick($_POST['url']);
-echo $image->getImagesBlob();
-//$image->readimageblob($_POST['url']);
-//echo '<img src="data:image/png;base64,' .  base64_encode($image->getimageblob())  . '" />';
+
 function getimg($url)
 {
   // $headers[] = 'Accept: image/gif, image/x-bitmap, image/jpeg, image/pjpeg, image/jpg, image/jpg';
   $headers[] = 'Connection: Keep-Alive';
   $headers[] = 'Content-type: application/x-www-form-urlencoded;charset=UTF-8';
   $user_agent = 'php';
-  $process = curl_init($url);
+  $process = ($url);
   curl_setopt($process, CURLOPT_HTTPHEADER, $headers);
   curl_setopt($process, CURLOPT_HEADER, 0);
   curl_setopt($process, CURLOPT_USERAGENT, $user_agent); //check here         
