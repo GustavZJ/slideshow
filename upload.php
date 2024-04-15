@@ -2,8 +2,6 @@
 <body>
 
 <?php
-echo 'hello?';
-
 $img_url = "https://i.ytimg.com/vi/wSdT-SArM2Q/maxresdefault.jpg";
 function getimg($url)
 {
