@@ -10,21 +10,27 @@
     <div id="imageCont">
         <h3>Billed upload:</h3>
         <div id="uploadImageFile">
+            <input type="file" id="uploadImageInput" multiple="multiple" accept="image/*" onchange="uploadImage(this)">
+            <label for="uploadImageInput" id="uploadLabel"
+            ondragover="dragOver(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)"
+            ondrop="dropFile(event)">Klik for at uploade, eller træk billeder her</label>
         </div>
         <p>Eller indtast billed-URL her:</p>
         <input id="imageURL" placeholder="Indtast billed-URL her">
-        <input type="submit" id="submitImageURL" value="Submit" >
+        <input type="submit" id="submitImageURL" value="Submit" onclick="uploadImage(this)">
         <p>Billeder:</p>
         <div id="uploadedImagesCont"></div>
     </div>
-    <form action="upload.php" method="post" enctype="multipart/form-data">
-        <input type="file"  multiple="multiple"  name="files[]">
-        <!-- <label for="uploadImageInput" id="uploadLabel"
-        ondragover="dragOver(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)"
-        ondrop="dropFile(event)">Klik for at uploade, eller træk billeder her</label> -->
+
+    <!-- Image upload form  -->
+    <form action="test.php" method="post" enctype="multipart/form-data" >
+        <input type="file" multiple="multiple" name="files[]">
+        <!-- <input id='testInput' placeholder="Intast billed-URL her" name="url"> -->
         <input type="submit" value="Upload">
     </form>
+
+    <a href="test.php"></a>
     
-    <!-- <script src="src/js/imageManager.js"></script> -->
+    <script src="src/js/imageManager.js"></script>
 </body>
 </html>
