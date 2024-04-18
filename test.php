@@ -1,5 +1,6 @@
 <?php
 $target_dir = "uploads/";
+echo "<script>console.log('" . json_encode($_FILES) . "');</script>";
 foreach($_FILES as $x) {
   echo "<script>console.log('" . json_encode($x) . "');</script>";
     $target_file = $target_dir . basename($x["name"]);
@@ -48,9 +49,6 @@ if ($uploadOk == 0) {
   }
 }
 
-echo "<script>console.log('" . json_encode($_FILES) . "');</script>";
-echo '<br>BaseName:'.$_FILES["file"]["name"];
-echo '<br>File:'. $target_file.'<br>';
 $dirFiles = scandir($target_dir);
 foreach ($dirFiles as $dirFile) {
   $filePath = $dirPath . '/' . $file;
