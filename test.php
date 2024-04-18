@@ -47,14 +47,6 @@ if ($uploadOk == 0) {
     echo "Sorry, there was an error uploading your file.";
   }
 }
-
-$dirFiles = scandir($target_dir);
-foreach ($dirFiles as $dirFile) {
-  $filePath = $dirPath . '/' . $file;
-  if (is_file($filePath)) {
-      echo $file . "<br>";
-  }
-}    
 }
 
 ?>
