@@ -11,7 +11,7 @@
         <h3>Billed upload:</h3>
         <div id="uploadImageFile">
             <form action="upload.php" method="post" enctype="multipart/form-data">
-                <input type="file" id="uploadImageInput" multiple="multiple" accept="image/*" onchange="uploadImage(this)" name="files[]">
+                <input type="file"  multiple="multiple" accept="image/*"  name="files[]">
                 <!-- <label for="uploadImageInput" id="uploadLabel"
                 ondragover="dragOver(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)"
                 ondrop="dropFile(event)">Klik for at uploade, eller træk billeder her</label> -->
@@ -20,11 +20,11 @@
         </div>
         <p>Eller indtast billed-URL her:</p>
         <input id="imageURL" placeholder="Indtast billed-URL her">
-        <input type="submit" id="submitImageURL" value="Submit" onclick="uploadImage(this)">
+        <input type="submit" id="submitImageURL" value="Submit" >
         <p>Billeder:</p>
         <div id="uploadedImagesCont"></div>
     </div>
     
-    <script src="src/js/imageManager.js"></script>
+    <!-- <script src="src/js/imageManager.js"></script> -->
 </body>
 </html>
