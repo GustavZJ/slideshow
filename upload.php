@@ -56,5 +56,3 @@ foreach ($dirFiles as $dirFile) {
   }
 }    
 }
-
-?>
