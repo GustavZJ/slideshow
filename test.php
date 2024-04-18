@@ -1,7 +1,7 @@
 <?php
 $target_dir = "uploads/";
 foreach($_FILES as $x) {
-    echo print_r($x);
+  echo "<script>console.log('" . json_encode($x) . "');</script>";
     $target_file = $target_dir . basename($x["name"]);
     $uploadOk = 1;
 $imageFileType = strtolower($x['type']);
