@@ -1,15 +1,14 @@
 <?php
 $target_dir = "uploads/";
 echo "<script>console.log('" . json_encode($_FILES) . "');</script>";
-foreach($_FILES as $x) {
-  echo "<script>console.log('" . json_encode($x) . "');</script>";
-    $target_file = $target_dir . basename($x["name"]);
-    $uploadOk = 1;
-$imageFileType = strtolower($x['type']);
+foreach(range(0, count($_FILES['files']['name']) - 1) as $x) {
+  $target_file = $target_dir . basename($_FILES['files']["name"][$x]);
+  $uploadOk = 1;
+$imageFileType = strtolower($_FILES['files']['type'][$x]);
 
 // Check if image file is an actual image or fake image
 if (isset($_POST["submit"])) {
-  $check = getimagesize($x["tmp_name"]);
+  $check = getimagesize($_FILES['files']["tmp_name"][$x]);
   if ($check !== false) {
     echo "File is an image - " . $check["mime"] . ".";
     $uploadOk = 1;
@@ -26,7 +25,7 @@ if (file_exists($target_file)) {
 }
 
 // Check file size
-if ($x["size"] > 500000) {
+if ($_FILES['files']["size[$x]"] > 500000) {
   echo "Sorry, your file is too large.";
   $uploadOk = 0;
 }
@@ -42,8 +41,8 @@ if ($uploadOk == 0) {
   echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } else {
-  if (move_uploaded_file($x["tmp_name"], $target_file)) {
-    echo "The file " . htmlspecialchars(basename($x["name"])) . " has been uploaded.";
+  if (move_uploaded_file($_FILES['files']["tmp_name"[$x]], $target_file)) {
+    echo "The file " . htmlspecialchars(basename($_FILES['files']["name"][$x])) . " has been uploaded.";
   } else {
     echo "Sorry, there was an error uploading your file.";
   }
