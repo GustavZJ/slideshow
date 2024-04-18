@@ -1,6 +1,6 @@
 <?php
 $target_dir = "uploads/";
-
+echo print_r($_FILES);
 foreach($_FILES as $x) {
     echo print_r($x);
     $target_file = $target_dir . basename($x["name"]);
