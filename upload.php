@@ -1,6 +1,3 @@
-<html>
-<body>
-
 <?php
 $target_dir = "uploads/";
 echo "<script>console.log('" . json_encode($_FILES) . "');</script>";
@@ -59,7 +56,5 @@ foreach ($dirFiles as $dirFile) {
   }
 }    
 }
-?>
 
-</body>
-</html>
+?>
