@@ -1,4 +1,12 @@
 <?php
+$inipath = php_ini_loaded_file();
+
+if ($inipath) {
+    echo 'Loaded php.ini: ' . $inipath;
+} else {
+    echo 'A php.ini file is not loaded';
+}
+
 $target_dir = "uploads/";
 echo "<script>console.log('" . json_encode($_FILES) . "');</script>";
 foreach(range(0, count($_FILES['files']['name']) - 1) as $x) {
@@ -47,14 +55,6 @@ if ($uploadOk == 0) {
     echo "Sorry, there was an error uploading your file.";
   }
 }
-
-$dirFiles = scandir($target_dir);
-foreach ($dirFiles as $dirFile) {
-  $filePath = $dirPath . '/' . $file;
-  if (is_file($filePath)) {
-      echo $file . "<br>";
-  }
-}    
 }
 
 ?>
