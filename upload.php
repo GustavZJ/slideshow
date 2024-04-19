@@ -3,7 +3,7 @@
   foreach(range(0, count($_FILES['files']['name']) - 1) as $x) {
     $target_file = $target_dir . basename($_FILES['files']["name"][$x]);
     $imageFileType = strtolower($_FILES['files']['type'][$x]);
-    header("Location: index.html?response=$imageFileType");
+    
     // Check if image file is an actual image or fake image
     if (!str_contains($imageFileType, 'image')) {
       header("Location: index.html?response=notAllowed");
