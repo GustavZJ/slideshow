@@ -8,7 +8,6 @@
 </head>
 <body>
     <div id="imageCont">
-        <h3>Billed upload:</h3>
         <form action="upload.php" method="post", enctype="multipart/form-data">
             <div id="uploadImageFile">
                 <input type="file" id="uploadImageInput" multiple="multiple" accept="image/*" onchange="uploadImage(this)" name="files[]">
@@ -19,9 +18,6 @@
             </div>
             <input type="submit" value="Upload">
         </form>
-        <p>Eller indtast billed-URL her:</p>
-        <input id="imageURL" placeholder="Indtast billed-URL her">
-        <input type="submit" id="submitImageURL" value="Submit" onclick="uploadImage(this)">
         <p>Billeder:</p>
         <div id="uploadedImagesCont"></div>
     </div>

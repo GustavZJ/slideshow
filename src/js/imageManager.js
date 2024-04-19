@@ -15,18 +15,6 @@ function uploadImage(target, files = []) {
             validateImgs(files);
         }
     }
-    // Handle image URL input
-    else if (target.id == 'submitImageURL') {
-        // Define file and validate
-        files = imageURL[index].value;
-        validateImgs(files, index);
-    }
-    // Load images from question (Dosen't need verification)
-    else if (target == 'loadImgs') {
-        for (i = 0; i < files.length; i++) {
-            createImagePreview(files[i], index);
-        }
-    }
     // Drag and drop upload
     else if (files.length > 0) {
         for (i = 0; i < files.length; i++) {
