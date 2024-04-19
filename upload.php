@@ -5,12 +5,12 @@
     $imageFileType = strtolower($_FILES['files']['type'][$x]);
     header("Location: index.html?response=$imageFileType");
     // Check if image file is an actual image or fake image
-    if (str_contains($imageFileType, 'image') == FALSE) {
+    if (!str_contains($imageFileType, 'image')) {
       header("Location: index.html?response=notAllowed");
     }
   
     // Check if file already exists
-    if (file_exists($target_file) == TRUE) {
+    if (file_exists($target_file)) {
       header("Location: index.html?response=fileExists");
     }
   
