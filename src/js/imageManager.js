@@ -42,7 +42,6 @@ function dropFile(event) {
     event.preventDefault(); // Prevent setting image path as URL
     uploadImageFile.classList.remove('dragHighlight');
     uploadImageInput.files = event.dataTransfer.files;
-    console.log(event.dataTransfer.files);
     uploadImage('dropUpload', event.dataTransfer.files);
 }
 
