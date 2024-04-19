@@ -53,7 +53,8 @@ function dragLeave(event) {
 function dropFile(event) {
     event.preventDefault(); // Prevent setting image path as URL
     uploadImageFile.classList.remove('dragHighlight');
-    uploadImage('dropUpload', event.dataTransfer.files)
+    uploadImageInput.files = event.dataTransfer.files;
+    uploadImage('dropUpload', event.dataTransfer.files);
 }
 
 function validateImgs(file) {
