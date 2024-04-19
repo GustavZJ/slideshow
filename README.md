@@ -13,8 +13,13 @@ Run the next command and follow the instructions, 'uploader' is the default user
 Note: No characters are shown doing typing of password
 ```
 sudo htpasswd -c /etc/apache2/.htpasswd uploader
-sudo reboot 0
+sudo raspi-config
 ```
+Go to system options<br>
+Go to hostname<br>
+Choose your local domain<br>
+Select Finish<br>
+Select reboot<br>
 
 Requirements:<br>
 1: Raspberry pi 4 or newer<br>
