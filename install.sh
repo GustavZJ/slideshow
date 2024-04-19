@@ -10,6 +10,7 @@ cp installFiles/slideshow.conf /etc/apache2/sites-available/
 a2dissite 000-default.conf
 a2dissite slideshow.conf
 a2ensite slideshow.conf
+chmod 777 uploads/
 bash update.sh
 
 mkdir uploads
