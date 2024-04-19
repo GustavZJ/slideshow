@@ -14,6 +14,6 @@ Run the next command and follow the instructions, 'uploader' is the default user
 sudo htpasswd -c /etc/apache2/.htpasswd uploader
 ```
 
-Requirements:
-1: git
+Requirements:<br>
+1: git<br>
 2: apache2
