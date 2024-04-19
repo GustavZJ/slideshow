@@ -28,7 +28,7 @@
     }
   
     // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk = 0) {
+    if ($uploadOk == 1) {
       if (move_uploaded_file($_FILES['files']["tmp_name"][$x], $target_file)) {
         // header("Location: index.html?response=success");
       } else {
