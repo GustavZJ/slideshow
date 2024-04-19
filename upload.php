@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 $target_dir = "uploads/";
 echo "<script>console.log('" . json_encode($_FILES) . "');</script>";
 foreach(range(0, count($_FILES['files']['name']) - 1) as $x) {
@@ -45,12 +43,10 @@ if ($uploadOk == 0) {
 } else {
   if (move_uploaded_file($_FILES['files']["tmp_name"][$x], $target_file)) {
     echo "The file " . htmlspecialchars(basename($_FILES['files']["name"][$x])) . " has been uploaded.";
-    $_SESSION['upload_success'] = "File successfully uploaded.";
-    header("Location: index.html");
+    header("Location: index.html?response=success");
   } else {
     echo "Sorry, there was an error uploading your file.";
   }
 }
 }
-exit;
 ?>
