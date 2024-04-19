@@ -43,6 +43,7 @@ if ($uploadOk == 0) {
 } else {
   if (move_uploaded_file($_FILES['files']["tmp_name"][$x], $target_file)) {
     echo "The file " . htmlspecialchars(basename($_FILES['files']["name"][$x])) . " has been uploaded.";
+    header("Location: index.html");
   } else {
     echo "Sorry, there was an error uploading your file.";
   }
