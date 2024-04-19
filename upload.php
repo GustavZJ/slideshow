@@ -7,13 +7,13 @@
   // Check if image file is an actual image or fake image
   if (isset($_POST["submit"])) {
     $check = getimagesize($_FILES['files']["tmp_name"][$x]);
-    if ($check == false) {
+    if ($check == FALSE) {
       header("Location: index.html?response=notImage");
     }
   }
 
   // Check if file already exists
-  if (file_exists($target_file)) {
+  if (file_exists($target_file) == TRUE) {
     header("Location: index.html?response=fileExists");
   }
 
@@ -23,7 +23,7 @@
   }
 
   // Allow certain file formats
-  if (!str_contains($imageFileType, 'image')) {
+  if (str_contains($imageFileType, 'image') == FALSE) {
     header("Location: index.html?response=notAllowed");
   }
 
