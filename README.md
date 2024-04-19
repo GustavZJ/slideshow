@@ -9,7 +9,7 @@ sudo git clone https://github.com/GustavZJ/slideshow.git
 cd slideshow
 sudo bash install.sh
 ```
-Run the next command and follow the instructions, 'uploader' is the default username
+Run the next command and follow the instructions, 'uploader' is the default username<br>
 Note: No characters are shown doing typing of password
 ```
 sudo htpasswd -c /etc/apache2/.htpasswd uploader
