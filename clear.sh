@@ -1,0 +1,3 @@
+cd uploads
+
+rm *
