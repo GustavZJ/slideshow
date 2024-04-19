@@ -24,7 +24,6 @@ Select reboot<br>
 Requirements:<br>
 1: Raspberry pi 4 or newer<br>
 2: SD card formated with Raspberry Pi OS with desktop<br>
-3: User must be named panda<br>
-4: Wi-fi or ethernet connection<br>
-5: A monitor<br>
-6: apache2
+3: Wi-fi or ethernet connection<br>
+4: A monitor<br>
+5: apache2
