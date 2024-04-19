@@ -1,14 +1,18 @@
 CfA Billedramme Page
 
 To install:
+```
 sudo apt update
 sudo apt install git apache2
 cd /var/www
-git clone https://github.com/GustavZJ/slideshow.git
+sudo git clone https://github.com/GustavZJ/slideshow.git
 cd slideshow
 sudo bash install.sh
-
-To install run install.sh as root
+```
+Run the next command and follow the instructions, 'uploader' is the default username
+```
+sudo htpasswd -c /etc/apache2/.htpasswd uploader
+```
 
 Requirements:
 1: git
