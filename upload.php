@@ -30,14 +30,14 @@
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 1) {
       if (move_uploaded_file($_FILES['files']["tmp_name"][$x], $target_file)) {
-        // header("Location: index.html?response=success");
+        header("Location: index.html?response=success");
       } else {
         $response .= basename($_FILES['files']['name'][$x]) . '_unknownError_';
         echo("<script>console.log('PHP: " . $response . "');</script>");
-        // header("Location: index.html?response=$response");
+        header("Location: index.html?response={$response}");
       }
     } else {
-      // header("Location: index.html?response=$response");
+      header("Location: index.html?response={$response}");
     }
   }
   exit();
