@@ -1,5 +1,6 @@
 <?php
   $target_dir = "uploads/";
+  $response = '';
   foreach(range(0, count($_FILES['files']['name']) - 1) as $x) {
     $target_file = $target_dir . basename($_FILES['files']["name"][$x]);
     $imageFileType = strtolower($_FILES['files']['type'][$x]);
