@@ -1,12 +1,13 @@
 <?php
   $target_dir = "uploads/";
   foreach(range(0, count($_FILES['files']['name']) - 1) as $x) {
-    $target_file = $target_dir . basename($_FILES['files']["name"][$x]);
+  $target_file = $target_dir . basename($_FILES['files']["name"][$x]);
   $imageFileType = strtolower($_FILES['files']['type'][$x]);
 
   // Check if image file is an actual image or fake image
   if (isset($_POST["submit"])) {
     $check = getimagesize($_FILES['files']["tmp_name"][$x]);
+    header("Location: index.html?response=$check");
     if ($check == FALSE) {
       header("Location: index.html?response=notImage");
     }
