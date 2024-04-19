@@ -15,5 +15,7 @@ sudo htpasswd -c /etc/apache2/.htpasswd uploader
 ```
 
 Requirements:<br>
-1: git<br>
-2: apache2
+1: Raspberry pi 4 or newer<br>
+2: SD card formated with Raspberry Pi OS with desktop<br>
+3: git<br>
+4: apache2
