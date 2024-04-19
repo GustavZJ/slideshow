@@ -7,7 +7,7 @@
   // Check if image file is an actual image or fake image
   if (isset($_POST["submit"])) {
     $check = getimagesize($_FILES['files']["tmp_name"][$x]);
-    if(!@is_array(getimagesize($target_file))){
+    if(!@is_array(getimagesize($_FILES['files']["tmp_name"][$x]))){
       header("Location: index.html?response=notImage");
     }
   }
