@@ -16,7 +16,6 @@ function urlExtractor(url) {
 }
 
 
-
 function messageDecoder(msg) {
 
     errMessages = [];
@@ -33,7 +32,6 @@ function messageDecoder(msg) {
             errMessage += letter;
         }
     }
-    
     
     fileObj = {};
 
@@ -54,7 +52,6 @@ function messageDecoder(msg) {
     }
 
     let errExplanation = "Error:";
-
     const explanationDict={ 
         "fileExists":" is already in our system", 
         "isNotAnImage":" is not an image file", 
@@ -72,13 +69,8 @@ function messageDecoder(msg) {
                 }
                 errExplanation += explanationDict[value[i]]
             }
-            
-        
     }
-    
-    
     return errExplanation
-
 }
 
 
