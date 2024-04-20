@@ -25,7 +25,7 @@ function messageDecoder(msg) {
      
     let errMessages = [];
     let errMessage = "";
-    for(let i = 1; i < msg.length; i++) {
+    for(let i = 0; i < msg.length; i++) {
 
         let letter = msg[i];
         if(letter == "_" && errMessage != "") {
