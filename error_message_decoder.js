@@ -1,4 +1,3 @@
-
 function messageDecoder(msg) {
 
     errMessages = [];
@@ -21,27 +20,20 @@ function messageDecoder(msg) {
         "isTooLarge":" is too large",
         "unknownError":" incountered an unknown error :("
    };
-    errExplanation = "Error:\n" + errMessages[0];
-    newFile = true;
-    for(let i = 1; i < errMessages.length; i++) {
+    errExplanation = "Error:";
+    for(let i = 0; i < errMessages.length; i++) {
         errMsg = errMessages[i];
         if(errMsg.includes(".")) {
-            
-            errExplanation += ".\n";
-            newFile = true;
+
+            errExplanation += "\n";
             errExplanation += errMsg;
             continue;
         }
-        if(!newFile) {
-            errExplanation += " and";
-        }
-        errExplanation += explanationDict[errMsg];
-        newFile = false;
+        errExplanation += explanationDict[errMsg] + ".";
     }
-    errExplanation += "."
     return errExplanation
 }
 
 
-//testMessage = "_file.jpg_fileExists_file2.exe_isNotAnImage_isTooLarge_"
+//testMessage = "_file.jpg_fileExists_file2.exe_isNotAnImage_file2.exe_isTooLarge_"
 //console.log(messageDecoder(testMessage));
