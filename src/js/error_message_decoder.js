@@ -34,6 +34,7 @@ function messageDecoder(msg) {
     return errExplanation
 }
 
+console.log(window.location.href);
 
 //testMessage = "_file.jpg_fileExists_file2.exe_isNotAnImage_file2.exe_isTooLarge_"
 //console.log(messageDecoder(testMessage));
