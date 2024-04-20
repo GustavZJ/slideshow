@@ -19,7 +19,10 @@ function urlExtractor(url) {
 
 
 function messageDecoder(msg) {
-
+    if(msg == "success") {
+        return "All files uploaded successfully"
+    }
+     
     let errMessages = [];
     let errMessage = "";
     for(let i = 1; i < msg.length; i++) {
@@ -61,7 +64,7 @@ function messageDecoder(msg) {
         "isTooLarge":" is too large",
         "unknownError":" incountered an unknown error :("
    };
-    
+    let allSuccess = false;
     for(const [key, value] of Object.entries(fileObj)) {
             if (!errExplanation.includes(key)) {
                 errExplanation += "<br>" + key;
@@ -80,7 +83,7 @@ function messageDecoder(msg) {
 
 
 
-const testUrl = "192.168.1.15/test.php?response=_file.jpg_fileExists_file2.exe_isNotAnImage_file2.exe_isTooLarge_"
+//const testUrl = "192.168.1.15/test.php?response=success"
 //console.log(messageDecoder(urlExtractor(testUrl)));
 
 messageFade('error', messageDecoder(urlExtractor(testUrl)));
