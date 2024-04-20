@@ -54,4 +54,22 @@ a:visited {
   right: 0;
 }
 
+#messageModalContent {
+  margin: auto;
+  position: absolute;
+  text-align: left;
+  z-index: 1;
+  top: 40svh;
+  left: 50%;
+  translate: -50%;
+  padding: 1svh;
+  border: none;
+  border-radius: 2svh;
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+}
+#messageModalContent p {
+  color: black;
+}
+
 /*# sourceMappingURL=main.css.map */
