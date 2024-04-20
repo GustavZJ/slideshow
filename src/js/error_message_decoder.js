@@ -20,7 +20,7 @@ function urlExtractor(url) {
 
 function messageDecoder(msg) {
     if(msg == "success") {
-        return "All files uploaded successfully"
+        return ["Success", "All files uploaded successfully"]
     }
      
     let errMessages = [];
@@ -78,12 +78,12 @@ function messageDecoder(msg) {
     }
     
     
-    return errExplanation
+    return ["error", errExplanation]
 }
 
 
 
 //const testUrl = "192.168.1.15/test.php?response=success"
 //console.log(messageDecoder(urlExtractor(testUrl)));
-
-messageFade('error', messageDecoder(urlExtractor(testUrl)));
+const url = window.location.href
+messageFade(messageDecoder(urlExtractor(url))[0], messageDecoder(urlExtractor(url))[1]);
