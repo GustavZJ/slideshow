@@ -1,4 +1,4 @@
-message = "_file.jpg_fileExists_file2.exe_isNotAnImage_isTooLarge_"
+testMessage = "_file.jpg_fileExists_file2.exe_isNotAnImage_isTooLarge_"
 
 function messageDecoder(msg) {
 
@@ -43,4 +43,4 @@ function messageDecoder(msg) {
     return errExplanation
 }
 
-console.log(messageDecoder(message));
+//console.log(messageDecoder(testMessage));
