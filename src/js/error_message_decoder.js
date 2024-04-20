@@ -55,5 +55,5 @@ function messageDecoder(msg) {
 
 
 
-testUrl = "192.168.1.15/test.php?response=_file.jpg_fileExists_file2.exe_isNotAnImage_file2.exe_isTooLarge_"
-console.log(messageDecoder(urlExtractor(testUrl)));
+//testUrl = "192.168.1.15/test.php?response=_file.jpg_fileExists_file2.exe_isNotAnImage_file2.exe_isTooLarge_"
+//console.log(messageDecoder(urlExtractor(testUrl)));
