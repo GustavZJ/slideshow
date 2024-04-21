@@ -19,8 +19,8 @@ function urlExtractor(url) {
 
 
 function messageDecoder(msg) {
-    if(!msg) {
-        return ""
+    if(msg == "") {
+        return ["", ""]
     }
     if(msg == "success") {
         return ["Success", "All files uploaded successfully"]
@@ -93,6 +93,8 @@ let deleteTimer;
 
 // Modal based timed message
 function messageFade(type, message) {
+    if(type == "")
+    return
     // Create modal
     const errorModal = document.createElement('div');
     errorModal.id = 'messageModalContent';
@@ -125,7 +127,7 @@ function messageFade(type, message) {
 
 
 
-//const testUrl = "192.168.1.15/test.php?response=success"
-//console.log(messageDecoder(urlExtractor(testUrl)));
+//const testUrl = "192.168.1.15"
+//console.log((urlExtractor(testUrl)));
 const url = window.location.href
 messageFade(messageDecoder(urlExtractor(url))[0], messageDecoder(urlExtractor(url))[1]);
