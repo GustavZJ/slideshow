@@ -19,6 +19,9 @@ function urlExtractor(url) {
 
 
 function messageDecoder(msg) {
+    if(!msg) {
+        return ""
+    }
     if(msg == "success") {
         return ["Success", "All files uploaded successfully"]
     }
