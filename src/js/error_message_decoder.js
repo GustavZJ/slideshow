@@ -93,8 +93,10 @@ let deleteTimer;
 
 // Modal based timed message
 function messageFade(type, message) {
-    if(type == "")
-    return
+    if(type == "") {
+        return
+    }
+    
     // Create modal
     const errorModal = document.createElement('div');
     errorModal.id = 'messageModalContent';
