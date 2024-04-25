@@ -1,16 +1,16 @@
 
 
 function urlExtractor(url) {
-    let startRecording = false;
+    let recording = false;
     let msg = "";
     for(let i = 1; i < url.length; i++) {
         let letter = url[i];
         if(letter == "=") {
-            startRecording = true;
+            recording = true;
             continue;
         }
 
-        if(startRecording) {
+        if(recording) {
             msg += letter;
         }
     }
@@ -31,8 +31,8 @@ function messageDecoder(msg) {
     for(let i = 0; i < msg.length; i++) {
 
         let letter = msg[i];
-        if(letter == "_" && errMessage != "") {
-
+        if(letter == "�" && errMessage != "") {
+            console.log(errMessages)
             errMessages.push(errMessage);
             errMessage = "";
         }
@@ -40,7 +40,7 @@ function messageDecoder(msg) {
             errMessage += letter;
         }
     }
-    
+    console.log(errMessages)
     let fileObj = {};
     let newestKey;
 
@@ -129,7 +129,7 @@ function messageFade(type, message) {
 
 
 
-//const testUrl = "192.168.1.15"
+//const testUrl = "http://127.0.0.1:5500/?response=file1.jpg_isNotAnImage_fileExists_"
 //console.log(messageDecoder(urlExtractor(testUrl)));
 const url = window.location.href
 messageFade(messageDecoder(urlExtractor(url))[0], messageDecoder(urlExtractor(url))[1]);
