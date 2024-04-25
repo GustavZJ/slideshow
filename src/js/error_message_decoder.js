@@ -22,9 +22,7 @@ function messageDecoder(msg) {
     if(msg == "") {
         return ["no_msg", ""]
     }
-    if(msg == "success") {
-        return ["Success", "All files uploaded successfully"]
-    }
+    
      
     let errMessages = [];
     let errMessage = "";
@@ -62,14 +60,18 @@ function messageDecoder(msg) {
 
     let errExplanation = "Error:";
     const explanationDict={ 
-        "fileExists":" is already in our system", 
+        "fileExists":" is already in our system",
+        "success":" uploaded successfully",  
         "isNotAnImage":" is not an image file", 
         "isTooLarge":" is too large",
         "unknownError":" incountered an unknown error :("
    };
-    let allSuccess = false;
+    let allSuccess = true;
     for(const [key, value] of Object.entries(fileObj)) {
-            if (!errExplanation.includes(key)) {
+        if (value != "success"){
+            allSuccess = false;
+        }    
+        if (!errExplanation.includes(key)) {
                 errExplanation += "<br>" + key;
             }
             for(let i = 0; i < value.length; i++) {
@@ -79,7 +81,9 @@ function messageDecoder(msg) {
                 errExplanation += explanationDict[value[i]]
             }
     }
-    
+    if(allSuccess) {
+        return ["Success", "All files uploaded successfully"]
+    }
     
     return ["error", errExplanation]
 }
