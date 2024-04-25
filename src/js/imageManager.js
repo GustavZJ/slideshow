@@ -93,8 +93,8 @@ function deleteImagePreview(target) {
 
 // Delete file from input
 function deleteFiles(fileName = null, target = null) {
-    // Set file name to stored file name of image, if target !null
-    // (Otherwise, the delete function was called because of rejected image)
+    // If target is true, delete was called by image delete btn, so we use the targeted image to get the name
+    // Otherwise, the delete function was called because of rejected image
     if (target) {
         fileName = target.parentElement.dataset.name;
     }
@@ -119,7 +119,13 @@ function deleteFiles(fileName = null, target = null) {
     }
 }
 
-// Disable submitBtn on load (This is because it might remain enabled, if the user reloads when it's enabled)
+// Check if upload btn should be disable or enabled on page load
+// This should hopefully prevent issues with cache
 window.onload = () => {
-    submitBtn.setAttribute('disabled', true);
+    if (uploadImageInput.files.length == 0) {
+        submitBtn.setAttribute('disabled', true);
+    }
+    else {
+        submitBtn.setAttribute('disabled', false);
+    }
 }
