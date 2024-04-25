@@ -15,13 +15,8 @@ body {
     width: min-content;
 }
 
-a { 
-    &:visited {
-        color: white;
-    }
-}
-
 #imageCont {
+	// Image upload outer div
     #uploadImageFile {
 		border: dashed gray;
 		width: 40svh;
@@ -33,6 +28,7 @@ a {
 			width: 100%;
 		}
 
+		// Image upload text label
 		#uploadLabel {
 			width: 100%;
 			height: 100%;
@@ -45,6 +41,7 @@ a {
 		}
 	}
 
+	// Hde input
 	#uploadImageInput {
 		display: none;
 	}
@@ -55,6 +52,7 @@ a {
 			display: inline-block;
 		}
 
+		// Only set height so that aspect ratio is maintained
 		.previewImage {
 			max-height: 15svh;
 		}

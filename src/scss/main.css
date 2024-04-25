@@ -10,10 +10,6 @@ body {
   width: min-content;
 }
 
-a:visited {
-  color: white;
-}
-
 #imageCont #uploadImageFile {
   border: dashed gray;
   width: 40svh;
