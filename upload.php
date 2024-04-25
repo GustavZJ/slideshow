@@ -1,12 +1,4 @@
 <?php
-$php_inipath = php_ini_loaded_file(); 
-  
-if ($php_inipath) { 
-    echo 'Loaded php.ini is: ' . $php_inipath; 
-} else { 
-    echo 'A php.ini file is not loaded'; 
-}
-
   $target_dir = "uploads/";
   $response = '';
   foreach(range(0, count($_FILES['files']['name']) - 1) as $x) {
@@ -35,13 +27,13 @@ if ($php_inipath) {
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 1) {
       if (move_uploaded_file($_FILES['files']["tmp_name"][$x], $target_file)) {
-        // header("Location: index.html?response=success");
+        header("Location: index.html?response=success");
       } else {
         $response .= basename($_FILES['files']['name'][$x]) . '_unknownError_';
-        // header("Location: index.html?response={$response}");
+        header("Location: index.html?response={$response}");
       }
     } else {
-      // header("Location: index.html?response={$response}");
+      header("Location: index.html?response={$response}");
     }
   }
   exit();
