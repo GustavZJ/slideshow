@@ -31,7 +31,7 @@ function messageDecoder(msg) {
     for(let i = 0; i < msg.length; i++) {
 
         let letter = msg[i];
-        if(letter == "§" && errMessage != "") {
+        if(letter == "_" && errMessage != "") {
             console.log(errMessages)
             errMessages.push(errMessage);
             errMessage = "";
