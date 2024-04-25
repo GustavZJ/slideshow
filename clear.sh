@@ -1,3 +1,3 @@
-cd uploads
+cd /var/www/slideshow/uploads
 
 rm *
