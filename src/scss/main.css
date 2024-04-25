@@ -40,15 +40,16 @@ a:visited {
   display: none;
 }
 #imageCont #uploadedImagesCont .imageCont {
-  width: 20vh;
   position: relative;
   display: inline-block;
 }
 #imageCont #uploadedImagesCont .previewImage {
-  width: 20svh;
-  height: 12.5vh;
+  max-height: 15svh;
 }
 #imageCont #uploadedImagesCont .deleteImageBtn {
+  background-color: red;
+  border-radius: 25%;
+  border: 0;
   position: absolute;
   top: 0;
   right: 0;

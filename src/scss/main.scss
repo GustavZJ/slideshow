@@ -51,17 +51,18 @@ a {
 
 	#uploadedImagesCont {
 		.imageCont {
-			width: 20vh;
 			position: relative;
 			display: inline-block;
 		}
 
 		.previewImage {
-			width: 20svh;
-			height: 12.5vh;
+			max-height: 15svh;
 		}
 
 		.deleteImageBtn {
+			background-color: red;
+			border-radius: 25%;
+			border: 0;
 			position: absolute;
 			top: 0;
 			right: 0;
