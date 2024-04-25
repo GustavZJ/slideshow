@@ -31,7 +31,7 @@ function messageDecoder(msg) {
     for(let i = 0; i < msg.length; i++) {
 
         let letter = msg[i];
-        if(letter == "�" && errMessage != "") {
+        if(letter == "э" && errMessage != "") {
             console.log(errMessages)
             errMessages.push(errMessage);
             errMessage = "";
@@ -129,7 +129,7 @@ function messageFade(type, message) {
 
 
 
-//const testUrl = "http://127.0.0.1:5500/?response=file1.jpg_isNotAnImage_fileExists_"
+const url = "http://192.168.1.15/index.html?response=Forest-Pixel-Lands-02-SLD-672_totallynot_the_same.jpgэfileExistsэ"
 //console.log(messageDecoder(urlExtractor(testUrl)));
-const url = window.location.href
+//const url = window.location.href
 messageFade(messageDecoder(urlExtractor(url))[0], messageDecoder(urlExtractor(url))[1]);
