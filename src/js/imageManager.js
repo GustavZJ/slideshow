@@ -103,15 +103,18 @@ function deleteImage(target) {
     // Remove the image container from the DOM
     imageCont.remove();
 
+    // Disable upload btn if no images remain
     if (uploadedImagesCont.childElementCount == 0) {
         submitBtn.setAttribute('disabled', true);
     }
 
+    // Update the index of the remaining images
     for (let i = 0; i < uploadedImagesCont.childElementCount; i++) {
         uploadedImagesCont.children[i].dataset.index = i;
     }
 }
 
+// Disable submitBtn on load (This is because it might remain enabled, if the user reloads when it's enabled)
 window.onload = () => {
     submitBtn.setAttribute('disabled', true);
 }
