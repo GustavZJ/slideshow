@@ -4,6 +4,7 @@ const uploadedImagesCont = document.getElementById('uploadedImagesCont');
 const uploadImageInput = document.getElementById('uploadImageInput');
 const imageURL = document.getElementById('imageURL');
 const submitImageURL = document.getElementById('submitImageURL');
+const submitBtn = document.getElementById('submitBtn');
 
 // Upload image
 function uploadImage(target, files = []) {
@@ -62,18 +63,49 @@ function validateImgs(file) {
 
 // Append image to HTML
 function createImagePreview(file) {
+    const fileIndex = document.getElementsByClassName('imageCont').length;
+
     // Create image object and set src
-    let imageCont = document.createElement('div');
+    const imageCont = document.createElement('div');
     imageCont.className = 'imageCont';
-    imageCont.innerHTML = `<img class="previewImage" src="${file}">
+    imageCont.innerHTML = `<img class="previewImage" src="${file}" data-file-index="${fileIndex}">
                         <button class="btnRed deleteImageBtn deleteBtn fa fa-trash" onclick="deleteImage(this)"></button>`;
+
+    imageCont.dataset.name = file;
 
     // Append image to HTML
     uploadedImagesCont.appendChild(imageCont);
+
+    submitBtn.removeAttribute('disabled');
 }
 
 // Delete image
 function deleteImage(target) {
-    // Get image and delete it (deleteImageBtn -> imageCont)
-    target.parentElement.remove();
+    // Get image (deleteImageBtn -> imageCont)
+    const imageCont = target.parentElement;
+    const fileIndex = imageCont.querySelector('.previewImage').dataset.fileIndex;
+
+    // Remove corresponding file from the input files array
+    // if (fileIndex !== undefined) {
+    //     const newFiles = Array.from(uploadImageInput.files);
+    //     newFiles.splice(fileIndex, 1);
+
+    //     // Construct a new FileList from the remaining files
+    //     const newFileList = new DataTransfer();
+    //     newFiles.forEach(file => {
+    //         newFileList.items.add(file);
+    //     });
+
+    //     // Update the input's files property with the new FileList
+    //     uploadImageInput.files = newFileList.files;
+    // }
+
+    // Remove the image container from the DOM
+    imageCont.remove();
+
+    submitBtn.setAttribute('disabled', true);
+}
+
+window.onload = () => {
+    submitBtn.setAttribute('disabled', true);
 }
