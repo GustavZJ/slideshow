@@ -1,5 +1,5 @@
 #!/bin/bash
-
+cd /var/www/slideshow/
 bash update.sh
 
 apt-get update
