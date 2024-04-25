@@ -23,18 +23,13 @@
       $uploadOk = 0;
       $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_isTooLarge_';
     }
-  
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 1) {
-      if (move_uploaded_file($_FILES['files']["tmp_name"][$x], $target_file)) {
-        header("Location: index.html?response=success");
-      } else {
-        $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_unknownError_';
-        header("Location: index.html?response={$response}");
-      }
+    
+    if ($uploadOk && move_uploaded_file($_FILES['files']["tmp_name"][$x], $target_file)) {
+      $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_successs_';
     } else {
-      header("Location: index.html?response={$response}");
+      $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_unknownError_';
     }
   }
+  header("Location: index.html?response={$response}")
   exit();
 ?>
