@@ -30,6 +30,6 @@
       $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_unknownError_';
     }
   }
-  header("Location: index.html?response={$response}")
+  header("Location: index.html?response={$response}");
   exit();
 ?>
