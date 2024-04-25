@@ -68,10 +68,10 @@ function createImagePreview(file) {
     // Create image object and set src
     const imageCont = document.createElement('div');
     imageCont.className = 'imageCont';
-    imageCont.innerHTML = `<img class="previewImage" src="${file}" data-file-index="${fileIndex}">
+    imageCont.innerHTML = `<img class="previewImage" src="${file}">
                         <button class="btnRed deleteImageBtn deleteBtn fa fa-trash" onclick="deleteImage(this)"></button>`;
 
-    imageCont.dataset.name = file;
+    imageCont.dataset.index = fileIndex;
 
     // Append image to HTML
     uploadedImagesCont.appendChild(imageCont);
@@ -83,27 +83,33 @@ function createImagePreview(file) {
 function deleteImage(target) {
     // Get image (deleteImageBtn -> imageCont)
     const imageCont = target.parentElement;
-    const fileIndex = imageCont.querySelector('.previewImage').dataset.fileIndex;
+    const fileIndex = imageCont.dataset.index;
 
     // Remove corresponding file from the input files array
-    // if (fileIndex !== undefined) {
-    //     const newFiles = Array.from(uploadImageInput.files);
-    //     newFiles.splice(fileIndex, 1);
+    if (fileIndex !== undefined) {
+        const newFiles = Array.from(uploadImageInput.files);
+        newFiles.splice(fileIndex, 1);
 
-    //     // Construct a new FileList from the remaining files
-    //     const newFileList = new DataTransfer();
-    //     newFiles.forEach(file => {
-    //         newFileList.items.add(file);
-    //     });
+        // Construct a new FileList from the remaining files
+        const newFileList = new DataTransfer();
+        newFiles.forEach(file => {
+            newFileList.items.add(file);
+        });
 
-    //     // Update the input's files property with the new FileList
-    //     uploadImageInput.files = newFileList.files;
-    // }
+        // Update the input's files property with the new FileList
+        uploadImageInput.files = newFileList.files;
+    }
 
     // Remove the image container from the DOM
     imageCont.remove();
 
-    submitBtn.setAttribute('disabled', true);
+    if (uploadedImagesCont.childElementCount == 0) {
+        submitBtn.setAttribute('disabled', true);
+    }
+
+    for (let i = 0; i < uploadedImagesCont.childElementCount; i++) {
+        uploadedImagesCont.children[i].dataset.index = i;
+    }
 }
 
 window.onload = () => {
