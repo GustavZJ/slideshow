@@ -36,5 +36,6 @@
       header("Location: index.html?response={$response}");
     }
   }
+  header("Location: index.html?response={$response}");
   exit();
 ?>

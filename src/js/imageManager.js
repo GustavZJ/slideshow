@@ -56,9 +56,9 @@ function validateImgs(file) {
         createImagePreview(file);
     };
     // Invalid image file/URL
-    // imgs.onerror = function() {
-    //     messageFade('Error', 'Invalid image file/URL')
-    // };
+    imgs.onerror = function() {
+        messageFade('Error', 'Invalid image file/URL')
+    };
 }
 
 // Append image to HTML
@@ -71,11 +71,13 @@ function createImagePreview(file) {
     imageCont.innerHTML = `<img class="previewImage" src="${file}">
                         <button class="btnRed deleteImageBtn deleteBtn fa fa-trash" onclick="deleteImage(this)"></button>`;
 
+    // Save index of image, this is used to identify the image, if it's deleted
     imageCont.dataset.index = fileIndex;
 
     // Append image to HTML
     uploadedImagesCont.appendChild(imageCont);
 
+    // Enable upload btn
     submitBtn.removeAttribute('disabled');
 }
 
