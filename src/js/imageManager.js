@@ -12,14 +12,14 @@ function uploadImage(target, files = []) {
     if (target.id == 'uploadImageInput') {
         // Create objectURL and validate each file uploaded
         for (let i = 0; i < target.files.length; i++) {
-            files = URL.createObjectURL(target.files[i]);
+            files = target.files[i];
             validateImgs(files);
         }
     }
     // Drag and drop upload
     else if (files.length > 0) {
         for (i = 0; i < files.length; i++) {
-            validateImgs(URL.createObjectURL(files[i]));
+            validateImgs((files[i]));
         }
     }
 }
@@ -49,30 +49,29 @@ function dropFile(event) {
 function validateImgs(file) {
     // Check if it's a valid image file/URL
     let imgs = new Image();
-    imgs.src = file;
+    imgs.src = URL.createObjectURL(file);
     
     // Valid image file/URL
     imgs.onload = function() {
-        createImagePreview(file);
+        createImagePreview(imgs.src, file['name']);
     };
     // Invalid image file/URL
     imgs.onerror = function() {
-        messageFade('Error', 'Invalid image file/URL')
+        deleteFiles(file);
+        messageFade('Error', 'Invalid image file/URL');
     };
 }
 
 // Append image to HTML
-function createImagePreview(file) {
-    const fileIndex = document.getElementsByClassName('imageCont').length;
-
+function createImagePreview(file, name) {
     // Create image object and set src
     const imageCont = document.createElement('div');
     imageCont.className = 'imageCont';
     imageCont.innerHTML = `<img class="previewImage" src="${file}">
-                        <button class="btnRed deleteImageBtn deleteBtn fa fa-trash" onclick="deleteImage(this)"></button>`;
+                        <button class="btnRed deleteImageBtn deleteBtn fa fa-trash" onclick="deleteImagePreview(this)"></button>`;
 
     // Save index of image, this is used to identify the image, if it's deleted
-    imageCont.dataset.index = fileIndex;
+    imageCont.dataset.name = name;
 
     // Append image to HTML
     uploadedImagesCont.appendChild(imageCont);
@@ -82,14 +81,24 @@ function createImagePreview(file) {
 }
 
 // Delete image
-function deleteImage(target) {
+function deleteImagePreview(target) {
     // Get image (deleteImageBtn -> imageCont)
     const imageCont = target.parentElement;
-    const fileIndex = imageCont.dataset.index;
+
+    // Remove the image container from the DOM
+    imageCont.remove();
+    deleteFiles(null, target);
+}
+
+function deleteFiles(fileName = null, target = null) {
+    if (target) {
+        fileName = target.parentElement.dataset.name;
+    }
 
     // Remove corresponding file from the input files array
-    if (fileIndex !== undefined) {
+    if (fileName !== undefined) {
         const newFiles = Array.from(uploadImageInput.files);
+        const fileIndex = newFiles.indexOf(fileName)
         newFiles.splice(fileIndex, 1);
 
         // Construct a new FileList from the remaining files
@@ -102,17 +111,9 @@ function deleteImage(target) {
         uploadImageInput.files = newFileList.files;
     }
 
-    // Remove the image container from the DOM
-    imageCont.remove();
-
     // Disable upload btn if no images remain
     if (uploadedImagesCont.childElementCount == 0) {
         submitBtn.setAttribute('disabled', true);
-    }
-
-    // Update the index of the remaining images
-    for (let i = 0; i < uploadedImagesCont.childElementCount; i++) {
-        uploadedImagesCont.children[i].dataset.index = i;
     }
 }
 
