@@ -114,7 +114,7 @@ function deleteFiles(fileName = null, target = null) {
     uploadImageInput.files = newFileList.files;
 
     // Disable upload btn if no images remain
-    if (uploadedImagesCont.childElementCount == 0) {
+    if (uploadImageInput.files.length == 0) {
         submitBtn.setAttribute('disabled', true);
     }
 }
