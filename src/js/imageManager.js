@@ -76,7 +76,7 @@ function createImagePreview(file) {
     // Append image to HTML
     uploadedImagesCont.appendChild(imageCont);
 
-    submitBtn.setAttribute('disabled', false);
+    submitBtn.removeAttribute('disabled');
 }
 
 // Delete image
