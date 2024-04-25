@@ -23,11 +23,12 @@
       $uploadOk = 0;
       $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_isTooLarge_';
     }
-    
-    if ($uploadOk && move_uploaded_file($_FILES['files']["tmp_name"][$x], $target_file)) {
-      $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_successs_';
-    } else {
-      $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_unknownError_';
+    if ($uploadOk){
+      if (move_uploaded_file($_FILES['files']["tmp_name"][$x], $target_file)) {
+        $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_successs_';
+      } else {
+        $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_unknownError_';
+      }
     }
   }
   header("Location: index.html?response={$response}");
