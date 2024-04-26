@@ -1,23 +1,17 @@
 <?php
   $iniFile = parse_ini_file('php.ini');
 
-  function convertToBytes(string $from): ?int {
-    $units = ['B', 'K', 'M', 'G', 'T', 'P'];
-    $number = substr($from, 0, -2);
-    $suffix = strtoupper(substr($from,-2));
-
-    //B or no suffix
-    if(is_numeric(substr($suffix, 0, 1))) {
-        return preg_replace('/[^\d]/', '', $from);
-    }
-
-    $exponent = array_flip($units)[$suffix] ?? null;
-    if($exponent === null) {
-        return null;
-    }
-
-    return $number * (1024 ** $exponent);
-}
+  function convertToBytes($value) {
+    return preg_replace_callback('/^\s*(\d+)\s*(?:([kmgt]?)b?)?\s*$/i', function ($m) {
+      switch (strtolower($m[2])) {
+        case 't': $m[1] *= 1024;
+        case 'g': $m[1] *= 1024;
+        case 'm': $m[1] *= 1024;
+        case 'k': $m[1] *= 1024;
+      }
+      return $m[1];
+    }, $value);
+  }
 
   // echo "<script>console.log('Debug Objects: " .json_encode($iniFile) . "' );</script>";
 
