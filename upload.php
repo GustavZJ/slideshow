@@ -1,6 +1,8 @@
 <?php
+  // Load php ini file to read max file size
   $iniFile = parse_ini_file('php.ini');
 
+  // Convert php ini max file size to bytes, so we can compare to image file size
   function convertToBytes($value) {
     return preg_replace_callback('/^\s*(\d+)\s*(?:([kmgt]?)b?)?\s*$/i', function ($m) {
       switch (strtolower($m[2])) {
@@ -14,8 +16,8 @@
   }
 
   // echo "<script>console.log('Debug Objects: " .json_encode($iniFile) . "' );</script>";
-
   // echo "<script>console.log('Debug Objects: " .json_encode(convertToBytes($iniFile['upload_max_filesize'])) . "' );</script>";
+
   $target_dir = "uploads/";
   $response = '';
   foreach(range(0, count($_FILES['files']['name']) - 1) as $x) {
@@ -35,11 +37,12 @@
       $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_fileExists_';
     }
   
-    // Check file size
+    // Check if file is too large
     if ($_FILES['files']["size"][$x] > convertToBytes($iniFile['upload_max_filesize'])) {
       $uploadOk = 0;
       $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_isTooLarge_';
     }
+
     if ($uploadOk){
       if (move_uploaded_file($_FILES['files']["tmp_name"][$x], $target_file)) {
         $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_success_';
@@ -48,6 +51,8 @@
       }
     }
   }
+
+  // Return to upload page
   header("Location: index.html?response={$response}");
   exit();
 ?>

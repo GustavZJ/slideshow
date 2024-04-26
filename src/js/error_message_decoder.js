@@ -1,5 +1,3 @@
-
-
 function urlExtractor(url) {
     let recording = false;
     let msg = "";
