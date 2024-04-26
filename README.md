@@ -5,7 +5,7 @@ Requirements:<br>
 1: Raspberry pi 4 or newer<br>
 2: SD card formated with Raspberry Pi OS with desktop 64-bit<br>
 3: Wi-fi or ethernet connection<br>
-4: A monitor<br>
+4: A display on which the content will be shown<br>
 5: apache2
 
 To install:
