@@ -1,4 +1,8 @@
 <?php
+  $iniFile = parse_ini_file('php.ini');
+
+  echo "<script>console.log('Debug Objects: " .json_encode($iniFile) . "' );</script>";
+
   $target_dir = "uploads/";
   $response = '';
   foreach(range(0, count($_FILES['files']['name']) - 1) as $x) {
@@ -31,6 +35,6 @@
       }
     }
   }
-  header("Location: index.html?response={$response}");
+  // header("Location: index.html?response={$response}");
   exit();
 ?>
