@@ -1,7 +1,25 @@
 <?php
   $iniFile = parse_ini_file('php.ini');
 
-  echo "<script>console.log('Debug Objects: " .json_encode($iniFile) . "' );</script>";
+  function convertToBytes(string $from): ?int {
+    $units = ['B', 'K', 'M', 'G', 'T', 'P'];
+    $number = substr($from, 0, -2);
+    $suffix = strtoupper(substr($from,-2));
+
+    //B or no suffix
+    if(is_numeric(substr($suffix, 0, 1))) {
+        return preg_replace('/[^\d]/', '', $from);
+    }
+
+    $exponent = array_flip($units)[$suffix] ?? null;
+    if($exponent === null) {
+        return null;
+    }
+
+    return $number * (1024 ** $exponent);
+}
+
+  // echo "<script>console.log('Debug Objects: " .json_encode($iniFile) . "' );</script>";
 
   $target_dir = "uploads/";
   $response = '';
@@ -23,7 +41,7 @@
     }
   
     // Check file size
-    if ($_FILES['files']["size"][$x] > 500000) {
+    if ($_FILES['files']["size"][$x] > convertToBytes($iniFile['upload_max_filesize'])) {
       $uploadOk = 0;
       $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_isTooLarge_';
     }
@@ -35,6 +53,6 @@
       }
     }
   }
-  // header("Location: index.html?response={$response}");
+  header("Location: index.html?response={$response}");
   exit();
 ?>
