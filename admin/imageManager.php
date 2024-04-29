@@ -10,5 +10,10 @@
     </head>
     <body>
         <a href="/upload/index.html">Til upload-side</a>
+
+        <?php 
+            $images = scandir('../uploads');
+            echo $images;
+        ?>
     </body>
 </html>
