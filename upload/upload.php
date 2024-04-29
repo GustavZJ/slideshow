@@ -10,6 +10,8 @@
     $target_file = $target_dir . basename($_FILES['files']["name"][$x]);
     $imageFileType = strtolower($_FILES['files']['type'][$x]);
     $uploadOk = 1;
+    
+    echo "<script>console.log(" .json_encode($_FILES['files']["size"][$x]),json_encode($iniFile['upload_max_filesize']) . ");</script>";
 
     // Check if image file is an actual image or fake image
     if (!str_contains($imageFileType, 'image')) {
@@ -39,6 +41,6 @@
   }
 
   // Return to upload page
-  header("Location: index.html?response={$response}");
+  // header("Location: index.html?response={$response}");
   exit();
 ?>
