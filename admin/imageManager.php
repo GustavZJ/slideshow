@@ -30,6 +30,7 @@
             $dom->loadHTML($html);
             $elements = $dom->getElementById('uploadedImagesCont');
             
+            echo $elements;
             foreach($elements as $child) {
                 echo $child;
             }
