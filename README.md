@@ -30,3 +30,5 @@ Go to hostname<br>
 Choose your local domain<br>
 Select Finish<br>
 Select reboot<br>
+
+To access go to (Domain name).local
