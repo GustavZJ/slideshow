@@ -14,9 +14,7 @@
         <?php 
             $images = scandir('../uploads');
             foreach($images as $image) {
-                echo $image == '.'.'<br>';
-                echo $image == '..'.'<br>';
-                if (!$image == '.' || !$image == '..') {
+                if ($image != '.' || $image != '..') {
                     echo '<img style="max-height: 15svh;" src="../uploads/'.$image.'">';
                 }
             }
