@@ -14,7 +14,8 @@
         <?php 
             $images = scandir('../uploads');
             foreach($images as $image) {
-                echo '<img src="'.$image.'">';
+                echo $image;
+                echo '<img src="">';
             }
         ?>
     </body>
