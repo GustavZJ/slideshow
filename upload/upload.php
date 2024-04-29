@@ -23,7 +23,7 @@
   foreach(range(0, count($_FILES['files']['name']) - 1) as $x) {
     $target_file = $target_dir . basename($_FILES['files']["name"][$x]);
     $imageFileType = strtolower($_FILES['files']['type'][$x]);
-    echo "<script>console.log('Debug Objects: " .json_encode($_FILES['files']['type'][$x]) . "' );</script>";
+    echo "<script>console.log('Debug Objects: " .json_encode($_FILES['files']) . "' );</script>";
     $uploadOk = 1;
 
     // Check if image file is an actual image or fake image
