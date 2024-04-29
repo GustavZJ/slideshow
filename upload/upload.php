@@ -38,7 +38,7 @@
     }
   
     // Check if file is too large
-    if ($_FILES['files']["size"][$x] > convertToBytes($iniFile['upload_max_filesize'])) {
+    if ($_FILES['files']["size"][$x] > 200000) {
       $uploadOk = 0;
       $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_isTooLarge_';
     }
