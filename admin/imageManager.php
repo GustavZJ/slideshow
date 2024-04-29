@@ -14,7 +14,7 @@
         <?php 
             $images = scandir('../uploads');
             foreach($images as $image) {
-                echo '<img src="../uploads/'.$image.'">';
+                echo '<img style="max-height: 15svh;" src="../uploads/'.$image.'">';
             }
         ?>
     </body>
