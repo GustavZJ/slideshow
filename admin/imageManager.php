@@ -25,11 +25,11 @@
             }
             $html .= '</div>';
             
+            echo $html;
             $dom = new DOMDocument();
             $dom->loadHTML($html);
             $elements = $dom->getElementById('uploadedImagesCont');
             
-            echo $html;
             foreach($elements as $child) {
                 echo $child;
             }
