@@ -18,6 +18,7 @@
                 if (is_file('../uploads/'.$image)) {
                     echo '<div class="imageCont">';
                     echo '<img style="max-height: 15svh" class="previewImage" src="../uploads/'.$image.'">';
+                    echo '<input type="checkbox">';
                     echo '</div>';
                 }
             }
