@@ -16,7 +16,9 @@
             echo '<div id="uploadedImagesCont">';
             foreach($images as $image) {
                 if (is_file('../uploads/'.$image)) {
+                    echo '<div class="imageCont">';
                     echo '<img class="previewImage" src="../uploads/'.$image.'">';
+                    echo '</div>';
                 }
             }
             echo '</div>';
