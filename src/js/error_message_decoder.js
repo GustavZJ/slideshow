@@ -28,7 +28,6 @@ function messageDecoder(msg) {
 
         let letter = msg[i];
         if(letter == "_" && errMessage != "") {
-            console.log(errMessages)
             errMessages.push(errMessage);
             errMessage = "";
         }
@@ -36,7 +35,6 @@ function messageDecoder(msg) {
             errMessage += letter;
         }
     }
-    console.log(errMessages)
     let fileObj = {};
     let newestKey;
 
