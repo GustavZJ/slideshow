@@ -2,16 +2,28 @@
   // Load php ini file to read max file size
   $iniFile = parse_ini_file('../php.ini');
 
-  // echo "<script>console.log('Debug Objects: " .json_encode($iniFile) . "' );</script>";
+  // Convert php ini max file size to bytes, so we can compare to image file size
+  function convertToBytes($value) {
+    return preg_replace_callback('/^\s*(\d+)\s*(?:([kmgt]?)b?)?\s*$/i', function ($m) {
+      switch (strtolower($m[2])) {
+        case 't': $m[1] *= 1024;
+        case 'g': $m[1] *= 1024;
+        case 'm': $m[1] *= 1024;
+        case 'k': $m[1] *= 1024;
+      }
+      return $m[1];
+    }, $value);
+  }
 
-  $target_dir = "uploads/";
+  // echo "<script>console.log('Debug Objects: " .json_encode($iniFile) . "' );</script>";
+  // echo "<script>console.log('Debug Objects: " .json_encode(convertToBytes($iniFile['upload_max_filesize'])) . "' );</script>";
+
+  $target_dir = "../uploads/";
   $response = '';
   foreach(range(0, count($_FILES['files']['name']) - 1) as $x) {
     $target_file = $target_dir . basename($_FILES['files']["name"][$x]);
     $imageFileType = strtolower($_FILES['files']['type'][$x]);
     $uploadOk = 1;
-    
-    echo "<script>console.log('Debug Objects: " .json_encode($_FILES['files']["size"][$x]), json_encode($iniFile) . "' );</script>";
 
     // Check if image file is an actual image or fake image
     if (!str_contains($imageFileType, 'image')) {
@@ -26,7 +38,7 @@
     }
   
     // Check if file is too large
-    if ($_FILES['files']["size"][$x] > $iniFile['upload_max_filesize']) {
+    if ($_FILES['files']["size"][$x] > convertToBytes($iniFile['upload_max_filesize'])) {
       $uploadOk = 0;
       $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_isTooLarge_';
     }
@@ -41,6 +53,6 @@
   }
 
   // Return to upload page
-  // header("Location: index.html?response={$response}");
+  header("Location: index.html?response={$response}");
   exit();
 ?>
