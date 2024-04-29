@@ -12,17 +12,37 @@
         <a href="/upload/index.html">Til upload-side</a>
 
         <?php 
+            $html = "";
             $images = scandir('../uploads');
-            echo '<div id="uploadedImagesCont">';
+            $html .= '<div id="uploadedImagesCont">';
             foreach($images as $image) {
                 if (is_file('../uploads/'.$image)) {
-                    echo '<div class="imageCont">';
-                    echo '<img style="max-height: 15svh" class="previewImage" src="../uploads/'.$image.'">';
-                    echo '<input type="checkbox">';
-                    echo '</div>';
+                    $html .= '<div class="imageCont">';
+                    $html .= '<img style="max-height: 15svh" class="previewImage" src="../uploads/'.$image.'">';
+                    $html .= '<input type="checkbox">';
+                    $html .= '</div>';
                 }
             }
-            echo '</div>';
+            $html .= '</div>';
+            
+            $dom = new DOMDocument();
+            $dom->loadHTML($html);
+            $elements = $dom->getElementById('uploadedImagesCont');
+            
+            echo $html;
+            foreach($elements as $child) {
+                echo $child;
+            }
+
+        //     if(array_key_exists('deleteBtn', $_POST)) { 
+        //         deleteImages(); 
+        //     }
+        //     function deleteImages() {
+
+        //     }
         ?>
+         <!-- <form method="post">
+             <input type="submit" name="deleteBtn" value="Slet billeder">
+         </form> -->
     </body>
 </html>
