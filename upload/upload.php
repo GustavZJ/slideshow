@@ -11,7 +11,7 @@
     $imageFileType = strtolower($_FILES['files']['type'][$x]);
     $uploadOk = 1;
     
-    echo "<script>console.log(" .json_encode($_FILES['files']["size"][$x]),json_encode($iniFile['upload_max_filesize']) . ");</script>";
+    echo "<script>console.log('Debug Objects: " .json_encode($_FILES['files']["size"][$x]), json_encode($iniFile['upload_max_filesize']) . "' );</script>";
 
     // Check if image file is an actual image or fake image
     if (!str_contains($imageFileType, 'image')) {
