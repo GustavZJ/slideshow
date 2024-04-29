@@ -27,6 +27,7 @@
 
     // Check if image file is an actual image or fake image
     if (!str_contains($imageFileType, 'image')) {
+      echo $imageFileType;
       $uploadOk = 0;
       $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_isNotAnImage_';
     }
@@ -53,6 +54,6 @@
   }
 
   // Return to upload page
-  header("Location: index.html?response={$response}");
+  // header("Location: index.html?response={$response}");
   exit();
 ?>
