@@ -17,7 +17,7 @@
             foreach($images as $image) {
                 if (is_file('../uploads/'.$image)) {
                     echo '<div class="imageCont">';
-                    echo '<img class="previewImage" src="../uploads/'.$image.'">';
+                    echo '<img style="max-height: 15svh" class="previewImage" src="../uploads/'.$image.'">';
                     echo '</div>';
                 }
             }
