@@ -13,11 +13,13 @@
 
         <?php 
             $images = scandir('../uploads');
+            echo '<div id="uploadedImagesCont">';
             foreach($images as $image) {
                 if (is_file('../uploads/'.$image)) {
-                    echo '<img style="max-height: 15svh;" src="../uploads/'.$image.'">';
+                    echo '<img class="previewImage" src="../uploads/'.$image.'">';
                 }
             }
+            echo '</div>';
         ?>
     </body>
 </html>
