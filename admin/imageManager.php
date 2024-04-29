@@ -13,7 +13,7 @@
 
         <?php 
             $images = scandir('../uploads');
-            echo $images;
+            echo print_r($images);
         ?>
     </body>
 </html>
