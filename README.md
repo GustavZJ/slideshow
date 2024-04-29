@@ -19,10 +19,13 @@ sudo bash install.sh
 ```
 Run the next command and follow the instructions, 'uploader' is the default username. <br>
 Afterwards run the command again without the parameter -c and the username should be admin [DON'T USE -c!]<br>
+Then run the next command and use the same password for admin. <br>
 Note: No characters are shown doing typing of password
 ```
 sudo htpasswd -c /etc/apache2/.htpasswd uploader
 sudo htpasswd /etc/apache2/.htpasswd admin
+sudo htpasswd -c /etc/apache2/.htpasswd admin
+
 sudo raspi-config
 ```
 Go to system options<br>
