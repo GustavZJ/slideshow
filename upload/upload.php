@@ -1,6 +1,6 @@
 <?php
   // Load php ini file to read max file size
-  $iniFile = parse_ini_file('/php.ini');
+  $iniFile = parse_ini_file('../php.ini');
 
   // echo "<script>console.log('Debug Objects: " .json_encode($iniFile) . "' );</script>";
 
