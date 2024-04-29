@@ -14,6 +14,7 @@
         <?php 
             $images = scandir('../uploads');
             foreach($images as $image) {
+                echo is_file($image);
                 if (is_file($image)) {
                     echo '<img style="max-height: 15svh;" src="../uploads/'.$image.'">';
                 }
