@@ -19,7 +19,7 @@
                     echo "You chose the following files(s): <br>";
                 
                     foreach ($name as $file){
-                        unlink($file);
+                        unlink('../uploads/'. $file);
                     }
                 } else {
                     echo "You did not choose a file.";
