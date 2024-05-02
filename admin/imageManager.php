@@ -13,7 +13,7 @@
         <a href="/upload/index.html">Til upload-side</a>
 
         <?php
-            if(isset($_GET['Slet'])) { 
+            if(isset($_GET['Submit'])) { 
                 $name = $_GET['files'];
                 foreach ($name as $file){ 
                     echo $file."<br />";
@@ -45,13 +45,13 @@
             $dom->loadHTML($html);
             $elements = $dom->getElementById('uploadedImagesCont');
             
-            foreach ($elements->childNodes as $child) {
-                foreach ($child->childNodes as $subChild) {
-                    if ($subChild->nodeName == 'img') {
-                        echo $subChild->getAttribute('src'). '<br>';
-                    }
-                }
-            }
+            // foreach ($elements->childNodes as $child) {
+            //     foreach ($child->childNodes as $subChild) {
+            //         if ($subChild->nodeName == 'img') {
+            //             echo $subChild->getAttribute('src'). '<br>';
+            //         }
+            //     }
+            // }
 
         //     if(array_key_exists('deleteBtn', $_POST)) { 
         //         deleteImages(); 
