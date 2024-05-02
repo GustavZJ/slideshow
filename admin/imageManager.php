@@ -15,8 +15,14 @@
         <?php
             if(isset($_GET['Submit'])) { 
                 $name = $_GET['files'];
-                foreach ($name as $file){ 
-                    echo $file."<br />";
+                if (isset($_GET['files'])) {
+                    echo "You chose the following files(s): <br>";
+                
+                    foreach ($name as $file){
+                        echo $file."<br />";
+                    }
+                } else {
+                    echo "You did not choose a file.";
                 }
                 
             }
@@ -29,7 +35,7 @@
             foreach($images as $image) {
                 if (is_file('../uploads/'.$image)) {
                     $html .= '<div class="imageCont">';
-                    $html .= '<img style="max-height: 15svh" class="previewImage" src="../uploads/'.$image.'">';
+                    $html .= '<img class="previewImage" src="../uploads/'.$image.'">';
                     $html .= '<input type="checkbox" name="files[]" value="'.$image.'"x>';
                     $html .= '</div>';
                 }
@@ -44,24 +50,6 @@
             $dom->validateOnParse = true; 
             $dom->loadHTML($html);
             $elements = $dom->getElementById('uploadedImagesCont');
-            
-            // foreach ($elements->childNodes as $child) {
-            //     foreach ($child->childNodes as $subChild) {
-            //         if ($subChild->nodeName == 'img') {
-            //             echo $subChild->getAttribute('src'). '<br>';
-            //         }
-            //     }
-            // }
-
-        //     if(array_key_exists('deleteBtn', $_POST)) { 
-        //         deleteImages(); 
-        //     }
-        //     function deleteImages() {
-
-        //     }
         ?>
-         <!-- <form method="post">
-             <input type="submit" name="deleteBtn" value="Slet billeder">
-         </form> -->
     </body>
 </html>
