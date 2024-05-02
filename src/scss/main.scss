@@ -10,6 +10,57 @@ body {
     background-color: $primaryColor;
 }
 
+// Buttons styling
+button,
+.labelBtn {
+	margin: 0.5rem;
+	color: black;
+	font-size: 1.25em;
+	cursor: pointer;
+	padding: 0.2vw 0.6svh;
+	border-radius: 1em;
+	border: 0;
+	transition: background-color 0.1s ease;
+
+	@media screen and (max-width: 1400px) {
+		font-size: 1em;
+	}
+
+	@media screen and (min-width: 3000px) {
+		font-size: 2em;
+	}
+
+	// Button click and hover effect
+	@media (hover: hover) {
+		&:active {
+			transform: scale(0.98);
+			box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+		}
+
+		&:hover{
+			filter: brightness(0.7);
+		}
+	}
+
+	// Button colors
+	&.btnWhite {
+		background-color: white;
+	}
+	
+	&.btnBlue {
+		background-color: $blueColor;
+	}
+	
+	&.btnRed {
+		background-color: $redColor;
+	}
+	
+	&.btnDisabled {
+		background-color: $darkGrayColor;
+		pointer-events: none;
+	}
+}
+
 #loginCont {
     display: inline-block;
     width: min-content;
