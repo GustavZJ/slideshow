@@ -13,18 +13,17 @@ mkdir uploads
 mkdir backup
 chmod 777 uploads/
 
-if ! test -f etc/apache2/.htpasswd; then
+
     
-    echo Enter the password for the upload user. This will be needed when uploading pictures. \n
-    read uploadpasswd
-    echo Enter the password for the admin user. This will be needed when changing settings and removing pictures. \n
-    read adminpasswd;
-    
-    echo $uploaderpasswd
-    echo $uploaderpasswd
+echo Enter the password for the upload user. This will be needed when uploading pictures. \n
+read uploadpasswd
+echo Enter the password for the admin user. This will be needed when changing settings and removing pictures. \n
+read adminpasswd;
+
+echo $uploaderpasswd
+echo $uploaderpasswd
 
 
-    htpasswd -b -c -i /etc/apache2/.htpasswd uploader $uploaderpasswd
-    htpasswd -b -c -i /etc/apache2/.htpasswdadmin admin $adminpasswd
-fi
+htpasswd -b -c /etc/apache2/.htpasswd uploader $uploaderpasswd
+htpasswd -b -c /etc/apache2/.htpasswdadmin admin $adminpasswd
 bash update.sh
