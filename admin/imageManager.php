@@ -43,11 +43,11 @@
             $html .= '</div>';
             
             echo $html;
-            $dom = new DOMDocument('1.0', 'iso-8859-1');
+            // $dom = new DOMDocument('1.0', 'iso-8859-1');
             // Enable validate on parse 
-            $dom->validateOnParse = true; 
-            $dom->loadHTML($html);
-            $elements = $dom->getElementById('uploadedImagesCont');
+            // $dom->validateOnParse = true; 
+            // $dom->loadHTML($html);
+            // $elements = $dom->getElementById('uploadedImagesCont');
         ?>
     </body>
 </html>
