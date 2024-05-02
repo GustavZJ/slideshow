@@ -12,19 +12,30 @@
     <body>
         <a href="/upload/index.html">Til upload-side</a>
 
-        <?php 
+        <?php
+            if(isset($_GET['Slet'])) { 
+                $name = $_GET['files'];
+                foreach ($name as $file){ 
+                    echo $file."<br />";
+                }
+                
+            }
+        
             $html = "";
             $images = scandir('../uploads');
             $html .= '<div id="imagePreviewCont">';
             $html .= '<div id="uploadedImagesCont">';
+            $html .= '<form method="get>';
             foreach($images as $image) {
                 if (is_file('../uploads/'.$image)) {
                     $html .= '<div class="imageCont">';
                     $html .= '<img style="max-height: 15svh" class="previewImage" src="../uploads/'.$image.'">';
-                    $html .= '<input type="checkbox">';
+                    $html .= '<input type="checkbox" name="files[]" value="'.$image.'"x>';
                     $html .= '</div>';
                 }
             }
+            $html .= '<button name="submit" value="true">Slet</button>';
+            $html .= '</form>';
             $html .= '</div>';
             
             echo $html;
