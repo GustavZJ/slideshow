@@ -43,7 +43,7 @@
                         data: $(this).serialize(),
                         success: function () {
                             alert("success");
-                            console.log(this);
+                            console.log(event);
                         }
                     });
                     event.preventDefault();
