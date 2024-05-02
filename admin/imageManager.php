@@ -37,7 +37,7 @@
                     $html .= '</div>';
                 }
             }
-            $html .= '<button name="submit" value="true">Slet</button>';
+            $html .= '<button type="submit" value="true">Slet</button>';
             $html .= '</form>';
             $html .= '</div>';
             
