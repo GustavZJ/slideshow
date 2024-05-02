@@ -9,7 +9,7 @@ button,
 .labelBtn {
   margin: 0.5rem;
   color: black;
-  font-size: 1.25em;
+  font-size: 1em;
   cursor: pointer;
   padding: 0.2vw 0.6svh;
   border-radius: 1em;
@@ -83,7 +83,7 @@ button.btnRed,
   display: inline-block;
 }
 #imageUploadCont #imagePreviewCont .previewImage {
-  max-height: 15svh;
+  max-height: 20svh;
 }
 #imageUploadCont #imagePreviewCont .deleteImageBtn {
   background-color: red;
