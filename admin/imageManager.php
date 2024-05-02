@@ -35,7 +35,7 @@
             foreach($images as $image) {
                 if (is_file('../uploads/'.$image)) {
                     $html .= '<div class="imageCont">';
-                    $html .= '<img class="previewImage" src="../uploads/'.$image.'">';
+                    $html .= '<img style="max-height: 15svh" class="previewImage" src="../uploads/'.$image.'">';
                     $html .= '<input type="checkbox" name="files[]" value="'.$image.'"x>';
                     $html .= '</div>';
                 }
