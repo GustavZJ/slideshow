@@ -13,7 +13,6 @@
         <a href="/upload/index.html">Til upload-side</a>
 
         <?php
-            unlink('../uploads/cover6.jpg');
             if(!empty($_GET['Submit'])) { 
                 $name = $_GET['files'];
                 if (!empty($_GET['files'])) {
@@ -29,7 +28,7 @@
             $images = scandir('../uploads');
             $html .= '<div id="imageUploadCont">';
             $html .= '<div id="uploadedImagesCont">';
-            $html .= '<form method="get>';
+            $html .= '<form id="deleteForm" method="get>';
             foreach($images as $image) {
                 if (is_file('../uploads/'.$image)) {
                     $html .= '<div class="imageCont">';
@@ -49,5 +48,21 @@
             // $dom->loadHTML($html);
             // $elements = $dom->getElementById('uploadedImagesCont');
         ?>
+
+        <script>
+            $(document).ready(function () {
+                $("#deleteForm").submit(function (event) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'delete.php',
+                        data: $(this).serialize(),
+                        success: function () {
+                            alert("success");
+                        }
+                    });
+                    event.preventDefault();
+                });
+            });
+        </script>
     </body>
 </html>
