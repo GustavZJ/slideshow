@@ -23,5 +23,5 @@ if ! test -f etc/apache2/.htpasswd; then
     htpasswd -b -c /etc/apache2/.htpasswd uploader $uploaderpasswd
     htpasswd -b /etc/apache2/.htpasswd admin $adminpasswd
     htpasswd -b -c /etc/apache2/.htpasswd admin $adminpasswd
-
+fi
 bash update.sh
