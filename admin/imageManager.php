@@ -13,6 +13,7 @@
         <a href="/upload/index.html">Til upload-side</a>
 
         <?php
+            unlink('../uploads/cover6.jpg');
             if(!empty($_GET['Submit'])) { 
                 $name = $_GET['files'];
                 if (!empty($_GET['files'])) {
