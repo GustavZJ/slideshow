@@ -14,17 +14,6 @@
         <a href="/upload/index.html">Til upload-side</a>
 
         <?php
-            // if(!empty($_GET['Submit'])) { 
-            //     $name = $_GET['files'];
-            //     if (!empty($_GET['files'])) {
-            //         foreach ($name as $file){
-            //             unlink('../uploads/cover6.jpg');
-            //         }
-            //     } else {
-            //         echo "You did not choose a file.";
-            //     }
-            // }
-        
             $html = "";
             $images = scandir('../uploads');
             $html .= '<div id="imageUploadCont">';
@@ -43,11 +32,6 @@
             $html .= '</div>';
             
             echo $html;
-            // $dom = new DOMDocument('1.0', 'iso-8859-1');
-            // Enable validate on parse 
-            // $dom->validateOnParse = true; 
-            // $dom->loadHTML($html);
-            // $elements = $dom->getElementById('uploadedImagesCont');
         ?>
 
         <script>
@@ -59,6 +43,7 @@
                         data: $(this).serialize(),
                         success: function () {
                             alert("success");
+                            console.log(this);
                         }
                     });
                     event.preventDefault();
