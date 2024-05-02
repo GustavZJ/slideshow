@@ -27,13 +27,15 @@
             
             echo $html;
             $dom = new DOMDocument('1.0');
+            // Enable validate on parse 
+            $dom->validateOnParse = true; 
             $dom->loadHTML($html);
-            $elements = $dom->getElementById('uploadedImagesCont');
+            $elements = $dom->getElementById('uploadedImagesCont')->childNodes;
             
             echo strval($elements);
-            foreach($elements as $child) {
-                echo strval($child);
-            }
+            // foreach($elements as $child) {
+                // echo $child;
+            // }
 
         //     if(array_key_exists('deleteBtn', $_POST)) { 
         //         deleteImages(); 
