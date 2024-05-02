@@ -1,5 +1,5 @@
 <?php
-foreach ($_POST['file'] as $file) {
+foreach ($_POST['files'] as $file) {
     if (file_exists('../uploads/'.$file)) {
         unlink('../uploads/'.$file);
     }
