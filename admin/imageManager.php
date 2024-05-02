@@ -33,7 +33,9 @@
             $elements = $dom->getElementById('uploadedImagesCont');
             
             foreach($elements->childNodes as $child) {
-                echo $child->nodeName;
+                foreach($child->childNodes as $subChild) {
+                    echo $subChild->nodeName;
+                }
             }
 
         //     if(array_key_exists('deleteBtn', $_POST)) { 
