@@ -45,7 +45,7 @@
                             alert("success");
                         }
                     });
-                    event.preventDefault();
+                    // event.preventDefault();
                 });
             });
         </script>
