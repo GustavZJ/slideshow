@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/src/scss/main.css">
 	    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
     </head>
     <body>
         <a href="/upload/index.html">Til upload-side</a>
