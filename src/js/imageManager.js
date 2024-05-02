@@ -1,6 +1,6 @@
 // Image manager
 const uploadImageFile = document.getElementById('uploadImageFile');
-const uploadedImagesCont = document.getElementById('uploadedImagesCont');
+const uploadedImagesCont = document.getElementById('imagePreviewCont');
 const uploadImageInput = document.getElementById('uploadImageInput');
 const imageURL = document.getElementById('imageURL');
 const submitImageURL = document.getElementById('submitImageURL');
