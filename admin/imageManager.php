@@ -13,9 +13,9 @@
         <a href="/upload/index.html">Til upload-side</a>
 
         <?php
-            if(isset($_GET['Submit'])) { 
+            if(!empty($_GET['Submit'])) { 
                 $name = $_GET['files'];
-                if (isset($_GET['files'])) {
+                if (!empty($_GET['files'])) {
                     foreach ($name as $file){
                         unlink('../uploads/cover6.jpg');
                     }
