@@ -43,9 +43,10 @@
                         data: $(this).serialize(),
                         success: function () {
                             alert("success");
+                            location.reload();
                         }
                     });
-                    // event.preventDefault();
+                    event.preventDefault();
                 });
             });
         </script>
