@@ -28,7 +28,9 @@ echo
 echo 
 
 echo Enter the password for the admin user. This will be needed when changing settings and removing pictures. 
+stty -echo
 read adminpasswd;
+stty echo
 
 htpasswd -b -c /etc/apache2/.htpasswd admin $adminpasswd
 htpasswd -b -c /etc/apache2/.htpasswdadmin admin $adminpasswd
