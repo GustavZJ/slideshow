@@ -32,9 +32,11 @@
             $dom->loadHTML($html);
             $elements = $dom->getElementById('uploadedImagesCont');
             
-            foreach($elements->childNodes as $child) {
-                foreach($child->childNodes as $subChild) {
-                    echo $subChild->nodeName;
+            foreach ($elements->childNodes as $child) {
+                foreach ($child->childNodes as $subChild) {
+                    if ($subChild->nodeName == 'img') {
+                        echo $subChild->getAttribute('src'). '<br>';
+                    }
                 }
             }
 
