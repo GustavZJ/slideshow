@@ -19,14 +19,21 @@ rm /etc/apache2/.htpasswdadmin
 touch /etc/apache2/.htpasswd
 touch /etc/apache2/.htpasswdadmin
 
+echo 
+echo 
+echo 
+echo 
+echo 
+echo 
+echo 
 
-echo Enter the password for the admin user. This will be needed when changing settings and removing pictures. \n
+echo Enter the password for the admin user. This will be needed when changing settings and removing pictures. 
 read adminpasswd;
 
 htpasswd -b -c /etc/apache2/.htpasswd admin $adminpasswd
 htpasswd -b -c /etc/apache2/.htpasswdadmin admin $adminpasswd
 
-echo Enter the password for the upload user. This will be needed when uploading pictures. \n
+echo Enter the password for the upload user. This will be needed when uploading pictures. 
 htpasswd /etc/apache2/.htpasswd uploader
 
 
