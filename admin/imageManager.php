@@ -29,7 +29,7 @@
         
             $html = "";
             $images = scandir('../uploads');
-            $html .= '<div id="imagePreviewCont">';
+            $html .= '<div id="imageUploadCont">';
             $html .= '<div id="uploadedImagesCont">';
             $html .= '<form method="get>';
             foreach($images as $image) {
