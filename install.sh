@@ -27,7 +27,7 @@ echo
 echo 
 echo 
 
-echo Enter the password for the admin user. This will be needed when changing settings and removing pictures. 
+echo Enter the password for the admin user. This will be needed when changing settings and removing pictures. You will not be able to see what you type. 
 stty -echo
 read adminpasswd;
 stty echo
