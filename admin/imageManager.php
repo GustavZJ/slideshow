@@ -11,7 +11,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
     </head>
     <body>
-        <a href="/upload/index.html">Til upload-side</a>
+        <a class="labelBtn" href="/upload/index.html">Til upload-side</a>
 
         <?php
             $html = "";
