@@ -25,7 +25,7 @@
             }
             $html .= '</div>';
             
-            echo $html;
+            echo "<script>console.log('Debug Objects: " . $html . "' );</script>";
             $dom = new DOMDocument('1.0');
             $dom->loadHTML($html);
             $elements = $dom->getElementById('uploadedImagesCont');
