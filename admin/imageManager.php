@@ -42,7 +42,6 @@
                         url: 'delete.php',
                         data: $(this).serialize(),
                         success: function () {
-                            alert("success");
                             location.reload();
                             $('input[type="checkbox"]').prop("checked", false);
                         }
