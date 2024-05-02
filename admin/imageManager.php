@@ -26,16 +26,15 @@
             $html .= '</div>';
             
             echo $html;
-            $dom = new DOMDocument('1.0');
+            $dom = new DOMDocument('1.0', 'iso-8859-1');
             // Enable validate on parse 
             $dom->validateOnParse = true; 
             $dom->loadHTML($html);
-            $elements = $dom->getElementById('uploadedImagesCont')->childNodes;
+            $elements = $dom->getElementById('uploadedImagesCont');
             
-            echo strval($elements);
-            // foreach($elements as $child) {
-                // echo $child;
-            // }
+            foreach($elements->childNodes as $child) {
+                echo $child->textContent;
+            }
 
         //     if(array_key_exists('deleteBtn', $_POST)) { 
         //         deleteImages(); 
