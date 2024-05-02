@@ -24,8 +24,8 @@ if ! test -f etc/apache2/.htpasswd; then
     echo $uploaderpasswd
 
 
-    htpasswd -c /etc/apache2/.htpasswd uploader $uploaderpasswd
-    htpasswd /etc/apache2/.htpasswd admin $adminpasswd
-    htpasswd -c /etc/apache2/.htpasswdadmin admin $adminpasswd
+    htpasswd -b -c -i /etc/apache2/.htpasswd uploader $uploaderpasswd
+    htpasswd -b -i /etc/apache2/.htpasswd admin $adminpasswd
+    htpasswd -b -c -i /etc/apache2/.htpasswdadmin admin $adminpasswd
 fi
 bash update.sh
