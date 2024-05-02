@@ -1,2 +1,2 @@
 cd /var/www/slideshow/
-cp -a testdata/ uploads/
+cp testdata/* uploads/
