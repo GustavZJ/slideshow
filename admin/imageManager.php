@@ -29,9 +29,9 @@
             $dom->loadHTML($html);
             $elements = $dom->getElementById('uploadedImagesCont');
             
-            echo "<script>console.log('Debug Objects: " . $elements . "' );</script>";
+            echo strval($elements);
             foreach($elements as $child) {
-                echo "<script>console.log('Debug Objects: " . $child . "' );</script>";
+                echo strval($child);
             }
 
         //     if(array_key_exists('deleteBtn', $_POST)) { 
