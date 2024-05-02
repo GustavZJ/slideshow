@@ -17,8 +17,7 @@
                 $name = $_GET['files'];
                 if (isset($_GET['files'])) {
                     foreach ($name as $file){
-                        echo "<script>console.log('Debug Objects: " .json_encode($file), $file . "' );</script>";
-                        unlink('../uploads/'. $file);
+                        rename($file, 'delete/'.$file);
                     }
                 } else {
                     echo "You did not choose a file.";
