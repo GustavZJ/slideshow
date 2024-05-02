@@ -25,6 +25,7 @@
             }
             $html .= '</div>';
             
+            echo $html;
             $dom = new DOMDocument('1.0');
             $dom->loadHTML($html);
             $elements = $dom->getElementById('uploadedImagesCont');
