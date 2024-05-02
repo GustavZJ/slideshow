@@ -32,3 +32,6 @@ Select Finish<br>
 Select reboot<br>
 
 To access go to (Domain name).local
+
+
+If you ever lose your password go to the place in this readme, that explains how you run install.sh.
