@@ -13,16 +13,16 @@
         <a href="/upload/index.html">Til upload-side</a>
 
         <?php
-            if(!empty($_GET['Submit'])) { 
-                $name = $_GET['files'];
-                if (!empty($_GET['files'])) {
-                    foreach ($name as $file){
-                        unlink('../uploads/cover6.jpg');
-                    }
-                } else {
-                    echo "You did not choose a file.";
-                }
-            }
+            // if(!empty($_GET['Submit'])) { 
+            //     $name = $_GET['files'];
+            //     if (!empty($_GET['files'])) {
+            //         foreach ($name as $file){
+            //             unlink('../uploads/cover6.jpg');
+            //         }
+            //     } else {
+            //         echo "You did not choose a file.";
+            //     }
+            // }
         
             $html = "";
             $images = scandir('../uploads');
