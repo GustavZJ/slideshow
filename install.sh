@@ -20,8 +20,12 @@ read uploadpasswd
 echo Enter the password for the admin user. This will be needed when changing settings and removing pictures. \n
 read adminpasswd;
 
+rm /etc/apache2/.htpasswd
+rm /etc/apache2/.htpasswdadmin
+
 touch /etc/apache2/.htpasswd
 touch /etc/apache2/.htpasswdadmin
+
 htpasswd -b -c /etc/apache2/.htpasswd uploader $uploaderpasswd
 htpasswd -b /etc/apache2/.htpasswd admin $adminpasswd
 htpasswd -b -c /etc/apache2/.htpasswdadmin admin $adminpasswd
