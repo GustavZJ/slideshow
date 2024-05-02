@@ -47,17 +47,8 @@ button,
 		background-color: white;
 	}
 	
-	&.btnBlue {
-		background-color: $blueColor;
-	}
-	
 	&.btnRed {
-		background-color: $redColor;
-	}
-	
-	&.btnDisabled {
-		background-color: $darkGrayColor;
-		pointer-events: none;
+		background-color: red;
 	}
 }
 
@@ -97,7 +88,7 @@ button,
 		display: none;
 	}
 
-	#uploadedImagesCont {
+	#imagePreviewCont {
 		.imageCont {
 			position: relative;
 			display: inline-block;
