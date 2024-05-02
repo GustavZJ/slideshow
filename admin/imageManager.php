@@ -16,9 +16,8 @@
             if(isset($_GET['Submit'])) { 
                 $name = $_GET['files'];
                 if (isset($_GET['files'])) {
-                    echo "You chose the following files(s): <br>";
-                
                     foreach ($name as $file){
+                        echo "<script>console.log('Debug Objects: " .json_encode($file), $file . "' );</script>";
                         unlink('../uploads/'. $file);
                     }
                 } else {
