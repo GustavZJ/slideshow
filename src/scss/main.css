@@ -10,7 +10,7 @@ body {
   width: min-content;
 }
 
-#imageCont #uploadImageFile {
+#imagePreviewCont #uploadImageFile {
   border: dashed gray;
   width: 40svh;
   height: 20svh;
@@ -18,11 +18,11 @@ body {
   font-style: italic;
 }
 @media (orientation: portrait) {
-  #imageCont #uploadImageFile {
+  #imagePreviewCont #uploadImageFile {
     width: 100%;
   }
 }
-#imageCont #uploadImageFile #uploadLabel {
+#imagePreviewCont #uploadImageFile #uploadLabel {
   width: 100%;
   height: 100%;
   font-size: 1.5svh;
@@ -32,17 +32,17 @@ body {
   justify-content: center;
   align-items: center;
 }
-#imageCont #uploadImageInput {
+#imagePreviewCont #uploadImageInput {
   display: none;
 }
-#imageCont #uploadedImagesCont .imageCont {
+#imagePreviewCont #uploadedImagesCont .imageCont {
   position: relative;
   display: inline-block;
 }
-#imageCont #uploadedImagesCont .previewImage {
+#imagePreviewCont #uploadedImagesCont .previewImage {
   max-height: 15svh;
 }
-#imageCont #uploadedImagesCont .deleteImageBtn {
+#imagePreviewCont #uploadedImagesCont .deleteImageBtn {
   background-color: red;
   border-radius: 25%;
   border: 0;

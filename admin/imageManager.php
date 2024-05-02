@@ -14,6 +14,7 @@
         <?php 
             $html = "";
             $images = scandir('../uploads');
+            $html .= '<div id="imagePreviewCont">';
             $html .= '<div id="uploadedImagesCont">';
             foreach($images as $image) {
                 if (is_file('../uploads/'.$image)) {
