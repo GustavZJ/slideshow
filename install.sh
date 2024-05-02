@@ -21,7 +21,7 @@ echo Enter the password for the admin user. This will be needed when changing se
 read adminpasswd;
 
 
-htpasswd -b -c /etc/apache2/.htpasswd uploader $uploaderpasswd
-htpasswd -b /etc/apache2/.htpasswd admin $adminpasswd
-htpasswd -b -c /etc/apache2/.htpasswdadmin admin $adminpasswd
+htpasswd -b -B -c /etc/apache2/.htpasswd uploader $uploaderpasswd
+htpasswd -b -B /etc/apache2/.htpasswd admin $adminpasswd
+htpasswd -b -B -c /etc/apache2/.htpasswdadmin admin $adminpasswd
 bash update.sh
