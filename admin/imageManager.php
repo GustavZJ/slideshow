@@ -23,7 +23,7 @@
                 if (is_file('../uploads/'.$image)) {
                     $html .= '<div class="imageCont">';
                     $html .= '<img style="max-height: 15svh" class="previewImage" src="../uploads/'.$image.'">';
-                    $html .= '<input type="checkbox" name="files[]" value="'.$image.'"x>';
+                    $html .= '<input type="checkbox" name="files[]" value="'.$image.'">';
                     $html .= '</div>';
                 }
             }
@@ -43,7 +43,7 @@
                         data: $(this).serialize(),
                         success: function () {
                             alert("success");
-                            console.log(event);
+                            console.log(data);
                         }
                     });
                     event.preventDefault();
