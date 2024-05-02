@@ -30,9 +30,4 @@ echo Enter the password for the upload user. This will be needed when uploading 
 htpasswd /etc/apache2/.htpasswd uploader
 
 
-
-
-
-
-
 bash update.sh
