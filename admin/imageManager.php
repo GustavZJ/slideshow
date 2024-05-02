@@ -50,7 +50,7 @@
         ?>
 
         <script>
-            JQuery(document).ready(function ($) {
+            jQuery(document).ready(function ($) {
                 $("#deleteForm").submit(function (event) {
                     $.ajax({
                         type: 'POST',
