@@ -17,7 +17,7 @@
                 $name = $_GET['files'];
                 if (isset($_GET['files'])) {
                     foreach ($name as $file){
-                        rename($file, 'delete/'.$file);
+                        rename('../uploads/'.$file, 'delete/'.$file);
                     }
                 } else {
                     echo "You did not choose a file.";
