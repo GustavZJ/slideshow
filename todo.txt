@@ -1,13 +1,13 @@
 Config file:
-Upload max size
+Upload max size 
 Max amount of pictures
 Picture delay time
 Remove image time
 
 Admin page:
 Change config settings
-Seperate password
-Remove pictures manually
+Seperate password ☑
+Remove pictures manually ☑
 Clear all pictures
 
 Upload page:
