@@ -21,7 +21,7 @@
                     $images = scandir('../uploads');
                     foreach($images as $image) {
                         if (is_file('../uploads/'.$image)) {
-                            echo '<div class="imageCont" onclick="checkboxThruDiv(this)">';
+                            echo '<div class="imageCont" onclick="checkboxThruDiv(event, this)">';
                             echo '<img class="previewImage" src="../uploads/'.$image.'">';
                             echo '<input type="checkbox" name="files[]" value="'.$image.'">';
                             echo '</div>';
@@ -34,7 +34,8 @@
 
         <script>
             // Function to allow clicking on image to check checkbox
-            function checkboxThruDiv(target) {
+            function checkboxThruDiv(event, target) {
+                e.stopPropagation();
                 $(target.children[1]).prop('checked', !target.children[1].is(':checked'));
             }
 
