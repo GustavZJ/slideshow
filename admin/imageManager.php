@@ -14,23 +14,25 @@
     <body>
         <a class="labelBtn btnWhite" href="/upload/index.html">Til upload-side</a>
 
-        <form id="deleteForm" method="get">
-            <div id="imagePreviewCont">
-                <?php
-                    // Load images from rpi, and display them
-                    $images = scandir('../uploads');
-                    foreach($images as $image) {
-                        if (is_file('../uploads/'.$image)) {
-                            echo '<div class="imageCont">';
-                            echo '<img class="previewImage" src="../uploads/'.$image.'">';
-                            echo '<input type="checkbox" name="files[]" value="'.$image.'">';
-                            echo '</div>';
+        <div id="imageUploadCont">
+            <form id="deleteForm" method="get">
+                <div id="imagePreviewCont">
+                    <?php
+                        // Load images from rpi, and display them
+                        $images = scandir('../uploads');
+                        foreach($images as $image) {
+                            if (is_file('../uploads/'.$image)) {
+                                echo '<div class="imageCont">';
+                                echo '<img class="previewImage" src="../uploads/'.$image.'">';
+                                echo '<input type="checkbox" name="files[]" value="'.$image.'">';
+                                echo '</div>';
+                            }
                         }
-                    }
-                ?>
-            </div>
-            <button type="submit" value="true">Slet</button>
-        </form>
+                    ?>
+                </div>
+                <button type="submit" value="true">Slet</button>
+            </form>
+        </div>
 
         <script>
             // Function to run php script in background
