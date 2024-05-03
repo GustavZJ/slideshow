@@ -21,7 +21,7 @@
                     $images = scandir('../uploads');
                     foreach($images as $image) {
                         if (is_file('../uploads/'.$image)) {
-                            echo '<div class="imageCont">';
+                            echo '<div class="imageCont" onclick="checkboxThruDiv(this)">';
                             echo '<img class="previewImage" src="../uploads/'.$image.'">';
                             echo '<input type="checkbox" name="files[]" value="'.$image.'">';
                             echo '</div>';
@@ -33,6 +33,11 @@
         </form>
 
         <script>
+            // Function to allow clicking on image to check checkbox
+            function checkboxThruDiv(target) {
+                console.log(target);
+            }
+
             // Function to run php script in background
             jQuery(document).ready(function ($) {
                 $("#deleteForm").submit(function (event) {
