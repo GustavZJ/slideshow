@@ -23,7 +23,7 @@
                         if (is_file('../uploads/'.$image)) {
                             echo '<div class="imageCont elePointerIcon" onclick="checkboxThruDiv(this)">';
                             echo '<img class="previewImage" src="../uploads/'.$image.'">';
-                            echo '<input type="checkbox" name="files[]" value="'.$image.'"> onclick="stopPropagation(event)"';
+                            echo '<input type="checkbox" name="files[]" value="'.$image.'" onclick="stopPropagation(event)">';
                             echo '</div>';
                         }
                     }
