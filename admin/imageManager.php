@@ -34,7 +34,7 @@
 
         <script>
             if (document.getElementById('imagePreviewCont').childElementCount == 0) {
-                document.getElementById('confirmBtn').style.display == 'none';
+                document.getElementById('confirmBtn').style.display = 'none';
             }
 
             // Function to allow clicking on image to check checkbox
