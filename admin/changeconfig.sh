@@ -2,7 +2,7 @@
 
 upload_max_filesize=$1
 post_max_size=$2
-time_delay=$s3
+time_delay=$3
 
 echo $upload_max_filesize $post_max_size $time_delay
 for key in upload_max_filesize post_max_size max_execution_time max_input_time
