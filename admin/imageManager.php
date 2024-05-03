@@ -10,28 +10,30 @@
 	    <link rel="icon" type="image/x-icon" href="/favicon.ico">
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
     </head>
+
     <body>
         <a class="labelBtn btnWhite" href="/upload/index.html">Til upload-side</a>
-        <div id="imageUploadCont">
-            <form id="deleteForm" method="get">
-                <div id="imagePreviewCont">
-                    <?php
-                        $images = scandir('../uploads');
-                        foreach($images as $image) {
-                            if (is_file('../uploads/'.$image)) {
-                                echo '<div class="imageCont">';
-                                echo '<img class="previewImage" src="../uploads/'.$image.'">';
-                                echo '<input type="checkbox" name="files[]" value="'.$image.'">';
-                                echo '</div>';
-                            }
+
+        <form id="deleteForm" method="get">
+            <div id="imagePreviewCont">
+                <?php
+                    // Load images from rpi, and display them
+                    $images = scandir('../uploads');
+                    foreach($images as $image) {
+                        if (is_file('../uploads/'.$image)) {
+                            echo '<div class="imageCont">';
+                            echo '<img class="previewImage" src="../uploads/'.$image.'">';
+                            echo '<input type="checkbox" name="files[]" value="'.$image.'">';
+                            echo '</div>';
                         }
-                    ?>
-                </div>
-                <button type="submit" value="true">Slet</button>
-            </form>
-        </div>
+                    }
+                ?>
+            </div>
+            <button type="submit" value="true">Slet</button>
+        </form>
 
         <script>
+            // Function to run php script in background
             jQuery(document).ready(function ($) {
                 $("#deleteForm").submit(function (event) {
                     $.ajax({
@@ -39,10 +41,13 @@
                         url: 'delete.php',
                         data: $(this).serialize(),
                         success: function () {
+                            // Reload page to remove image preview
                             location.reload();
+                            // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
                             $('input[type="checkbox"]').prop("checked", false);
                         }
                     });
+                    // Prevent default action of going to php page
                     event.preventDefault();
                 });
             });
