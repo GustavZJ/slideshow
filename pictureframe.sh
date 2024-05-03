@@ -3,7 +3,6 @@ cd /var/www/slideshow/uploads
 
 source /var/www/slideshow/config.config
 
-echo THSI IS: $timedelay
 
 #Iterate over all files of file type .HEIC and convert to jpeg. This is because HEIC is a shitty file format that iPhones use. 
 for f in ./*.HEIC;
