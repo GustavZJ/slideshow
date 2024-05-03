@@ -21,9 +21,9 @@
                     $images = scandir('../uploads');
                     foreach($images as $image) {
                         if (is_file('../uploads/'.$image)) {
-                            echo '<div class="imageCont" onclick="checkboxThruDiv(event, this)">';
+                            echo '<div class="imageCont elePointerIcon" onclick="checkboxThruDiv(this)">';
                             echo '<img class="previewImage" src="../uploads/'.$image.'">';
-                            echo '<input type="checkbox" name="files[]" value="'.$image.'">';
+                            echo '<input type="checkbox" name="files[]" value="'.$image.'"> onclick="stopPropagation(event)"';
                             echo '</div>';
                         }
                     }
@@ -34,9 +34,13 @@
 
         <script>
             // Function to allow clicking on image to check checkbox
-            function checkboxThruDiv(event, target) {
-                event.stopPropagation();
+            function checkboxThruDiv(target) {
                 $(target.children[1]).prop('checked', !target.children[1].is(':checked'));
+            }
+
+            // Function to prevent checkbox from being checked and unchecked immediatly, if user clicks on checkbox
+            function stopPropagation(event) {
+                event.stopPropagation();
             }
 
             // Function to run php script in background

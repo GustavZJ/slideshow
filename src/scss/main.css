@@ -5,6 +5,10 @@ body {
   background-color: #333;
 }
 
+.elePointerIcon {
+  cursor: pointer;
+}
+
 button,
 .labelBtn {
   margin: 0.5rem;

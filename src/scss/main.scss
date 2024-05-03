@@ -10,6 +10,11 @@ body {
     background-color: $primaryColor;
 }
 
+// Class to add pointer icon to ele
+.elePointerIcon {
+	cursor: pointer;
+}
+
 // Buttons styling
 button,
 .labelBtn {
