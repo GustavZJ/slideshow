@@ -29,10 +29,14 @@
                     }
                 ?>
             </div>
-            <button type="submit" value="true">Slet</button>
+            <button id="confirmBtn" type="submit" value="true">Slet</button>
         </form>
 
         <script>
+            if (document.getElementById('imagePreviewCont').childElementCount == 0) {
+                document.getElementById('confirmBtn').style.display == 'none';
+            }
+
             // Function to allow clicking on image to check checkbox
             function checkboxThruDiv(target) {
                 if (target.children[1].checked) {
