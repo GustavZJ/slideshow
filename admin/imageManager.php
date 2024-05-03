@@ -19,10 +19,12 @@
                         $images = scandir('../uploads');
                         foreach($images as $image) {
                             if (is_file('../uploads/'.$image)) {
+                                echo '<label for="'.$image.'">';
                                 echo '<div class="imageCont">';
                                 echo '<img class="previewImage" src="../uploads/'.$image.'">';
-                                echo '<input class="deleteCheckbox" type="checkbox" name="files[]" value="'.$image.'">';
+                                echo '<input id="'.$image.' class="deleteCheckbox" type="checkbox" name="files[]" value="'.$image.'">';
                                 echo '</div>';
+                                echo '</label">';
                             }
                         }
                     ?>
