@@ -13,5 +13,5 @@ done
 for key in timedelay
 do
  echo $key
- sed -i "s/^\($key\).*/\1 $(eval echo = \${$key})/" /var/www/slideshow/config.config
+ sed -i "s/^\($key\).*/\1=$(eval echo \${$key})/" /var/www/slideshow/config.config
 done
