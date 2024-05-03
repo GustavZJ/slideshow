@@ -96,7 +96,7 @@ button.btnRed,
   top: 0;
   right: 0;
 }
-#imageUploadCont #imagePreviewCont input {
+#imageUploadCont #imagePreviewCont .deleteCheckbox {
   position: absolute;
   top: 0;
   right: 0;
