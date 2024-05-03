@@ -10,9 +10,10 @@ source ini-file-parser.sh
 process_ini_file '/var/www/slideshow/config.conf'
 
 # Display a specific value from a specific section
-time_delay =  $(get_value 'section1' 'value1')
+time_delay =  $(get_value 'config' 'time_delay')
 
 # Display the same value as above but using the global variables created as part of the processing.
+echo $config_time_delay
 
 echo this is $time_delay
 #Iterate over all files of file type .HEIC and convert to jpeg. This is because HEIC is a shitty file format that iPhones use. 
