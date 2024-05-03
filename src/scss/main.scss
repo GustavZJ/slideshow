@@ -92,9 +92,8 @@ button,
 	#uploadImageInput {
 		display: none;
 	}
-}
 
-// Image preview styling
+	// Image preview styling
 #imagePreviewCont {
 	.imageCont {
 		position: relative;
@@ -122,6 +121,9 @@ button,
 		right: 0;
 	}
 }
+}
+
+
 
 // Error modal styling
 #messageModalContent {
