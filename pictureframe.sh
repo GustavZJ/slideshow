@@ -1,21 +1,28 @@
 #!/bin/bash
 cd /var/www/slideshow/uploads
 
+function ini_printdb {
+    for i in "${!inidb[@]}"
+    do
+    # split the associative key in to section and key
+       echo -n "section  : $(echo $i | cut -f1 -d ' ');"
+       echo -n "key  : $(echo $i | cut -f2 -d ' ');"
+       echo  "value: ${inidb[$i]}"
+    done
+}
+function ini_get_value {
+    section=$1
+    key=$2
+    echo "${inidb[$section $key]}"
+}
+ini_loadfile /var/www/slideshow/config.ini
+ini_printdb
 
 
-# Load in the ini file parser
-source ini-file-parser.sh
 
-# Load and process the ini/config file
-process_ini_file '/var/www/slideshow/config.conf'
 
-# Display a specific value from a specific section
-time_delay =  $(get_value 'config' 'time_delay')
 
-# Display the same value as above but using the global variables created as part of the processing.
-echo $config_time_delay
-
-echo this is $time_delay
+echo this is $config_time_delay
 #Iterate over all files of file type .HEIC and convert to jpeg. This is because HEIC is a shitty file format that iPhones use. 
 for f in ./*.HEIC;
 do
