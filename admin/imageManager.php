@@ -35,7 +35,12 @@
         <script>
             // Function to allow clicking on image to check checkbox
             function checkboxThruDiv(target) {
-                console.log(target);
+                if (target.children[1].checked) {
+                    target.children[1].checked = false;
+                }
+                else {
+                    target.children[1].checked = true;
+                }
             }
 
             // Function to run php script in background
