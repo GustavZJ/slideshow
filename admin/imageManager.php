@@ -13,8 +13,8 @@
     <body>
         <a class="labelBtn btnWhite" href="/upload/index.html">Til upload-side</a>
         <div id="imageUploadCont">
-            <div id="imagePreviewCont">
-                <form id="deleteForm" method="get">
+            <form id="deleteForm" method="get">
+                <div id="imagePreviewCont">
                     <?php
                         $images = scandir('../uploads');
                         foreach($images as $image) {
@@ -26,9 +26,9 @@
                             }
                         }
                     ?>
-                    <button type="submit" value="true">Slet</button>
-                </form>
-            </div>
+                </div>
+                <button type="submit" value="true">Slet</button>
+            </form>
         </div>
 
         <script>
