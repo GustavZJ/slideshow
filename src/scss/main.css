@@ -84,7 +84,7 @@ button.btnRed,
 #imageUploadCont #imagePreviewCont .imageCont {
   position: relative;
   display: inline-block;
-  margin: auto;
+  margin: 0.5svw;
 }
 #imageUploadCont #imagePreviewCont .previewImage {
   max-height: 20svh;
