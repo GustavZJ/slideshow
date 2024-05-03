@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   font: 100% Helvetica, sans-serif;
   text-align: center;
@@ -81,6 +82,11 @@ button.btnRed,
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+@media (hover: hover) {
+  #imageUploadCont #uploadImageFile #uploadLabel #uploadLabel::after {
+    content: ", eller træk billeder her";
+  }
 }
 #imageUploadCont #uploadImageInput {
   display: none;

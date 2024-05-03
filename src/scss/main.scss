@@ -90,6 +90,12 @@ button,
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
+
+			@media (hover: hover) {
+				#uploadLabel::after {
+					content: ', eller træk billeder her';
+				}
+			}
 		}
 	}
 
