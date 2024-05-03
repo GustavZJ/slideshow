@@ -1,9 +1,10 @@
 #!/bin/bash
 cd /var/www/slideshow/uploads
 
-. /var/www/slideshow/config.config
+source /var/www/slideshow/config.config
 
-echo this is $time_delay
+echo $timedelay
+
 #Iterate over all files of file type .HEIC and convert to jpeg. This is because HEIC is a shitty file format that iPhones use. 
 for f in ./*.HEIC;
 do
@@ -52,6 +53,6 @@ done
 # 		fi
 # 	fi
 # done
-DISPLAY=:0.0 XAUTHORITY=~/.Xauthority /usr/bin/feh exif=1 --auto-rotate -q -p -Z -F -R 60 -Y -D $time_delay uploads
+DISPLAY=:0.0 XAUTHORITY=~/.Xauthority /usr/bin/feh exif=1 --auto-rotate -q -p -Z -F -R 60 -Y -D $timedelay uploads
 
 
