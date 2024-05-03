@@ -12,27 +12,24 @@
     </head>
     <body>
         <a class="labelBtn" href="/upload/index.html">Til upload-side</a>
-
-        <?php
-            $html = "";
-            $images = scandir('../uploads');
-            $html .= '<div id="imageUploadCont">';
-            $html .= '<div id="uploadedImagesCont">';
-            $html .= '<form id="deleteForm" method="get>';
-            foreach($images as $image) {
-                if (is_file('../uploads/'.$image)) {
-                    $html .= '<div class="imageCont">';
-                    $html .= '<img style="max-height: 15svh" class="previewImage" src="../uploads/'.$image.'">';
-                    $html .= '<input type="checkbox" name="files[]" value="'.$image.'">';
-                    $html .= '</div>';
-                }
-            }
-            $html .= '<button type="submit" value="true">Slet</button>';
-            $html .= '</form>';
-            $html .= '</div>';
-            
-            echo $html;
-        ?>
+        <div id="imageUploadCont">
+            <div id="uploadedImagesCont">
+                <form id="deleteForm" method="get">
+                    <?php
+                        $images = scandir('../uploads');
+                        foreach($images as $image) {
+                            if (is_file('../uploads/'.$image)) {
+                                echo '<div class="imageCont">';
+                                echo '<img style="max-height: 15svh" class="previewImage" src="../uploads/'.$image.'">';
+                                echo '<input type="checkbox" name="files[]" value="'.$image.'">';
+                                echo '</div>';
+                            }
+                        }
+                    ?>
+                    <button type="submit" value="true">Slet</button>
+                </form>
+            </div>
+        </div>
 
         <script>
             jQuery(document).ready(function ($) {
