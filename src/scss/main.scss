@@ -92,7 +92,7 @@ button,
 			align-items: center;
 
 			@media (hover: hover) {
-				#uploadLabel::after {
+				&::after {
 					content: ', eller træk billeder her';
 				}
 			}

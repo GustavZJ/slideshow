@@ -84,7 +84,7 @@ button.btnRed,
   align-items: center;
 }
 @media (hover: hover) {
-  #imageUploadCont #uploadImageFile #uploadLabel #uploadLabel::after {
+  #imageUploadCont #uploadImageFile #uploadLabel::after {
     content: ", eller træk billeder her";
   }
 }
