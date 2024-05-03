@@ -14,7 +14,6 @@
     <body>
         <a class="labelBtn btnWhite" href="/upload/index.html">Til upload-side</a>
 
-        <div id="imageUploadCont">
             <form id="deleteForm" method="get">
                 <div id="imagePreviewCont">
                     <?php
@@ -32,7 +31,6 @@
                 </div>
                 <button type="submit" value="true">Slet</button>
             </form>
-        </div>
 
         <script>
             // Function to run php script in background
