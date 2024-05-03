@@ -35,7 +35,7 @@
         <script>
             // Function to allow clicking on image to check checkbox
             function checkboxThruDiv(event, target) {
-                e.stopPropagation();
+                event.stopPropagation();
                 $(target.children[1]).prop('checked', !target.children[1].is(':checked'));
             }
 
