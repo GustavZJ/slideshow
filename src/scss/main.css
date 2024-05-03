@@ -81,15 +81,16 @@ button.btnRed,
 #imageUploadCont #uploadImageInput {
   display: none;
 }
-#imageUploadCont #imagePreviewCont .imageCont {
+
+#imagePreviewCont .imageCont {
   position: relative;
   display: inline-block;
   margin: 0.5svw;
 }
-#imageUploadCont #imagePreviewCont .previewImage {
+#imagePreviewCont .previewImage {
   max-height: 20svh;
 }
-#imageUploadCont #imagePreviewCont .deleteImageBtn {
+#imagePreviewCont .deleteImageBtn {
   background-color: red;
   border-radius: 25%;
   border: 0;
@@ -97,7 +98,7 @@ button.btnRed,
   top: 0;
   right: 0;
 }
-#imageUploadCont #imagePreviewCont input[type=checkbox] {
+#imagePreviewCont input[type=checkbox] {
   position: absolute;
   top: 0;
   right: 0;
