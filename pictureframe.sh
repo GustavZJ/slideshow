@@ -2,7 +2,18 @@
 cd /var/www/slideshow/uploads
 
 
-time_delay = source <(grep time_delay /var/www/slideshow/config.ini)
+
+# Load in the ini file parser
+source ini-file-parser.sh
+
+# Load and process the ini/config file
+process_ini_file '/var/www/slideshow/config.conf'
+
+# Display a specific value from a specific section
+time_delay =  $(get_value 'section1' 'value1')
+
+# Display the same value as above but using the global variables created as part of the processing.
+
 echo this is $time_delay
 #Iterate over all files of file type .HEIC and convert to jpeg. This is because HEIC is a shitty file format that iPhones use. 
 for f in ./*.HEIC;
