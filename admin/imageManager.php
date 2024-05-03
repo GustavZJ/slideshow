@@ -13,7 +13,7 @@
     <body>
         <a class="labelBtn" href="/upload/index.html">Til upload-side</a>
         <div id="imageUploadCont">
-            <div id="uploadedImagesCont">
+            <div id="imagePreviewCont">
                 <form id="deleteForm" method="get">
                     <?php
                         $images = scandir('../uploads');
