@@ -1,5 +1,5 @@
 #!/bin/bash
-cd uploads
+cd /var/www/slideshow/uploads
 
 
 time_delay = source <(grep time_delay /var/www/slideshow/config.ini)
