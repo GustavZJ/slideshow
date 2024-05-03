@@ -21,7 +21,7 @@
                             if (is_file('../uploads/'.$image)) {
                                 echo '<div class="imageCont">';
                                 echo '<img class="previewImage" src="../uploads/'.$image.'">';
-                                echo '<input id="'.$image.' class="deleteCheckbox" type="checkbox" name="files[]" value="'.$image.'">';
+                                echo '<input type="checkbox" name="files[]" value="'.$image.'">';
                                 echo '</div>';
                             }
                         }
