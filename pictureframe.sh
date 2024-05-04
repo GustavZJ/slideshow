@@ -53,6 +53,6 @@ done
 # 	fi
 # done
 cd ..
-DISPLAY=:0.0 XAUTHORITY=~/.Xauthority /usr/bin/feh exif=1 --auto-rotate -q -p -Z -F -R 60 -Y -D $timedelay uploads
+DISPLAY=:0.0 XAUTHORITY=~/.Xauthority feh exif=1 --auto-rotate -q -p -Z -F -R 60 -Y -D $timedelay uploads/
 
 
