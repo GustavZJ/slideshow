@@ -55,6 +55,7 @@ done
 # 	fi
 # done
 cd ..
+xhost +SI:localuser:root &
 DISPLAY=:0.0 XAUTHORITY=~/.Xauthority feh exif=1 --auto-rotate -q -p -Z -F -R 60 -Y -D $timedelay uploads/
 
 
