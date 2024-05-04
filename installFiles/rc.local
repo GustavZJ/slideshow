@@ -21,5 +21,6 @@ fi
 bash /var/www/slideshow/update.sh &
 
 # Run slideshow
+xhost si:localuser:root
 bash /var/www/slideshow/pictureframe.sh  &
 exit 0
