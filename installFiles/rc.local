@@ -18,7 +18,7 @@ if [ "$_IP" ]; then
 fi
 
 # Update slideshow
-bash /var/www/slideshow/update.sh
+bash /var/www/slideshow/update.sh &
 
 # Run slideshow
 bash /var/www/slideshow/pictureframe.sh  &
