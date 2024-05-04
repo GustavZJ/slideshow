@@ -1,4 +1,6 @@
 #!/bin/bash
+
+# Don't run this as root!
 cd /var/www/slideshow/uploads
 
 source /var/www/slideshow/config.config

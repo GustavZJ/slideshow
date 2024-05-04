@@ -3,7 +3,7 @@ cd /var/www/slideshow/
 bash update.sh
 
 apt-get update
-apt-get install php libapache2-mod-php feh libheif1 -y
+apt-get install php libapache2-mod-php feh libheif1 libheif-examples -y
 cp installFiles/rc.local /etc/rc.local
 cp installFiles/defaultphp.ini /var/www/slideshow/php.ini
 cp installFiles/defaultconfig.config /var/www/slideshow/config.config
