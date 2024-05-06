@@ -14,7 +14,7 @@
     <body>
         <a class="labelBtn btnWhite" href="/upload/index.html">Til upload-side</a>
 
-        <form id="configForm" method="post">
+        <form id="configForm" method="post" onsubmit="return redirect()">
             <div id="configForm">
                 <label for="timedelay">Time delay between pictures =</label>
                 <input type="text" id="timedelay" name="timedelay"><br><br>
@@ -28,6 +28,10 @@
         </form>
 
         <script>
+            function redirect() {
+                window.location.replace("changeconfig.php");
+                return false;
+            }
             // Function to run php script in background
             jQuery(document).ready(function ($) {
                 $("#configForm").submit(function (event) {
@@ -36,10 +40,7 @@
                         url: 'changeconfig.php',
                         data: $(this).serialize(),
                         success: function () {
-                            // Reload page to remove image preview
-                            location.reload();
-                            // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
-                            $('input[type="checkbox"]').prop("checked", false);
+
                         }
                     });
                     // Prevent default action of going to php page
