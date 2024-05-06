@@ -1,4 +1,4 @@
 <?php
-echo $_POST['configForm'];
+echo $_POST;
 // header('location: config.html');
 // exit();
