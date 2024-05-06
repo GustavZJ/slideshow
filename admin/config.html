@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Admin</title>
+        <meta name="Admin" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/src/scss/main.css">
+	    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+    </head>
+
+    <body>
+        <a class="labelBtn btnWhite" href="/upload/index.html">Til upload-side</a>
+
+        <form id="configForm" method="post">
+            <div id="configForm">
+                <label for="timedelay">Time delay between pictures =</label>
+                <input type="text" id="timedelay" name="timedelay"><br><br>
+                <label for="maxfilesize">The max picture file size in mB =</label>
+                <input type="text" id="maxfilesize" name="maxfilesize"><br><br>
+                <label for="maxamount">Max amount of files uploaded =</label>
+                <input type="text" id="maxamount" name="maxamount"><br><br>
+            
+            </div>
+            <button id="confirmBtn" type="submit" value="true">Change config</button>
+        </form>
+
+        <script>
+            // Function to run php script in background
+            jQuery(document).ready(function ($) {
+                $("#deleteForm").submit(function (event) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'changeconfig.php',
+                        data: $(this).serialize(),
+                        success: function () {
+                            // Reload page to remove image preview
+                            location.reload();
+                            // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
+                            $('input[type="checkbox"]').prop("checked", false);
+                        }
+                    });
+                    // Prevent default action of going to php page
+                    event.preventDefault();
+                });
+            });
+        </script>
+    </body>
+</html>
