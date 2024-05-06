@@ -1,6 +1,4 @@
 <?php
-foreach ($_POST['configForm'] as $data) {
-    echo("<script>console.log('PHP: " . $data . "');</script>");
-}
+echo $_POST['configForm'];
 // header('location: config.html');
 // exit();
