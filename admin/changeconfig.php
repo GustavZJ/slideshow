@@ -2,7 +2,7 @@
 echo("<script>console.log('PHP: " . json_encode($_POST) . "');</script>");
 
 
-echo ($_POST['time_delay']);
+echo ($_POST['timedelay']);
 // $timedelay = $_POST['time_delay'];
 // $maxfilesize = $_POST["maxfilesize"];
 // $maxamount = $_POST["maxamount"];
