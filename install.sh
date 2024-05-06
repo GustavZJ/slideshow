@@ -14,6 +14,7 @@ a2ensite slideshow.conf
 mkdir uploads
 mkdir backup
 chmod 777 uploads/
+chmod +x admin/changeconfig.sh
 
 rm /etc/apache2/.htpasswd
 rm /etc/apache2/.htpasswdadmin
