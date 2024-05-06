@@ -2,12 +2,13 @@
 echo("<script>console.log('PHP: " . json_encode($_POST) . "');</script>");
 
 
-echo ($_POST['timedelay']);
-// $timedelay = $_POST['time_delay'];
-// $maxfilesize = $_POST["maxfilesize"];
-// $maxamount = $_POST["maxamount"];
+$timedelay = $_POST['timedelay'];
+$upload_max_filesize = $_POST["upload_max_filesize"];
+$maxamount = $_POST["maxamount"];
 
-// echo $timedelay $maxfilesize $maxamount;
+$post_max_size = strval(intval($upload_max_filesize)*intval($maxamount))."M"
 
-// header('location: config.html');
-// exit();
+
+$output = shell_exec('./changeconfig.sh'. $upload_max_filesize. $post_max_size. $timedelay);
+header('location: config.html');
+exit();
