@@ -14,7 +14,7 @@
     <body>
         <a class="labelBtn btnWhite" href="/upload/index.html">Til upload-side</a>
 
-        <form id="configForm" method="post" onsubmit="return redirect()">
+        <form id="configForm" method="POST" action="changeconfig.php">
             <div id="configForm">
                 <label for="timedelay">Time delay between pictures =</label>
                 <input type="text" id="timedelay" name="timedelay"><br><br>
@@ -28,10 +28,6 @@
         </form>
 
         <script>
-            function redirect() {
-                window.location.replace("changeconfig.php");
-                return false;
-            }
             // Function to run php script in background
             jQuery(document).ready(function ($) {
                 $("#configForm").submit(function (event) {
