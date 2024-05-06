@@ -2,9 +2,9 @@
 echo("<script>console.log('PHP: " . json_encode($_POST) . "');</script>");
 
 
-if(!$_POST['timedelay'] or !$_POST['upload_max_filesize'] or !$_POST['maxamount']) {
-    exit();
-}
+// if(!$_POST['timedelay'] or !$_POST['upload_max_filesize'] or !$_POST['maxamount']) {
+//     exit();
+// }
 
 $timedelay = $_POST['timedelay'];
 $upload_max_filesize = $_POST["upload_max_filesize"];
