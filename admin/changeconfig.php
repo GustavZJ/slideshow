@@ -5,7 +5,7 @@ $timedelay = $_POST['time_delay'];
 $maxfilesize = $_POST["maxfilesize"];
 $maxamount = $_POST["maxamount"];
 
-echo $timedelay $maxfilesize $maxamount
+echo $timedelay $maxfilesize $maxamount;
 
 // header('location: config.html');
 // exit();
