@@ -1,4 +1,4 @@
 <?php
-echo("<script>console.log('PHP: " . "json_encode(".$_POST.")" . "');</script>");
+echo("<script>console.log('PHP: " . json_encode($_POST) . "');</script>");
 // header('location: config.html');
 // exit();
