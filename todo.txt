@@ -4,6 +4,10 @@ Config file:
 - Picture delay time
 - Remove image time
 
+Picture frame:
+- Fix issue with images that have had their name changed by the script,
+ not being able to load into HTML (This seems to be an issue with the '?' char)
+
 Admin page:
 - Change config settings
 - Seperate password ☑
