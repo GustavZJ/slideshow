@@ -1,19 +1,23 @@
 Config file:
-Upload max size 
-Max amount of pictures
-Picture delay time
-Remove image time
+- Upload max size 
+- Max amount of pictures
+- Picture delay time
+- Remove image time
 
 Admin page:
-Change config settings
-Seperate password ☑
-Remove pictures manually ☑
-Clear all pictures
+- Change config settings
+- Seperate password ☑
+- Remove pictures manually ☑
+- Clear all pictures
+- Add error handling for image mangager, incase image fails to delete
 
 Upload page:
-Improve styling
-Mobile friendly
+- Consider using jQuery to handle upload errors, so that the error pop up won't appear,
+  if the user refreshes, after having attempted to upload images (Need to test if it's possible to get some of the errors thru this method)
+
+Website:
+- Improve styling
+- Full responsive for different devices (Need to test if any issue on devices)
 
 Guide:
-How to access page
-How to use admin
+- How to use admin
