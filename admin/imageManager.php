@@ -13,6 +13,7 @@
 
     <body>
         <a class="labelBtn btnWhite" href="/upload/index.html">Til upload-side</a>
+        <a class="labelBtn btnWhite" href="/admin/config.html">Til config-side</a>
 
         <form id="deleteForm" method="get">
             <div id="imagePreviewCont">
