@@ -69,6 +69,7 @@
                             
                             // Give succeess message
                             messageFade('success', `${deleteCount} billede(r) blev fjernet`);
+                            deleteCount = 0;
                         },
                         error: function() {
                             // Give error message
