@@ -33,6 +33,9 @@
         </form>
 
         <script>
+            import {messageFade} from '/src/js/errorMessage.js';
+
+            // Hide delete btn if no images present
             if (document.getElementById('imagePreviewCont').childElementCount == 0) {
                 document.getElementById('confirmBtn').style.display = 'none';
             }
@@ -60,8 +63,14 @@
                         url: 'delete.php',
                         data: $(this).serialize(),
                         success: function () {
-                            // Reload page to remove image preview
-                            location.reload();
+                            messageFade('success', '{AMOUNT} billeder blev fjernet');
+                            const previewImageCont = document.getElementById('imagePreviewCont');
+                            for (const image of previewImageCont.children) {
+                                if (image.children[1].checked) {
+                                    image.remove();
+                                }
+                            }
+
                             // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
                             $('input[type="checkbox"]').prop("checked", false);
                         }
@@ -71,5 +80,6 @@
                 });
             });
         </script>
+        <script type="module" src="/src/js/errorMessage.js"></script>
     </body>
 </html>
