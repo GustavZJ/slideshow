@@ -9,8 +9,6 @@ $maxamount = $_POST["maxamount"];
 
 
 $post_max_size = strval(intval($maxsize)*intval($maxamount))."M";
-echo get_current_user();
-$dump = shell_exec("./changeconfig.sh ". $maxsize."M ". $post_max_size." ". $timedelay);
-// echo $dump;
+shell_exec("./changeconfig.sh ". $maxsize."M ". $post_max_size." ". $timedelay);
 header('location: config.html');
 exit();
