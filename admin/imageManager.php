@@ -49,7 +49,6 @@
                         data: $(this).serialize(),
                         success: function () {
                             location.reload();
-                            messageFade('success', '{AMOUNT} billeder blev fjernet');
                             // const previewImageCont = document.getElementById('imagePreviewCont');
                             // for (const image of previewImageCont.children) {
                             //     console.log(image)
@@ -59,6 +58,7 @@
                             // }
 
                             // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
+                            messageFade('success', '{AMOUNT} billeder blev fjernet');
                             $('input[type="checkbox"]').prop("checked", false);
                         }
                     });
