@@ -51,8 +51,8 @@
                         data: $(this).serialize(),
                         success: function () {
                             // location.reload();
-                            const previewImageCont = document.getElementById('imagePreviewCont');
-                            for (const image of previewImageCont.children) {
+                            const images = document.getElementsByClassName('imageCont');
+                            for (const image of images) {
                                 console.log(image)
                                 if (image.children[1].checked) {
                                     image.remove();
