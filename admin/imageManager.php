@@ -45,6 +45,7 @@
                 // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
                 $('input[type="checkbox"]').prop("checked", false);
                 const images = document.getElementsByClassName('imageCont');
+                console.log(images);
 
                 $("#deleteForm").submit(function (event) {
                     $.ajax({
@@ -53,7 +54,6 @@
                         data: $(this).serialize(),
                         success: function () {
                             // location.reload();
-                            console.log(images);
                             for (const image of images) {
                                 if (image.children[1].checked) {
                                     image.remove();
