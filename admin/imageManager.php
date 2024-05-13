@@ -66,6 +66,7 @@
                             messageFade('success', '{AMOUNT} billeder blev fjernet');
                             const previewImageCont = document.getElementById('imagePreviewCont');
                             for (const image of previewImageCont.children) {
+                                console.log(image)
                                 if (image.children[1].checked) {
                                     image.remove();
                                 }
@@ -80,6 +81,6 @@
                 });
             });
         </script>
-        <script type="module" src="/src/js/errorMessage.js"></script>
+        <!-- <script type="module" src="/src/js/errorMessage.js"></script> -->
     </body>
 </html>
