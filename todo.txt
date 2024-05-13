@@ -1,7 +1,7 @@
 Config file:
-- Upload max size 
-- Max amount of pictures
-- Picture delay time
+- Upload max size ☑
+- Max amount of pictures ☑
+- Picture delay time ☑
 - Remove image time
 
 Picture frame:
@@ -9,11 +9,11 @@ Picture frame:
  not being able to load into HTML (This seems to be an issue with the '?' char)
 
 Admin page:
-- Change config settings
+- Change config settings ☑
 - Seperate password ☑
 - Remove pictures manually ☑
 - Clear all pictures
-- Add error handling for image mangager, incase image fails to delete
+- Add error handling for image manager, incase image fails to delete
 
 Upload page:
 - Consider using jQuery to handle upload errors, so that the error pop up won't appear,
