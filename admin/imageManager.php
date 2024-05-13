@@ -22,8 +22,8 @@
                     foreach($images as $image) {
                         if (is_file('../uploads/'.$image)) {
                             echo '<div class="imageCont elePointerIcon" onclick="checkboxThruDiv(this)">';
-                            echo '<img class="previewImage" src="../uploads/'.$image.'">';
-                            echo '<input type="checkbox" name="files[]" value="'.$image.'" onclick="stopPropagation(event)">';
+                            echo '  <img class="previewImage" src="../uploads/'.$image.'">';
+                            echo '  <input type="checkbox" name="files[]" value="'.$image.'" onclick="stopPropagation(event)">';
                             echo '</div>';
                         }
                     }
@@ -44,6 +44,7 @@
             jQuery(document).ready(function ($) {
                 // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
                 $('input[type="checkbox"]').prop("checked", false);
+
                 $("#deleteForm").submit(function (event) {
                     $.ajax({
                         type: 'POST',
