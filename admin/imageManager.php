@@ -52,8 +52,8 @@
                         success: function () {
                             // location.reload();
                             const images = document.getElementsByClassName('imageCont');
+                            console.log(images);
                             for (const image of images) {
-                                console.log(image)
                                 if (image.children[1].checked) {
                                     image.remove();
                                 }
