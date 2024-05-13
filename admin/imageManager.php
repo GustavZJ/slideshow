@@ -55,15 +55,15 @@
                                 if (image.children[1].checked) {
                                     image.remove();
                                 }
-                                image.children[1].checked = false;
                                 if (document.getElementById('imagePreviewCont').childElementCount == 0) {
                                     document.getElementById('confirmBtn').style.display = 'none';
                                 }
                             }
 
-                            // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
                             messageFade('success', '{AMOUNT} billeder blev fjernet');
-                            // $('input[type="checkbox"]').prop("checked", false);
+                            
+                            // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
+                            $('input[type="checkbox"]').prop("checked", false);
                         }
                     });
                     // Prevent default action of going to php page
