@@ -54,11 +54,11 @@
                         data: $(this).serialize(),
                         success: function () {
                             // location.reload();
-                            for (const image of images) {
-                                console.log(image.children[1]);
-                                if (image.children[1].checked) {
-                                    image.remove();
+                            for (let i = 0; i < images.length; i++) {
+                                if (image[i].children[1].checked) {
+                                    image[i].remove();
                                 }
+                                
                                 if (document.getElementById('imagePreviewCont').childElementCount == 0) {
                                     document.getElementById('confirmBtn').style.display = 'none';
                                 }
