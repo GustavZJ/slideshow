@@ -159,3 +159,17 @@ a {
 	text-decoration: none;
 	display: inline-block; // This fixes images being placed too close to nav btn
 }
+
+// Config container styling
+#configCont {
+	display: grid;
+
+	input {
+		margin: auto;
+		max-width: fit-content;
+	}
+
+	label {
+		margin-top: 1vh;
+	}
+}

@@ -137,4 +137,15 @@ a {
   display: inline-block;
 }
 
+#configCont {
+  display: grid;
+}
+#configCont input {
+  margin: auto;
+  max-width: fit-content;
+}
+#configCont label {
+  margin-top: 1vh;
+}
+
 /*# sourceMappingURL=main.css.map */

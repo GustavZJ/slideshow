@@ -16,16 +16,17 @@
         <a class="labelBtn btnWhite" href="/admin/imageManager.php">Til billedmanager-side</a>
 
         <form id="configForm" method="post" action="changeconfig.php" enctype="multipart/form-data">
-            <div>
-                <label for="timedelay">Time delay between pictures =</label>
-                <input type="text" name="timedelay"><br><br>
-                <label for="maxsize">The max picture file size in mB =</label>
-                <input type="text" name="maxsize"><br><br>
-                <label for="maxamount">Max amount of files uploaded =</label>
-                <input type="text" name="maxamount"><br><br>
-            
+            <div id="configCont">
+                <label for="timedelay">Tid imellem billeder (Sekunder)</label>
+                <input type="text" name="timedelay" placeholder="Indtast værdi...">
+
+                <label for="maxsize">Maximal størrelse for et enkelt billede (mB)</label>
+                <input type="text" name="maxsize" placeholder="Indtast værdi...">
+
+                <label for="maxamount">Maximal mængde af filer, som kan uploads samtidigt</label>
+                <input type="text" name="maxamount" placeholder="Indtast værdi...">
             </div>
-            <button id="confirmBtn" type="submit" value="true">Change config</button>
+            <button id="confirmBtn" type="submit" value="true">Opdater config</button>
         </form>
 
         <script>
