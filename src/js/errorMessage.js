@@ -1,4 +1,8 @@
 export {messageFade}
+// Message modal fade in / out
+const messageModalColor = {'error':'white', 'success':'green'};
+let fadeTimer;
+let deleteTimer;
 
 // Modal based timed message
 function messageFade(type, message) {

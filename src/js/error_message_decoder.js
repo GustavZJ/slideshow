@@ -86,13 +86,6 @@ function messageDecoder(msg) {
     return ["error", errExplanation]
 }
 
-
-
-// Message modal fade in / out
-const messageModalColor = {'error':'white', 'success':'green'};
-let fadeTimer;
-let deleteTimer;
-
 //const url = "http://192.168.1.15/index.html?response=Forest-Pixel-Lands-02-SLD-672_totallynot_the_same.jpg%D1%8DfileExists%D1%8D"
 //console.log(messageDecoder(urlExtractor(testUrl)));
 const url = window.location.href
