@@ -68,6 +68,7 @@
             });
         </script>
 
+        <!-- This has to be in a seperate script, otherwise, the import module will break it -->
         <script>
             // Function to allow clicking on image to check checkbox
             function checkboxThruDiv(target) {
