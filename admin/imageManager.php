@@ -54,7 +54,8 @@
                         data: $(this).serialize(),
                         success: function () {
                             // location.reload();
-                            for (let i = images.childElementCount; i < 0; i--) {
+                            for (let i = images.childElementCount - 1; i < 0; i--) {
+                                console.log(images[i]);
                                 if (images[i].children[1].checked) {
                                     images[i].remove();
                                 }
