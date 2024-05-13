@@ -45,6 +45,7 @@
                 // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
                 $('input[type="checkbox"]').prop("checked", false);
                 const images = document.getElementsByClassName('imageCont');
+                let deleteCount = 0;
 
                 // Handle delete action
                 $("#deleteForm").submit(function (event) {
@@ -56,6 +57,7 @@
                             for (let i = images.length - 1; i >= 0; i--) {
                                 // Remove image if checkbox is checked
                                 if (images[i].children[1].checked) {
+                                    deleteCount += 1;
                                     images[i].remove();
                                 }
 
@@ -66,7 +68,11 @@
                             }
                             
                             // Give succeess message
-                            messageFade('success', '{AMOUNT} billeder blev fjernet');
+                            messageFade('success', `${deleteCount} billeder blev fjernet`);
+                        },
+                        error: function() {
+                            // Give error message
+                            messageFade('error', '1 eller flere billeder blev ikke fjernet');
                         }
                     });
                     // Prevent default action of going to php page
