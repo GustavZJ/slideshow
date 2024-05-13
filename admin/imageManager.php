@@ -32,14 +32,8 @@
             <button id="confirmBtn" type="submit" value="true">Slet</button>
         </form>
 
+        
         <script>
-            import {messageFade} from '/src/js/errorMessage.js'
-
-            // Hide delete btn if no images present
-            if (document.getElementById('imagePreviewCont').childElementCount == 0) {
-                document.getElementById('confirmBtn').style.display = 'none';
-            }
-
             // Function to allow clicking on image to check checkbox
             function checkboxThruDiv(target) {
                 if (target.children[1].checked) {
@@ -53,6 +47,15 @@
             // Function to prevent checkbox from being checked and unchecked immediatly, if user clicks on checkbox
             function stopPropagation(event) {
                 event.stopPropagation();
+            }
+        </script>
+
+        <script type="module">
+            import {messageFade} from '/src/js/errorMessage.js'
+
+            // Hide delete btn if no images present
+            if (document.getElementById('imagePreviewCont').childElementCount == 0) {
+                document.getElementById('confirmBtn').style.display = 'none';
             }
 
             // Function to run php script in background
