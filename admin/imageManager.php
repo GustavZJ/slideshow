@@ -32,7 +32,7 @@
             <button id="confirmBtn" type="submit" value="true">Slet</button>
         </form>
 
-        <script>
+        <script type="module">
             import {messageFade} from '/src/js/errorMessage.js';
 
             // Hide delete btn if no images present
