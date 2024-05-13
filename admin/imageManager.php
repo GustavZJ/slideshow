@@ -48,18 +48,19 @@
                         url: 'delete.php',
                         data: $(this).serialize(),
                         success: function () {
-                            location.reload();
-                            // const previewImageCont = document.getElementById('imagePreviewCont');
-                            // for (const image of previewImageCont.children) {
-                            //     console.log(image)
-                            //     if (image.children[1].checked) {
-                            //         image.remove();
-                            //     }
-                            // }
+                            // location.reload();
+                            const previewImageCont = document.getElementById('imagePreviewCont');
+                            for (const image of previewImageCont.children) {
+                                console.log(image)
+                                if (image.children[1].checked) {
+                                    image.remove();
+                                }
+                                image.children[1].checked = false;
+                            }
 
                             // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
                             messageFade('success', '{AMOUNT} billeder blev fjernet');
-                            $('input[type="checkbox"]').prop("checked", false);
+                            // $('input[type="checkbox"]').prop("checked", false);
                         }
                     });
                     // Prevent default action of going to php page
