@@ -48,8 +48,7 @@
                         url: 'delete.php',
                         data: $(this).serialize(),
                         success: function () {
-                            // location.reload();
-                            // messageFade('success', '{AMOUNT} billeder blev fjernet');
+                            messageFade('success', '{AMOUNT} billeder blev fjernet');
                             const previewImageCont = document.getElementById('imagePreviewCont');
                             for (const image of previewImageCont.children) {
                                 console.log(image)
