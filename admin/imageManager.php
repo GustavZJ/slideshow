@@ -56,6 +56,9 @@
                                     image.remove();
                                 }
                                 image.children[1].checked = false;
+                                if (document.getElementById('imagePreviewCont').childElementCount == 0) {
+                                    document.getElementById('confirmBtn').style.display = 'none';
+                                }
                             }
 
                             // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
