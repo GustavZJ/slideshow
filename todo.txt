@@ -13,11 +13,12 @@ Admin page:
 - Seperate password ☑
 - Remove pictures manually ☑
 - Clear all pictures
-- Add error handling for image manager, incase image fails to delete
+- Add error handling for image manager, incase image fails to delete ☑
 
 Upload page:
 - Consider using jQuery to handle upload errors, so that the error pop up won't appear,
   if the user refreshes, after having attempted to upload images (Need to test if it's possible to get some of the errors thru this method)
+- Add indicators to show the user if they have selected too many files
 
 Website:
 - Improve styling
