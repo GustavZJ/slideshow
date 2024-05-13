@@ -42,6 +42,8 @@
 
             // Function to run php script in background
             jQuery(document).ready(function ($) {
+                // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
+                $('input[type="checkbox"]').prop("checked", false);
                 $("#deleteForm").submit(function (event) {
                     $.ajax({
                         type: 'POST',
@@ -61,9 +63,6 @@
                             }
 
                             messageFade('success', '{AMOUNT} billeder blev fjernet');
-                            
-                            // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
-                            $('input[type="checkbox"]').prop("checked", false);
                         }
                     });
                     // Prevent default action of going to php page
