@@ -32,24 +32,6 @@
             <button id="confirmBtn" type="submit" value="true">Slet</button>
         </form>
 
-        
-        <script>
-            // Function to allow clicking on image to check checkbox
-            function checkboxThruDiv(target) {
-                if (target.children[1].checked) {
-                    target.children[1].checked = false;
-                }
-                else {
-                    target.children[1].checked = true;
-                }
-            }
-
-            // Function to prevent checkbox from being checked and unchecked immediatly, if user clicks on checkbox
-            function stopPropagation(event) {
-                event.stopPropagation();
-            }
-        </script>
-
         <script type="module">
             import {messageFade} from '/src/js/errorMessage.js'
 
@@ -84,6 +66,23 @@
                     event.preventDefault();
                 });
             });
+        </script>
+
+        <script>
+            // Function to allow clicking on image to check checkbox
+            function checkboxThruDiv(target) {
+                if (target.children[1].checked) {
+                    target.children[1].checked = false;
+                }
+                else {
+                    target.children[1].checked = true;
+                }
+            }
+
+            // Function to prevent checkbox from being checked and unchecked immediatly, if user clicks on checkbox
+            function stopPropagation(event) {
+                event.stopPropagation();
+            }
         </script>
         <script type="module" src="/src/js/errorMessage.js"></script>
     </body>
