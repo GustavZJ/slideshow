@@ -84,6 +84,5 @@
                 event.stopPropagation();
             }
         </script>
-        <script type="module" src="/src/js/errorMessage.js"></script>
     </body>
 </html>
