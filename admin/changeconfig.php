@@ -13,5 +13,5 @@ echo get_current_user();
 shell_exec("../clear.sh");
 $dump = shell_exec("./changeconfig.sh ". $maxsize."M ". $post_max_size." ". $timedelay);
 // echo $dump;
-// header('location: config.html');
-// exit();
+header('location: config.html');
+exit();
