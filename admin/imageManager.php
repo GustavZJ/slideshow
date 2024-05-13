@@ -32,8 +32,8 @@
             <button id="confirmBtn" type="submit" value="true">Slet</button>
         </form>
 
-        <script type="module">
-            import {messageFade} from '/src/js/errorMessage.js'
+        <script>
+            // import {messageFade} from '/src/js/errorMessage.js'
 
             // Hide delete btn if no images present
             if (document.getElementById('imagePreviewCont').childElementCount == 0) {
@@ -64,7 +64,7 @@
                         data: $(this).serialize(),
                         success: function () {
                             // location.reload();
-                            messageFade('success', '{AMOUNT} billeder blev fjernet');
+                            // messageFade('success', '{AMOUNT} billeder blev fjernet');
                             const previewImageCont = document.getElementById('imagePreviewCont');
                             for (const image of previewImageCont.children) {
                                 console.log(image)
@@ -82,6 +82,6 @@
                 });
             });
         </script>
-        <script type="module" src="/src/js/errorMessage.js"></script>
+        <!-- <script type="module" src="/src/js/errorMessage.js"></script> -->
     </body>
 </html>
