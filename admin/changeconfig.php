@@ -6,6 +6,8 @@ $timedelay = $_POST['timedelay'];
 $upload_max_filesize = $_POST["upload_max_filesize"];
 $maxamount = $_POST["maxamount"];
 
+
+
 $post_max_size = strval(intval($upload_max_filesize)*intval($maxamount))."M";
 echo get_current_user();
 shell_exec("../clear.sh");
