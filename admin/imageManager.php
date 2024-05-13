@@ -32,7 +32,7 @@
             <button id="confirmBtn" type="submit" value="true">Slet</button>
         </form>
 
-        <script>
+        <script type="module">
             import {messageFade} from '/src/js/errorMessage.js';
 
             // Hide delete btn if no images present
@@ -63,6 +63,7 @@
                         url: 'delete.php',
                         data: $(this).serialize(),
                         success: function () {
+                            window.reload();
                             messageFade('success', '{AMOUNT} billeder blev fjernet');
                             const previewImageCont = document.getElementById('imagePreviewCont');
                             for (const image of previewImageCont.children) {
@@ -81,6 +82,6 @@
                 });
             });
         </script>
-        <!-- <script type="module" src="/src/js/errorMessage.js"></script> -->
+        <script type="module" src="/src/js/errorMessage.js"></script>
     </body>
 </html>
