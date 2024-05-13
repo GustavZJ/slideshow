@@ -45,26 +45,27 @@
                 // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
                 $('input[type="checkbox"]').prop("checked", false);
                 const images = document.getElementsByClassName('imageCont');
-                console.log(images);
 
+                // Handle delete action
                 $("#deleteForm").submit(function (event) {
                     $.ajax({
                         type: 'POST',
                         url: 'delete.php',
                         data: $(this).serialize(),
                         success: function () {
-                            // location.reload();
                             for (let i = images.length - 1; i >= 0; i--) {
-                                console.log(images[i]);
+                                // Remove image if checkbox is checked
                                 if (images[i].children[1].checked) {
                                     images[i].remove();
                                 }
 
+                                // Hide delete btn if no images present
                                 if (document.getElementById('imagePreviewCont').childElementCount == 0) {
                                     document.getElementById('confirmBtn').style.display = 'none';
                                 }
                             }
-
+                            
+                            // Give succeess message
                             messageFade('success', '{AMOUNT} billeder blev fjernet');
                         }
                     });
