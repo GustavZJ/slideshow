@@ -10,17 +10,16 @@ const submitBtn = document.getElementById('submitBtn');
 
 // Upload image
 function uploadImage(event, files = []) {
-    const input = event.target;
     // Handle image file input
-    if (input.id == 'uploadImageInput') {
+    if (event.target && event.target.id == 'uploadImageInput') {
         // Create objectURL and validate each file uploaded
-        for (let i = 0; i < input.files.length; i++) {
-            files = validateImgs(input.files[i]);
+        for (let i = 0; i < event.target.files.length; i++) {
+            files = validateImgs(event.target.files[i]);
         }
     }
-    // Drag and drop upload
-    else if (files.length > 0) {
-        for (i = 0; i < files.length; i++) {
+    // Handle drag and drop upload
+    if (files && files.length > 0) {
+        for (let i = 0; i < files.length; i++) {
             validateImgs((files[i]));
         }
     }
@@ -61,7 +60,7 @@ function createImagePreview(file, name) {
     // Create delete btn
     const btn = document.createElement('button');
     btn.className = 'btnRed deleteImageBtn deleteBtn fa fa-trash';
-    btn.addEventListener('onclick', event => deleteImagePreview(event));
+    btn.addEventListener('click', event => deleteImagePreview(event));
     imageCont.appendChild(btn);
 
     // Append image to HTML
@@ -95,21 +94,17 @@ function dropFile(event) {
 
 
 // Delete image
-function deleteImagePreview() {
-    console.log(this);
-    // Get image (deleteImageBtn -> imageCont)
-    const imageCont = this.parentElement;
-
+function deleteImagePreview(event) {
     // Remove the image container from the DOM
-    imageCont.remove();
+    event.target.closest('.imageCont').remove();
+
     // Remove image from file input
-    deleteFiles(null, this);
+    deleteFiles(null, event.target);
 }
 
 // Add event listeners, this ensures HTML elements can run function, while script is a module
 document.addEventListener('DOMContentLoaded', () => {
     // Add event listener for drag events on uploadLabel
-    // const uploadLabel = document.getElementById('uploadLabel');
     uploadImageFile.addEventListener('dragover', event => dragOver(event));
     uploadImageFile.addEventListener('dragenter', event => dragEnter(event));
     uploadImageFile.addEventListener('dragleave', event => dragLeave(event));
