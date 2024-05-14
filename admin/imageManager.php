@@ -77,8 +77,11 @@
                                 messageFade('success', `${deleteCount} billede(r) blev fjernet`);
                             }
                             else {
-                                errMsg = (`${deleteCount} billede(r) blev fjernet
-                                Fejl, disse billeder blev ikke fjernet:
+                                errMsg = ''
+                                if (deleteCount > 0) {
+                                    errMsg += `${deleteCount} billede(r) blev fjernet`;
+                                }
+                                errMsg += (`Fejl, disse billeder blev ikke fjernet:
                                 ${[...errorList]}`);
                                 messageFade('error', errMsg);
                             }
