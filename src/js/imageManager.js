@@ -37,8 +37,8 @@ function validateImgs(file) {
     
     // Invalid image file/URL
     imgs.onerror = function() {
-        deleteFiles(file); // Remove invalid file
         messageFade('Error', 'Invalid image file/URL');
+        deleteFiles(file); // Remove invalid file
     };
 }
 
