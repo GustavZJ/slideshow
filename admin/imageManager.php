@@ -65,19 +65,11 @@
                                     messageFade('error', `Failed to delete ${file}`);
                                 }
                             }
-                            
-                            // for (let i = images.length - 1; i >= 0; i--) {
-                            //     // Remove image if checkbox is checked
-                            //     if (images[i].children[1].checked) {
-                            //         deleteCount += 1;
-                            //         images[i].remove();
-                            //     }
 
-                            //     // Hide delete btn if no images present
-                            //     if (document.getElementById('imagePreviewCont').childElementCount == 0) {
-                            //         document.getElementById('confirmBtn').style.display = 'none';
-                            //     }
-                            // }
+                            // Hide delete btn if no images present
+                            if (document.getElementById('imagePreviewCont').childElementCount == 0) {
+                                document.getElementById('confirmBtn').style.display = 'none';
+                            }
                             
                             // Give succeess message
                             messageFade('success', `${deleteCount} billede(r) blev fjernet`);
