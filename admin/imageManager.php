@@ -82,7 +82,7 @@
                                     errMsg += `${deleteCount} billede(r) blev fjernet`;
                                 }
                                 errMsg += (`Fejl, disse billeder blev ikke fjernet:
-                                ${[...errorList].join('\n')}`);
+                                ${[...errorList].join('<br>')}`);
                                 messageFade('error', errMsg);
                             }
                             deleteCount = 0;
