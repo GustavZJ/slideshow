@@ -81,7 +81,7 @@
                                 if (deleteCount > 0) {
                                     errMsg += `${deleteCount} billede(r) blev fjernet`;
                                 }
-                                errMsg += (`Fejl, disse billeder blev ikke fjernet:
+                                errMsg += (`Fejl, disse billeder blev ikke fjernet:<br>
                                 ${[...errorList].join('<br>')}`);
                                 messageFade('error', errMsg);
                             }
