@@ -77,7 +77,7 @@
                                 messageFade('success', `${deleteCount} billede(r) blev fjernet`);
                             }
                             else {
-                                errMsg = ''
+                                let errMsg = ''
                                 if (deleteCount > 0) {
                                     errMsg += `${deleteCount} billede(r) blev fjernet`;
                                 }
