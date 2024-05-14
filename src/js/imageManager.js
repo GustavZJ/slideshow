@@ -54,7 +54,7 @@ function createImagePreview(file, name) {
 
     // Create image
     const image = document.createElement('img');
-    image.className = 'imageCont';
+    image.className = 'previewImage';
     image.src = file;
     imageCont.appendChild(image);
 
