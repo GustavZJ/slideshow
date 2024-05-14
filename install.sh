@@ -4,15 +4,19 @@ bash update.sh
 
 apt-get update
 apt-get install php libapache2-mod-php feh libheif1 libheif-examples -y
+
 cp installFiles/rc.local /etc/rc.local
 cp installFiles/defaultphp.ini /var/www/slideshow/php.ini
 cp installFiles/defaultconfig.config /var/www/slideshow/config.config
 cp installFiles/slideshow.conf /etc/apache2/sites-available/slideshow.conf
+
 a2dissite 000-default.conf
 a2dissite slideshow.conf
 a2ensite slideshow.conf
+
 mkdir uploads
 mkdir backup
+
 chmod 777 uploads/
 chmod +x admin/changeconfig.sh
 
@@ -40,6 +44,5 @@ htpasswd -b -c /etc/apache2/.htpasswdadmin admin $adminpasswd
 
 echo Enter the password for the upload user. This will be needed when uploading pictures. 
 htpasswd /etc/apache2/.htpasswd uploader
-
 
 bash update.sh
