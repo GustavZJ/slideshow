@@ -58,11 +58,11 @@ function messageDecoder(msg) {
 
     let errExplanation = "Error:";
     const explanationDict={ 
-        "fileExists":" is already in our system",
-        "success":" uploaded successfully",  
-        "isNotAnImage":" is not an image file", 
-        "isTooLarge":" is too large",
-        "unknownError":" incountered an unknown error :("
+        "fileExists":" billedet er allerede i systemet",
+        "success":" uploadet successfuldt",  
+        "isNotAnImage":" er ikke en billede fil", 
+        "isTooLarge":" er for stor",
+        "unknownError":" stødte på en ukendt fejl :("
    };
     let allSuccess = true;
     for(const [key, value] of Object.entries(fileObj)) {
@@ -80,7 +80,7 @@ function messageDecoder(msg) {
             }
     }
     if(allSuccess) {
-        return ["Success", "All files uploaded successfully"]
+        return ["Success", "Alle billeder blev successfuldt uploadet"]
     }
     
     return ["error", errExplanation]
