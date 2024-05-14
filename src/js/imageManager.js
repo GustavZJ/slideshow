@@ -1,5 +1,3 @@
-import {messageFade} from '/src/js/errorMessage.js'
-
 // Image manager
 const uploadImageFile = document.getElementById('uploadImageFile');
 const uploadedImagesCont = document.getElementById('imagePreviewCont');
@@ -7,15 +5,6 @@ const uploadImageInput = document.getElementById('uploadImageInput');
 const imageURL = document.getElementById('imageURL');
 const submitImageURL = document.getElementById('submitImageURL');
 const submitBtn = document.getElementById('submitBtn');
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Add event listener for drag events on uploadImageFile
-    const uploadLabel = document.getElementById('uploadLabel');
-    uploadLabel.addEventListener('dragover', dragOver);
-    uploadLabel.addEventListener('dragenter', dragEnter);
-    uploadLabel.addEventListener('dragleave', dragLeave);
-    uploadLabel.addEventListener('drop', dropFile);
-});
 
 // Upload image
 function uploadImage(target, files = []) {
