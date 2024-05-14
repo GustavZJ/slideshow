@@ -74,12 +74,13 @@
                             }
                             
                             // Give succeess message
+                            console.log(errorList);
                             if (errorList.length == 0) {
                                 messageFade('success', `${deleteCount} billede(r) blev fjernet`);
                             }
                             else {
                                 if (deleteCount > 0) {
-                                    errMsg += `${deleteCount} billede(r) blev fjernet`;
+                                    errMsg += `${deleteCount} billede(r) blev fjernet<br>`;
                                 }
                                 errMsg += (`Fejl, disse billeder blev ikke fjernet:<br>
                                 ${[...errorList].join('<br>')}`);
