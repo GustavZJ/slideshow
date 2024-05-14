@@ -1,8 +1,9 @@
 // Modal based timed message
+const messageModalColor = {'error':'white', 'success':'green'};
+let fadeTimer;
+let deleteTimer;
+
 window.messageFade = function(type, message) {
-    const messageModalColor = {'error':'white', 'success':'green'};
-    let fadeTimer;
-    let deleteTimer;
 
     if(type == "no_msg") {
         return null
