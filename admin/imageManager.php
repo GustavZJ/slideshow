@@ -74,7 +74,6 @@
                             }
                             
                             // Give succeess message
-                            console.log(errorList);
                             if (errorList.length == 0) {
                                 messageFade('success', `${deleteCount} billede(r) blev fjernet`);
                             }
