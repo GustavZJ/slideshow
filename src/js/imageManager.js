@@ -108,10 +108,10 @@ function deleteImagePreview(target) {
 document.addEventListener('DOMContentLoaded', () => {
     // Add event listener for drag events on uploadLabel
     // const uploadLabel = document.getElementById('uploadLabel');
-    uploadImageFile.addEventListener('dragover', dragOver());
-    uploadImageFile.addEventListener('dragenter', dragEnter());
-    uploadImageFile.addEventListener('dragleave', dragLeave());
-    uploadImageFile.addEventListener('drop', dropFile());
+    uploadImageFile.addEventListener('dragover', event => dragOver(event));
+    uploadImageFile.addEventListener('dragenter', event => dragEnter(event));
+    uploadImageFile.addEventListener('dragleave', event => dragLeave(event));
+    uploadImageFile.addEventListener('drop', event => dropFile(event));
 
     // Add event listener to file input
     uploadImageInput.addEventListener('change', uploadImage(this))
