@@ -48,6 +48,7 @@
                 const images = document.getElementsByClassName('imageCont');
                 const errorList = [];
                 let deleteCount = 0;
+                let errMsg = ''
 
                 // Handle delete action
                 $("#deleteForm").submit(function (event) {
@@ -77,7 +78,6 @@
                                 messageFade('success', `${deleteCount} billede(r) blev fjernet`);
                             }
                             else {
-                                let errMsg = ''
                                 if (deleteCount > 0) {
                                     errMsg += `${deleteCount} billede(r) blev fjernet`;
                                 }
@@ -86,6 +86,7 @@
                                 messageFade('error', errMsg);
                             }
                             deleteCount = 0;
+                            errMsg = '';
                         },
                         error: function() {
                             // Give error message
