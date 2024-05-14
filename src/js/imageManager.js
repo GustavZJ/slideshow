@@ -9,12 +9,13 @@ const submitImageURL = document.getElementById('submitImageURL');
 const submitBtn = document.getElementById('submitBtn');
 
 // Upload image
-function uploadImage(target, files = []) {
+function uploadImage(event, files = []) {
+    input = event.target;
     // Handle image file input
-    if (target.id == 'uploadImageInput') {
+    if (input.id == 'uploadImageInput') {
         // Create objectURL and validate each file uploaded
-        for (let i = 0; i < target.files.length; i++) {
-            files = validateImgs(target.files[i]);
+        for (let i = 0; i < input.files.length; i++) {
+            files = validateImgs(input.files[i]);
         }
     }
     // Drag and drop upload
@@ -114,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     uploadImageFile.addEventListener('drop', event => dropFile(event));
 
     // Add event listener to file input
-    uploadImageInput.addEventListener('change', uploadImage(this))
+    uploadImageInput.addEventListener('change', event => uploadImage(event))
 });
 
 // Delete file from input
