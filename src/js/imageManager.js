@@ -8,6 +8,15 @@ const imageURL = document.getElementById('imageURL');
 const submitImageURL = document.getElementById('submitImageURL');
 const submitBtn = document.getElementById('submitBtn');
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Add event listener for drag events on uploadImageFile
+    const uploadImageFile = document.getElementById('uploadImageFile');
+    uploadImageFile.addEventListener('dragover', dragOver);
+    uploadImageFile.addEventListener('dragenter', dragEnter);
+    uploadImageFile.addEventListener('dragleave', dragLeave);
+    uploadImageFile.addEventListener('drop', dropFile);
+});
+
 // Upload image
 function uploadImage(target, files = []) {
     // Handle image file input
