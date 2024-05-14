@@ -1,11 +1,10 @@
-export {messageFade}
 // Message modal fade in / out
 const messageModalColor = {'error':'white', 'success':'green'};
 let fadeTimer;
 let deleteTimer;
 
 // Modal based timed message
-function messageFade(type, message) {
+export function messageFade(type, message) {
     if(type == "no_msg") {
         return null
     }
