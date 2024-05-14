@@ -86,8 +86,11 @@
                                 ${[...errorList].join('<br>')}`);
                                 messageFade('error', errMsg);
                             }
+
+                            // Reset counters, etc.
                             deleteCount = 0;
                             errMsg = '';
+                            errorList.length = 0
                         },
                         error: function() {
                             // Give error message
