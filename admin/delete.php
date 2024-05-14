@@ -1,8 +1,13 @@
 <?php
+$response = array();
 foreach ($_POST['files'] as $file) {
-    if (file_exists('../uploads/'.$file)) {
-        unlink('../uploads/'.$file);
+    if (unlink('../uploads/'.$file)) {
+        $response[$file] = "success";
+    } else {
+        $response[$file] = "error";
     }
 }
-header('location: imageManager.php');
+
+header('Content-Type: application/json');
+echo json_encode($response);
 exit();

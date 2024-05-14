@@ -54,19 +54,30 @@
                         type: 'POST',
                         url: 'delete.php',
                         data: $(this).serialize(),
-                        success: function () {
-                            for (let i = images.length - 1; i >= 0; i--) {
-                                // Remove image if checkbox is checked
-                                if (images[i].children[1].checked) {
+                        success: function (response) {
+                            for (let file in response) {
+                                if (response[file] === "success") {
+                                    // Delete successful, remove image
                                     deleteCount += 1;
-                                    images[i].remove();
-                                }
-
-                                // Hide delete btn if no images present
-                                if (document.getElementById('imagePreviewCont').childElementCount == 0) {
-                                    document.getElementById('confirmBtn').style.display = 'none';
+                                    $(`.previewImage[src='../uploads/${file}']`).closest('.imageCont').remove();
+                                } else {
+                                    // Delete failed, display error message
+                                    messageFade('error', `Failed to delete ${file}`);
                                 }
                             }
+                            
+                            // for (let i = images.length - 1; i >= 0; i--) {
+                            //     // Remove image if checkbox is checked
+                            //     if (images[i].children[1].checked) {
+                            //         deleteCount += 1;
+                            //         images[i].remove();
+                            //     }
+
+                            //     // Hide delete btn if no images present
+                            //     if (document.getElementById('imagePreviewCont').childElementCount == 0) {
+                            //         document.getElementById('confirmBtn').style.display = 'none';
+                            //     }
+                            // }
                             
                             // Give succeess message
                             messageFade('success', `${deleteCount} billede(r) blev fjernet`);
