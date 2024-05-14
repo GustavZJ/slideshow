@@ -8,6 +8,9 @@ Picture frame:
 - Fix issue with images that have had their name changed by the script,
  not being able to load into HTML (This seems to be an issue with the '?' char)
 
+Config page:
+- Display current values of each configurable item
+
 Admin page:
 - Change config settings ☑
 - Seperate password ☑
