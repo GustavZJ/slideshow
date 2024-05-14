@@ -46,6 +46,7 @@
                 // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
                 $('input[type="checkbox"]').prop("checked", false);
                 const images = document.getElementsByClassName('imageCont');
+                const errorList = [];
                 let deleteCount = 0;
 
                 // Handle delete action
@@ -62,7 +63,7 @@
                                     $(`.previewImage[src='../uploads/${file}']`).closest('.imageCont').remove();
                                 } else {
                                     // Delete failed, display error message
-                                    messageFade('error', `Failed to delete ${file}`);
+                                    errorList.push(file);
                                 }
                             }
 
@@ -72,12 +73,20 @@
                             }
                             
                             // Give succeess message
-                            messageFade('success', `${deleteCount} billede(r) blev fjernet`);
+                            if (errorList.length == 0) {
+                                messageFade('success', `${deleteCount} billede(r) blev fjernet`);
+                            }
+                            else {
+                                errMsg = (`${deleteCount} billede(r) blev fjernet
+                                Fejl, disse billeder blev ikke fjernet:
+                                ${[...errorList]}`);
+                                messageFade('error', errMsg);
+                            }
                             deleteCount = 0;
                         },
                         error: function() {
                             // Give error message
-                            messageFade('error', '1 eller flere billeder blev ikke fjernet');
+                            messageFade('error', 'Ingen billeder blev fjernet');
                         }
                     });
                     // Prevent default action of going to php page
