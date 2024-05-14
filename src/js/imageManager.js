@@ -10,7 +10,7 @@ const submitBtn = document.getElementById('submitBtn');
 
 // Upload image
 function uploadImage(event, files = []) {
-    input = event.target;
+    const input = event.target;
     // Handle image file input
     if (input.id == 'uploadImageInput') {
         // Create objectURL and validate each file uploaded
