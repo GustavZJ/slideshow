@@ -34,7 +34,7 @@
         </form>
 
         <script type="module">
-            import {messageFade} from '/src/js/errorMessage.js'
+            import { messageFade } from './errorMessage.js'
 
             // Hide delete btn if no images present
             if (document.getElementById('imagePreviewCont').childElementCount == 0) {

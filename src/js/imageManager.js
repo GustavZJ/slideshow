@@ -1,4 +1,4 @@
-// import { messageFade } from "./errorMessage.js";
+import { messageFade } from "./errorMessage.js";
 
 // Image manager
 const uploadImageFile = document.getElementById('uploadImageFile');
@@ -25,28 +25,6 @@ function uploadImage(target, files = []) {
     }
 }
 
-// Drag image to upload
-function dragOver(event) {
-    event.preventDefault(); // Prevent setting image path as URL
-}
-  
-function dragEnter(event) {
-    event.preventDefault(); // Prevent setting image path as URL
-    uploadImageFile.classList.add('dragHighlight');
-}
-  
-function dragLeave(event) {
-    event.preventDefault(); // Prevent setting image path as URL
-    uploadImageFile.classList.remove('dragHighlight');
-}
-  
-function dropFile(event) {
-    event.preventDefault(); // Prevent setting image path as URL
-    uploadImageFile.classList.remove('dragHighlight');
-    uploadImageInput.files = event.dataTransfer.files; // Add file to file input
-    uploadImage('dropUpload', event.dataTransfer.files);
-}
-
 function validateImgs(file) {
     // Validate image by attempting to create an HTML image element
     let imgs = new Image();
@@ -69,11 +47,21 @@ function createImagePreview(file, name) {
     // Create image object and set src
     const imageCont = document.createElement('div');
     imageCont.className = 'imageCont';
-    imageCont.innerHTML = `<img class="previewImage" src="${file}">
-                        <button class="btnRed deleteImageBtn deleteBtn fa fa-trash" onclick="deleteImagePreview(this)"></button>`;
 
     // Save name of image, this is used to identify the image, if it's deleted
     imageCont.dataset.name = name;
+
+    // Create image
+    const image = document.createElement('img');
+    image.className = 'imageCont';
+    image.src = file;
+    imageCont.appendChild(image);
+
+    // Create delete btn
+    const btn = document.createElement('button');
+    btn.className = 'btnRed deleteImageBtn deleteBtn fa fa-trash';
+    btn.addEventListener('onclick', deleteImagePreview(this));
+    imageCont.appendChild(btn);
 
     // Append image to HTML
     uploadedImagesCont.appendChild(imageCont);
@@ -81,6 +69,29 @@ function createImagePreview(file, name) {
     // Enable upload btn
     submitBtn.removeAttribute('disabled');
 }
+
+// Drag image to upload
+function dragOver(event) {
+    event.preventDefault(); // Prevent setting image path as URL
+}
+  
+function dragEnter(event) {
+    event.preventDefault(); // Prevent setting image path as URL
+    uploadImageFile.classList.add('dragHighlight');
+}
+  
+function dragLeave(event) {
+    event.preventDefault(); // Prevent setting image path as URL
+    uploadImageFile.classList.remove('dragHighlight');
+}
+  
+function dropFile(event) {
+    event.preventDefault(); // Prevent setting image path as URL
+    uploadImageFile.classList.remove('dragHighlight');
+    uploadImageInput.files = event.dataTransfer.files; // Add file to file input
+    uploadImage('dropUpload', event.dataTransfer.files);
+}
+
 
 // Delete image
 function deleteImagePreview(target) {
@@ -92,6 +103,19 @@ function deleteImagePreview(target) {
     // Remove image from file input
     deleteFiles(null, target);
 }
+
+// Add event listeners, this ensures HTML elements can run function, while script is a module
+document.addEventListener('DOMContentLoaded', () => {
+    // Add event listener for drag events on uploadLabel
+    // const uploadLabel = document.getElementById('uploadLabel');
+    uploadImageFile.addEventListener('dragover', dragOver());
+    uploadImageFile.addEventListener('dragenter', dragEnter());
+    uploadImageFile.addEventListener('dragleave', dragLeave());
+    uploadImageFile.addEventListener('drop', dropFile());
+
+    // Add event listener to file input
+    uploadImageInput.addEventListener('change', uploadImage(this))
+});
 
 // Delete file from input
 function deleteFiles(fileName = null, target = null) {
