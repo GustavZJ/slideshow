@@ -61,7 +61,7 @@ function createImagePreview(file, name) {
     // Create delete btn
     const btn = document.createElement('button');
     btn.className = 'btnRed deleteImageBtn deleteBtn fa fa-trash';
-    btn.addEventListener('onclick', deleteImagePreview(this));
+    btn.addEventListener('onclick', event => deleteImagePreview(event));
     imageCont.appendChild(btn);
 
     // Append image to HTML
@@ -95,14 +95,14 @@ function dropFile(event) {
 
 
 // Delete image
-function deleteImagePreview(target) {
+function deleteImagePreview() {
     // Get image (deleteImageBtn -> imageCont)
-    const imageCont = target.parentElement;
+    const imageCont = this.parentElement;
 
     // Remove the image container from the DOM
     imageCont.remove();
     // Remove image from file input
-    deleteFiles(null, target);
+    deleteFiles(null, this);
 }
 
 // Add event listeners, this ensures HTML elements can run function, while script is a module
