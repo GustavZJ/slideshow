@@ -96,6 +96,7 @@ function dropFile(event) {
 
 // Delete image
 function deleteImagePreview() {
+    console.log(this);
     // Get image (deleteImageBtn -> imageCont)
     const imageCont = this.parentElement;
 
