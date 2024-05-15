@@ -19,7 +19,7 @@
   // echo "<script>console.log('Debug Objects: " .json_encode(convertToBytes($iniFile['upload_max_filesize'])) . "' );</script>";
 
   $target_dir = "../uploads/";
-  $response = '';
+  $response = array();
   foreach(range(0, count($_FILES['files']['name']) - 1) as $x) {
     $target_file = $target_dir . basename($_FILES['files']["name"][$x]);
     $imageFileType = strtolower($_FILES['files']['type'][$x]);
@@ -28,26 +28,26 @@
     // Check if image file is an actual image or fake image
     if (!str_contains($imageFileType, 'image')) {
       $uploadOk = 0;
-      $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_isNotAnImage_';
+      $response[basename($_FILES['files']['name'][$x])] = 'isNotAnImage';
     }
   
     // Check if file already exists
     if (file_exists($target_file)) {
       $uploadOk = 0;
-      $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_fileExists_';
+      $response[basename($_FILES['files']['name'][$x])] = 'fileExists';
     }
   
     // Check if file is too large
     if ($_FILES['files']["size"][$x] > convertToBytes($iniFile['upload_max_filesize'])) {
       $uploadOk = 0;
-      $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_isTooLarge_';
+      $response[basename($_FILES['files']['name'][$x])] = 'isTooLarge';
     }
 
     if ($uploadOk){
       if (move_uploaded_file($_FILES['files']["tmp_name"][$x], $target_file)) {
-        $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_success_';
+        $response[basename($_FILES['files']['name'][$x])] = 'success';
       } else {
-        $response .= str_replace("_", "-", basename($_FILES['files']['name'][$x])) . '_unknownError_';
+        $response[basename($_FILES['files']['name'][$x])] = 'unknownError';
       }
     }
   }
