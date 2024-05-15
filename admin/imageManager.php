@@ -83,7 +83,6 @@
                             }
                             document.getElementById('confirmBtn').setAttribute('disabled', true);
                             for (const child of document.getElementById('imagePreviewCont').children) {
-                                console.log(child);
                                 if (child.children[1].checked) {
                                     document.getElementById('confirmBtn').setAttribute('disabled', false);
                                     break;
@@ -125,11 +124,11 @@
             function checkboxThruDiv(target) {
                 if (target.children[1].checked) {
                     target.children[1].checked = false;
-                    document.getElementById('confirmBtn').setAttribute('disabled', false);
+                    document.getElementById('confirmBtn').setAttribute('disabled', true);
                 }
                 else {
                     target.children[1].checked = true;
-                    document.getElementById('confirmBtn').setAttribute('disabled', true);
+                    document.getElementById('confirmBtn').setAttribute('disabled', false);
                 }
             }
 
