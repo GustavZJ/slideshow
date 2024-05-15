@@ -83,6 +83,7 @@
                             }
                             document.getElementById('confirmBtn').setAttribute('disabled', true);
                             for (const child of document.getElementById('imagePreviewCont').children) {
+                                console.log(child);
                                 if (child.children[1].checked) {
                                     document.getElementById('confirmBtn').setAttribute('disabled', false);
                                     break;
