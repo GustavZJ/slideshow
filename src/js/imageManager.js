@@ -149,6 +149,6 @@ window.onload = () => {
         submitBtn.setAttribute('disabled', true);
     }
     else {
-        submitBtn.setAttribute('disabled', false);
+        submitBtn.removeAttribute('disabled');
     }
 }

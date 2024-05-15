@@ -44,7 +44,7 @@
                 document.getElementById('confirmBtn').setAttribute('disabled', true);
                 for (const child of document.getElementById('imagePreviewCont').children) {
                     if (child.children[1].checked) {
-                        document.getElementById('confirmBtn').setAttribute('disabled', false);
+                        submitBtn.removeAttribute('disabled');
                         break;
                     }
                 }
@@ -84,7 +84,7 @@
                             document.getElementById('confirmBtn').setAttribute('disabled', true);
                             for (const child of document.getElementById('imagePreviewCont').children) {
                                 if (child.children[1].checked) {
-                                    document.getElementById('confirmBtn').setAttribute('disabled', false);
+                                    submitBtn.removeAttribute('disabled');
                                     break;
                                 }
                             }
@@ -128,7 +128,7 @@
                 }
                 else {
                     target.children[1].checked = true;
-                    document.getElementById('confirmBtn').setAttribute('disabled', false);
+                    submitBtn.removeAttribute('disabled');
                 }
             }
 
