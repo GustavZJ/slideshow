@@ -54,12 +54,12 @@
                             errMsg += `${key}: ${[...value].join(' og ')}.<br>`;
                         }
 
-                        if (counter > 0) {
+                        if (allSuccess) {
+                            messageFade('success', `Alle (${counter}) billeder blev uploadet uden fejl.`)
+                        }
+                        else if (counter > 0) {
                             errMsg = `${counter} filer blev uploadet uden fejl.<br>Men:<br>${errMsg}`;
                             messageFade('error', errMsg);
-                        }
-                        else if (allSuccess) {
-                            messageFade('success', `Alle (${counter}) billeder blev uploadet uden fejl.`)
                         }
                         else {
                             errMsg = `Fejl:<br>${errMsg}`;
