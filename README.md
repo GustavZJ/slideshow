@@ -2,7 +2,7 @@ CfA Billedramme Page
 Follow the instructions when first setting up Raspberry Pi OS.
 
 Requirements:<br>
-1: Raspberry pi 4 or newer<br>
+1: Raspberry pi 4 or newer (link to how it is done [here](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/2))<br>
 2: SD card formated with Raspberry Pi OS with desktop 64-bit<br>
 3: Wi-fi or ethernet connection<br>
 4: A display on which the content will be shown<br>
