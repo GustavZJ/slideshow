@@ -31,6 +31,7 @@
                 $.ajax({
                     type: 'POST',
                     url: 'upload.php',
+                    contentType: 'multipart/form-data',
                     data: $(this).serialize(),
                     success: function (response) {
                         console.log(response);
