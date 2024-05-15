@@ -26,6 +26,7 @@
     <script>
         // Function to run php script in background
         jQuery(document).ready(function ($) {
+            console.log('test');
             $("#uploadForm").submit(function (event) {
                 $.ajax({
                     type: 'POST',
@@ -43,6 +44,6 @@
     
     <script type="module" src="/src/js/errorMessage.js"></script>
     <script type="module" src="/src/js/imageManager.js"></script>
-    <script type="module" src="/src/js/error_message_decoder.js"></script>
+    <!-- <script type="module" src="/src/js/error_message_decoder.js"></script> -->
 </body>
 </html>
