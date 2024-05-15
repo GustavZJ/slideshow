@@ -125,6 +125,12 @@
                 if (target.children[1].checked) {
                     target.children[1].checked = false;
                     document.getElementById('confirmBtn').setAttribute('disabled', true);
+                    for (const child of document.getElementById('imagePreviewCont').children) {
+                        if (child.children[1].checked) {
+                            document.getElementById('confirmBtn').removeAttribute('disabled');
+                            break;
+                        }
+                    }
                 }
                 else {
                     target.children[1].checked = true;
