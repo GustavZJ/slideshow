@@ -1,10 +1,12 @@
-CfA Billedramme Page
-Follow the instructions when first setting up Raspberry Pi OS.
+<h1>CfA Billedramme Page</h1>
+
+
+<h2>Follow the instructions when first setting up Raspberry Pi OS.</h2>
 
 Requirements:<br>
 1: Raspberry pi 4 or newer<br>
 2: SD card formated with Raspberry Pi OS with <strong>desktop 64-bit</strong> (link to how it is done [here](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/2))<br>
-<em>Note: Don't use 32-bit as it won't work</em>
+<em>Note: Don't use 32-bit as it won't work</em><br>
 3: Wi-fi or ethernet connection<br>
 4: A display on which the content will be shown<br>
 5: apache2
@@ -20,7 +22,7 @@ cd slideshow
 ```
 You will now run sudo bash install.sh <br>
 After everything has installed, you will get instructions on how to setup passwords in the terminal <br>
-Note: No characters are shown doing typing of passwords
+<em>Note: No characters are shown doing typing of passwords</em>
 ```
 sudo bash install.sh
 
