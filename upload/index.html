@@ -26,8 +26,8 @@
     <script>
         // Function to run php script in background
         jQuery(document).ready(function ($) {
-            console.log('test');
             $("#uploadForm").submit(function (event) {
+                console.log('test');
                 $.ajax({
                     type: 'POST',
                     url: 'upload.php',
