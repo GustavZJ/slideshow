@@ -56,6 +56,11 @@
                         else {
                             messageFade('error', errMsg);
                         }
+
+                        for (const image of document.getElementById('imagePreviewCont').children) {
+                            image.remove();
+                            document.getElementById('uploadImageInput').value = '';
+                        }
                     }
                 });
             });
