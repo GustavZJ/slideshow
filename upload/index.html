@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="imageUploadCont">
-        <form action="upload.php" method="post", enctype="multipart/form-data">
+        <form id="uploadForm" method="get" enctype="multipart/form-data">
             <div id="uploadImageFile">
                 <input type="file" id="uploadImageInput" multiple="multiple" accept="image/*" name="files[]">
                 <label for="uploadImageInput" id="uploadLabel">Klik for at uploade</label>
@@ -21,6 +21,24 @@
         <div id="imagePreviewCont"></div>
         <a class="labelBtn btnWhite" href="/admin/index.html">Til admin-side</a>
     </div>
+
+    <script>
+        // Function to run php script in background
+        jQuery(document).ready(function ($) {
+            $("#uploadForm").submit(function (event) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'upload.php',
+                    data: $(this).serialize(),
+                    success: function (response) {
+                        console.log(response);
+                    }
+                });
+                // Prevent default action of going to php page
+                //event.preventDefault();
+            });
+        });
+    </script>
     
     <script type="module" src="/src/js/errorMessage.js"></script>
     <script type="module" src="/src/js/imageManager.js"></script>
