@@ -44,6 +44,9 @@
       array_push($response[basename($_FILES['files']['name'][$x])], 'er for stor');
     }
 
+    
+    array_push($response[basename($_FILES['files']['name'][$x])], 'test fejl');
+
     if ($uploadOk){
       if (move_uploaded_file($_FILES['files']["tmp_name"][$x], $target_file)) {
         array_push($response[basename($_FILES['files']['name'][$x])], 'success');
