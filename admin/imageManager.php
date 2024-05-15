@@ -43,7 +43,7 @@
             else {
                 document.getElementById('confirmBtn').setAttribute('disabled', true);
                 for (const child of document.getElementById('imagePreviewCont').children) {
-                    if (child.find('input').first().checked) {
+                    if (child.children[1].checked) {
                         document.getElementById('confirmBtn').setAttribute('disabled', false);
                         break;
                     }
@@ -83,7 +83,7 @@
                             }
                             document.getElementById('confirmBtn').setAttribute('disabled', true);
                             for (const child of document.getElementById('imagePreviewCont').children) {
-                                if (child.find('input').first().checked) {
+                                if (child.children[1].checked) {
                                     document.getElementById('confirmBtn').setAttribute('disabled', false);
                                     break;
                                 }
