@@ -29,9 +29,10 @@
             $("#uploadForm").submit(function (event) {
                 console.log('test');
                 $.ajax({
-                    method: 'POST',
+                    type: 'POST',
                     url: 'upload.php',
                     contentType: 'multipart/form-data',
+                    processData: false,  // Important!
                     data: $(this).serialize(),
                     success: function (response) {
                         console.log(response);
