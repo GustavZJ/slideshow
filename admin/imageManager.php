@@ -40,6 +40,15 @@
             if (document.getElementById('imagePreviewCont').childElementCount == 0) {
                 document.getElementById('confirmBtn').style.display = 'none';
             }
+            else {
+                document.getElementById('confirmBtn').setAttribute('disabled', true);
+                for (const image of document.getElementById('imagePreviewCont')) {
+                    if (image.closest('input').checked) {
+                        document.getElementById('confirmBtn').setAttribute('disabled', false);
+                        break;
+                    }
+                }
+            }
 
             // Function to run php script in background
             jQuery(document).ready(function ($) {
@@ -71,6 +80,13 @@
                             // Hide delete btn if no images present
                             if (document.getElementById('imagePreviewCont').childElementCount == 0) {
                                 document.getElementById('confirmBtn').style.display = 'none';
+                            }
+                            document.getElementById('confirmBtn').setAttribute('disabled', true);
+                            for (const image of document.getElementById('imagePreviewCont')) {
+                                if (image.closest('input').checked) {
+                                    document.getElementById('confirmBtn').setAttribute('disabled', false);
+                                    break;
+                                }
                             }
                             
                             // Give succeess message
@@ -108,9 +124,11 @@
             function checkboxThruDiv(target) {
                 if (target.children[1].checked) {
                     target.children[1].checked = false;
+                    document.getElementById('confirmBtn').setAttribute('disabled', false);
                 }
                 else {
                     target.children[1].checked = true;
+                    document.getElementById('confirmBtn').setAttribute('disabled', true);
                 }
             }
 
