@@ -50,8 +50,8 @@
                             }
                             else {
                                 allSuccess = false;
+                                errMsg += `${key}: ${[...value].join(' og ')}.<br>`;
                             }
-                            errMsg += `${key}: ${[...value].join(' og ')}.<br>`;
                         }
 
                         if (allSuccess) {
