@@ -35,7 +35,7 @@
     // Check if file already exists
     if (file_exists($target_file)) {
       $uploadOk = 0;
-      array_push($response[basename($_FILES['files']['name'][$x])], 'eksistere allerede');
+      array_push($response[basename($_FILES['files']['name'][$x])], 'eksisterer allerede');
     }
   
     // Check if file is too large
