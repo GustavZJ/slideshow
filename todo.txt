@@ -23,10 +23,15 @@ Admin page:
 Upload page:
 - Fix issue with HTML not being able to display some images, such as .HEIC (This is gonna be annoying) https://shkspr.mobi/blog/2020/12/coping-with-heic-in-the-browser/
 - Consider using jQuery to handle upload errors, so that the error pop up won't appear,
-  if the user refreshes, after having attempted to upload images (Need to test if it's possible to get some of the errors thru this method)
+  if the user refreshes, after having attempted to upload images (Need to test if it's possible to get some of the errors thru this method) ☑
 - Add indicators to show the user if they have selected too many files
+<<<<<<< HEAD
 - Add counter to show how many images very uploaded succesfully, whenever an image encounters an error while uploading
 2
+=======
+- Add counter to show how many images very uploaded succesfully, whenever an image encounters an error while uploading ☑
+
+>>>>>>> 8750e6b599ec2a7d63fa94b28b5cd2c0e0b397c1
 Website:
 - Improve styling
 - Full responsive for different devices (Need to test if any issue on devices)
