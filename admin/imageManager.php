@@ -42,8 +42,8 @@
             }
             else {
                 document.getElementById('confirmBtn').setAttribute('disabled', true);
-                for (const image of document.getElementById('imagePreviewCont')) {
-                    if (image.closest('input').checked) {
+                for (const child of document.getElementById('imagePreviewCont').children) {
+                    if (child.closest('input').checked) {
                         document.getElementById('confirmBtn').setAttribute('disabled', false);
                         break;
                     }
@@ -82,8 +82,8 @@
                                 document.getElementById('confirmBtn').style.display = 'none';
                             }
                             document.getElementById('confirmBtn').setAttribute('disabled', true);
-                            for (const image of document.getElementById('imagePreviewCont')) {
-                                if (image.closest('input').checked) {
+                            for (const child of document.getElementById('imagePreviewCont').children) {
+                                if (child.closest('input').checked) {
                                     document.getElementById('confirmBtn').setAttribute('disabled', false);
                                     break;
                                 }
