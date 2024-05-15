@@ -55,10 +55,10 @@
                         }
 
                         if (allSuccess) {
-                            messageFade('success', `Alle ${counter} billeder blev uploadet uden fejl.`)
+                            messageFade('success', `Alle ${counter} billede(r) blev uploadet uden fejl.`)
                         }
                         else if (counter > 0) {
-                            errMsg = `${counter} filer blev uploadet uden fejl.<br>Men:<br>${errMsg}`;
+                            errMsg = `${counter} billede(r) blev uploadet uden fejl.<br>Men:<br>${errMsg}`;
                             messageFade('error', errMsg);
                         }
                         else {
@@ -66,7 +66,7 @@
                             messageFade('error', errMsg);
                         }
 
-                        for (let i = document.getElementById('imagePreviewCont').childElementCount; i >= 0; i--) {
+                        for (let i = document.getElementById('imagePreviewCont').childElementCount - 1; i >= 0; i--) {
                             document.getElementById('imagePreviewCont').children[i].remove();
                             document.getElementById('uploadImageInput').value = '';
                         }
