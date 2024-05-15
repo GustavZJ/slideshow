@@ -23,7 +23,9 @@
         <a class="labelBtn btnWhite" href="/admin/index.html">Til admin-side</a>
     </div>
 
-    <script>
+    <script type="module">
+        import {messageFade} from '/src/js/errorMessage.js'
+
         // Function to run php script in background
         jQuery(document).ready(function ($) {
             $("#uploadForm").submit(function (event) {
@@ -38,7 +40,22 @@
                     contentType: false, // Set content type to false
                     processData: false, // Set processData to false
                     success: function (response) {
-                        console.log(response);
+                        let allSuccess = true;
+                        let errMsg = 'Fejl:<br>';
+
+                        for (const [key, value] of Object.entries(response)) {
+                            if (!value.includes('success')) {
+                                allSuccess = false;
+                            }
+                            errMsg += `${key}: ${[...value]}<br>`;
+                        }
+
+                        if (allSuccess) {
+                            messageFade('success', 'Alle billeder blev uploadet')
+                        }
+                        else {
+                            messageFade('error', errMsg);
+                        }
                     }
                 });
             });
