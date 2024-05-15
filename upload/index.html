@@ -41,19 +41,28 @@
                     processData: false, // Set processData to false
                     success: function (response) {
                         let allSuccess = true;
-                        let errMsg = 'Fejl:<br>';
+                        let errMsg = '';
+                        let counter = 0;
 
                         for (const [key, value] of Object.entries(response)) {
-                            if (!value.includes('success')) {
+                            if (value.includes('success')) {
+                                counter += 1;
+                            }
+                            else {
                                 allSuccess = false;
                             }
                             errMsg += `${key}: ${[...value].join(' og ')}.<br>`;
                         }
 
-                        if (allSuccess) {
-                            messageFade('success', 'Alle billeder blev uploadet')
+                        if (counter > 0) {
+                            errMsg = `${counter} filer blev uploadet uden fejl.<br>Men:<br>${errMsg}`;
+                            messageFade('error', errMsg);
+                        }
+                        else if (allSuccess) {
+                            messageFade('success', `Alle (${counter}) billeder blev uploadet uden fejl.`)
                         }
                         else {
+                            errMsg = `Fejl:<br>${errMsg}`;
                             messageFade('error', errMsg);
                         }
 
