@@ -64,11 +64,9 @@
                         success: function (response) {
                             for (let file in response) {
                                 if (response[file] === "success") {
-                                    // Delete successful, remove image
                                     deleteCount += 1;
                                     $(`.previewImage[src='../uploads/${file}']`).closest('.imageCont').remove();
                                 } else {
-                                    // Delete failed, display error message
                                     errorList.push(file);
                                 }
                             }
@@ -78,15 +76,8 @@
                                 document.getElementById('deleteBtn').style.display = 'none';
                                 document.getElementById('deleteAllBtn').style.display = 'none';
                             }
-                            document.getElementById('deleteBtn').setAttribute('disabled', true);
-                            document.getElementById('deleteAllBtn').setAttribute('disabled', true);
-                            for (const child of document.getElementById('imagePreviewCont').children) {
-                                if (child.children[1].checked) {
-                                    document.getElementById('deleteBtn').removeAttribute('disabled');
-                                    document.getElementById('deleteAllBtn').removeAttribute('disabled');
-                                    break;
-                                }
-                            }
+
+                            disableBtns();
                             
                             // Give succeess message
                             if (errorList.length == 0) {
@@ -115,6 +106,18 @@
                     event.preventDefault();
                 });
             });
+
+        function disableBtns() {
+            document.getElementById('deleteBtn').setAttribute('disabled', true);
+                document.getElementById('deleteAllBtn').setAttribute('disabled', true);
+                for (const child of document.getElementById('imagePreviewCont').children) {
+                    if (child.children[1].checked) {
+                        document.getElementById('deleteBtn').removeAttribute('disabled');
+                        document.getElementById('deleteAllBtn').removeAttribute('disabled');
+                        break;
+                    }
+                }
+        }
         </script>
 
         <!-- This has to be in a seperate script, otherwise, the import module will break it -->
@@ -124,15 +127,7 @@
                 if (target.children[1].checked) {
                     target.children[1].checked = false;
 
-                    document.getElementById('deleteBtn').setAttribute('disabled', true);
-                    document.getElementById('deleteAllBtn').setAttribute('disabled', true);
-                    for (const child of document.getElementById('imagePreviewCont').children) {
-                        if (child.children[1].checked) {
-                            document.getElementById('deleteBtn').removeAttribute('disabled');
-                            document.getElementById('deleteAllBtn').removeAttribute('disabled');
-                            break;
-                        }
-                    }
+                    disableBtns();
                 }
                 else {
                     target.children[1].checked = true;
