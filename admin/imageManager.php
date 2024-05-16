@@ -45,8 +45,9 @@
             jQuery(document).ready(function ($) {
                 // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
                 $('input[type="checkbox"]').prop("checked", false);
+                document.getElementById('confirmBtn').setAttribute('disabled', true);
+                
                 const images = document.getElementsByClassName('imageCont');
-                document.getElementById('confirmBtn').removeAttribute('disabled');
                 const errorList = [];
                 let deleteCount = 0;
                 let errMsg = ''
