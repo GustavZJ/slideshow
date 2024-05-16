@@ -16,8 +16,8 @@
         <a class="labelBtn btnWhite" href="/admin/config.html">Til config-side</a>
 
         <form id="deleteForm" method="get">
+            <p id="deletePreviewText">Ingen billeder i systemet</p>
             <div id="imagePreviewCont">
-                <p id="deletePreviewText">Ingen billeder i systemet</p>
                 <?php
                     // Load images from rpi, and display them
                     $images = scandir('../uploads');
