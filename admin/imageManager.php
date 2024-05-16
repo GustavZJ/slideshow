@@ -30,7 +30,7 @@
                     }
                 ?>
             </div>
-            <button id="confirmBtn" type="submit" value="true">Slet</button>
+            <button id="confirmBtn" type="submit" value="true" disabled="true">Slet</button>
         </form>
 
         <script type="module">
@@ -39,15 +39,6 @@
             // Hide delete btn if no images present
             if (document.getElementById('imagePreviewCont').childElementCount == 0) {
                 document.getElementById('confirmBtn').style.display = 'none';
-            }
-            else {
-                document.getElementById('confirmBtn').setAttribute('disabled', true);
-                for (const child of document.getElementById('imagePreviewCont').children) {
-                    if (child.children[1].checked) {
-                        document.getElementById('confirmBtn').removeAttribute('disabled');
-                        break;
-                    }
-                }
             }
 
             // Function to run php script in background
@@ -124,6 +115,7 @@
             function checkboxThruDiv(target) {
                 if (target.children[1].checked) {
                     target.children[1].checked = false;
+
                     document.getElementById('confirmBtn').setAttribute('disabled', true);
                     for (const child of document.getElementById('imagePreviewCont').children) {
                         if (child.children[1].checked) {
