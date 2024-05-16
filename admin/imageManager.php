@@ -30,7 +30,8 @@
                     }
                 ?>
             </div>
-            <button id="confirmBtn" type="submit" value="true" disabled="true">Slet</button>
+            <button id="deleteBtn" type="submit" value="true" disabled="true">Slet</button>
+            <button id="deleteAllBtn" class="btnRed" type="submit" value="true" disabled="true">Slet alt</button>
         </form>
 
         <script type="module">
@@ -38,14 +39,16 @@
 
             // Hide delete btn if no images present
             if (document.getElementById('imagePreviewCont').childElementCount == 0) {
-                document.getElementById('confirmBtn').style.display = 'none';
+                document.getElementById('deleteBtn').style.display = 'none';
+                document.getElementById('deleteAllBtn').style.display = 'none';
             }
 
             // Function to run php script in background
             jQuery(document).ready(function ($) {
                 // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
                 $('input[type="checkbox"]').prop("checked", false);
-                document.getElementById('confirmBtn').setAttribute('disabled', true);
+                document.getElementById('deleteBtn').setAttribute('disabled', true);
+                document.getElementById('deleteAllBtn').setAttribute('disabled', true);
                 
                 const images = document.getElementsByClassName('imageCont');
                 const errorList = [];
@@ -72,12 +75,15 @@
 
                             // Hide delete btn if no images present
                             if (document.getElementById('imagePreviewCont').childElementCount == 0) {
-                                document.getElementById('confirmBtn').style.display = 'none';
+                                document.getElementById('deleteBtn').style.display = 'none';
+                                document.getElementById('deleteAllBtn').style.display = 'none';
                             }
-                            document.getElementById('confirmBtn').setAttribute('disabled', true);
+                            document.getElementById('deleteBtn').setAttribute('disabled', true);
+                            document.getElementById('deleteAllBtn').setAttribute('disabled', true);
                             for (const child of document.getElementById('imagePreviewCont').children) {
                                 if (child.children[1].checked) {
-                                    document.getElementById('confirmBtn').removeAttribute('disabled');
+                                    document.getElementById('deleteBtn').removeAttribute('disabled');
+                                    document.getElementById('deleteAllBtn').removeAttribute('disabled');
                                     break;
                                 }
                             }
@@ -118,17 +124,20 @@
                 if (target.children[1].checked) {
                     target.children[1].checked = false;
 
-                    document.getElementById('confirmBtn').setAttribute('disabled', true);
+                    document.getElementById('deleteBtn').setAttribute('disabled', true);
+                    document.getElementById('deleteAllBtn').setAttribute('disabled', true);
                     for (const child of document.getElementById('imagePreviewCont').children) {
                         if (child.children[1].checked) {
-                            document.getElementById('confirmBtn').removeAttribute('disabled');
+                            document.getElementById('deleteBtn').removeAttribute('disabled');
+                            document.getElementById('deleteAllBtn').removeAttribute('disabled');
                             break;
                         }
                     }
                 }
                 else {
                     target.children[1].checked = true;
-                    document.getElementById('confirmBtn').removeAttribute('disabled');
+                    document.getElementById('deleteBtn').removeAttribute('disabled');
+                    document.getElementById('deleteAllBtn').removeAttribute('disabled');
                 }
             }
 
