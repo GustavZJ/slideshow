@@ -30,7 +30,7 @@
                     }
                 ?>
             </div>
-            <button id="deleteBtn" type="submit" value="true" disabled="true">Slet</button>
+            <button id="deleteBtn" class="btnWhite" type="submit" value="true" disabled="true">Slet</button>
             <button id="deleteAllBtn" class="btnRed" type="submit" value="true" disabled="true">Slet alt</button>
         </form>
 
