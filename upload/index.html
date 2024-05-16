@@ -55,7 +55,14 @@
                         }
 
                         if (allSuccess) {
-                            messageFade('success', `Alle ${counter} billede(r) blev uploadet uden fejl.`)
+                            let msg = '';
+                            if (counter > 1) {
+                                msg += `Alle ${counter} billede(r) blev uploadet uden fejl.`
+                            }
+                            else {
+                                msg += `${counter} billede blev uploadet uden fejl.`
+                            }
+                            messageFade('success', msg);
                         }
                         else if (counter > 0) {
                             errMsg = `${counter} billede(r) blev uploadet uden fejl.<br>Men:<br>${errMsg}`;
