@@ -51,6 +51,10 @@ button,
 		}
 	}
 
+	&:disabled {
+		background-color: gray; // This is needed for btns with a color class
+	}
+
 	// Button colors
 	&.btnWhite {
 		background-color: white;

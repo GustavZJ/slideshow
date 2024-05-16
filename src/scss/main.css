@@ -47,6 +47,10 @@ button:enabled,
     filter: brightness(0.7);
   }
 }
+button:disabled,
+.labelBtn:disabled {
+  background-color: gray;
+}
 button.btnWhite,
 .labelBtn.btnWhite {
   background-color: white;
