@@ -4,7 +4,7 @@ git reset --hard
 
 git pull https://github.com/GustavZJ/slideshow.git
 
-message=$(git log -1)
+#message=$(git log -1)
 
 #curl --url 'smtps://smtp.gmail.com:465' --ssl-reqd \
 #  --mail-from 'updatereminder18@gmail.com' \
