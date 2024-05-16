@@ -52,7 +52,8 @@ button,
 	}
 
 	&:disabled {
-		background-color: gray; // This is needed for btns with a color class
+		background-color: initial;
+		filter: brightness(0.75);
 	}
 
 	// Button colors
