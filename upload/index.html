@@ -69,6 +69,7 @@
                         for (let i = document.getElementById('imagePreviewCont').childElementCount - 1; i >= 0; i--) {
                             document.getElementById('imagePreviewCont').children[i].remove();
                             document.getElementById('uploadImageInput').value = '';
+                            document.getElementById('previewText').style.display = 'none';
                         }
 
                         document.getElementById('submitBtn').setAttribute('disabled', true);
