@@ -32,6 +32,7 @@ function validateImgs(file) {
     
     // Valid image file/URL
     imgs.onload = function() {
+        document.getElementById('previewText').style.display = 'block';
         createImagePreview(imgs.src, file['name']);
     };
     
@@ -139,6 +140,7 @@ function deleteFiles(fileName = null, target = null) {
     // Disable upload btn if no images remain
     if (uploadImageInput.files.length == 0) {
         submitBtn.setAttribute('disabled', true);
+        document.getElementById('previewText').style.display = 'none';
     }
 }
 

@@ -96,6 +96,10 @@ button.btnRed,
   display: none;
 }
 
+#previewText {
+  display: none;
+}
+
 #imagePreviewCont .imageCont {
   position: relative;
   display: inline-block;

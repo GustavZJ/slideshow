@@ -17,6 +17,7 @@
 
         <form id="deleteForm" method="get">
             <div id="imagePreviewCont">
+                <p id="deletePreviewText">Ingen billeder i systemet</p>
                 <?php
                     // Load images from rpi, and display them
                     $images = scandir('../uploads');
@@ -41,6 +42,9 @@
             if (document.getElementById('imagePreviewCont').childElementCount == 0) {
                 document.getElementById('deleteBtn').style.display = 'none';
                 document.getElementById('deleteAllBtn').style.display = 'none';
+            }
+            else {
+                document.getElementById('deletePreviewText').style.display = 'none';
             }
 
             // Function to run php script in background
@@ -75,6 +79,7 @@
                             if (document.getElementById('imagePreviewCont').childElementCount == 0) {
                                 document.getElementById('deleteBtn').style.display = 'none';
                                 document.getElementById('deleteAllBtn').style.display = 'none';
+                                document.getElementById('deletePreviewText').style.display = 'block';
                             }
 
                             disableBtns();

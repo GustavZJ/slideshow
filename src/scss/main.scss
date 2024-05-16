@@ -110,6 +110,10 @@ button,
 }
 
 // Image preview styling
+#previewText {
+	display: none;
+}
+
 #imagePreviewCont {
 	.imageCont {
 		position: relative;
