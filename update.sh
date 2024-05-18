@@ -7,12 +7,14 @@ git reset --hard
 git pull https://github.com/GustavZJ/slideshow.git
 
 message=$(git log -1)
-readme=$(README.md)
+readme=$(cat README.md)
 touch message.txt
 
-echo $message+$readme >> message.txt
+echo $message >> message.txt
 
+echo $readme >> message.txt
 
+cat message.txt
 isnew=[ $oldmessage != $message ]
 isnew=true
 if [ isnew ]; then
@@ -27,4 +29,4 @@ fi
 chmod 744 admin/changeconfig.sh
 chown www-data:www-data admin/changeconfig.sh
 systemctl restart apache2
-rm message.txt
+#rm message.txt
