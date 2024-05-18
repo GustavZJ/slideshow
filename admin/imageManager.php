@@ -58,6 +58,15 @@
                 }
             }
 
+            function deleteAll() {
+                confirmAction('slet alle billeder')
+                    .then (value => {
+                        if (value) {
+                            $('input[type="checkbox"]').prop('checked', true);
+                        }
+                    });
+                }
+
             // Function to run php script in background
             jQuery(document).ready(function ($) {
                 // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
@@ -68,15 +77,6 @@
                 const errorList = [];
                 let deleteCount = 0;
                 let errMsg = ''
-
-                function deleteAll() {
-                confirmAction('slet alle billeder')
-                    .then (value => {
-                        if (value) {
-                            $('input[type="checkbox"]').prop('checked', true);
-                        }
-                    });
-                }
 
                 // Handle delete action
                 $("#deleteForm").submit(function (event) {
