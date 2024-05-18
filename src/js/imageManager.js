@@ -32,19 +32,25 @@ function uploadImage(event, files = []) {
     }
 }
 
-function validateImgs(file) {
+async function validateImgs(file) {
     // Validate image by attempting to create an HTML image element
-    let imgs = new Image();
-    imgs.src = URL.createObjectURL(file);
-    
+    let img = new Image();
+    //if HEIC file
+    if (file.name.toLowerCase().includes(".heic") || file.name.toLowerCase().includes(".heif")) {
+        img.src = '/temp/placeholder.png';
+    }
+    else {
+        img.src = URL.createObjectURL(file);
+    }
+
     // Valid image file/URL
-    imgs.onload = function() {
+    img.onload = function() {
         document.getElementById('previewText').style.display = 'block';
-        createImagePreview(imgs.src, file['name']);
+        createImagePreview(img.src, file['name']);
     };
     
     // Invalid image file/URL
-    imgs.onerror = function() {
+    img.onerror = function() {
         messageFade('Error', 'Invalid image file/URL');
         deleteFiles(file); // Remove invalid file
     };
@@ -103,10 +109,12 @@ async function dropFile(event) {
     for (let i = 0; i < items.length; i++) {
         if (items[i].kind === 'file') {
             files.push(items[i].getAsFile());
-        } else if (items[i].kind === 'string') {
+        }
+        else if (items[i].kind === 'string') {
             const url = await new Promise(resolve => items[i].getAsString(resolve));
             const filename = url.split('/').pop();
             const file = await urlToFile(url, filename, 'image/jpeg');
+            console.log(file);
             files.push(file);
         }
     }

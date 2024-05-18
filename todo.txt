@@ -18,7 +18,7 @@ Admin page:
 - Seperate password ☑
 - Remove pictures manually ☑
 - Clear all pictures ☑
-- Add confirm action when deleting all pictures
+- Add confirm action when deleting all pictures ☑
 - Add error handling for image manager, incase image fails to delete ☑
 
 Upload page:
