@@ -7,7 +7,7 @@ git reset --hard
 git pull https://github.com/GustavZJ/slideshow.git
 
 message=$(git log -1)
-readme="cat README.md"
+readme=$(README.md)
 touch message.txt
 
 echo $message+$readme >> message.txt
