@@ -63,6 +63,7 @@
                     .then (value => {
                         if (value) {
                             $('input[type="checkbox"]').prop('checked', true);
+                            document.getElementById('deleteForm').submit();
                         }
                     });
                 }
