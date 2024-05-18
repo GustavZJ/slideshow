@@ -31,8 +31,8 @@
                     }
                 ?>
             </div>
-            <button id="deleteBtn" class="btnWhite" type="submit" value="true" disabled="true">Slet</button>
-            <button id="deleteAllBtn" class="btnRed" type="submit" value="true" disabled="true">Slet alt</button>
+            <button id="deleteBtn" class="btnWhite" type="submit" disabled="true">Slet</button>
+            <button id="deleteAllBtn" class="btnRed" type="submit" disabled="true">Slet alt</button>
         </form>
 
         <script type="module">
@@ -61,6 +61,9 @@
 
                 // Handle delete action
                 $("#deleteForm").submit(function (event) {
+                    const clickedBtn = $("button[type=submit][clicked=true]").val();
+                    console.log(clickedBtn);
+
                     $.ajax({
                         type: 'POST',
                         url: 'delete.php',
