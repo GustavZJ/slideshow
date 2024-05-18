@@ -25,13 +25,13 @@
                         if (is_file('../uploads/'.$image)) {
                             echo '<div class="imageCont elePointerIcon" onclick="checkboxThruDiv(this)">';
                             echo '  <img class="previewImage" src="../uploads/'.$image.'">';
-                            echo '  <input type="checkbox" name="files[]" value="'.$image.'" onclick="stopPropagation(event)">';
+                            echo '  <input type="checkbox" name="files[]" value="'.$image.'" onclick="event.stopPropagation();">';
                             echo '</div>';
                         }
                     }
                 ?>
             </div>
-            <button id="deleteBtn" class="btnWhite" type="submit" disabled="true">Slet</button>
+            <button id="deleteBtn" class="btnWhite" type="submit" onclick="disableBtns()" disabled="true">Slet</button>
             <button id="deleteAllBtn" class="btnRed" type="submit">Slet alt</button>
         </form>
 
@@ -132,8 +132,6 @@
             function checkboxThruDiv(target) {
                 if (target.children[1].checked) {
                     target.children[1].checked = false;
-
-                    disableBtns();
                 }
                 else {
                     target.children[1].checked = true;
