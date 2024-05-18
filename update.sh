@@ -1,6 +1,6 @@
 cd /var/www/slideshow
 
-old_message=$(git log -1)
+oldmessage=$(git log -1)
 
 git reset --hard
 
@@ -14,7 +14,7 @@ echo $message >> message.txt
 
 echo $readme >> message.txt
 
-if [$old_message!=$message]; then
+if [$oldmessage!=$message]; then
     curl --url 'smtps://smtp.gmail.com:465' --ssl-reqd \
  --mail-from 'updatereminder18@gmail.com' \
  --mail-rcpt 'gust3371@gmail.com' \
