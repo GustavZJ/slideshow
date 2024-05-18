@@ -74,11 +74,11 @@
                     .then (value => {
                         if (value) {
                             $('input[type="checkbox"]').prop('checked', true);
-                            document.getElementById('deleteForm').submit();
+                            $('form').submit();
                         }
                     });
                 }
-                
+
                 // Handle delete action
                 $("#deleteForm").submit(function (event) {
                     $.ajax({
