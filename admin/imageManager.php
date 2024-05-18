@@ -32,7 +32,7 @@
                 ?>
             </div>
             <button id="deleteBtn" class="btnWhite" type="submit" disabled="true">Slet</button>
-            <button id="deleteAllBtn" class="btnRed" type="submit">Slet alt</button>
+            <button id="deleteAllBtn" class="btnRed">Slet alt</button>
         </form>
 
         <script type="module">
