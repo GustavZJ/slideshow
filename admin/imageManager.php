@@ -23,9 +23,9 @@
                     $images = scandir('../uploads');
                     foreach($images as $image) {
                         if (is_file('../uploads/'.$image)) {
-                            echo '<div class="imageCont elePointerIcon" onclick="checkboxThruDiv(this) disableBtns()">';
+                            echo '<div class="imageCont elePointerIcon" onclick="checkboxThruDiv(this); disableBtns()">';
                             echo '  <img class="previewImage" src="../uploads/'.$image.'">';
-                            echo '  <input type="checkbox" name="files[]" value="'.$image.'" onclick="event.stopPropagation() disableBtns()">';
+                            echo '  <input type="checkbox" name="files[]" value="'.$image.'" onclick="event.stopPropagation(); disableBtns()">';
                             echo '</div>';
                         }
                     }
