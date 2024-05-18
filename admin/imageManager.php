@@ -70,7 +70,7 @@
                 let errMsg = ''
 
                 document.getElementById('deleteBtn').addEventListener('click', disableBtns);
-                document.getElementsByClassName('imageCont').addEventListener('click', disableBtns);
+                document.getElementsByClassName('imageCont').forEach(el => el.addEventListener('click', disableBtns));
 
                 document.getElementById('deleteAllBtn').onclick = () => {
                 confirmAction('slet alle billeder')
