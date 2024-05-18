@@ -10,9 +10,8 @@ message=$(git log -1)
 readme=$(cat README.md)
 touch message.txt
 
-echo $message >> message.txt
+echo $message+$readme >> message.txt
 
-echo $readme >> message.txt
 
 isnew=[ $oldmessage != $message ]
 isnew=true
