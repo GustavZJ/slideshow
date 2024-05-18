@@ -47,6 +47,16 @@
                 document.getElementById('deletePreviewText').style.display = 'none';
             }
 
+            function disableBtns() {
+                document.getElementById('deleteBtn').setAttribute('disabled', true);
+                for (const child of document.getElementById('imagePreviewCont').children) {
+                    if (child.children[1].checked) {
+                        document.getElementById('deleteBtn').removeAttribute('disabled');
+                        break;
+                    }
+                }
+            }
+
             // Function to run php script in background
             jQuery(document).ready(function ($) {
                 // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
@@ -114,16 +124,6 @@
                     event.preventDefault();
                 });
             });
-
-        function disableBtns() {
-                document.getElementById('deleteBtn').setAttribute('disabled', true);
-                for (const child of document.getElementById('imagePreviewCont').children) {
-                    if (child.children[1].checked) {
-                        document.getElementById('deleteBtn').removeAttribute('disabled');
-                        break;
-                    }
-                }
-        }
         </script>
 
         <!-- This has to be in a seperate script, otherwise, the import module will break it -->
