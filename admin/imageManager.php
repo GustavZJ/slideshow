@@ -32,7 +32,7 @@
                 ?>
             </div>
             <button id="deleteBtn" class="btnWhite" type="submit" disabled="true">Slet</button>
-            <button id="deleteAllBtn" class="btnRed" type="submit" disabled="true">Slet alt</button>
+            <button id="deleteAllBtn" class="btnRed" type="submit">Slet alt</button>
         </form>
 
         <script type="module">
@@ -52,7 +52,6 @@
                 // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
                 $('input[type="checkbox"]').prop('checked', false);
                 document.getElementById('deleteBtn').setAttribute('disabled', true);
-                document.getElementById('deleteAllBtn').setAttribute('disabled', true);
                 
                 const images = document.getElementsByClassName('imageCont');
                 const errorList = [];
@@ -117,12 +116,10 @@
             });
 
         function disableBtns() {
-            document.getElementById('deleteBtn').setAttribute('disabled', true);
-                document.getElementById('deleteAllBtn').setAttribute('disabled', true);
+                document.getElementById('deleteBtn').setAttribute('disabled', true);
                 for (const child of document.getElementById('imagePreviewCont').children) {
                     if (child.children[1].checked) {
                         document.getElementById('deleteBtn').removeAttribute('disabled');
-                        document.getElementById('deleteAllBtn').removeAttribute('disabled');
                         break;
                     }
                 }
