@@ -26,3 +26,4 @@ fi
 chmod 744 admin/changeconfig.sh
 chown www-data:www-data admin/changeconfig.sh
 systemctl restart apache2
+rm message.txt
