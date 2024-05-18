@@ -72,7 +72,10 @@
                 // Handle delete action
                 $("#deleteForm").submit(function (event) {
                     if (event.originalEvent.submitter.id == 'deleteAllBtn'); {
-                        console.log(confirmAction('slet alle billeder'));
+                        confirmAction('slet alle billeder')
+                            .then (result => {
+                                console.log(result);
+                            })
                         // $('input[type="checkbox"]').prop('checked', true);
                     }
 
