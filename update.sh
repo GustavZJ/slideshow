@@ -23,14 +23,14 @@ echo "</html>" >> message.html
 echo "</body>" >> message.html
 #isnew=[ $oldmessage != $message ]
 isnew=true
-if [ isnew ]; then
-curl --ssl-reqd \
-  --url 'smtps://smtp.gmail.com:465' \
-  --user 'updatereminder18@gmail.com:jjod zvvi lyoh lnbq' \
-  --mail-from 'updatereminder18@gmail.com' \
-  --mail-rcpt 'hoeckjohanged@gmail.com' \
-  --upload-file message.html
-fi
+#if [ isnew ]; then
+#curl --ssl-reqd \
+#  --url 'smtps://smtp.gmail.com:465' \
+#  --user 'updatereminder18@gmail.com:jjod zvvi lyoh lnbq' \
+#  --mail-from 'updatereminder18@gmail.com' \
+#  --mail-rcpt 'hoeckjohanged@gmail.com' \
+#  --upload-file message.html
+#fi
 
 chmod 744 admin/changeconfig.sh
 chown www-data:www-data admin/changeconfig.sh
