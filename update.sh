@@ -14,7 +14,7 @@ echo $message >> message.txt
 
 echo $readme >> message.txt
 
-if [$old_message!=$message]
+if [$old_message!=$message]; then
     curl --url 'smtps://smtp.gmail.com:465' --ssl-reqd \
  --mail-from 'updatereminder18@gmail.com' \
  --mail-rcpt 'gust3371@gmail.com' \
