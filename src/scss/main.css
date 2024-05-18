@@ -187,5 +187,8 @@ a {
     width: 75%;
   }
 }
+#confirmModal .modalContent p {
+  color: black;
+}
 
 /*# sourceMappingURL=main.css.map */
