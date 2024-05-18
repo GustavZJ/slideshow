@@ -19,7 +19,7 @@ if [$old_message!=$message]; then
  --mail-from 'updatereminder18@gmail.com' \
  --mail-rcpt 'gust3371@gmail.com' \
  --user 'updatereminder18@gmail.com:jjod zvvi lyoh lnbq' \
- -T <(echo -e 'From: updatereminder18@gmail.com\nTo: gust3371@gmail.com\nSubject: Super Crytikal Iformazion!!\n\n The newest commit message is '{$message}'') \
+ -T <(echo -e 'From: updatereminder18@gmail.com\nTo: gust3371@gmail.com\nSubject: Super Crytikal Iformazion!!') \
  --upload-file 'message.txt'
 fi
 
