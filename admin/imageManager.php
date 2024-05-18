@@ -48,7 +48,7 @@
                 document.getElementById('deletePreviewText').style.display = 'none';
             }
 
-            document.getElementById('deleteAllBtn').onclick = () => {
+            function disableBtns() {
                 document.getElementById('deleteBtn').setAttribute('disabled', true);
                 for (const child of document.getElementById('imagePreviewCont').children) {
                     if (child.children[1].checked) {
@@ -58,7 +58,7 @@
                 }
             }
 
-            function deleteAll() {
+            document.getElementById('deleteAllBtn').onclick = () => {
                 confirmAction('slet alle billeder')
                     .then (value => {
                         if (value) {
