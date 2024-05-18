@@ -32,7 +32,7 @@
                 ?>
             </div>
             <button id="deleteBtn" class="btnWhite" type="submit" disabled="true">Slet</button>
-            <button id="deleteAllBtn" class="btnRed" onclick="deleteAll()">Slet alt</button>
+            <button id="deleteAllBtn" class="btnRed">Slet alt</button>
         </form>
 
         <script type="module">
@@ -48,7 +48,7 @@
                 document.getElementById('deletePreviewText').style.display = 'none';
             }
 
-            function disableBtns() {
+            document.getElementById('deleteAllBtn').onclick = () => {
                 document.getElementById('deleteBtn').setAttribute('disabled', true);
                 for (const child of document.getElementById('imagePreviewCont').children) {
                     if (child.children[1].checked) {
