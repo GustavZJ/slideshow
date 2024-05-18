@@ -50,7 +50,7 @@
             // Function to run php script in background
             jQuery(document).ready(function ($) {
                 // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
-                $('input[type="checkbox"]').prop("checked", false);
+                $('input[type="checkbox"]').prop('checked', false);
                 document.getElementById('deleteBtn').setAttribute('disabled', true);
                 document.getElementById('deleteAllBtn').setAttribute('disabled', true);
                 
@@ -61,8 +61,9 @@
 
                 // Handle delete action
                 $("#deleteForm").submit(function (event) {
-                    const clickedBtn = event.originalEvent.submitter;
-                    console.log(clickedBtn);
+                    if (event.originalEvent.submitter.id == 'deleteAllBtn'); {
+                        $('input[type="checkbox"]').prop('checked', true);
+                    }
 
                     $.ajax({
                         type: 'POST',
