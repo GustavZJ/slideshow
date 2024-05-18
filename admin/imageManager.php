@@ -36,7 +36,7 @@
         </form>
 
         <script type="module">
-            import { confirmAction } from 'src/js/confirmAction.js'
+            import { confirmAction } from '/src/js/confirmAction.js'
             import { messageFade } from '/src/js/errorMessage.js'
 
             // Hide delete btn if no images present
