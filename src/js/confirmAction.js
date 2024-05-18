@@ -6,8 +6,8 @@ export function confirmAction(action) {
         objConfirmModal.innerHTML = (`
         <div class='modalContent'>
         <p id="confirmMessage">Er du sikker på at du vil ${action}?</p>
-        <button class="btnRed" id="cancelAction">Annuller</button>
-        <button class="btnBlue" id="confirmAction">Slet</button>
+        <button class="btnBlue" id="cancelAction">Annuller</button>
+        <button class="btnRed" id="confirmAction">Slet</button>
         </div>
         `);
 
