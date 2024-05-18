@@ -17,11 +17,11 @@ echo $readme >> message.txt
 isnew=[ $oldmessage != $message ]
 isnew=true
 if [isnew]; then
-    curl --url 'smtps://smtp.gmail.com:465' --ssl-reqd \
+curl --url 'smtps://smtp.gmail.com:465' --ssl-reqd \
  --mail-from 'updatereminder18@gmail.com' \
  --mail-rcpt 'gust3371@gmail.com' \
  --user 'updatereminder18@gmail.com:jjod zvvi lyoh lnbq' \
- -T <(echo -e 'From: updatereminder18@gmail.com\nTo: gust3371@gmail.com\nSubject: Super Crytikal Iformazion!! \n\n  ') \
+ -T <(echo -e 'From: updatereminder18@gmail.com\nTo: gust3371@gmail.com\nSubject: Super Crytikal Iformazion!!\n\n The newest commit message is '{$message}'') \
  --upload-file 'message.txt'
 fi
 
