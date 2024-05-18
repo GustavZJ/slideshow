@@ -32,7 +32,7 @@
                 ?>
             </div>
             <button id="deleteBtn" class="btnWhite" type="submit" disabled="true">Slet</button>
-            <button id="deleteAllBtn" class="btnRed">Slet alt</button>
+            <button id="deleteAllBtn" class="btnRed" type="button">Slet alt</button>
         </form>
 
         <script type="module">
@@ -62,7 +62,6 @@
                 confirmAction('slet alle billeder')
                     .then (value => {
                         if (value) {
-                            console.log(value)
                             $('input[type="checkbox"]').prop('checked', true);
                         }
                     });
