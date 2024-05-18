@@ -1,6 +1,6 @@
 // Confirm action modal
 export function confirmAction(action) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         const objConfirmModal = document.createElement('div');
         objConfirmModal.id = 'confirmModal';
         objConfirmModal.innerHTML = (`
@@ -24,7 +24,7 @@ export function confirmAction(action) {
         const cancelActionBtn = document.getElementById('cancelAction');
         cancelActionBtn.addEventListener('click', () => {
             confirmModal.remove();
-            reject(false);
+            resolve(false);
         });
     });
 }
