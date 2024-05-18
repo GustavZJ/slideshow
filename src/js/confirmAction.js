@@ -18,13 +18,13 @@ export function confirmAction(action) {
         const confirmActionBtn = document.getElementById('confirmAction');
         confirmActionBtn.addEventListener('click', () => {
             confirmModal.remove();
-            resolve();
+            resolve(true);
         });
 
         const cancelActionBtn = document.getElementById('cancelAction');
         cancelActionBtn.addEventListener('click', () => {
             confirmModal.remove();
-            reject();
+            reject(false);
         });
     });
 }
