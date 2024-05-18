@@ -23,9 +23,9 @@
                     $images = scandir('../uploads');
                     foreach($images as $image) {
                         if (is_file('../uploads/'.$image)) {
-                            echo '<div class="imageCont elePointerIcon" onclick="checkboxThruDiv(this); disableBtns()">';
+                            echo '<div class="imageCont elePointerIcon" onclick="checkboxThruDiv(this);">';
                             echo '  <img class="previewImage" src="../uploads/'.$image.'">';
-                            echo '  <input type="checkbox" name="files[]" value="'.$image.'" onclick="event.stopPropagation(); disableBtns()">';
+                            echo '  <input type="checkbox" name="files[]" value="'.$image.'" onclick="event.stopPropagation();">';
                             echo '</div>';
                         }
                     }
@@ -68,6 +68,9 @@
                 const errorList = [];
                 let deleteCount = 0;
                 let errMsg = ''
+
+                document.getElementById('deleteBtn').addEventListener('click', disableBtns);
+                document.getElementsByClassName('imageCont').addEventListener('click', disableBtns);
 
                 document.getElementById('deleteAllBtn').onclick = () => {
                 confirmAction('slet alle billeder')
@@ -123,7 +126,6 @@
                             errorList.length = 0
                         },
                         error: function() {
-                            // Give error message
                             messageFade('error', 'Ingen billeder blev fjernet');
                         }
                     });
@@ -143,13 +145,7 @@
                 else {
                     target.children[1].checked = true;
                     document.getElementById('deleteBtn').removeAttribute('disabled');
-                    document.getElementById('deleteAllBtn').removeAttribute('disabled');
                 }
-            }
-
-            // Function to prevent checkbox from being checked and unchecked immediatly, if user clicks on checkbox
-            function stopPropagation(event) {
-                event.stopPropagation();
             }
         </script>
     </body>
