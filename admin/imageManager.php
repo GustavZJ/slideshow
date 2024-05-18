@@ -73,9 +73,14 @@
                 $("#deleteForm").submit(function (event) {
                     if (event.originalEvent.submitter.id == 'deleteAllBtn'); {
                         confirmAction('slet alle billeder')
-                            .then (result => {
-                                console.log(result);
-                            })
+                            .then (
+                                function(value) {
+                                    console.log(value);
+                                },
+                                function(error) {
+                                    console.log(error);
+                                }
+                            )
                         // $('input[type="checkbox"]').prop('checked', true);
                     }
 
