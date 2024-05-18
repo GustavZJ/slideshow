@@ -17,7 +17,8 @@ Admin page:
 - Change config settings ☑
 - Seperate password ☑
 - Remove pictures manually ☑
-- Clear all pictures
+- Clear all pictures ☑
+- Add confirm action when deleting all pictures
 - Add error handling for image manager, incase image fails to delete ☑
 
 Upload page:
@@ -30,6 +31,7 @@ Upload page:
 Website:
 - Improve styling
 - Full responsive for different devices (Need to test if any issue on devices)
+- Better nav (Perhaps a simple top bar with dropdown menus)
 
 Guide:
 - How to use admin

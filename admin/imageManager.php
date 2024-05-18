@@ -36,6 +36,7 @@
         </form>
 
         <script type="module">
+            import { confirmAction } from 'src/js/confirmAction.js'
             import { messageFade } from '/src/js/errorMessage.js'
 
             // Hide delete btn if no images present
@@ -71,7 +72,8 @@
                 // Handle delete action
                 $("#deleteForm").submit(function (event) {
                     if (event.originalEvent.submitter.id == 'deleteAllBtn'); {
-                        $('input[type="checkbox"]').prop('checked', true);
+                        console.log(confirmAction('slet alle billeder'));
+                        // $('input[type="checkbox"]').prop('checked', true);
                     }
 
                     $.ajax({
