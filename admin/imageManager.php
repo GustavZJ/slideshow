@@ -61,7 +61,7 @@
 
                 // Handle delete action
                 $("#deleteForm").submit(function (event) {
-                    const clickedBtn = $("button[clicked=true]").val();
+                    const clickedBtn = event.originalEvent.submitter;
                     console.log(clickedBtn);
 
                     $.ajax({
