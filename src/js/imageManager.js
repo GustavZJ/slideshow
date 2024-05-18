@@ -111,7 +111,7 @@ async function dropFile(event) {
         }
     }
 
-    uploadImage('dropUpload', event.dataTransfer.files);
+    uploadImage('dropUpload', files);
 }
 
 
