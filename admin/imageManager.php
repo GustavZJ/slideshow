@@ -58,16 +58,6 @@
                 }
             }
 
-            document.getElementById('deleteAllBtn').onclick = () => {
-                confirmAction('slet alle billeder')
-                    .then (value => {
-                        if (value) {
-                            $('input[type="checkbox"]').prop('checked', true);
-                            document.getElementById('deleteForm').submit();
-                        }
-                    });
-                }
-
             // Function to run php script in background
             jQuery(document).ready(function ($) {
                 // Uncheck checkboxes, since sometimes checkboxes will randomly be checked after delete
@@ -79,6 +69,16 @@
                 let deleteCount = 0;
                 let errMsg = ''
 
+                document.getElementById('deleteAllBtn').onclick = () => {
+                confirmAction('slet alle billeder')
+                    .then (value => {
+                        if (value) {
+                            $('input[type="checkbox"]').prop('checked', true);
+                            document.getElementById('deleteForm').submit();
+                        }
+                    });
+                }
+                
                 // Handle delete action
                 $("#deleteForm").submit(function (event) {
                     $.ajax({
