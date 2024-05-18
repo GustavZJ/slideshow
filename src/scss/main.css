@@ -60,6 +60,10 @@ button.btnRed,
 .labelBtn.btnRed {
   background-color: red;
 }
+button.btnBlue,
+.labelBtn.btnBlue {
+  background-color: #1c8aff;
+}
 
 #loginCont {
   display: inline-block;
