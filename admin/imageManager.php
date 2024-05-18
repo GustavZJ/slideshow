@@ -62,6 +62,7 @@
                 confirmAction('slet alle billeder')
                     .then (value => {
                         if (value) {
+                            console.log(value)
                             $('input[type="checkbox"]').prop('checked', true);
                         }
                     });
