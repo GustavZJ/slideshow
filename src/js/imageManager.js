@@ -8,6 +8,13 @@ const imageURL = document.getElementById('imageURL');
 const submitImageURL = document.getElementById('submitImageURL');
 const submitBtn = document.getElementById('submitBtn');
 
+// Convert URL to file
+async function urlToFile(url, filename, mimeType) {
+    const response = await fetch(url);
+    const buffer = await response.arrayBuffer();
+    return new File([buffer], filename, { type: mimeType });
+}
+
 // Upload image
 function uploadImage(event, files = []) {
     // Handle image file input
@@ -86,10 +93,24 @@ function dragLeave(event) {
     uploadImageFile.classList.remove('dragHighlight');
 }
   
-function dropFile(event) {
+async function dropFile(event) {
     event.preventDefault(); // Prevent setting image path as URL
     uploadImageFile.classList.remove('dragHighlight');
-    uploadImageInput.files = event.dataTransfer.files; // Add file to file input
+
+    const items = event.dataTransfer.items;
+    const files = [];
+
+    for (let i = 0; i < items.length; i++) {
+        if (items[i].kind === 'file') {
+            files.push(items[i].getAsFile());
+        } else if (items[i].kind === 'string') {
+            const url = await new Promise(resolve => items[i].getAsString(resolve));
+            const filename = url.split('/').pop();
+            const file = await urlToFile(url, filename, 'image/jpeg');
+            files.push(file);
+        }
+    }
+
     uploadImage('dropUpload', event.dataTransfer.files);
 }
 
