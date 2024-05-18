@@ -25,7 +25,7 @@ function uploadImage(event, files = []) {
         }
     }
     // Handle drag and drop upload
-    if (files && files.length > 0) {
+    if (event === 'dropUpload' && files.length > 0) {
         for (let i = 0; i < files.length; i++) {
             validateImgs((files[i]));
         }
