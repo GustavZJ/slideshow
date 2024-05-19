@@ -22,9 +22,13 @@
                     // Load images from rpi, and display them
                     $images = scandir('../uploads');
                     foreach($images as $image) {
-                        if (is_file('../uploads/'.$image)) {
+                        $fullImage = '../uploads'.$image;
+                        if (is_file($fullImage)) {
+                            if (str_ends_with(strtolower($fullImage), '.heic') || str_ends_with(strtolower($fullImage), '.heif')) {
+                                $fullImage = '../temp/placeholder.png';
+                            }
                             echo '<div class="imageCont elePointerIcon" onclick="checkboxThruDiv(this);">';
-                            echo '  <img class="previewImage" src="../uploads/'.$image.'">';
+                            echo '  <img class="previewImage" src="'.$fullImage.'">';
                             echo '  <input type="checkbox" name="files[]" value="'.$image.'" onclick="event.stopPropagation();">';
                             echo '</div>';
                         }
