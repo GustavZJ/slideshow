@@ -36,5 +36,3 @@ Website:
 Guide:
 - How to use admin
 
-Other:
-- 

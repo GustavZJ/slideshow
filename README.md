@@ -38,3 +38,19 @@ To access go to (Domain name).local
 
 
 If you ever lose your password go to the place in this readme, that explains how you run install.sh.
+
+<h2>How to use admin</h2>
+<em>Note: The site is made as a school project and is therefore in danish.</em>
+1: Click <em>Til admin-side</em> on the website <br>
+You will now be prompted to login. <br>
+2: Login as admin with your password. (See section on running install to reset password if you lose it.) <br>
+Now you're in. <br>
+<h2>Config</h2>
+To change config click on <em>Til Config-side</em> <br>
+When the page has loaded you can change settings, and click <em>Opdater config</em> <br> <br>
+
+<h2>Picture Managing</h2> <br>
+To remove pictures click <em>Til Billedemanager-side</em> <br>
+Click the picture to select them. Click the button labeled <em>Slet</em> To remove them.
+The red button labeled <em>Slet alt</em> deletes all the pictures.
+
