@@ -11,7 +11,7 @@ const submitBtn = document.getElementById('submitBtn');
 // Convert URL to file
 async function urlToFile(url, filename, mimeType) {
     const response = await fetch(url, {
-        method: 'GET', // or 'POST', 'DELETE', etc.
+        method: 'GET',
         credentials: 'include', // Ensure cookies are included in the request
       })
       .then(response => console.log(response))
@@ -20,6 +20,29 @@ async function urlToFile(url, filename, mimeType) {
       .catch(error => console.error('Error:', error));
     const buffer = await response.arrayBuffer();
     return new File([buffer], filename, { type: mimeType });
+}
+
+function dataURItoBlob(dataURI) {
+    // Split the data URI components
+    const parts = dataURI.split(',');
+
+    // Extract the base64-encoded data
+    const base64Data = parts[1];
+
+    // Decode base64 data
+    const binaryString = atob(base64Data);
+
+    // Convert binary string to array buffer
+    const arrayBuffer = new ArrayBuffer(binaryString.length);
+    const byteArray = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < binaryString.length; i++) {
+        byteArray[i] = binaryString.charCodeAt(i);
+    }
+
+    // Create Blob object from array buffer
+    const blob = new Blob([arrayBuffer], { type: parts[0].split(':')[1] });
+
+    return blob;
 }
 
 // Upload image
@@ -119,11 +142,13 @@ async function dropFile(event) {
         }
         else if (items[i].kind === 'string') {
             const url = await new Promise(resolve => items[i].getAsString(resolve));
-            // const filename = url.split('/').pop();
-            // console.log(url, filename);
+            const filename = url.split('/').pop();
             // const file = await urlToFile(url, filename, 'image/jpeg');
             // console.log(file);
-            files.push(url);
+
+            const blob = dataURItoBlob(url);
+            const file = new File([blob], filename, { type: 'image/jpeg' });
+            files.push(file);
         }
     }
 
