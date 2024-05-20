@@ -156,7 +156,7 @@ async function dropFile(event) {
         }
         else if (items[i].kind === 'string') {
             const file = await new Promise(resolve => items[i].getAsString(resolve));
-            const filename = url.split('/').pop();
+            // const filename = url.split('/').pop();
             files.push(file);
         }
     }
