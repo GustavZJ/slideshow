@@ -18,7 +18,7 @@ echo $subject >> message.html
 echo $readme >> message.html
 echo "</html>" >> message.html
 echo "</body>" >> message.html
-if [ ! -f nothing.here ]; then
+if [ -f nothing.here ]; then
     python3 email_sender.py gust3371@gmail.com $subject
 fi
 chmod 744 admin/changeconfig.sh
