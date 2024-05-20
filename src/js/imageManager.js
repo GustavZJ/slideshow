@@ -22,6 +22,19 @@ async function urlToFile(url, filename, mimeType) {
     return new File([buffer], filename, { type: mimeType });
 }
 
+function dataURItoImage(dataURI) {
+    return new Promise((resolve, reject) => {
+        let img = new Image();
+        img.onload = function() {
+            resolve(img);
+        };
+        img.onerror = function(error) {
+            reject(error);
+        };
+        img.src = dataURI;
+    });
+}
+
 // Upload image
 function uploadImage(event, files = []) {
     // Handle image file input
@@ -133,8 +146,17 @@ function dropFile(event) {
     event.preventDefault(); // Prevent setting image path as URL
     uploadImageFile.classList.remove('dragHighlight');
     uploadImageInput.files = event.dataTransfer.files; // Add file to file input
-    console.log(event.dataTransfer.getData('URL'))
-    uploadImage('dropUpload', event.dataTransfer.getData('URL'));
+    
+    dataURItoImage(dataURI)
+    .then((image) => {
+        // You can now use the image object
+        document.body.appendChild(image); // Append the image to the body, for example
+    })
+    .catch((error) => {
+        console.error("Error loading image:", error);
+    });
+
+    uploadImage('dropUpload', event.dataTransfer.files);
 }
 
 
