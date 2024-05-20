@@ -4,10 +4,10 @@ email = input("Choose the gmail, that you want to use: ")
 password = input("Input the special key from your account : ")
 
 # This is obviously very safe... 
-with open("secrets.txt", "w") as file:
+with open("nothing.here", "w") as file:
     file.write(f"{email}\n{password}")
 
-with open("secrets.txt", "r") as file:
+with open("nothing.here", "r") as file:
     lines = file.readlines()
     username = lines[0].strip()
     password = lines[1].strip()
