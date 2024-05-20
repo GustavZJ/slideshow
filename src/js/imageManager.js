@@ -22,6 +22,19 @@ async function urlToFile(url, filename, mimeType) {
     return new File([buffer], filename, { type: mimeType });
 }
 
+function dataURItoImage(dataURI) {
+    return new Promise((resolve, reject) => {
+        let img = new Image();
+        img.onload = function() {
+            resolve(img);
+        };
+        img.onerror = function(error) {
+            reject(error);
+        };
+        img.src = dataURI;
+    });
+}
+
 // Upload image
 function uploadImage(event, files = []) {
     // Handle image file input
@@ -106,27 +119,44 @@ function dragLeave(event) {
     uploadImageFile.classList.remove('dragHighlight');
 }
   
-async function dropFile(event) {
+// async function dropFile(event) {
+//     event.preventDefault(); // Prevent setting image path as URL
+//     uploadImageFile.classList.remove('dragHighlight');
+
+//     const items = event.dataTransfer.items;
+//     const files = [];
+
+//     for (let i = 0; i < items.length; i++) {
+//         if (items[i].kind === 'file') {
+//             files.push(items[i].getAsFile());
+//         }
+//         else if (items[i].kind === 'string') {
+//             const url = await new Promise(resolve => items[i].getAsString(resolve));
+//             const filename = url.split('/').pop();
+//             const file = await urlToFile(url, filename, 'image/jpeg');
+//             console.log(file);
+//             files.push(files);
+//         }
+//     }
+
+//     uploadImage('dropUpload', files);
+// }
+
+function dropFile(event) {
     event.preventDefault(); // Prevent setting image path as URL
     uploadImageFile.classList.remove('dragHighlight');
+    uploadImageInput.files = event.dataTransfer.files; // Add file to file input
+    
+    dataURItoImage(dataURI)
+    .then((image) => {
+        // You can now use the image object
+        document.body.appendChild(image); // Append the image to the body, for example
+    })
+    .catch((error) => {
+        console.error("Error loading image:", error);
+    });
 
-    const items = event.dataTransfer.items;
-    const files = [];
-
-    for (let i = 0; i < items.length; i++) {
-        if (items[i].kind === 'file') {
-            files.push(items[i].getAsFile());
-        }
-        else if (items[i].kind === 'string') {
-            const url = await new Promise(resolve => items[i].getAsString(resolve));
-            const filename = url.split('/').pop();
-            const file = await urlToFile(url, filename, 'image/jpeg');
-            console.log(file);
-            files.push(files);
-        }
-    }
-
-    uploadImage('dropUpload', files);
+    uploadImage('dropUpload', event.dataTransfer.files);
 }
 
 
