@@ -10,7 +10,17 @@ const submitBtn = document.getElementById('submitBtn');
 
 // Convert URL to file
 async function urlToFile(url, filename, mimeType) {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+        method: 'GET', // or 'POST', 'DELETE', etc.
+        credentials: 'include', // Ensure cookies are included in the request
+        headers: {
+          'Content-Type': 'application/json',
+          // other headers as needed
+        }
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
     const buffer = await response.arrayBuffer();
     return new File([buffer], filename, { type: mimeType });
 }
