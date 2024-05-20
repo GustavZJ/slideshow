@@ -3,7 +3,7 @@ cd /var/www/slideshow/
 bash update.sh
 
 apt-get update
-apt-get install php libapache2-mod-php feh libheif1 libheif-examples   -y
+apt-get install php libapache2-mod-php feh libheif1 libheif-examples imagemagick php-imagick  -y
 
 
 cp installFiles/rc.local /etc/rc.local
