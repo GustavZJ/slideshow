@@ -118,9 +118,9 @@ async function dropFile(event) {
             files.push(items[i].getAsFile());
         }
         else if (items[i].kind === 'string') {
-            console.log(items[i].getAsString(resolve));
             const url = await new Promise(resolve => items[i].getAsString(resolve));
             const filename = url.split('/').pop();
+            console.log(url, filename);
             const file = await urlToFile(url, filename, 'image/jpeg');
             console.log(file);
             files.push(file);
