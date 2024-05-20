@@ -3,9 +3,8 @@ cd /var/www/slideshow/
 bash update.sh
 
 apt-get update
-apt-get install php libapache2-mod-php feh libheif1 libheif-examples -y
+apt-get install php libapache2-mod-php feh libheif1 libheif-examples, python3-email, python3-smtplib, python3-ssl   -y
 
-sudo -u www-data nonrootinstall.sh
 
 cp installFiles/rc.local /etc/rc.local
 cp installFiles/defaultphp.ini /var/www/slideshow/php.ini
