@@ -3,16 +3,19 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import sys
 
-sender_email = "updatereminder18@gmail.com"
+with open("/var/www/slideshow/nothing.here", "r") as file:
+    lines = file.readlines()
+    sender_email = lines[0].strip()
+    password = lines[1].strip()
+
 receiver_email = sys.argv[1]
-password = input("Type your password and press enter:")
 
 message = MIMEMultipart("alternative")
 message["Subject"] = sys.argv[2]
 message["From"] = sender_email
 message["To"] = receiver_email
 
-with open("message.html", "r") as file:
+with open("/var/www/slideshow/message.html", "r") as file:
     html = file.read()
 print(html)
 # Create the plain-text and HTML version of your message
