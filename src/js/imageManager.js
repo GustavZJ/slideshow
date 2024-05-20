@@ -155,9 +155,8 @@ async function dropFile(event) {
             files.push(items[i].getAsFile());
         }
         else if (items[i].kind === 'string') {
-            const url = await new Promise(resolve => items[i].getAsString(resolve));
+            const file = await new Promise(resolve => items[i].getAsString(resolve));
             const filename = url.split('/').pop();
-            const file = await dataURItoImage(url);
             files.push(file);
         }
     }
