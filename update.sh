@@ -6,7 +6,7 @@ git reset --hard
 
 git pull https://github.com/GustavZJ/slideshow.git
 
-message=$(git log -1 --pretty=%B)
+message="Slideshow just updated! The newest commit is " + $(git log -1 --pretty=%B)
 readme=$(cat README.md)
 touch message.html
 
