@@ -51,6 +51,6 @@ When the page has loaded you can change settings, and click <em>Opdater config</
 
 <h2>Picture Managing</h2> <br>
 To remove pictures click <em>Til Billedemanager-side</em> <br>
-Click the picture to select them. Click the button labeled <em>Slet</em> To remove them.
+Click the picture to select them. Click the button labeled <em>Slet</em> To remove them. <br>
 The red button labeled <em>Slet alt</em> deletes all the pictures.
 
