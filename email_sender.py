@@ -5,8 +5,6 @@ import sys
 
 sender_email = "updatereminder18@gmail.com"
 receiver_email = sys.argv[1]
-print(receiver_email)
-exit()
 password = input("Type your password and press enter:")
 
 message = MIMEMultipart("alternative")
