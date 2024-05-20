@@ -3,7 +3,10 @@ cd /var/www/slideshow/
 bash update.sh
 
 apt-get update
-apt-get install php libapache2-mod-php feh libheif1 libheif-examples, python3-email, python3-smtplib, python3-ssl   -y
+apt-get install php libapache2-mod-php feh libheif1 libheif-examples   -y
+
+
+# , python3-email, python3-smtplib, python3-ssl
 
 python3 -m venv .venv
 
