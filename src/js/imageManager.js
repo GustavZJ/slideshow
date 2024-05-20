@@ -101,12 +101,14 @@ async function dropFile(event) {
             uploadImageInput.files = items[i]; // Add file to file input
         }
         else if (items[i].kind === 'string') {
-            const file = await new Promise(resolve => items[i].getAsString(resolve));
+            const url = await new Promise(resolve => items[i].getAsString(resolve));
+            const filename = url.split('/').pop();
+            
+            const imageBlob = await fetch(url).then(response => response.blob());
+            const file = new File([imageBlob], filename, { type: imageBlob.type });
             files.push(file);
         }
     }
-
-    console.log(files)
 
     uploadImage('dropUpload', files);
 }
