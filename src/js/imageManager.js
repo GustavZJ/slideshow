@@ -88,6 +88,18 @@ function dragLeave(event) {
     uploadImageFile.classList.remove('dragHighlight');
 }
 
+function dataURLToFile(dataURL, filename) {
+    const arr = dataURL.split(',');
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, { type: mime });
+}
+
 async function dropFile(event) {
     event.preventDefault(); // Prevent setting image path as URL
     uploadImageFile.classList.remove('dragHighlight');
@@ -104,10 +116,19 @@ async function dropFile(event) {
             const url = await new Promise(resolve => items[i].getAsString(resolve));
             const filename = url.split('/').pop();
             
-            const imageBlob = await fetch(url, {credentials: 'include'}).then(response => response.blob());
-            const file = new File([imageBlob], filename, { type: imageBlob.type });
-            console.log(file)
-            files.push(file);
+            const response = await fetch(url);
+            if (!response.ok) {
+                console.error('Failed to fetch image');
+                return;
+            }
+            const blob = await response.blob();
+            const reader = new FileReader();
+            reader.readAsDataURL(blob);
+            reader.onloadend = () => {
+                const dataURL = reader.result;
+                const file = dataURLToFile(dataURL, filename);
+                files.push(file);
+            };
         }
     }
 
