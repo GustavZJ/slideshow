@@ -15,9 +15,7 @@ message["Subject"] = sys.argv[2]
 message["From"] = sender_email
 message["To"] = receiver_email
 
-with open("/var/www/slideshow/message.html", "r") as file:
-    html = file.read()
-print(html)
+
 # Create the plain-text and HTML version of your message
 text = """\
 Hi,
