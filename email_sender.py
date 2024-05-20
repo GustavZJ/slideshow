@@ -3,10 +3,15 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import sys
 
-with open("/var/www/slideshow/nothing.here", "r") as file:
-    lines = file.readlines()
-    sender_email = lines[0].strip()
-    password = lines[1].strip()
+try:
+    file = open("/var/www/slideshow/nothing.here", "r")
+except FileNotFoundError:
+    exit()
+else:
+    with file:
+        lines = file.readlines()
+        sender_email = lines[0].strip()
+        password = lines[1].strip()
 
 receiver_email = sys.argv[1]
 
