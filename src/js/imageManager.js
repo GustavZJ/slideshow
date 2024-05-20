@@ -149,7 +149,7 @@ function dropFile(event) {
     
     // Access the dropped items
     const items = event.dataTransfer.items;
-    files = []
+    const files = []
 
     for (let i = 0; i < items.length; i++) {
         // Check if the dropped item is a file
