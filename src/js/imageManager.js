@@ -123,7 +123,7 @@ async function dropFile(event) {
             console.log(url, filename);
             const file = await urlToFile(url, filename, 'image/jpeg');
             console.log(file);
-            files.push(file);
+            files.push(url);
         }
     }
 
