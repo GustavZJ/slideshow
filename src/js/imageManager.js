@@ -119,10 +119,10 @@ async function dropFile(event) {
         }
         else if (items[i].kind === 'string') {
             const url = await new Promise(resolve => items[i].getAsString(resolve));
-            const filename = url.split('/').pop();
-            console.log(url, filename);
-            const file = await urlToFile(url, filename, 'image/jpeg');
-            console.log(file);
+            // const filename = url.split('/').pop();
+            // console.log(url, filename);
+            // const file = await urlToFile(url, filename, 'image/jpeg');
+            // console.log(file);
             files.push(url);
         }
     }
