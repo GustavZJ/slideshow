@@ -18,12 +18,7 @@ echo $readme >> message.html
 echo "</html>" >> message.html
 echo "</body>" >> message.html
 
-#html=$(cat message.html)
-
-#isnew=[ $oldmessage != $message ]
-isnew=true
-
-python email_sender.py hoeckjohanged@gmail.com "Update Reminder"
+python3 email_sender.py gust3371@gmail.com $message
 chmod 744 admin/changeconfig.sh
 chown www-data:www-data admin/changeconfig.sh
 systemctl restart apache2
