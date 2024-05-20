@@ -22,29 +22,6 @@ async function urlToFile(url, filename, mimeType) {
     return new File([buffer], filename, { type: mimeType });
 }
 
-function dataURItoBlob(dataURI) {
-    // Split the data URI components
-    const parts = dataURI.split(',');
-
-    // Extract the base64-encoded data
-    const base64Data = parts[1];
-
-    // Decode base64 data
-    const binaryString = atob(base64Data);
-
-    // Convert binary string to array buffer
-    const arrayBuffer = new ArrayBuffer(binaryString.length);
-    const byteArray = new Uint8Array(arrayBuffer);
-    for (let i = 0; i < binaryString.length; i++) {
-        byteArray[i] = binaryString.charCodeAt(i);
-    }
-
-    // Create Blob object from array buffer
-    const blob = new Blob([arrayBuffer], { type: parts[0].split(':')[1] });
-
-    return blob;
-}
-
 // Upload image
 function uploadImage(event, files = []) {
     // Handle image file input
@@ -143,12 +120,9 @@ async function dropFile(event) {
         else if (items[i].kind === 'string') {
             const url = await new Promise(resolve => items[i].getAsString(resolve));
             const filename = url.split('/').pop();
-            // const file = await urlToFile(url, filename, 'image/jpeg');
-            // console.log(file);
-
-            const blob = dataURItoBlob(url);
-            const file = new File([blob], filename, { type: 'image/jpeg' });
-            files.push(file);
+            const file = await urlToFile(url, filename, 'image/jpeg');
+            console.log(file);
+            files.push(files);
         }
     }
 
