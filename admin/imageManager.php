@@ -22,7 +22,7 @@
                     // Load images from rpi, and display them
                     $images = scandir('../uploads');
                     foreach($images as $image) {
-                        $fullImage = '../uploads'.$image;
+                        $fullImage = '../uploads/'.$image;
                         if (is_file($fullImage)) {
                             if (str_ends_with(strtolower($fullImage), '.heic') || str_ends_with(strtolower($fullImage), '.heif')) {
                                 $fullImage = '../temp/placeholder.png';
