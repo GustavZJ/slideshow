@@ -18,6 +18,7 @@ function uploadImage(event, files = []) {
         }
     }
     // Handle drag and drop upload
+    console.log(files)
     if (event === 'dropUpload' && files.length > 0) {
         for (let i = 0; i < files.length; i++) {
             validateImgs((files[i]));
@@ -29,7 +30,7 @@ async function validateImgs(file) {
     // Validate image by attempting to create an HTML image element
     let img = new Image();
     
-    img.src = file;
+    img.src = URL.createObjectURL(file);
     // img.src = URL.createObjectURL(file);
 
     // Valid image file/URL
