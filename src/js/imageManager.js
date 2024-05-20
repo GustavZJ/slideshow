@@ -56,12 +56,7 @@ async function validateImgs(file) {
     // Validate image by attempting to create an HTML image element
     let img = new Image();
     //if HEIC file
-    if (file.name.toLowerCase().includes(".heic") || file.name.toLowerCase().includes(".heif")) {
-        img.src = '/temp/placeholder.png';
-    }
-    else {
-        img.src = URL.createObjectURL(file);
-    }
+    img.src = URL.createObjectURL(file);
 
     // Valid image file/URL
     img.onload = function() {
