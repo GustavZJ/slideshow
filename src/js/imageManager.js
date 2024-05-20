@@ -8,33 +8,6 @@ const imageURL = document.getElementById('imageURL');
 const submitImageURL = document.getElementById('submitImageURL');
 const submitBtn = document.getElementById('submitBtn');
 
-// Convert URL to file
-async function urlToFile(url, filename, mimeType) {
-    const response = await fetch(url, {
-        method: 'GET',
-        credentials: 'include', // Ensure cookies are included in the request
-      })
-      .then(response => console.log(response))
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.error('Error:', error));
-    const buffer = await response.arrayBuffer();
-    return new File([buffer], filename, { type: mimeType });
-}
-
-function dataURItoImage(dataURI) {
-    return new Promise((resolve, reject) => {
-        let img = new Image();
-        img.onload = function() {
-            resolve(img);
-        };
-        img.onerror = function(error) {
-            reject(error);
-        };
-        img.src = dataURI;
-    });
-}
-
 // Upload image
 function uploadImage(event, files = []) {
     // Handle image file input
@@ -114,34 +87,10 @@ function dragLeave(event) {
     event.preventDefault(); // Prevent setting image path as URL
     uploadImageFile.classList.remove('dragHighlight');
 }
-  
-// async function dropFile(event) {
-//     event.preventDefault(); // Prevent setting image path as URL
-//     uploadImageFile.classList.remove('dragHighlight');
-
-//     const items = event.dataTransfer.items;
-//     const files = [];
-
-//     for (let i = 0; i < items.length; i++) {
-//         if (items[i].kind === 'file') {
-//             files.push(items[i].getAsFile());
-//         }
-//         else if (items[i].kind === 'string') {
-//             const url = await new Promise(resolve => items[i].getAsString(resolve));
-//             const filename = url.split('/').pop();
-//             const file = await urlToFile(url, filename, 'image/jpeg');
-//             console.log(file);
-//             files.push(files);
-//         }
-//     }
-
-//     uploadImage('dropUpload', files);
-// }
 
 async function dropFile(event) {
     event.preventDefault(); // Prevent setting image path as URL
     uploadImageFile.classList.remove('dragHighlight');
-    uploadImageInput.files = event.dataTransfer.files; // Add file to file input
     
     const items = event.dataTransfer.items;
     const files = [];
@@ -149,13 +98,15 @@ async function dropFile(event) {
     for (let i = 0; i < items.length; i++) {
         if (items[i].kind === 'file') {
             files.push(items[i].getAsFile());
+            uploadImageInput.files = items[i]; // Add file to file input
         }
         else if (items[i].kind === 'string') {
             const file = await new Promise(resolve => items[i].getAsString(resolve));
-            // const filename = url.split('/').pop();
             files.push(file);
         }
     }
+
+    console.log(files)
 
     uploadImage('dropUpload', files);
 }
