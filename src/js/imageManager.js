@@ -142,42 +142,27 @@ function dragLeave(event) {
 //     uploadImage('dropUpload', files);
 // }
 
-function dropFile(event) {
+async function dropFile(event) {
     event.preventDefault(); // Prevent setting image path as URL
     uploadImageFile.classList.remove('dragHighlight');
     uploadImageInput.files = event.dataTransfer.files; // Add file to file input
     
-    // Access the dropped items
     const items = event.dataTransfer.items;
-    const files = []
+    const files = [];
 
     for (let i = 0; i < items.length; i++) {
-        // Check if the dropped item is a file
         if (items[i].kind === 'file') {
-            const file = items[i].getAsFile();
-            
-            // Check if the file type is an image
-            if (file.type.startsWith('image/')) {
-                // Read the file as a Data URI
-                const reader = new FileReader();
-                console.log('1');
-                reader.onload = function(event) {
-                    const dataURI = event.target.result;
-                    console.log('2');
-                    dataURItoImage(dataURI)
-                    .then((image) => {
-                        // You can now use the image object
-                        document.body.appendChild(image); // Append the image to the body, for example
-                    })
-                    .catch((error) => {
-                        console.error("Error loading image:", error);
-                    });
-                };
-            }
+            files.push(items[i].getAsFile());
+        }
+        else if (items[i].kind === 'string') {
+            const url = await new Promise(resolve => items[i].getAsString(resolve));
+            const filename = url.split('/').pop();
+            const file = await dataURItoImage(url);
+            files.push(file);
         }
     }
 
-    uploadImage('dropUpload', event.dataTransfer.files);
+    uploadImage('dropUpload', files);
 }
 
 
