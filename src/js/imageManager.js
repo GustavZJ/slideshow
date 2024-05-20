@@ -8,14 +8,36 @@ const imageURL = document.getElementById('imageURL');
 const submitImageURL = document.getElementById('submitImageURL');
 const submitBtn = document.getElementById('submitBtn');
 
+const hiddenImageInput = document.getElementById('hiddenImageInput');
+
 // Upload image
 function uploadImage(event, files = []) {
+    const hiddenFileList = [];
+
     // Handle image file input
     if (event.target && event.target.id == 'uploadImageInput') {
         // Create objectURL and validate each file uploaded
         for (let i = 0; i < event.target.files.length; i++) {
-            files = validateImgs(event.target.files[i]);
+            if (event.target.files[i].name.toLowerCase().endsWith('.heic') || event.target.files[i].name.toLowerCase().endsWith('.heif')) {
+                hiddenFileList.push(event.target.files[i]);
+            }
+            else {
+                validateImgs(event.target.files[i]);
+            }
         }
+
+        if (hiddenFileList.length) {
+            // Construct a new FileList from the remaining files
+            const newFileList = new DataTransfer();
+            hiddenFileList.forEach(file => {
+                newFileList.items.add(file);
+            });
+        
+            // Update the input's files property with the new FileList
+            hiddenImageInput.files = newFileList.files;
+            document.getElementById('hiddenForm').submit();
+        }
+
     }
     // Handle drag and drop upload
     if (event === 'dropUpload' && files.length > 0) {
@@ -41,7 +63,7 @@ async function validateImgs(file) {
     // Invalid image file/URL
     img.onerror = function() {
         messageFade('Error', 'Invalid image file/URL');
-        deleteFiles(file); // Remove invalid file
+        // deleteFiles(file); // Remove invalid file
     };
 }
 
@@ -156,4 +178,8 @@ window.onload = () => {
     else {
         submitBtn.removeAttribute('disabled');
     }
+}
+
+function hiddenInput() {
+
 }
