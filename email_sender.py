@@ -12,8 +12,7 @@ else:
         lines = file.readlines()
         sender_email = lines[0].strip()
         password = lines[1].strip()
-
-receiver_email = sys.argv[1]
+        receiver_email = lines[2].strip()
 
 message = MIMEMultipart("alternative")
 message["Subject"] = sys.argv[2]
