@@ -22,9 +22,8 @@ echo $readme >> message.html
 echo "</html>" >> message.html
 echo "</body>" >> message.html
 
-html=$(cat message.html)
+#html=$(cat message.html)
 
-php -r "mail('hoeckjohanged@gmail.com', '$html', 'Content', 'From:updatereminder18r@slideshowserver.com');"
 #isnew=[ $oldmessage != $message ]
 isnew=true
 #if [ isnew ]; then
