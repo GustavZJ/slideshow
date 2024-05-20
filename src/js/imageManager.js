@@ -35,8 +35,14 @@ function uploadImage(event, files = []) {
 async function validateImgs(file) {
     // Validate image by attempting to create an HTML image element
     let img = new Image();
-    img.src = URL.createObjectURL(file);
-    
+    //if HEIC file
+    if (file.name.toLowerCase().includes(".heic") || file.name.toLowerCase().includes(".heif")) {
+        img.src = '/temp/placeholder.png';
+    }
+    else {
+        img.src = URL.createObjectURL(file);
+    }
+
     // Valid image file/URL
     img.onload = function() {
         document.getElementById('previewText').style.display = 'block';
@@ -93,12 +99,29 @@ function dragLeave(event) {
     uploadImageFile.classList.remove('dragHighlight');
 }
   
-function dropFile(event) {
+async function dropFile(event) {
     event.preventDefault(); // Prevent setting image path as URL
     uploadImageFile.classList.remove('dragHighlight');
-    uploadImageInput.files = event.dataTransfer.files; // Add file to file input
-    uploadImage('dropUpload', event.dataTransfer.files);
+
+    const items = event.dataTransfer.items;
+    const files = [];
+
+    for (let i = 0; i < items.length; i++) {
+        if (items[i].kind === 'file') {
+            files.push(items[i].getAsFile());
+        }
+        else if (items[i].kind === 'string') {
+            const url = await new Promise(resolve => items[i].getAsString(resolve));
+            const filename = url.split('/').pop();
+            const file = await urlToFile(url, filename, 'image/jpeg');
+            console.log(file);
+            files.push(file);
+        }
+    }
+
+    uploadImage('dropUpload', files);
 }
+
 
 // Delete image
 function deleteImagePreview(event) {
