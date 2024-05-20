@@ -5,6 +5,7 @@ bash update.sh
 apt-get update
 apt-get install php libapache2-mod-php feh libheif1 libheif-examples, python3-email, python3-smtplib, python3-ssl   -y
 
+python3 -m venv .venv
 
 cp installFiles/rc.local /etc/rc.local
 cp installFiles/defaultphp.ini /var/www/slideshow/php.ini
