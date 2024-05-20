@@ -160,11 +160,12 @@ function dropFile(event) {
             if (file.type.startsWith('image/')) {
                 // Read the file as a Data URI
                 const reader = new FileReader();
+                console.log('1');
                 reader.onload = function(event) {
                     const dataURI = event.target.result;
+                    console.log('2');
                     dataURItoImage(dataURI)
                     .then((image) => {
-                        console.log(image);
                         // You can now use the image object
                         document.body.appendChild(image); // Append the image to the body, for example
                     })
