@@ -8,7 +8,7 @@ with open("secrets.txt", "w") as file:
     file.write(f"{email}\n{password}")
 
 with open("secrets.txt", "r") as file:
-    lines = f.readlines()
+    lines = file.readlines()
     username = lines[0].strip()
     password = lines[1].strip()
     print(f"USERNAME={username}, PASSWORD={password}")
