@@ -37,4 +37,4 @@ Guide:
 - How to use admin
 
 Other:
-- Add admin contact details / form, to report issues (Henriks email)
+- 
