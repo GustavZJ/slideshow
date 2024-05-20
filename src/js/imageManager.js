@@ -106,27 +106,34 @@ function dragLeave(event) {
     uploadImageFile.classList.remove('dragHighlight');
 }
   
-async function dropFile(event) {
+// async function dropFile(event) {
+//     event.preventDefault(); // Prevent setting image path as URL
+//     uploadImageFile.classList.remove('dragHighlight');
+
+//     const items = event.dataTransfer.items;
+//     const files = [];
+
+//     for (let i = 0; i < items.length; i++) {
+//         if (items[i].kind === 'file') {
+//             files.push(items[i].getAsFile());
+//         }
+//         else if (items[i].kind === 'string') {
+//             const url = await new Promise(resolve => items[i].getAsString(resolve));
+//             const filename = url.split('/').pop();
+//             const file = await urlToFile(url, filename, 'image/jpeg');
+//             console.log(file);
+//             files.push(files);
+//         }
+//     }
+
+//     uploadImage('dropUpload', files);
+// }
+
+function dropFile(event) {
     event.preventDefault(); // Prevent setting image path as URL
     uploadImageFile.classList.remove('dragHighlight');
-
-    const items = event.dataTransfer.items;
-    const files = [];
-
-    for (let i = 0; i < items.length; i++) {
-        if (items[i].kind === 'file') {
-            files.push(items[i].getAsFile());
-        }
-        else if (items[i].kind === 'string') {
-            const url = await new Promise(resolve => items[i].getAsString(resolve));
-            const filename = url.split('/').pop();
-            const file = await urlToFile(url, filename, 'image/jpeg');
-            console.log(file);
-            files.push(files);
-        }
-    }
-
-    uploadImage('dropUpload', files);
+    uploadImageInput.files = event.dataTransfer.files; // Add file to file input
+    uploadImage('dropUpload', event.dataTransfer.files);
 }
 
 
