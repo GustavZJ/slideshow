@@ -91,14 +91,7 @@ function dragLeave(event) {
 async function dropFile(event) {
     event.preventDefault(); // Prevent setting image path as URL
     uploadImageFile.classList.remove('dragHighlight');
-    
-    const items = event.dataTransfer.items;
-    const files = [];
-
-    for (let i = 0; i < items.length; i++) {
-        files.push(items[i].getAsFile());
-        uploadImageInput.files = items[i]; // Add file to file input
-    }
+    const files = event.dataTransfer.items;
 
     uploadImage('dropUpload', files);
 }
