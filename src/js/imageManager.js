@@ -147,14 +147,34 @@ function dropFile(event) {
     uploadImageFile.classList.remove('dragHighlight');
     uploadImageInput.files = event.dataTransfer.files; // Add file to file input
     
-    dataURItoImage(dataURI)
-    .then((image) => {
-        // You can now use the image object
-        document.body.appendChild(image); // Append the image to the body, for example
-    })
-    .catch((error) => {
-        console.error("Error loading image:", error);
-    });
+    // Access the dropped items
+    const items = event.dataTransfer.items;
+    files = []
+
+    for (let i = 0; i < items.length; i++) {
+        // Check if the dropped item is a file
+        if (items[i].kind === 'file') {
+            const file = items[i].getAsFile();
+            
+            // Check if the file type is an image
+            if (file.type.startsWith('image/')) {
+                // Read the file as a Data URI
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const dataURI = event.target.result;
+                    dataURItoImage(dataURI)
+                    .then((image) => {
+                        console.log(image);
+                        // You can now use the image object
+                        document.body.appendChild(image); // Append the image to the body, for example
+                    })
+                    .catch((error) => {
+                        console.error("Error loading image:", error);
+                    });
+                };
+            }
+        }
+    }
 
     uploadImage('dropUpload', event.dataTransfer.files);
 }
