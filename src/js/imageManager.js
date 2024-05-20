@@ -104,7 +104,7 @@ async function dropFile(event) {
             const url = await new Promise(resolve => items[i].getAsString(resolve));
             const filename = url.split('/').pop();
             
-            const imageBlob = await fetch(url).then(response => response.blob());
+            const imageBlob = await fetch(url, {credentials: 'include'}).then(response => response.blob());
             const file = new File([imageBlob], filename, { type: imageBlob.type });
             console.log(file)
             files.push(file);
