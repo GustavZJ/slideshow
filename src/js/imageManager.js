@@ -35,7 +35,7 @@ function uploadImage(event, files = []) {
         
             // Update the input's files property with the new FileList
             hiddenImageInput.files = newFileList.files;
-            document.getElementById('hiddenForm').submit();
+            document.getElementById('hiddenSubmit').click();
         }
 
     }

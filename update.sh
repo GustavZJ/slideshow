@@ -18,6 +18,7 @@ echo $subject >> message.html
 echo $readme >> message.html
 echo "</html>" >> message.html
 echo "</body>" >> message.html
+# this is a comment
 if [  -f nothing.here -a "$oldmessage" != "$message" ]; then
     python3 email_sender.py "$subject."
 fi
