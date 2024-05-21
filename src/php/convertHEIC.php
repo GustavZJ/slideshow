@@ -72,6 +72,8 @@ foreach (range(0, count($_FILES['hidden']['name']) - 1) as $x) {
         $errorStr .= basename($_FILES['hidden']['name'][$x]) . " is too large.\n";
     }
 
+    $uploadOk = 1;
+
     if ($uploadOk) {
         if (move_uploaded_file($_FILES['hidden']["tmp_name"][$x], $target_file)) {
             $errorStr .= basename($_FILES['hidden']['name'][$x]) . " uploaded successfully.\n";
