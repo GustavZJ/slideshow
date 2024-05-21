@@ -146,16 +146,46 @@ async function dropFile(event) {
             files.push(item.getAsFile());
         }
         else if (item.kind === 'string') {
-            console.log(item);
-            item.getAsString(async (dataURI) => {
-                const file = await dataURIToFile(dataURI, 'image.png');
-                files.push(file);
+            item.getAsString(async (data) => {
+                if (data.startsWith('data:image/')) {
+                    // Handle DataURI
+                    const file = await dataURIToFile(data, 'image.png');
+                    files.push(file);
+                } else if (isValidURL(data)) {
+                    // Handle URL
+                    try {
+                        const file = await urlToFile(data, 'image.png');
+                        files.push(file);
+                    } catch (error) {
+                        console.error("Error converting URL to File:", error);
+                        messageFade('Error', 'Invalid image URL');
+                    }
+                } else {
+                    console.error("Unsupported data type:", data);
+                    messageFade('Error', 'Unsupported data type');
+                }
+                // Proceed with uploading the files if all data items have been processed
+                if (files.length === items.length) {
+                    uploadImage('dropUpload', files);
+                }
             });
         }
     }
+}
 
-    console.log(files)
-    uploadImage('dropUpload', files);
+function isValidURL(string) {
+    try {
+        new URL(string);
+        return true;
+    } catch (_) {
+        return false;
+    }
+}
+
+async function urlToFile(url, filename) {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    return new File([blob], filename, { type: blob.type });
 }
 
 // Delete image
