@@ -85,5 +85,5 @@ if ($uploadOk){
 convertHeic();
 
 header('Content-Type: application/json');
-echo $outputFiles;
+echo json_encode($outputFiles);
 exit();
