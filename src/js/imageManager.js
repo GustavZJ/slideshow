@@ -18,6 +18,7 @@ function uploadImage(event, files = []) {
 
     // Handle image file input
     if (event.target && event.target.id == 'uploadImageInput') {
+        console.log('This should not appear')
         // Create objectURL and validate each file uploaded
         for (let i = 0; i < event.target.files.length; i++) {
             if (event.target.files[i].name.toLowerCase().endsWith('.heic') || event.target.files[i].name.toLowerCase().endsWith('.heif')) {
@@ -43,6 +44,7 @@ function uploadImage(event, files = []) {
     }
     // Handle drag and drop upload
     if (event === 'dropUpload' && files.length > 0) {
+        console.log('looping')
         for (let i = 0; i < files.length; i++) {
             console.log('To validate')
             validateImgs((files[i]));
