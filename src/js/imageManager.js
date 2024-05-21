@@ -197,11 +197,22 @@ function isValidURL(string) {
     }
 }
 
-async function urlToFile(url, filename) {
-    const response = await fetch(url);
+function extractImageUrlFromHtml(html) {
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    const img = doc.querySelector('img');
+    return img ? img.src : null;
+}
+
+async function fetchImageFile(url) {
+    const response = await fetch(url, { mode: 'cors' });
+    if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.statusText}`);
+    }
     const blob = await response.blob();
+    const filename = url.split('/').pop().split('#')[0].split('?')[0];
     return new File([blob], filename, { type: blob.type });
 }
+
 
 // Delete image
 function deleteImagePreview(event) {
