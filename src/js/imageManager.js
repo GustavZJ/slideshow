@@ -191,7 +191,7 @@ function extractImageUrlFromHtml(html) {
 
 async function dataURIToBlob(dataURI) {
     const splitData = dataURI.split(',');
-    const byteString = atob(splitData);
+    const byteString = atob(splitData[1]);
     const arrayBuffer = new ArrayBuffer(byteString.length);
     const uint8Array = new Uint8Array(arrayBuffer);
     for (let i = 0; i < byteString.length; i++) {
