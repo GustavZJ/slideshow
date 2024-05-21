@@ -145,7 +145,7 @@ async function dropFile(event) {
         if (item.kind === 'file') {
             files.push(item.getAsFile());
         }
-        else if (items[i].kind === 'string') {
+        else if (item.kind === 'string') {
             item.getAsString(async (dataURI) => {
                 const file = await dataURIToFile(dataURI, 'image.png');
                 console.log(file);
