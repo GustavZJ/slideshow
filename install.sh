@@ -13,6 +13,9 @@ cp installFiles/defaultphp.ini /var/www/slideshow/php.ini
 cp installFiles/defaultconfig.config /var/www/slideshow/config.config
 cp installFiles/slideshow.conf /etc/apache2/sites-available/slideshow.conf
 
+a2enmod headers
+a2enmod rewrite
+
 a2dissite 000-default.conf
 a2dissite slideshow.conf
 a2ensite slideshow.conf
