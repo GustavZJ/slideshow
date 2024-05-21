@@ -6,7 +6,7 @@ function convertHeic() {
         $file_name = "/var/www/slideshow/temp/".$file;
         // echo $file_name."<br>" ;
         if(is_file($file_name)) {
-            Maestroerror\HeicToJpg::convert("/var/www/slideshow/temp/".$file, "arm64", true)->saveAs("/var/www/slideshow/temp/".$file.".jpg");
+            Maestroerror\php-heic-to-jpg::convert("/var/www/slideshow/temp/".$file, "arm64", true)->saveAs("/var/www/slideshow/temp/".$file.".jpg");
             echo $file_name." success";
         }
         
