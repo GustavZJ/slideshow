@@ -2,7 +2,7 @@
 
 require 'vendor/autoload.php'; // Make sure to include the Composer autoloader
 
-use Maestroerror\php-heic-to-jpg;
+use Maestroerror\HeicToJpg;
 
 function convertHeic() {
     $directory = '/var/www/slideshow/temp/';
