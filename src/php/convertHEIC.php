@@ -2,6 +2,7 @@
 $outputFiles = array();
 
 function convertHeicWithHeifConvert($filePath) {
+    global $outputFiles;
     $outputPath = $filePath . '.jpg';
     $command = "heif-convert $filePath $outputPath";
     exec($command, $output, $return_var);
