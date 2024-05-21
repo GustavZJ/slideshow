@@ -14,7 +14,7 @@ const hiddenImageInput = document.getElementById('hiddenImageInput');
 function uploadImage(event, files = []) {
     const hiddenFileList = [];
 
-    console.log(event, files)
+    console.log('Upload:', event, files)
 
     // Handle image file input
     if (event.target && event.target.id == 'uploadImageInput') {
@@ -44,6 +44,7 @@ function uploadImage(event, files = []) {
     // Handle drag and drop upload
     if (event === 'dropUpload' && files.length > 0) {
         for (let i = 0; i < files.length; i++) {
+            console.log('To validate')
             validateImgs((files[i]));
         }
     }
@@ -129,7 +130,7 @@ async function dropFile(event) {
             item.getAsString(async (data) => {
                 if (data.startsWith('data:image/')) {
                     // Handle DataURI
-                    console.log('data')
+                    console.log('1: Caught data:image')
                     files.push(dataURLtoFile(data));
                 } else if (data.includes('<img') || data.includes('src=')) {
                     // Handle HTML snippet and extract image URL
