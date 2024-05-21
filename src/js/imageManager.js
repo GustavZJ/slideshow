@@ -190,15 +190,14 @@ function extractImageUrlFromHtml(html) {
 }
 
 async function dataURIToBlob(dataURI) {
-    console.log('dataURI: ', dataURI);
-    const byteString = atob(dataURI.split(',')[1]);
-    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    const splitData = dataURI.split(',');
+    const byteString = atob(splitData);
     const arrayBuffer = new ArrayBuffer(byteString.length);
     const uint8Array = new Uint8Array(arrayBuffer);
     for (let i = 0; i < byteString.length; i++) {
         uint8Array[i] = byteString.charCodeAt(i);
     }
-    return new Blob([arrayBuffer], { type: mimeString });
+    return new Blob([arrayBuffer], { type: splitData[0] });
 }
 
 async function dataURIToFile(dataURI, filename) {
