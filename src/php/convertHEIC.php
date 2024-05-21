@@ -30,7 +30,7 @@ function convertHeic() {
     }
 }
 // Load php ini file to read max file size
-$iniFile = parse_ini_file('../php.ini');
+$iniFile = parse_ini_file('/var/www/slideshow/php.ini');
 
 // Convert php ini max file size to bytes, so we can compare to image file size
 function convertToBytes($value) {
