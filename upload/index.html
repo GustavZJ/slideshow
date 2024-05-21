@@ -44,9 +44,10 @@
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: function (outputFiles) {
+                    success: function (errorStr, outputFiles) {
                         console.log('Great success');
                         // console.log(response);
+                        console.log(errorStr);
                         console.log(outputFiles);
                     }
                 })

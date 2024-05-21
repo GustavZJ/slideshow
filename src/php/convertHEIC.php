@@ -51,11 +51,13 @@ return preg_replace_callback('/^\s*(\d+)\s*(?:([kmgt]?)b?)?\s*$/i', function ($m
 
 // $response = array();
 $target_dir = "/var/www/slideshow/temp/";
+$errorStr = '';
 foreach(range(0, count($_FILES['hidden']['name']) - 1) as $x) {
     $target_file = $target_dir . basename($_FILES['hidden']["name"][$x]);
+    $errorStr .= $target_file;
     $imageFileType = strtolower($_FILES['hidden']['type'][$x]);
     $uploadOk = 1;
-    $response[basename($_FILES['hidden']['name'][$x])] = [];
+    // $response[basename($_FILES['hidden']['name'][$x])] = [];
 
     // // Check if image file is an actual image or fake image
     // if (!str_contains($imageFileType, 'image')) {
@@ -77,9 +79,9 @@ foreach(range(0, count($_FILES['hidden']['name']) - 1) as $x) {
 
     if ($uploadOk){
         if (move_uploaded_file($_FILES['hidden']["tmp_name"][$x], $target_file)) {
-        array_push($response[basename($_FILES['hidden']['name'][$x])], 'success');
+            // array_push($response[basename($_FILES['hidden']['name'][$x])], 'success');
         } else {
-        array_push($response[basename($_FILES['hidden']['name'][$x])], 'ukendt fejl :(');
+            // array_push($response[basename($_FILES['hidden']['name'][$x])], 'ukendt fejl :(');
         }
     }
 }
@@ -87,6 +89,7 @@ foreach(range(0, count($_FILES['hidden']['name']) - 1) as $x) {
 convertHeic();
 
 header('Content-Type: application/json');
-echo json_encode($response);
+// echo json_encode($response);
+echo json_encode($errorStr);
 echo json_encode($outputFiles);
 exit();
