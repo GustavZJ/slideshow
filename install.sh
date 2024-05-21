@@ -4,9 +4,9 @@ bash update.sh
 
 apt-get update
 apt-get install php libapache2-mod-php feh libheif1 libheif-examples imagemagick php-imagick -y
-curl https://getcomposer.org/installer| php
 export COMPOSER_ALLOW_SUPERUSER=1
 if [ ! -f /usr/local/bin/composer ]; then
+curl https://getcomposer.org/installer| php
     mv composer.phar /usr/local/bin/composer
 fi
 chmod +x /usr/local/bin/composer
