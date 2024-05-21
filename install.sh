@@ -4,7 +4,7 @@ bash update.sh
 
 apt-get update
 apt-get install php libapache2-mod-php feh libheif1 libheif-examples imagemagick php-imagick composer  -y
-
+export COMPOSER_ALLOW_SUPERUSER=1
 composer require maestroerror/php-heic-to-jpg
 
 
