@@ -183,7 +183,8 @@ async function dropFile(event) {
                                 reject(error);
                             }
                         } else {
-                            console.error("Unsupported data type:", data);;
+                            errorObj[item] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
+                            console.error("Unsupported data type:", data);
                             reject(new Error('Unsupported data type'));
                         }
                     } else if (isValidURL(data)) {
