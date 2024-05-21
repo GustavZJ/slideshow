@@ -110,14 +110,6 @@ function dragLeave(event) {
     uploadImageFile.classList.remove('dragHighlight');
 }
 
-// function dropFile(event) {
-//     event.preventDefault(); // Prevent setting image path as URL
-//     uploadImageFile.classList.remove('dragHighlight');
-//     uploadImageInput.files =  event.dataTransfer.files;
-
-//     uploadImage('dropUpload', event.dataTransfer.files);
-// }
-
 async function dropFile(event) {
     event.preventDefault(); // Prevent setting image path as URL
     uploadImageFile.classList.remove('dragHighlight');
@@ -133,22 +125,13 @@ async function dropFile(event) {
             item.getAsString(async (data) => {
                 if (data.startsWith('data:image/')) {
                     // Handle DataURI
-                    const file = await dataURIToFile(data, 'image.png');
-                    files.push(file);
+                    files.push(data);
                 } else if (data.includes('<img') || data.includes('src=')) {
                     // Handle HTML snippet and extract image URL
                     const url = extractImageUrlFromHtml(data);
                     if (url) {
                         try {
-                            console.log('URL: ', url);
-
-                            const img = new Image();
-                            img.src = url;
-                            document.body.appendChild(img);
-
-                            const file = await dataURIToFile(url, 'image.png');
-                            console.log('File: ', file);
-                            files.push(file);
+                            files.push(url);
                         } catch (error) {
                             console.error("Error converting URL to File:", error);
                             messageFade('Error', 'Invalid image URL');
@@ -192,22 +175,6 @@ function extractImageUrlFromHtml(html) {
     const doc = new DOMParser().parseFromString(html, 'text/html');
     const img = doc.querySelector('img');
     return img ? img.src : null;
-}
-
-async function dataURIToBlob(dataURI) {
-    const splitData = dataURI.split(',');
-    const byteString = atob(splitData[1]);
-    const arrayBuffer = new ArrayBuffer(byteString.length);
-    const uint8Array = new Uint8Array(arrayBuffer);
-    for (let i = 0; i < byteString.length; i++) {
-        uint8Array[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([arrayBuffer], { type: splitData[0] });
-}
-
-async function dataURIToFile(dataURI, filename) {
-    const blob = dataURIToBlob(dataURI);
-    return new File([blob], filename, { type: blob.type });
 }
 
 async function fetchImageFile(url) {
