@@ -14,7 +14,7 @@ function convertHeic() {
         if (is_file($filePath) && strtolower(pathinfo($filePath, PATHINFO_EXTENSION)) === 'heic') {
             try {
                 $outputPath = $filePath . '.jpg';
-                HeicToJpg::convert($filePath, "arm64", true)->saveAs($outputPath);
+                HeicToJpg::convert($filePath, "", true)->saveAs($outputPath);
                 echo "$filePath converted successfully to $outputPath\n";
             } catch (Exception $e) {
                 echo "Error converting $filePath: " . $e->getMessage() . "\n";
