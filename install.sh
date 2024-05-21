@@ -7,7 +7,7 @@ apt-get install php libapache2-mod-php feh libheif1 libheif-examples imagemagick
 curl https://getcomposer.org/installer| php
 mv composer.phar /usr/local/bin/composer
 chmod +x /usr/local/bin/composer
-sudo chown -R www-data:www-data ~/.composer/composer.json
+sudo chown -R www-data:www-data /usr/local/bin/composer
 sudo -u www-data composer require maestroerror/php-heic-to-jpg
 
 
