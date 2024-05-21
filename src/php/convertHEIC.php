@@ -49,6 +49,7 @@ return preg_replace_callback('/^\s*(\d+)\s*(?:([kmgt]?)b?)?\s*$/i', function ($m
 // echo "<script>console.log('Debug Objects: " .json_encode($iniFile) . "' );</script>";
 // echo "<script>console.log('Debug Objects: " .json_encode(convertToBytes($iniFile['upload_max_filesize'])) . "' );</script>";
 
+$response = array();
 $target_dir = "/var/www/slideshow/temp/";
 foreach(range(0, count($_FILES['hidden']['name']) - 1) as $x) {
     $target_file = $target_dir . basename($_FILES['hidden']["name"][$x]);
@@ -86,5 +87,6 @@ foreach(range(0, count($_FILES['hidden']['name']) - 1) as $x) {
 convertHeic();
 
 header('Content-Type: application/json');
+echo json_encode($response);
 echo json_encode($outputFiles);
 exit();
