@@ -110,22 +110,6 @@ function dragLeave(event) {
     uploadImageFile.classList.remove('dragHighlight');
 }
 
-function dataURIToBlob(dataURI) {
-    const byteString = atob(dataURI.split(',')[1]);
-    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-    const arrayBuffer = new ArrayBuffer(byteString.length);
-    const uint8Array = new Uint8Array(arrayBuffer);
-    for (let i = 0; i < byteString.length; i++) {
-        uint8Array[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([arrayBuffer], { type: mimeString });
-}
-
-async function dataURIToFile(dataURI, filename) {
-    const blob = dataURIToBlob(dataURI);
-    return new File([blob], filename, { type: blob.type });
-}
-
 // function dropFile(event) {
 //     event.preventDefault(); // Prevent setting image path as URL
 //     uploadImageFile.classList.remove('dragHighlight');
@@ -156,11 +140,9 @@ async function dropFile(event) {
                     const url = extractImageUrlFromHtml(data);
                     if (url) {
                         try {
-                            const fileName = url.split('/').pop();
-                            console.log('URL:', url);
-                            console.log('Filename:', fileName);
-                            const file = await dataURIToFile(url, fileName);
-                            console.log('File:', file);
+                            console.log('URL: ', url);
+                            const file = await dataURIToFile(url, 'image.png');
+                            console.log('File: ', file);
                             files.push(file);
                         } catch (error) {
                             console.error("Error converting URL to File:", error);
@@ -205,6 +187,23 @@ function extractImageUrlFromHtml(html) {
     const doc = new DOMParser().parseFromString(html, 'text/html');
     const img = doc.querySelector('img');
     return img ? img.src : null;
+}
+
+async function dataURIToBlob(dataURI) {
+    console.log('dataURI: ', dataURI);
+    const byteString = atob(dataURI.split(',')[1]);
+    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const uint8Array = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < byteString.length; i++) {
+        uint8Array[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([arrayBuffer], { type: mimeString });
+}
+
+async function dataURIToFile(dataURI, filename) {
+    const blob = dataURIToBlob(dataURI);
+    return new File([blob], filename, { type: blob.type });
 }
 
 async function fetchImageFile(url) {
