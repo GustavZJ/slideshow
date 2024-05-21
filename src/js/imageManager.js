@@ -127,7 +127,7 @@ async function dropFile(event) {
             item.getAsString(async (data) => {
                 if (data.startsWith('data:image/')) {
                     // Handle DataURI
-                    console.log(debug)
+                    console.log('data')
                     files.push(data);
                 } else if (data.includes('<img') || data.includes('src=')) {
                     // Handle HTML snippet and extract image URL
