@@ -43,7 +43,7 @@ function uploadImage(event, files = []) {
 
     }
     // Handle drag and drop upload
-    if (event == 'dropUpload' && files.length > 0) {
+    if (event == 'dropUpload') {
         console.log('looping')
         for (let i = 0; i < files.length; i++) {
             console.log('To validate')
@@ -136,7 +136,7 @@ async function dropFile(event) {
                     fetch(data)
                     .then(res => res.blob())
                     .then(blob => {
-                        const file = new File([blob], "testName.png",{ type: "image/png" })
+                        const file = new File([blob], "testName.png",{ type: "image/png" });
                         files.push(file);
                     })
                 } else if (data.includes('<img') || data.includes('src=')) {
