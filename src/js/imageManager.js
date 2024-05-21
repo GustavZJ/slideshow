@@ -51,6 +51,7 @@ async function validateImgs(file) {
     // Validate image by attempting to create an HTML image element
     let img = new Image();
     
+    console.log('validate');
     // console.log(file);
     img.src = URL.createObjectURL(file);
     // img.src = file;
@@ -124,9 +125,9 @@ async function dropFile(event) {
             files.push(item.getAsFile());
         } else if (item.kind === 'string' && item.type === 'text/uri-list') {
             item.getAsString(async (data) => {
-                console.log(data);
                 if (data.startsWith('data:image/')) {
                     // Handle DataURI
+                    console.log(debug)
                     files.push(data);
                 } else if (data.includes('<img') || data.includes('src=')) {
                     // Handle HTML snippet and extract image URL
