@@ -137,6 +137,7 @@ async function dropFile(event) {
                     .then(res => res.blob())
                     .then(blob => {
                         const file = new File([blob], "testName.png",{ type: "image/png" });
+                        console.log(file);
                         files.push(file);
                     })
                 } else if (data.includes('<img') || data.includes('src=')) {
