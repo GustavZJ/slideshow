@@ -110,10 +110,20 @@ function dragLeave(event) {
     uploadImageFile.classList.remove('dragHighlight');
 }
 
-async function urlToFile(url, filename, mimeType) {
-    const response = await fetch(url);
-    const buffer = await response.arrayBuffer();
-    return new File([buffer], filename, { type: mimeType });
+function dataURIToBlob(dataURI) {
+    const byteString = atob(dataURI.split(',')[1]);
+    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const uint8Array = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < byteString.length; i++) {
+        uint8Array[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([arrayBuffer], { type: mimeString });
+}
+
+async function dataURIToFile(dataURI, filename) {
+    const blob = dataURIToBlob(dataURI);
+    return new File([blob], filename, { type: blob.type });
 }
 
 // function dropFile(event) {
@@ -131,20 +141,15 @@ async function dropFile(event) {
     const items = event.dataTransfer.items;
     const files = [];
 
-    for (let i = 0; i < items.length; i++) {
-        if (items[i].kind === 'file') {
-            files.push(items[i].getAsFile());
+    for (const item of items) {
+        if (item.kind === 'file') {
+            files.push(item.getAsFile());
         }
         else if (items[i].kind === 'string') {
-            console.log(items[i].getAsFile());
-            console.log(items[i].getAsString());
-            const proxyUrl = `/src/php/proxy.php?url=${encodeURIComponent(items[i])}`;
-            console.log(proxyUrl);
-            const url = await new Promise(resolve => items[i].getAsString(resolve));
-            const filename = url.split('/').pop();
-            const file = await urlToFile(url, filename, 'image/jpeg');
-            console.log(file);
-            files.push(file);
+            item.getAsString(async (dataURI) => {
+                const file = await dataURIToFile(dataURI, 'image.png');
+                console.log(file);
+            });
         }
     }
 
