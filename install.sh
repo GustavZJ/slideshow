@@ -29,6 +29,7 @@ mkdir uploads
 mkdir backup
 
 chmod 777 uploads/
+chmod 777 temp/
 chmod +x admin/changeconfig.sh
 
 rm /etc/apache2/.htpasswd
