@@ -16,7 +16,7 @@ else:
 
 message = MIMEMultipart("alternative")
 message["Subject"] = sys.argv[0]
-print(sys.argv)
+print(sys.argv[0])
 exit()
 message["From"] = sender_email
 message["To"] = receiver_email
