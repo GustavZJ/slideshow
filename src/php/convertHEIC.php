@@ -5,7 +5,7 @@ function convertHeic() {
     foreach($files as $file) {
         echo "/var/www/slideshow/temp/".$file;
         $file_name = "/var/www/slideshow/temp/".$file;
-        echo $file_name<br>;
+        echo $file_name <br> ;
         if(is_file($file_name)) {
             echo success;
             Maestroerror\HeicToJpg::convert("/var/www/slideshow/temp/".$file)->saveAs("/var/www/slideshow/temp/".$file.".jpg");
