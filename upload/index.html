@@ -23,9 +23,9 @@
         <a class="labelBtn btnWhite" href="/admin/index.html">Til admin-side</a>
     </div>
 
-    <form id="hiddenForm" method="get" enctype="multipart/form-data" onsubmit="return false">
+    <form id="hiddenForm" method="get" enctype="multipart/form-data">
         <input type="file" id="hiddenImageInput" multiple="multiple" accept="image/*" name="hidden[]">
-        <input class="labelBtn btnWhite" type="submit" value="Upload">
+        <input id="hiddenSubmit" type="submit" value="Upload">
     </form>
 
     <script type="module">
@@ -34,9 +34,9 @@
         // Function to run php script in background
         jQuery(document).ready(function ($) {
             $('#hiddenForm').submit(function (event) {
-                console.log('hello')
+                event.preventDefault();
 
-                var formData = new FormData(this); // Create FormData object
+                const formData = new FormData(this); // Create FormData object
 
                 $.ajax({
                     type: 'POST',
@@ -45,16 +45,15 @@
                     contentType: false,
                     processData: false,
                     success: function () {
-                        console.log('success')
+                        console.log('success');
                     }
                 })
-                event.preventDefault();
             });
 
-            $("#uploadForm").submit(function (event) {
+            $('#uploadForm').submit(function (event) {
                 event.preventDefault(); // Prevent default form submission
     
-                var formData = new FormData(this); // Create FormData object
+                const formData = new FormData(this); // Create FormData object
     
                 $.ajax({
                     type: 'POST',
