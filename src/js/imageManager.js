@@ -133,13 +133,23 @@ async function dropFile(event) {
                 if (data.startsWith('data:image/')) {
                     // Handle DataURI
                     console.log('1: Caught data:image')
-                    files.push(dataURLtoFile(data, 'test.jpg'));
+                    fetch(data)
+                    .then(res => res.blob())
+                    .then(blob => {
+                        const file = new File([blob], "File name",{ type: "image/png" })
+                        files.push(file);
+                    })
                 } else if (data.includes('<img') || data.includes('src=')) {
                     // Handle HTML snippet and extract image URL
                     const url = extractImageUrlFromHtml(data);
                     if (url) {
                         try {
-                            files.push(dataURLtoFile(url));
+                            fetch(url)
+                            .then(res => res.blob())
+                            .then(blob => {
+                                const file = new File([blob], "File name",{ type: "image/png" })
+                                files.push(file);
+                            })
                         } catch (error) {
                             console.error("Error converting URL to File:", error);
                             messageFade('Error', 'Invalid image URL');
@@ -166,18 +176,6 @@ async function dropFile(event) {
     }
 
     uploadImage('dropUpload', files);
-}
-
-function dataURLtoFile(dataurl, filename) {
-    var arr = dataurl.split(','),
-        mime = arr[0].match(/:(.*?);/)[1],
-        bstr = atob(arr[arr.length - 1]), 
-        n = bstr.length, 
-        u8arr = new Uint8Array(n);
-    while(n--){
-        u8arr[n] = bstr.charCodeAt(n);
-    }
-    return new File([u8arr], filename, {type:mime});
 }
 
 function isValidURL(string) {
