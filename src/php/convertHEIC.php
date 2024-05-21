@@ -1,6 +1,6 @@
 <?php
 
-require 'vendor/autoload.php'; // Make sure to include the Composer autoloader
+require '/varwww/slideshow/vendor/autoload.php'; // Make sure to include the Composer autoloader
 
 use Maestroerror\HeicToJpg;
 
