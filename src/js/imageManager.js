@@ -215,9 +215,6 @@ async function fetchImageFile(url) {
 }
 
 function appendFileToInput(file) {
-    // Get the file input element
-    const fileInput = document.getElementById('your-file-input-id');
-
     // Create a new array to hold all files (existing + new)
     const allFiles = Array.from(fileInput.files);
 
@@ -231,7 +228,7 @@ function appendFileToInput(file) {
     });
 
     // Set the files property of the file input to the combined FileList
-    fileInput.files = combinedFileList.files;
+    uploadImageInput.files = combinedFileList.files;
 }
 
 
