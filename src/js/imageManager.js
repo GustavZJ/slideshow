@@ -14,7 +14,7 @@ const hiddenImageInput = document.getElementById('hiddenImageInput');
 function uploadImage(event, files = []) {
     const hiddenFileList = [];
 
-    console.log('Upload:', event, typeof(event), files)
+    console.log('Upload:', event, typeof(event), files, files.length);
 
     // Handle image file input
     if (event.target && event.target.id == 'uploadImageInput') {
@@ -43,7 +43,7 @@ function uploadImage(event, files = []) {
 
     }
     // Handle drag and drop upload
-    if (event === 'dropUpload' && files.length > 0) {
+    if (event == 'dropUpload' && files.length > 0) {
         console.log('looping')
         for (let i = 0; i < files.length; i++) {
             console.log('To validate')
