@@ -154,13 +154,11 @@ async function dropFile(event) {
                     console.error("Unsupported data type:", data);
                     messageFade('Error', 'Unsupported data type');
                 }
-                // Proceed with uploading the files if all data items have been processed
-                if (files.length === items.length) {
-                    uploadImage('dropUpload', files);
-                }
             });
         }
     }
+
+    uploadImage('dropUpload', files);
 }
 
 function isValidURL(string) {
