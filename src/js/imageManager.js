@@ -37,12 +37,29 @@ function uploadImage(event, files = []) {
             hiddenImageInput.files = newFileList.files;
             document.getElementById('hiddenSubmit').click();
         }
-
     }
+
     // Handle drag and drop upload
     if (event == 'dropUpload') {
         for (const file of files) {
-            validateImgs((file));
+            if (file.name.toLowerCase().endsWith('.heic') || file.name.toLowerCase().endsWith('.heif')) {
+                hiddenFileList.push(file);
+            }
+            else {
+                validateImgs(file);
+            }
+        }
+
+        if (hiddenFileList.length) {
+            // Construct a new FileList from the remaining files
+            const newFileList = new DataTransfer();
+            hiddenFileList.forEach(heicFile => {
+                newFileList.items.add(heicFile);
+            });
+        
+            // Update the input's files property with the new FileList
+            hiddenImageInput.files = newFileList.files;
+            document.getElementById('hiddenSubmit').click();
         }
     }
 }
