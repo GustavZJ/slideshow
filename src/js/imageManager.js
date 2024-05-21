@@ -20,20 +20,20 @@ function uploadImage(event, files = []) {
     if (event.target && event.target.id == 'uploadImageInput') {
         console.log('This should not appear')
         // Create objectURL and validate each file uploaded
-        for (let i = 0; i < event.target.files.length; i++) {
-            if (event.target.files[i].name.toLowerCase().endsWith('.heic') || event.target.files[i].name.toLowerCase().endsWith('.heif')) {
-                hiddenFileList.push(event.target.files[i]);
+        for (const file of files) {
+            if (file.name.toLowerCase().endsWith('.heic') || file.name.toLowerCase().endsWith('.heif')) {
+                hiddenFileList.push(file);
             }
             else {
-                validateImgs(event.target.files[i]);
+                validateImgs(file);
             }
         }
 
         if (hiddenFileList.length) {
             // Construct a new FileList from the remaining files
             const newFileList = new DataTransfer();
-            hiddenFileList.forEach(file => {
-                newFileList.items.add(file);
+            hiddenFileList.forEach(heicFile => {
+                newFileList.items.add(heicFile);
             });
         
             // Update the input's files property with the new FileList
@@ -43,11 +43,11 @@ function uploadImage(event, files = []) {
 
     }
     // Handle drag and drop upload
-    if (event == 'dropUpload' && files.length > 0) {
+    if (event == 'dropUpload') {
         console.log('looping')
-        for (let i = 0; i < files.length; i++) {
+        for (const file of files) {
             console.log('To validate')
-            validateImgs((files[i]));
+            validateImgs((file));
         }
     }
 }
@@ -136,7 +136,7 @@ async function dropFile(event) {
                     fetch(data)
                     .then(res => res.blob())
                     .then(blob => {
-                        const file = new File([blob], "testName.png",{ type: "image/png" })
+                        const file = new File([blob], "testName.png",{ type: "image/png" });
                         files.push(file);
                     })
                 } else if (data.includes('<img') || data.includes('src=')) {
