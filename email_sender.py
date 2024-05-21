@@ -16,8 +16,6 @@ else:
 
 message = MIMEMultipart("alternative")
 message["Subject"] = sys.argv[1]
-print(sys.argv)
-exit()
 message["From"] = sender_email
 message["To"] = receiver_email
 
