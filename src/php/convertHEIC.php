@@ -1,24 +1,23 @@
 <?php
 
-require 'vendor/autoload.php'; // Make sure to include the Composer autoloader
-
-use Maestroerror\HeicToJpg;
-
-
 function convertHeic() {
-        $files = scandir('/var/www/slideshow/temp/');
-    foreach($files as $file) {
-        $file_name = "/var/www/slideshow/temp/".$file;
-        // echo $file_name."<br>" ;
-        if(is_file($file_name)) {
-            Maestroerror\HeicToJpg::convert("/var/www/slideshow/temp/".$file, "arm64", true)->saveAs("/var/www/slideshow/temp/".$file.".jpg");
-            echo $file_name." success";
-        }
-        
-    }
-    
-}
+    $directory = '/var/www/slideshow/temp/';
+    $files = scandir($directory);
 
+    foreach($files as $file) {
+        $filePath = $directory . $file;
+        
+        if (is_file($filePath) && strtolower(pathinfo($filePath, PATHINFO_EXTENSION)) === 'heic') {
+            try {
+                $outputPath = $filePath . '.jpg';
+                HeicToJpg::convert($filePath, "", true)->saveAs($outputPath);
+                echo "$filePath converted successfully to $outputPath\n";
+            } catch (Exception $e) {
+                echo "Error converting $filePath: " . $e->getMessage() . "\n";
+            }
+        }
+    }
+}
 
 convertHeic();
 // header('Content-Type: application/json');
