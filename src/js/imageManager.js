@@ -144,7 +144,7 @@ async function dropFile(event) {
 
                             const img = new Image();
                             img.src = url;
-                            document.appendChild(img);
+                            document.body.appendChild(img);
 
                             const file = await dataURIToFile(url, 'image.png');
                             console.log('File: ', file);
