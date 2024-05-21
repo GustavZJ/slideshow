@@ -14,8 +14,6 @@ const hiddenImageInput = document.getElementById('hiddenImageInput');
 function uploadImage(event, files = []) {
     const hiddenFileList = [];
 
-    console.log('Upload:', event, typeof(event), files, files.length);
-
     // Handle image file input
     if (event.target && event.target.id == 'uploadImageInput') {
         console.log('This should not appear')
@@ -44,9 +42,7 @@ function uploadImage(event, files = []) {
     }
     // Handle drag and drop upload
     if (event == 'dropUpload') {
-        console.log('looping')
         for (const file of files) {
-            console.log('To validate')
             validateImgs((file));
         }
     }
@@ -56,7 +52,6 @@ async function validateImgs(file) {
     // Validate image by attempting to create an HTML image element
     let img = new Image();
     
-    console.log('validate');
     // console.log(file);
     img.src = URL.createObjectURL(file);
     // img.src = file;
@@ -138,8 +133,9 @@ async function dropFile(event) {
                         try {
                             const response = await fetch(data);
                             const blob = await response.blob();
-                            const file = new File([blob], "testName.png", { type: "image/png" });
+                            const file = new File([blob], "testName.jpeg", { type: "image/jpeg" });
                             files.push(file);
+                            addDataUriToFileInput(data, 'testName.jpeg')
                             resolve();
                         } catch (error) {
                             console.error("Error converting DataURI to File:", error);
@@ -189,9 +185,6 @@ async function dropFile(event) {
     // Wait for all promises to resolve
     await Promise.all(promises);
 
-    // Debugging: log the files array to ensure it is correctly populated
-    console.log('Final files array:', files);
-
     // Proceed with the files array
     uploadImage('dropUpload', files);
 }
@@ -219,6 +212,25 @@ async function fetchImageFile(url) {
     const blob = await response.blob();
     const filename = url.split('/').pop().split('#')[0].split('?')[0];
     return new File([blob], filename, { type: blob.type });
+}
+
+function addDataUriToFileInput(dataUri, fileName) {
+    // Convert data URI to Blob
+    const byteString = atob(dataUri.split(',')[1]);
+    const mimeString = dataUri.split(',')[0].split(':')[1].split(';')[0];
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const uint8Array = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < byteString.length; i++) {
+        uint8Array[i] = byteString.charCodeAt(i);
+    }
+    const blob = new Blob([uint8Array], { type: mimeString });
+
+    // Create File object from Blob
+    const file = new File([blob], fileName, { type: mimeString });
+
+    // Set the file input value
+    const fileInput = document.getElementById('your-file-input-id');
+    fileInput.files = [file];
 }
 
 
