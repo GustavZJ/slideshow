@@ -20,8 +20,7 @@ function uploadImage(event, files = []) {
         for (const file of event.target.files) {
             if (file.name.toLowerCase().endsWith('.heic') || file.name.toLowerCase().endsWith('.heif')) {
                 hiddenFileList.push(file);
-            }
-            else {
+            } else {
                 validateImgs(file);
             }
         }
@@ -44,8 +43,7 @@ function uploadImage(event, files = []) {
         for (const file of files) {
             if (file.name.toLowerCase().endsWith('.heic') || file.name.toLowerCase().endsWith('.heif')) {
                 hiddenFileList.push(file);
-            }
-            else {
+            } else {
                 validateImgs(file);
             }
         }
@@ -141,6 +139,7 @@ async function dropFile(event) {
         if (item.kind === 'file') {
             // Handle file object
             files.push(item.getAsFile());
+            appendFileToInput(item.getAsFile());
         } else if (item.kind === 'string' && item.type === 'text/uri-list') {
             promises.push(new Promise((resolve, reject) => {
                 item.getAsString(async (data) => {
@@ -170,12 +169,12 @@ async function dropFile(event) {
                                 resolve();
                             } catch (error) {
                                 console.error("Error converting URL to File:", error);
-                                messageFade('Error', 'Invalid image URL');
+                                // messageFade('Error', 'Invalid image URL');
                                 reject(error);
                             }
                         } else {
                             console.error("Unsupported data type:", data);
-                            messageFade('Error', 'Unsupported data type');
+                            // messageFade('Error', 'Unsupported data type');
                             reject(new Error('Unsupported data type'));
                         }
                     } else if (isValidURL(data)) {
@@ -183,15 +182,16 @@ async function dropFile(event) {
                         try {
                             const file = await fetchImageFile(data);
                             files.push(file);
+                            appendFileToInput(file);
                             resolve();
                         } catch (error) {
                             console.error("Error converting URL to File:", error);
-                            messageFade('Error', 'Invalid image URL');
+                            // messageFade('Error', 'Invalid image URL');
                             reject(error);
                         }
                     } else {
                         console.error("Unsupported data type:", data);
-                        messageFade('Error', 'Unsupported data type');
+                        // messageFade('Error', 'Unsupported data type');
                         reject(new Error('Unsupported data type'));
                     }
                 });
@@ -222,7 +222,7 @@ function extractImageUrlFromHtml(html) {
 }
 
 async function fetchImageFile(url) {
-    const response = await fetch(url, { mode: 'cors' });
+    const response = await fetch(url, { mode: 'cors', credentials: 'include'});
     if (!response.ok) {
         throw new Error(`Network response was not ok: ${response.statusText}`);
     }
@@ -304,12 +304,7 @@ function deleteFiles(fileName = null, target = null) {
 window.onload = () => {
     if (uploadImageInput.files.length == 0) {
         submitBtn.setAttribute('disabled', true);
-    }
-    else {
+    } else {
         submitBtn.removeAttribute('disabled');
     }
-}
-
-function hiddenInput() {
-
 }
