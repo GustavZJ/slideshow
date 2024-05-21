@@ -111,7 +111,7 @@ function dragLeave(event) {
 }
 
 async function urlToFile(url, filename, mimeType) {
-    const response = await fetch(url);
+    const response = await fetch(url, {credentials: "include"});
     const buffer = await response.arrayBuffer();
     return new File([buffer], filename, { type: mimeType });
 }
