@@ -14,8 +14,11 @@ const hiddenImageInput = document.getElementById('hiddenImageInput');
 function uploadImage(event, files = []) {
     const hiddenFileList = [];
 
+    console.log('Upload:', event, files)
+
     // Handle image file input
     if (event.target && event.target.id == 'uploadImageInput') {
+        console.log('This should not appear')
         // Create objectURL and validate each file uploaded
         for (let i = 0; i < event.target.files.length; i++) {
             if (event.target.files[i].name.toLowerCase().endsWith('.heic') || event.target.files[i].name.toLowerCase().endsWith('.heif')) {
@@ -41,7 +44,9 @@ function uploadImage(event, files = []) {
     }
     // Handle drag and drop upload
     if (event === 'dropUpload' && files.length > 0) {
+        console.log('looping')
         for (let i = 0; i < files.length; i++) {
+            console.log('To validate')
             validateImgs((files[i]));
         }
     }
@@ -51,8 +56,10 @@ async function validateImgs(file) {
     // Validate image by attempting to create an HTML image element
     let img = new Image();
     
+    console.log('validate');
+    // console.log(file);
     img.src = URL.createObjectURL(file);
-    // img.src = URL.createObjectURL(file);
+    // img.src = file;
 
     // Valid image file/URL
     img.onload = function() {
@@ -110,30 +117,6 @@ function dragLeave(event) {
     uploadImageFile.classList.remove('dragHighlight');
 }
 
-function dataURIToBlob(dataURI) {
-    const byteString = atob(dataURI.split(',')[1]);
-    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-    const arrayBuffer = new ArrayBuffer(byteString.length);
-    const uint8Array = new Uint8Array(arrayBuffer);
-    for (let i = 0; i < byteString.length; i++) {
-        uint8Array[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([arrayBuffer], { type: mimeString });
-}
-
-async function dataURIToFile(dataURI, filename) {
-    const blob = dataURIToBlob(dataURI);
-    return new File([blob], filename, { type: blob.type });
-}
-
-// function dropFile(event) {
-//     event.preventDefault(); // Prevent setting image path as URL
-//     uploadImageFile.classList.remove('dragHighlight');
-//     uploadImageInput.files =  event.dataTransfer.files;
-
-//     uploadImage('dropUpload', event.dataTransfer.files);
-// }
-
 async function dropFile(event) {
     event.preventDefault(); // Prevent setting image path as URL
     uploadImageFile.classList.remove('dragHighlight');
@@ -143,20 +126,85 @@ async function dropFile(event) {
 
     for (const item of items) {
         if (item.kind === 'file') {
+            // Handle file object
             files.push(item.getAsFile());
-        }
-        else if (item.kind === 'string') {
-            console.log(item);
-            item.getAsString(async (dataURI) => {
-                const file = await dataURIToFile(dataURI, 'image.png');
-                files.push(file);
+        } else if (item.kind === 'string' && item.type === 'text/uri-list') {
+            item.getAsString(async (data) => {
+                if (data.startsWith('data:image/')) {
+                    // Handle DataURI
+                    console.log('1: Caught data:image')
+                    files.push(dataURLtoFile(data, 'test.jpg'));
+                } else if (data.includes('<img') || data.includes('src=')) {
+                    // Handle HTML snippet and extract image URL
+                    const url = extractImageUrlFromHtml(data);
+                    if (url) {
+                        try {
+                            files.push(dataURLtoFile(url));
+                        } catch (error) {
+                            console.error("Error converting URL to File:", error);
+                            messageFade('Error', 'Invalid image URL');
+                        }
+                    } else {
+                        console.error("Unsupported data type:", data);
+                        messageFade('Error', 'Unsupported data type');
+                    }
+                } else if (isValidURL(data)) {
+                    // Handle URL
+                    try {
+                        const file = await fetchImageFile(data);
+                        files.push(file);
+                    } catch (error) {
+                        console.error("Error converting URL to File:", error);
+                        messageFade('Error', 'Invalid image URL');
+                    }
+                } else {
+                    console.error("Unsupported data type:", data);
+                    messageFade('Error', 'Unsupported data type');
+                }
             });
         }
     }
 
-    console.log(files)
     uploadImage('dropUpload', files);
 }
+
+function dataURLtoFile(dataurl, filename) {
+    var arr = dataurl.split(','),
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[arr.length - 1]), 
+        n = bstr.length, 
+        u8arr = new Uint8Array(n);
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, {type:mime});
+}
+
+function isValidURL(string) {
+    try {
+        new URL(string);
+        return true;
+    } catch (_) {
+        return false;
+    }
+}
+
+function extractImageUrlFromHtml(html) {
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    const img = doc.querySelector('img');
+    return img ? img.src : null;
+}
+
+async function fetchImageFile(url) {
+    const response = await fetch(url, { mode: 'cors' });
+    if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.statusText}`);
+    }
+    const blob = await response.blob();
+    const filename = url.split('/').pop().split('#')[0].split('?')[0];
+    return new File([blob], filename, { type: blob.type });
+}
+
 
 // Delete image
 function deleteImagePreview(event) {
