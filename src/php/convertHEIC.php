@@ -1,24 +1,28 @@
 <?php
-
-require '/var/www/slideshow/vendor/autoload.php'; // Make sure to include the Composer autoloader
-
-use Maestroerror\HeicToJpg;
+function convertHeicWithHeifConvert($filePath) {
+    $outputPath = $filePath . '.jpg';
+    $command = "heif-convert $filePath $outputPath";
+    exec($command, $output, $return_var);
+    if ($return_var === 0) {
+        echo "$filePath converted successfully to $outputPath\n";
+    } else {
+        echo "Error converting $filePath\n";
+    }
+}
 
 function convertHeic() {
     $directory = '/var/www/slideshow/temp/';
+    if (!is_dir($directory)) {
+        echo "Directory does not exist: $directory\n";
+        return;
+    }
+
     $files = scandir($directory);
 
     foreach($files as $file) {
         $filePath = $directory . $file;
-        
         if (is_file($filePath) && strtolower(pathinfo($filePath, PATHINFO_EXTENSION)) === 'heic') {
-            try {
-                $outputPath = $filePath . '.jpg';
-                HeicToJpg::convert($filePath)->saveAs($outputPath);
-                echo "$filePath converted successfully to $outputPath\n";
-            } catch (Exception $e) {
-                echo "Error converting $filePath: " . $e->getMessage() . "\n";
-            }
+            convertHeicWithHeifConvert($filePath);
         }
     }
 }
