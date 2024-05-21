@@ -20,35 +20,35 @@
 
   $target_dir = "../uploads/";
   $response = array();
-  foreach(range(0, count($_FILES['files']['name']) - 1) as $x) {
-    $target_file = $target_dir . basename($_FILES['files']["name"][$x]);
-    $imageFileType = strtolower($_FILES['files']['type'][$x]);
+  foreach(range(0, count($_FILES['hidden']['name']) - 1) as $x) {
+    $target_file = $target_dir . basename($_FILES['hidden']["name"][$x]);
+    $imageFileType = strtolower($_FILES['hidden']['type'][$x]);
     $uploadOk = 1;
-    $response[basename($_FILES['files']['name'][$x])] = [];
+    $response[basename($_FILES['hidden']['name'][$x])] = [];
 
     // Check if image file is an actual image or fake image
     if (!str_contains($imageFileType, 'image')) {
       $uploadOk = 0;
-      array_push($response[basename($_FILES['files']['name'][$x])], 'er ikke et billede');
+      array_push($response[basename($_FILES['hidden']['name'][$x])], 'er ikke et billede');
     }
   
     // Check if file already exists
     if (file_exists($target_file)) {
       $uploadOk = 0;
-      array_push($response[basename($_FILES['files']['name'][$x])], 'eksisterer allerede');
+      array_push($response[basename($_FILES['hidden']['name'][$x])], 'eksisterer allerede');
     }
   
     // Check if file is too large
-    if ($_FILES['files']["size"][$x] > convertToBytes($iniFile['upload_max_filesize'])) {
+    if ($_FILES['hidden']["size"][$x] > convertToBytes($iniFile['upload_max_filesize'])) {
       $uploadOk = 0;
-      array_push($response[basename($_FILES['files']['name'][$x])], 'er for stor');
+      array_push($response[basename($_FILES['hidden']['name'][$x])], 'er for stor');
     }
 
     if ($uploadOk){
-      if (move_uploaded_file($_FILES['files']["tmp_name"][$x], $target_file)) {
-        array_push($response[basename($_FILES['files']['name'][$x])], 'success');
+      if (move_uploaded_file($_FILES['hidden']["tmp_name"][$x], $target_file)) {
+        array_push($response[basename($_FILES['hidden']['name'][$x])], 'success');
       } else {
-        array_push($response[basename($_FILES['files']['name'][$x])], 'ukendt fejl :(');
+        array_push($response[basename($_FILES['hidden']['name'][$x])], 'ukendt fejl :(');
       }
     }
   }
