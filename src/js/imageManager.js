@@ -132,7 +132,7 @@ async function dropFile(event) {
                     const url = extractImageUrlFromHtml(data);
                     if (url) {
                         try {
-                            console.oog(url)
+                            console.log(url)
                             files.push(url);
                         } catch (error) {
                             console.error("Error converting URL to File:", error);
