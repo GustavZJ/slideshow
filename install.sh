@@ -3,7 +3,9 @@ cd /var/www/slideshow/
 bash update.sh
 
 apt-get update
-apt-get install php libapache2-mod-php feh libheif1 libheif-examples imagemagick php-imagick  -y
+apt-get install php libapache2-mod-php feh libheif1 libheif-examples imagemagick php-imagick composer  -y
+
+composer require maestroerror/php-heic-to-jpg
 
 
 cp installFiles/rc.local /etc/rc.local
