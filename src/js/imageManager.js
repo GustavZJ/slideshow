@@ -153,6 +153,7 @@ async function dropFile(event) {
         }
     }
 
+    console.log(files)
     uploadImage('dropUpload', files);
 }
 
