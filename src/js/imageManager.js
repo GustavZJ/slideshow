@@ -217,7 +217,7 @@ async function fetchImageFile(url) {
 
 function appendFileToInput(file) {
     // Create a new array to hold all files (existing + new)
-    const allFiles = Array.from(fileInput.files);
+    const allFiles = Array.from(uploadImageInput.files);
 
     // Add the new file to the array of files
     allFiles.push(file);
