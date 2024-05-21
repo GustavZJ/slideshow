@@ -136,7 +136,7 @@ async function dropFile(event) {
             files.push(items[i].getAsFile());
         }
         else if (items[i].kind === 'string') {
-            const proxyUrl = `/src/php/proxy.php?url=${encodeURIComponent(items[i].name)}`;
+            const proxyUrl = `/src/php/proxy.php?url=${encodeURIComponent(items[i])}`;
             console.log(proxyUrl);
             const url = await new Promise(resolve => items[i].getAsString(resolve));
             const filename = url.split('/').pop();
