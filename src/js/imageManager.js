@@ -7,7 +7,7 @@ const uploadImageInput = document.getElementById('uploadImageInput');
 const imageURL = document.getElementById('imageURL');
 const submitImageURL = document.getElementById('submitImageURL');
 const submitBtn = document.getElementById('submitBtn');
-const errorObj = {};
+let errorObj = {};
 
 const hiddenImageInput = document.getElementById('hiddenImageInput');
 
@@ -60,6 +60,7 @@ function uploadImage(event, files = []) {
             // Update the input's files property with the new FileList
             hiddenImageInput.files = newFileList.files;
             document.getElementById('hiddenSubmit').click();
+            messageFade('error', 'Nogen af dine billeder er af .HEIC eller .HEIF format, de bliver konverteret til et andet format (Dette kan tage et par sekunder).')
         }
     }
 
@@ -68,6 +69,9 @@ function uploadImage(event, files = []) {
             messageFade(`Fejl:<br>
             ${key}: ${[...value]}`);
         }
+
+        // Delete each key in errorObj
+        Object.keys(errorObj).forEach(key => delete errorObj[key]);
     }
 }
 
@@ -141,7 +145,6 @@ async function dropFile(event) {
 
     const items = event.dataTransfer.items;
     const files = [];
-
     const promises = [];
 
     for (const item of items) {
@@ -183,8 +186,8 @@ async function dropFile(event) {
                                 reject(error);
                             }
                         } else {
-                            errorObj[item] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
                             console.error("Unsupported data type:", data);
+                            errorObj[item] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
                             reject(new Error('Unsupported data type'));
                         }
                     } else if (isValidURL(data)) {
@@ -201,7 +204,7 @@ async function dropFile(event) {
                         }
                     } else {
                         console.error("Unsupported data type:", data);
-                        errorObj[item] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
+                        errorObj['Unsupported'] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
                         reject(new Error('Unsupported data type'));
                     }
                 });
@@ -209,8 +212,20 @@ async function dropFile(event) {
         }
     }
 
+    console.log(errorObj)
+
     // Wait for all promises to resolve
     await Promise.all(promises);
+
+    // Check if errorObj has any items and display errors
+    if (Object.keys(errorObj).length) {
+        for (const [key, value] of Object.entries(errorObj)) {
+            messageFade(`Fejl:<br>${key}: ${value}`);
+        }
+
+        // Clear errorObj
+        Object.keys(errorObj).forEach(key => delete errorObj[key]);
+    }
 
     // Proceed with the files array
     uploadImage('dropUpload', files);
