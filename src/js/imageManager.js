@@ -17,8 +17,7 @@ function uploadImage(event, files = []) {
     // Handle image file input
     if (event.target && event.target.id == 'uploadImageInput') {
         // Create objectURL and validate each file uploaded
-        for (const file of files) {
-            console.log(file.name)
+        for (const file of event.target.files) {
             if (file.name.toLowerCase().endsWith('.heic') || file.name.toLowerCase().endsWith('.heif')) {
                 hiddenFileList.push(file);
             }
