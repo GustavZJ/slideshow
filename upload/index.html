@@ -44,8 +44,9 @@
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: function () {
-                        console.log('success');
+                    success: function (outputFiles) {
+                        console.log('Great success');
+                        console.log(outputFiles);
                     }
                 })
             });

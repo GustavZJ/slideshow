@@ -16,9 +16,9 @@ function uploadImage(event, files = []) {
 
     // Handle image file input
     if (event.target && event.target.id == 'uploadImageInput') {
-        console.log('This should not appear')
         // Create objectURL and validate each file uploaded
         for (const file of files) {
+            console.log(file.name)
             if (file.name.toLowerCase().endsWith('.heic') || file.name.toLowerCase().endsWith('.heif')) {
                 hiddenFileList.push(file);
             }
@@ -135,7 +135,7 @@ async function dropFile(event) {
                             const blob = await response.blob();
                             const file = new File([blob], "testName.jpeg", { type: "image/jpeg" });
                             files.push(file);
-                            addDataUriToFileInput(data, 'testName.jpeg')
+                            appendFileToInput(file);
                             resolve();
                         } catch (error) {
                             console.error("Error converting DataURI to File:", error);
@@ -150,6 +150,7 @@ async function dropFile(event) {
                                 const blob = await response.blob();
                                 const file = new File([blob], "File name", { type: "image/png" });
                                 files.push(file);
+                                appendFileToInput(file);
                                 resolve();
                             } catch (error) {
                                 console.error("Error converting URL to File:", error);
@@ -214,23 +215,21 @@ async function fetchImageFile(url) {
     return new File([blob], filename, { type: blob.type });
 }
 
-function addDataUriToFileInput(dataUri, fileName) {
-    // Convert data URI to Blob
-    const byteString = atob(dataUri.split(',')[1]);
-    const mimeString = dataUri.split(',')[0].split(':')[1].split(';')[0];
-    const arrayBuffer = new ArrayBuffer(byteString.length);
-    const uint8Array = new Uint8Array(arrayBuffer);
-    for (let i = 0; i < byteString.length; i++) {
-        uint8Array[i] = byteString.charCodeAt(i);
-    }
-    const blob = new Blob([uint8Array], { type: mimeString });
+function appendFileToInput(file) {
+    // Create a new array to hold all files (existing + new)
+    const allFiles = Array.from(uploadImageInput.files);
 
-    // Create File object from Blob
-    const file = new File([blob], fileName, { type: mimeString });
+    // Add the new file to the array of files
+    allFiles.push(file);
 
-    // Set the file input value
-    const fileInput = document.getElementById('your-file-input-id');
-    fileInput.files = [file];
+    // Create a new FileList from the combined array of files
+    const combinedFileList = new DataTransfer();
+    allFiles.forEach(file => {
+        combinedFileList.items.add(file);
+    });
+
+    // Set the files property of the file input to the combined FileList
+    uploadImageInput.files = combinedFileList.files;
 }
 
 
