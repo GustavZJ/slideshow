@@ -133,7 +133,7 @@ async function dropFile(event) {
                 if (data.startsWith('data:image/')) {
                     // Handle DataURI
                     console.log('1: Caught data:image')
-                    files.push(dataURLtoFile(data));
+                    files.push(dataURLtoFile(data, 'test.jpg'));
                 } else if (data.includes('<img') || data.includes('src=')) {
                     // Handle HTML snippet and extract image URL
                     const url = extractImageUrlFromHtml(data);
