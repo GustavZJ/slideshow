@@ -30,58 +30,53 @@ function convertHeic() {
         }
     }
 }
-// Load php ini file to read max file size
+
+// Load php.ini file to read max file size
 $iniFile = parse_ini_file('/var/www/slideshow/php.ini');
 
-// Convert php ini max file size to bytes, so we can compare to image file size
+// Convert php.ini max file size to bytes
 function convertToBytes($value) {
-return preg_replace_callback('/^\s*(\d+)\s*(?:([kmgt]?)b?)?\s*$/i', function ($m) {
-    switch (strtolower($m[2])) {
-    case 't': $m[1] *= 1024;
-    case 'g': $m[1] *= 1024;
-    case 'm': $m[1] *= 1024;
-    case 'k': $m[1] *= 1024;
-    }
-    return $m[1];
-}, $value);
+    return preg_replace_callback('/^\s*(\d+)\s*(?:([kmgt]?)b?)?\s*$/i', function ($m) {
+        switch (strtolower($m[2])) {
+            case 't': $m[1] *= 1024;
+            case 'g': $m[1] *= 1024;
+            case 'm': $m[1] *= 1024;
+            case 'k': $m[1] *= 1024;
+        }
+        return $m[1];
+    }, $value);
 }
 
-// echo "<script>console.log('Debug Objects: " .json_encode($iniFile) . "' );</script>";
-// echo "<script>console.log('Debug Objects: " .json_encode(convertToBytes($iniFile['upload_max_filesize'])) . "' );</script>";
-
-// $response = array();
 $target_dir = "/var/www/slideshow/temp/";
 $errorStr = '';
-foreach(range(0, count($_FILES['hidden']['name']) - 1) as $x) {
+foreach (range(0, count($_FILES['hidden']['name']) - 1) as $x) {
     $target_file = $target_dir . basename($_FILES['hidden']["name"][$x]);
-    $errorStr .= $target_file;
-    $imageFileType = strtolower($_FILES['hidden']['type'][$x]);
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $uploadOk = 1;
-    // $response[basename($_FILES['hidden']['name'][$x])] = [];
 
-    // // Check if image file is an actual image or fake image
-    // if (!str_contains($imageFileType, 'image')) {
-    //     $uploadOk = 0;
-    //     array_push($response[basename($_FILES['hidden']['name'][$x])], 'er ikke et billede');
-    // }
+    // Check if file is an actual image (basic check by MIME type)
+    if (!str_contains($imageFileType, 'image')) {
+        $uploadOk = 0;
+        $errorStr .= basename($_FILES['hidden']['name'][$x]) . " is not an image.\n";
+    }
 
-    // // Check if file already exists
-    // if (file_exists($target_file)) {
-    //     $uploadOk = 0;
-    //     array_push($response[basename($_FILES['hidden']['name'][$x])], 'eksisterer allerede');
-    // }
+    // Check if file already exists
+    if (file_exists($target_file)) {
+        $uploadOk = 0;
+        $errorStr .= basename($_FILES['hidden']['name'][$x]) . " already exists.\n";
+    }
 
-    // // Check if file is too large
-    // if ($_FILES['hidden']["size"][$x] > convertToBytes($iniFile['upload_max_filesize'])) {
-    //     $uploadOk = 0;
-    //     array_push($response[basename($_FILES['hidden']['name'][$x])], 'er for stor');
-    // }
+    // Check if file is too large
+    if ($_FILES['hidden']["size"][$x] > convertToBytes($iniFile['upload_max_filesize'])) {
+        $uploadOk = 0;
+        $errorStr .= basename($_FILES['hidden']['name'][$x]) . " is too large.\n";
+    }
 
-    if ($uploadOk){
+    if ($uploadOk) {
         if (move_uploaded_file($_FILES['hidden']["tmp_name"][$x], $target_file)) {
-            // array_push($response[basename($_FILES['hidden']['name'][$x])], 'success');
+            $errorStr .= basename($_FILES['hidden']['name'][$x]) . " uploaded successfully.\n";
         } else {
-            // array_push($response[basename($_FILES['hidden']['name'][$x])], 'ukendt fejl :(');
+            $errorStr .= "Unknown error occurred while uploading " . basename($_FILES['hidden']['name'][$x]) . ".\n";
         }
     }
 }
@@ -89,7 +84,6 @@ foreach(range(0, count($_FILES['hidden']['name']) - 1) as $x) {
 convertHeic();
 
 header('Content-Type: application/json');
-// echo json_encode($response);
-echo json_encode($errorStr);
-echo json_encode($outputFiles);
+echo json_encode(['errors' => $errorStr, 'convertedFiles' => $outputFiles]);
 exit();
+?>
