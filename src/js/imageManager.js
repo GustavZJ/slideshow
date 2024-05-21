@@ -124,6 +124,7 @@ async function dropFile(event) {
             files.push(item.getAsFile());
         } else if (item.kind === 'string') {
             item.getAsString(async (data) => {
+                console.log(data);
                 if (data.startsWith('data:image/')) {
                     // Handle DataURI
                     files.push(data);
