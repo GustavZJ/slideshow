@@ -124,58 +124,75 @@ async function dropFile(event) {
     const items = event.dataTransfer.items;
     const files = [];
 
+    const promises = [];
+
     for (const item of items) {
         if (item.kind === 'file') {
             // Handle file object
             files.push(item.getAsFile());
         } else if (item.kind === 'string' && item.type === 'text/uri-list') {
-            item.getAsString(async (data) => {
-                if (data.startsWith('data:image/')) {
-                    // Handle DataURI
-                    console.log('1: Caught data:image')
-                    fetch(data)
-                    .then(res => res.blob())
-                    .then(blob => {
-                        const file = new File([blob], "testName.png",{ type: "image/png" });
-                        console.log(file);
-                        files.push(file);
-                    })
-                } else if (data.includes('<img') || data.includes('src=')) {
-                    // Handle HTML snippet and extract image URL
-                    const url = extractImageUrlFromHtml(data);
-                    if (url) {
+            promises.push(new Promise((resolve, reject) => {
+                item.getAsString(async (data) => {
+                    if (data.startsWith('data:image/')) {
+                        // Handle DataURI
                         try {
-                            fetch(url)
-                            .then(res => res.blob())
-                            .then(blob => {
-                                const file = new File([blob], "File name",{ type: "image/png" })
+                            const response = await fetch(data);
+                            const blob = await response.blob();
+                            const file = new File([blob], "testName.png", { type: "image/png" });
+                            files.push(file);
+                            resolve();
+                        } catch (error) {
+                            console.error("Error converting DataURI to File:", error);
+                            reject(error);
+                        }
+                    } else if (data.includes('<img') || data.includes('src=')) {
+                        // Handle HTML snippet and extract image URL
+                        const url = extractImageUrlFromHtml(data);
+                        if (url) {
+                            try {
+                                const response = await fetch(url);
+                                const blob = await response.blob();
+                                const file = new File([blob], "File name", { type: "image/png" });
                                 files.push(file);
-                            })
+                                resolve();
+                            } catch (error) {
+                                console.error("Error converting URL to File:", error);
+                                messageFade('Error', 'Invalid image URL');
+                                reject(error);
+                            }
+                        } else {
+                            console.error("Unsupported data type:", data);
+                            messageFade('Error', 'Unsupported data type');
+                            reject(new Error('Unsupported data type'));
+                        }
+                    } else if (isValidURL(data)) {
+                        // Handle URL
+                        try {
+                            const file = await fetchImageFile(data);
+                            files.push(file);
+                            resolve();
                         } catch (error) {
                             console.error("Error converting URL to File:", error);
                             messageFade('Error', 'Invalid image URL');
+                            reject(error);
                         }
                     } else {
                         console.error("Unsupported data type:", data);
                         messageFade('Error', 'Unsupported data type');
+                        reject(new Error('Unsupported data type'));
                     }
-                } else if (isValidURL(data)) {
-                    // Handle URL
-                    try {
-                        const file = await fetchImageFile(data);
-                        files.push(file);
-                    } catch (error) {
-                        console.error("Error converting URL to File:", error);
-                        messageFade('Error', 'Invalid image URL');
-                    }
-                } else {
-                    console.error("Unsupported data type:", data);
-                    messageFade('Error', 'Unsupported data type');
-                }
-            });
+                });
+            }));
         }
     }
 
+    // Wait for all promises to resolve
+    await Promise.all(promises);
+
+    // Debugging: log the files array to ensure it is correctly populated
+    console.log('Final files array:', files);
+
+    // Proceed with the files array
     uploadImage('dropUpload', files);
 }
 
