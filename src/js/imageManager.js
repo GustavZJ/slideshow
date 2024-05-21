@@ -135,7 +135,7 @@ async function dropFile(event) {
                             const blob = await response.blob();
                             const file = new File([blob], "testName.jpeg", { type: "image/jpeg" });
                             files.push(file);
-                            addDataUriToFileInput(file, 'testName.jpeg')
+                            addDataUriToFileInput(data, 'testName.jpeg')
                             resolve();
                         } catch (error) {
                             console.error("Error converting DataURI to File:", error);
