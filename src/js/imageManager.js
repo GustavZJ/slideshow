@@ -156,7 +156,7 @@ async function dropFile(event) {
                     const url = extractImageUrlFromHtml(data);
                     if (url) {
                         try {
-                            const file = await fetchImageFile(url);
+                            const file = await dataURIToFile(url, 'image.png');
                             files.push(file);
                         } catch (error) {
                             console.error("Error converting URL to File:", error);
