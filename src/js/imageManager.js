@@ -154,6 +154,7 @@ async function dropFile(event) {
                 } else if (data.includes('<img') || data.includes('src=')) {
                     // Handle HTML snippet and extract image URL
                     const url = extractImageUrlFromHtml(data);
+                    console.log(url)
                     if (url) {
                         try {
                             const file = await dataURIToFile(url, 'image.png');
