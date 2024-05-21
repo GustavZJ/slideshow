@@ -7,6 +7,7 @@ const uploadImageInput = document.getElementById('uploadImageInput');
 const imageURL = document.getElementById('imageURL');
 const submitImageURL = document.getElementById('submitImageURL');
 const submitBtn = document.getElementById('submitBtn');
+const errorObj = {};
 
 const hiddenImageInput = document.getElementById('hiddenImageInput');
 
@@ -35,6 +36,7 @@ function uploadImage(event, files = []) {
             // Update the input's files property with the new FileList
             hiddenImageInput.files = newFileList.files;
             document.getElementById('hiddenSubmit').click();
+            messageFade('error', 'Nogen af dine billeder er af .HEIC eller .HEIF format, de bliver konverteret til et andet format (Dette kan tage et par sekunder).')
         }
     }
 
@@ -60,6 +62,13 @@ function uploadImage(event, files = []) {
             document.getElementById('hiddenSubmit').click();
         }
     }
+
+    if (errorObj.length) {
+        for (const [key, value] in Object.entries(errorObj)) {
+            messageFade(`Fejl:<br>
+            ${key}: ${[...value]}`);
+        }
+    }
 }
 
 async function validateImgs(file) {
@@ -78,8 +87,8 @@ async function validateImgs(file) {
     
     // Invalid image file/URL
     img.onerror = function() {
-        messageFade('Error', 'Invalid image file/URL');
-        // deleteFiles(file); // Remove invalid file
+        errorObj[file] = 'Ikke et gyldigt billede'
+        deleteFiles(file); // Remove invalid file
     };
 }
 
@@ -154,6 +163,7 @@ async function dropFile(event) {
                             resolve();
                         } catch (error) {
                             console.error("Error converting DataURI to File:", error);
+                            errorObj[item] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
                             reject(error);
                         }
                     } else if (data.includes('<img') || data.includes('src=')) {
@@ -169,6 +179,7 @@ async function dropFile(event) {
                                 resolve();
                             } catch (error) {
                                 console.error("Error converting URL to File:", error);
+                                errorObj[item] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
                                 reject(error);
                             }
                         } else {
@@ -184,10 +195,12 @@ async function dropFile(event) {
                             resolve();
                         } catch (error) {
                             console.error("Error converting URL to File:", error);
+                            errorObj[item] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
                             reject(error);
                         }
                     } else {
                         console.error("Unsupported data type:", data);
+                        errorObj[item] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
                         reject(new Error('Unsupported data type'));
                     }
                 });
