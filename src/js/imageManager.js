@@ -14,7 +14,7 @@ const hiddenImageInput = document.getElementById('hiddenImageInput');
 function uploadImage(event, files = []) {
     const hiddenFileList = [];
 
-    console.log('Upload:', event, files)
+    console.log('Upload:', event, typeof(event), files)
 
     // Handle image file input
     if (event.target && event.target.id == 'uploadImageInput') {
@@ -136,7 +136,7 @@ async function dropFile(event) {
                     fetch(data)
                     .then(res => res.blob())
                     .then(blob => {
-                        const file = new File([blob], "File name",{ type: "image/png" })
+                        const file = new File([blob], "testName.png",{ type: "image/png" })
                         files.push(file);
                     })
                 } else if (data.includes('<img') || data.includes('src=')) {
