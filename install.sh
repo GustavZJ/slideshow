@@ -5,10 +5,11 @@ bash update.sh
 apt-get update
 apt-get install php libapache2-mod-php feh libheif1 libheif-examples imagemagick php-imagick -y
 curl https://getcomposer.org/installer| php
-mv composer.phar /usr/local/bin/composer
+if [ ! -f /usr/local/bin/composer]; then
+    mv composer.phar /usr/local/bin/composer
+fi
 chmod +x /usr/local/bin/composer
-sudo chown -R www-data:www-data /usr/local/bin/composer
-sudo -u www-data composer require maestroerror/php-heic-to-jpg
+sudo composer global require maestroerror/php-heic-to-jpg
 
 
 cp installFiles/rc.local /etc/rc.local
