@@ -154,10 +154,13 @@ async function dropFile(event) {
                 } else if (data.includes('<img') || data.includes('src=')) {
                     // Handle HTML snippet and extract image URL
                     const url = extractImageUrlFromHtml(data);
-                    console.log(url)
                     if (url) {
                         try {
-                            const file = await dataURIToFile(url, 'image.png');
+                            const fileName = url.split('/').pop();
+                            console.log('URL:', url);
+                            console.log('Filename:', fileName);
+                            const file = await dataURIToFile(url, fileName);
+                            console.log('File:', file);
                             files.push(file);
                         } catch (error) {
                             console.error("Error converting URL to File:", error);
