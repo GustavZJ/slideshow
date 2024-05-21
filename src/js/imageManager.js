@@ -122,7 +122,7 @@ async function dropFile(event) {
         if (item.kind === 'file') {
             // Handle file object
             files.push(item.getAsFile());
-        } else if (item.kind === 'string') {
+        } else if (item.kind === 'string' && item.type === 'text/uri-list') {
             item.getAsString(async (data) => {
                 console.log(data);
                 if (data.startsWith('data:image/')) {
