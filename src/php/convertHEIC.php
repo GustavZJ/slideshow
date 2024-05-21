@@ -1,10 +1,13 @@
 <?php
+$outputFiles = array();
+
 function convertHeicWithHeifConvert($filePath) {
     $outputPath = $filePath . '.jpg';
     $command = "heif-convert $filePath $outputPath";
     exec($command, $output, $return_var);
     if ($return_var === 0) {
         echo "$filePath converted successfully to $outputPath\n";
+        array_push($outputFiles, $outputPath);
     } else {
         echo "Error converting $filePath\n";
     }
@@ -28,3 +31,7 @@ function convertHeic() {
 }
 
 convertHeic();
+
+header('Content-Type: application/json');
+echo $outputFiles;
+exit();
