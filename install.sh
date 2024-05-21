@@ -4,15 +4,6 @@ bash update.sh
 
 apt-get update
 apt-get install php libapache2-mod-php feh libheif1 libheif-examples imagemagick php-imagick -y
-export COMPOSER_ALLOW_SUPERUSER=1
-if [ ! -f /usr/local/bin/composer ]; then
-curl https://getcomposer.org/installer| php
-    mv composer.phar /usr/local/bin/composer
-fi
-chmod +x /usr/local/bin/composer
-sudo composer global require maestroerror/php-heic-to-jpg
-
-
 cp installFiles/rc.local /etc/rc.local
 cp installFiles/defaultphp.ini /var/www/slideshow/php.ini
 cp installFiles/defaultconfig.config /var/www/slideshow/config.config
