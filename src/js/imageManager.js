@@ -14,6 +14,7 @@ const hiddenImageInput = document.getElementById('hiddenImageInput');
 // Upload image
 function uploadImage(event, files = []) {
     const hiddenFileList = [];
+    console.log(event);
 
     // Handle image file input
     if (event.target && event.target.id == 'uploadImageInput') {
