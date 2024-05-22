@@ -91,6 +91,5 @@ function convertHeic() {
 convertHeic();
 
 header('Content-Type: application/json');
-echo json_encode(['errors' => $errorStr, 'convertedFiles' => $outputFiles]);
+echo json_encode($outputFiles);
 exit();
-?>
