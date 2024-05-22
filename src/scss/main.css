@@ -191,4 +191,8 @@ a {
   color: black;
 }
 
+#hiddenForm {
+  display: none;
+}
+
 /*# sourceMappingURL=main.css.map */

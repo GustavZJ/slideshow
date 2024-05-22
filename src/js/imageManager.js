@@ -316,6 +316,7 @@ function deleteFiles(fileName = null, target = null) {
 window.onload = () => {
     submitBtn.setAttribute('disabled', true);
     uploadImageInput.value = '';
+    hiddenImageInput.value = '';
 
     for (const img of uploadedImagesCont.children) {
         img.remove();
