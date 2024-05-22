@@ -29,16 +29,13 @@
     </form>
 
     <script type="module">
-        import {messageFade} from '/src/js/errorMessage.js'
+        import { messageFade } from '/src/js/errorMessage.js'
 
         // Function to run php script in background
         jQuery(document).ready(function ($) {
             async function createFile(filePath){
-                    console.log(filePath);
                     let response = await fetch(filePath);
-                    console.log(response)
                     let data = await response.blob();
-                    console.log(data);
                     let metadata = {
                         type: data.type
                     };
@@ -60,10 +57,8 @@
                         const allFiles = [];
                         (async function () {
                             for await (const filePath of outputFiles) {
-                                console.log(filePath, filePath.slice(18));
                                // Add the new file to the array of files
                                const file = await createFile(filePath.slice(18)).then(function(result) {allFiles.push(result)});
-                               console.log(allFiles)
                                // Create a new FileList from the combined array of files
                             }
                             const combinedFileList = new DataTransfer();

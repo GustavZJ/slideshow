@@ -19,7 +19,6 @@ function uploadImage(event, files = []) {
     if (event.target && event.target.id == 'uploadImageInput') {
         // Create objectURL and validate each file uploaded
         for (const file of event.target.files) {
-            console.log(file);
             if (file.name.toLowerCase().endsWith('.heic') || file.name.toLowerCase().endsWith('.heif')) {
                 hiddenFileList.push(file);
             } else {
@@ -172,7 +171,6 @@ async function dropFile(event) {
                         // Handle URL
                         try {
                             const file = await fetchImageFileThroughProxy(data);
-                            console.log(file);
                             files.push(file);
                             appendFileToInput(file);
                             resolve();
@@ -233,14 +231,12 @@ async function fetchImageFileThroughProxy(url) {
         const html = await response.text();
         const imageUrl = extractImageUrlFromHtml(html);
         if (imageUrl) {
-            console.log(imageUrl);
             return fetchImageFileThroughProxy(imageUrl);
         } else {
             throw new Error('Unable to extract image URL from HTML.');
         }
     } else if (response.ok) {
         const blob = await response.blob();
-        console.log(response, blob);
         const filename = (+new Date * Math.random()).toString(36).substring(0,6);
         return new File([blob], filename, { type: blob.type });
     } else {
