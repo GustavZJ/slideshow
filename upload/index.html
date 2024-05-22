@@ -37,7 +37,7 @@
                     let response = await fetch(filePath);
                     let data = await response.blob();
                     let metadata = {
-                        type: 'image/jpg'
+                        type: 'image/jpeg'
                     };
                     return new File([data], (+new Date * Math.random()).toString(36).substring(0,6) + '.jpg', metadata);
                 }
@@ -66,11 +66,11 @@
                             allFiles.forEach(fileItem => {
                                 combinedFileList.items.add(fileItem);
                             });
-                                
+
                             // Set the files property of the file input to the combined FileList
                             document.getElementById('uploadImageInput').files = combinedFileList.files;
                             document.getElementById('uploadImageInput').dispatchEvent(new Event('change'));
-                        
+
                             document.getElementById('hiddenImageInput').value = '';
                         })();
                     }
