@@ -45,8 +45,8 @@
 
             // Hide delete btn if no images present
             if (!document.getElementById('imagePreviewCont').childElementCount == 0) {
-                document.getElementById('deleteBtn').style.display = 'block';
-                document.getElementById('deleteAllBtn').style.display = 'block';
+                document.getElementById('deleteBtn').style.display = 'inline-block';
+                document.getElementById('deleteAllBtn').style.display = 'inline-block';
                 document.getElementById('deletePreviewText').style.display = 'none';
             }
 
