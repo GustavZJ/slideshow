@@ -240,6 +240,7 @@ async function fetchImageFileThroughProxy(url, filename = '') {
         const html = await response.text();
         const imageUrl = extractImageUrlFromHtml(html);
         if (imageUrl) {
+            console.log(imageURL);
             return fetchImageFileThroughProxy(imageUrl);
         } else {
             throw new Error('Unable to extract image URL from HTML.');
