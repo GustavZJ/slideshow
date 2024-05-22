@@ -169,31 +169,11 @@ async function dropFile(event) {
                             errorObj[item] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
                             reject(error);
                         }
-                    } else if (data.includes('<img') || data.includes('src=')) {
-                        // Handle HTML snippet and extract image URL
-                        const url = extractImageUrlFromHtml(data);
-                        if (url) {
-                            try {
-                                const response = await fetch(url);
-                                const blob = await response.blob();
-                                const file = new File([blob], "File name", { type: "image/png" });
-                                files.push(file);
-                                appendFileToInput(file);
-                                resolve();
-                            } catch (error) {
-                                console.error("Error converting URL to File:", error);
-                                errorObj[item] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
-                                reject(error);
-                            }
-                        } else {
-                            console.error("Unsupported data type:", data);
-                            errorObj[item] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
-                            reject(new Error('Unsupported data type'));
-                        }
                     } else if (isValidURL(data)) {
                         // Handle URL
                         try {
-                            const file = await fetchImageFile(data);
+                            const file = await fetchImageFileThroughProxy(data);
+                            console.log(file);
                             files.push(file);
                             appendFileToInput(file);
                             resolve();
@@ -220,7 +200,7 @@ async function dropFile(event) {
     // Check if errorObj has any items and display errors
     if (Object.keys(errorObj).length) {
         for (const [key, value] of Object.entries(errorObj)) {
-            messageFade(`Fejl:<br>${key}: ${value}`);
+            messageFade('error', `Fejl:<br>${key}: ${value}`);
         }
 
         // Clear errorObj
@@ -246,14 +226,31 @@ function extractImageUrlFromHtml(html) {
     return img ? img.src : null;
 }
 
-async function fetchImageFile(url) {
-    const response = await fetch(url, { mode: 'cors'});
-    if (!response.ok) {
+function extractFilenameFromUrl(url) {
+    const pathArray = url.split('/');
+    const filename = pathArray.pop();
+    return filename.split('?')[0]; // Remove query parameters
+}
+
+async function fetchImageFileThroughProxy(url) {
+    const response = await fetch(`proxy.php?url=${encodeURIComponent(url)}`);
+    const contentType = response.headers.get('Content-Type');
+
+    if (contentType && contentType.includes('text/html')) {
+        const html = await response.text();
+        const imageUrl = extractImageUrlFromHtml(html);
+        if (imageUrl) {
+            return fetchImageFileThroughProxy(imageUrl);
+        } else {
+            throw new Error('Unable to extract image URL from HTML.');
+        }
+    } else if (response.ok) {
+        const blob = await response.blob();
+        const filename = extractFilenameFromUrl(url);
+        return new File([blob], filename, { type: blob.type });
+    } else {
         throw new Error(`Network response was not ok: ${response.statusText}`);
     }
-    const blob = await response.blob();
-    const filename = url.split('/').pop().split('#')[0].split('?')[0];
-    return new File([blob], filename, { type: blob.type });
 }
 
 function appendFileToInput(file) {
