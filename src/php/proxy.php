@@ -22,7 +22,7 @@ if (isset($_GET['url'])) {
         curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 
         // Execute the session and store the contents in a variable
-        $result['url'] = curl_exec($ch);
+        $result['test'] = curl_exec($ch);
 
         // Get the content type of the response
         $contentType = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
