@@ -228,10 +228,11 @@ function extractImageUrlFromHtml(html) {
 
 function extractFilenameFromUrl(url) {
     const pathArray = url.split('/');
-    return pathArray.pop();
+    const filename = pathArray.pop();
+    return filename.split('?')[0]; // Remove query parameters
 }
 
-async function fetchImageFileThroughProxy(url) {
+async function fetchImageFileThroughProxy(url, filename = '') {
     const response = await fetch(`proxy.php?url=${encodeURIComponent(url)}`);
     const contentType = response.headers.get('Content-Type');
 
@@ -239,13 +240,15 @@ async function fetchImageFileThroughProxy(url) {
         const html = await response.text();
         const imageUrl = extractImageUrlFromHtml(html);
         if (imageUrl) {
-            return fetchImageFileThroughProxy(imageUrl);
+            return fetchImageFileThroughProxy(imageUrl, imageURL);
         } else {
             throw new Error('Unable to extract image URL from HTML.');
         }
     } else if (response.ok) {
         const blob = await response.blob();
-        const filename = extractFilenameFromUrl(url);
+        if (!filename) {
+            filename = extractFilenameFromUrl(url);
+        }
         return new File([blob], filename, { type: blob.type });
     } else {
         throw new Error(`Network response was not ok: ${response.statusText}`);
