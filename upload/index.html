@@ -45,7 +45,24 @@
                     contentType: false,
                     processData: false,
                     success: function (outputFiles) {
-                        console.log(outputFiles);
+                        for (const file in outputFiles) {
+                            // Create a new array to hold all files (existing + new)
+                            const allFiles = Array.from(document.getElementById('uploadImageInput').files);
+
+                            // Add the new file to the array of files
+                            allFiles.push(file);
+
+                            // Create a new FileList from the combined array of files
+                            const combinedFileList = new DataTransfer();
+                            allFiles.forEach(file => {
+                                combinedFileList.items.add(file);
+                            });
+                        
+                            // Set the files property of the file input to the combined FileList
+                            document.getElementById('uploadImageInput').files = combinedFileList.files;
+                        }
+
+                        document.getElementById('hiddenImageInput').value = '';
                     }
                 })
             });
