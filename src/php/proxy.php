@@ -28,7 +28,7 @@ if (isset($_GET['url'])) {
         $contentType = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
 
         // Get the filename from the URL
-        $result[$filename] = basename(parse_url($url, PHP_URL_PATH));
+        $result['filename'] = basename(parse_url($url, PHP_URL_PATH));
 
         // Close the cURL session
         curl_close($ch);
