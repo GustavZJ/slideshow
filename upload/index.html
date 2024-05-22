@@ -34,6 +34,7 @@
         // Function to run php script in background
         jQuery(document).ready(function ($) {
             async function createFile(filePath){
+                    console.log(filePath);
                     let response = await fetch(filePath);
                     console.log(response)
                     let data = await response.blob();
