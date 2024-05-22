@@ -7,6 +7,7 @@ const uploadImageInput = document.getElementById('uploadImageInput');
 const imageURL = document.getElementById('imageURL');
 const submitImageURL = document.getElementById('submitImageURL');
 const submitBtn = document.getElementById('submitBtn');
+let errorObj = {};
 
 const hiddenImageInput = document.getElementById('hiddenImageInput');
 
@@ -17,12 +18,10 @@ function uploadImage(event, files = []) {
     // Handle image file input
     if (event.target && event.target.id == 'uploadImageInput') {
         // Create objectURL and validate each file uploaded
-        for (const file of files) {
-            console.log(file.name)
+        for (const file of event.target.files) {
             if (file.name.toLowerCase().endsWith('.heic') || file.name.toLowerCase().endsWith('.heif')) {
                 hiddenFileList.push(file);
-            }
-            else {
+            } else {
                 validateImgs(file);
             }
         }
@@ -37,14 +36,42 @@ function uploadImage(event, files = []) {
             // Update the input's files property with the new FileList
             hiddenImageInput.files = newFileList.files;
             document.getElementById('hiddenSubmit').click();
+            messageFade('error', 'Nogen af dine billeder er af .HEIC eller .HEIF format, de bliver konverteret til et andet format (Dette kan tage et par sekunder).')
         }
-
     }
+
     // Handle drag and drop upload
     if (event == 'dropUpload') {
         for (const file of files) {
-            validateImgs((file));
+            if (file.name.toLowerCase().endsWith('.heic') || file.name.toLowerCase().endsWith('.heif')) {
+                hiddenFileList.push(file);
+            } else {
+                validateImgs(file);
+            }
         }
+
+        if (hiddenFileList.length) {
+            // Construct a new FileList from the remaining files
+            const newFileList = new DataTransfer();
+            hiddenFileList.forEach(heicFile => {
+                newFileList.items.add(heicFile);
+            });
+        
+            // Update the input's files property with the new FileList
+            hiddenImageInput.files = newFileList.files;
+            document.getElementById('hiddenSubmit').click();
+            messageFade('error', 'Nogen af dine billeder er af .HEIC eller .HEIF format, de bliver konverteret til et andet format (Dette kan tage et par sekunder).')
+        }
+    }
+
+    if (errorObj.length) {
+        for (const [key, value] in Object.entries(errorObj)) {
+            messageFade(`Fejl:<br>
+            ${key}: ${[...value]}`);
+        }
+
+        // Delete each key in errorObj
+        Object.keys(errorObj).forEach(key => delete errorObj[key]);
     }
 }
 
@@ -64,8 +91,8 @@ async function validateImgs(file) {
     
     // Invalid image file/URL
     img.onerror = function() {
-        messageFade('Error', 'Invalid image file/URL');
-        // deleteFiles(file); // Remove invalid file
+        errorObj[file] = 'Ikke et gyldigt billede'
+        deleteFiles(file); // Remove invalid file
     };
 }
 
@@ -118,13 +145,13 @@ async function dropFile(event) {
 
     const items = event.dataTransfer.items;
     const files = [];
-
     const promises = [];
 
     for (const item of items) {
         if (item.kind === 'file') {
             // Handle file object
             files.push(item.getAsFile());
+            appendFileToInput(item.getAsFile());
         } else if (item.kind === 'string' && item.type === 'text/uri-list') {
             promises.push(new Promise((resolve, reject) => {
                 item.getAsString(async (data) => {
@@ -139,43 +166,25 @@ async function dropFile(event) {
                             resolve();
                         } catch (error) {
                             console.error("Error converting DataURI to File:", error);
+                            errorObj[item] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
                             reject(error);
-                        }
-                    } else if (data.includes('<img') || data.includes('src=')) {
-                        // Handle HTML snippet and extract image URL
-                        const url = extractImageUrlFromHtml(data);
-                        if (url) {
-                            try {
-                                const response = await fetch(url);
-                                const blob = await response.blob();
-                                const file = new File([blob], "File name", { type: "image/png" });
-                                files.push(file);
-                                appendFileToInput(file);
-                                resolve();
-                            } catch (error) {
-                                console.error("Error converting URL to File:", error);
-                                messageFade('Error', 'Invalid image URL');
-                                reject(error);
-                            }
-                        } else {
-                            console.error("Unsupported data type:", data);
-                            messageFade('Error', 'Unsupported data type');
-                            reject(new Error('Unsupported data type'));
                         }
                     } else if (isValidURL(data)) {
                         // Handle URL
                         try {
-                            const file = await fetchImageFile(data);
+                            const file = await fetchImageFileThroughProxy(data);
+                            console.log(file);
                             files.push(file);
+                            appendFileToInput(file);
                             resolve();
                         } catch (error) {
                             console.error("Error converting URL to File:", error);
-                            messageFade('Error', 'Invalid image URL');
+                            errorObj[item] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
                             reject(error);
                         }
                     } else {
                         console.error("Unsupported data type:", data);
-                        messageFade('Error', 'Unsupported data type');
+                        errorObj['Unsupported'] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
                         reject(new Error('Unsupported data type'));
                     }
                 });
@@ -183,8 +192,20 @@ async function dropFile(event) {
         }
     }
 
+    console.log(errorObj)
+
     // Wait for all promises to resolve
     await Promise.all(promises);
+
+    // Check if errorObj has any items and display errors
+    if (Object.keys(errorObj).length) {
+        for (const [key, value] of Object.entries(errorObj)) {
+            messageFade('error', `Fejl:<br>${key}: ${value}`);
+        }
+
+        // Clear errorObj
+        Object.keys(errorObj).forEach(key => delete errorObj[key]);
+    }
 
     // Proceed with the files array
     uploadImage('dropUpload', files);
@@ -205,14 +226,34 @@ function extractImageUrlFromHtml(html) {
     return img ? img.src : null;
 }
 
-async function fetchImageFile(url) {
-    const response = await fetch(url, { mode: 'cors' });
-    if (!response.ok) {
+function extractFilenameFromUrl(url) {
+    const pathArray = url.split('/');
+    const filename = pathArray.pop();
+    return filename.split('?')[0]; // Remove query parameters
+}
+
+async function fetchImageFileThroughProxy(url) {
+    const response = await fetch(`proxy.php?url=${encodeURIComponent(url)}`);
+    const contentType = response.headers.get('Content-Type');
+
+    if (contentType && contentType.includes('text/html')) {
+        const html = await response.text();
+        const imageUrl = extractImageUrlFromHtml(html);
+        if (imageUrl) {
+            return fetchImageFileThroughProxy(imageUrl);
+        } else {
+            throw new Error('Unable to extract image URL from HTML.');
+        }
+    } else if (response.ok) {
+        const blob = await response.blob();
+        console.log(response, blob);
+        if (!filename) {
+            filename = extractFilenameFromUrl(url);
+        }
+        return new File([blob], filename, { type: blob.type });
+    } else {
         throw new Error(`Network response was not ok: ${response.statusText}`);
     }
-    const blob = await response.blob();
-    const filename = url.split('/').pop().split('#')[0].split('?')[0];
-    return new File([blob], filename, { type: blob.type });
 }
 
 function appendFileToInput(file) {
@@ -288,12 +329,7 @@ function deleteFiles(fileName = null, target = null) {
 window.onload = () => {
     if (uploadImageInput.files.length == 0) {
         submitBtn.setAttribute('disabled', true);
-    }
-    else {
+    } else {
         submitBtn.removeAttribute('disabled');
     }
-}
-
-function hiddenInput() {
-
 }
