@@ -1,35 +1,35 @@
 <?php
 $outputFiles = array();
 
-function convertHeicWithHeifConvert($filePath) {
-    global $outputFiles;
-    $outputPath = $filePath . '.jpg';
-    $command = "heif-convert $filePath $outputPath";
-    exec($command, $output, $return_var);
-    if ($return_var === 0) {
-        echo "$filePath converted successfully to $outputPath\n";
-        array_push($outputFiles, $outputPath);
-    } else {
-        echo "Error converting $filePath\n";
-    }
-}
+// function convertHeicWithHeifConvert($filePath) {
+//     global $outputFiles;
+//     $outputPath = $filePath . '.jpg';
+//     $command = "heif-convert $filePath $outputPath";
+//     exec($command, $output, $return_var);
+//     if ($return_var === 0) {
+//         echo "$filePath converted successfully to $outputPath\n";
+//         array_push($outputFiles, $outputPath);
+//     } else {
+//         echo "Error converting $filePath\n";
+//     }
+// }
 
-function convertHeic() {
-    $directory = '/var/www/slideshow/temp/';
-    if (!is_dir($directory)) {
-        echo "Directory does not exist: $directory\n";
-        return;
-    }
+// function convertHeic() {
+//     $directory = '/var/www/slideshow/temp/';
+//     if (!is_dir($directory)) {
+//         echo "Directory does not exist: $directory\n";
+//         return;
+//     }
 
-    $files = scandir($directory);
+//     $files = scandir($directory);
 
-    foreach($files as $file) {
-        $filePath = $directory . $file;
-        if (is_file($filePath) && strtolower(pathinfo($filePath, PATHINFO_EXTENSION)) === 'heic') {
-            convertHeicWithHeifConvert($filePath);
-        }
-    }
-}
+//     foreach($files as $file) {
+//         $filePath = $directory . $file;
+//         if (is_file($filePath) && strtolower(pathinfo($filePath, PATHINFO_EXTENSION)) === 'heic') {
+//             convertHeicWithHeifConvert($filePath);
+//         }
+//     }
+// }
 
 // Load php.ini file to read max file size
 $iniFile = parse_ini_file('/var/www/slideshow/php.ini');
