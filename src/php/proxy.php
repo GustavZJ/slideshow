@@ -35,7 +35,6 @@ if (isset($_GET['url'])) {
 
         // Set the appropriate headers
         header("Content-Type: $contentType");
-        header("Content-Disposition: attachment; filename=\"$filename\"");
         echo $result;
     } else if (isset($headers['Content-Type']) && strpos($headers['Content-Type'], 'image/') === 0) {
         header("Content-Type: " . $headers['Content-Type']);
