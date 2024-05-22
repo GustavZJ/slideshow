@@ -14,7 +14,6 @@ const hiddenImageInput = document.getElementById('hiddenImageInput');
 // Upload image
 function uploadImage(event, files = []) {
     const hiddenFileList = [];
-    console.log(event);
 
     // Handle image file input
     if (event.target && event.target.id == 'uploadImageInput') {
@@ -24,7 +23,6 @@ function uploadImage(event, files = []) {
             if (file.name.toLowerCase().endsWith('.heic') || file.name.toLowerCase().endsWith('.heif')) {
                 hiddenFileList.push(file);
             } else {
-                console.log('Validating');
                 validateImgs(file);
             }
         }
@@ -79,7 +77,6 @@ function uploadImage(event, files = []) {
 }
 
 async function validateImgs(file) {
-    console.log('Validate function', file)
     // Validate image by attempting to create an HTML image element
     let img = new Image();
 
@@ -87,14 +84,12 @@ async function validateImgs(file) {
 
     // Valid image file/URL
     img.onload = function() {
-        console.log('Validated')
         document.getElementById('previewText').style.display = 'block';
         createImagePreview(img.src, file['name']);
     };
     
     // Invalid image file/URL
     img.onerror = function() {
-        console.log('Not validated')
         errorObj[file] = 'Ikke et gyldigt billede'
         deleteFiles(file); // Remove invalid file
     };
@@ -102,7 +97,6 @@ async function validateImgs(file) {
 
 // Append image to HTML
 function createImagePreview(file, name) {
-    console.log('Creating preview')
     // Create image object and set src
     const imageCont = document.createElement('div');
     imageCont.className = 'imageCont';

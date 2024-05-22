@@ -35,7 +35,9 @@
         jQuery(document).ready(function ($) {
             async function createFile(filePath){
                     let response = await fetch(filePath);
+                    console.log(response)
                     let data = await response.blob();
+                    console.log(data);
                     let metadata = {
                         type: 'image/jpg'
                     };
