@@ -45,11 +45,12 @@
                     contentType: false,
                     processData: false,
                     success: function (outputFiles) {
-                        for (const file in outputFiles) {
+                        for (const filePath in outputFiles) {
                             // Create a new array to hold all files (existing + new)
                             const allFiles = Array.from(document.getElementById('uploadImageInput').files);
 
                             // Add the new file to the array of files
+                            const file = filePath.blob();
                             allFiles.push(new File(file, file, { type: 'image/jpg'}));
 
                             // Create a new FileList from the combined array of files
