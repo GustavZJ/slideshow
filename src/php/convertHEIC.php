@@ -58,6 +58,8 @@ $outputFiles = array();
 function convertHeicWithHeifConvert($filePath) {
     global $outputFiles;
     $outputPath = $filePath . '.jpg';
+    $escapedFilePath = escapeshellarg($filePath);
+    $escapedOutputPath = escapeshellarg($outputPath);
     $command = "heif-convert $filePath $outputPath";
     exec($command, $output, $return_var);
     if ($return_var === 0) {
@@ -85,8 +87,6 @@ function convertHeic() {
         }
     }
 }
-
-
 
 convertHeic();
 
