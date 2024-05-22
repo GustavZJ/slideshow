@@ -249,7 +249,7 @@ async function fetchImageFileThroughProxy(url, filename = '') {
         const blob = await response.blob();
         console.log(response, blob);
         if (!filename) {
-            filename = extractFilenameFromUrl(url);
+            filename = 'testImageCool.jpeg';
         }
         return new File([blob], filename, { type: blob.type });
     } else {
