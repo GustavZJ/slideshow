@@ -246,10 +246,10 @@ async function fetchImageFileThroughProxy(url) {
         }
     } else if (response.ok) {
         const blob = await response.blob();
+        console.log(response, blob);
         if (!filename) {
             filename = extractFilenameFromUrl(url);
         }
-        console.log(response, blob);
         return new File([blob], filename, { type: blob.type });
     } else {
         throw new Error(`Network response was not ok: ${response.statusText}`);
