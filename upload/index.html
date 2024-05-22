@@ -57,9 +57,8 @@
                         for (const filePath in outputFiles) {
                             // Create a new array to hold all files (existing + new)
                             const allFiles = Array.from(document.getElementById('uploadImageInput').files);
-                            console.log(filePath);
                             // Add the new file to the array of files
-                            const file = createFile(filePath);
+                            const file = createFile(outputFiles[filePath]);
                             allFiles.push(file);
 
                             // Create a new FileList from the combined array of files
