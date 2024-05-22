@@ -71,9 +71,9 @@ button,
 	}
 }
 
-#loginCont {
-    display: inline-block;
-    width: min-content;
+#deleteBtn,
+#deleteAllBtn {
+	display: none;
 }
 
 // Image upload style

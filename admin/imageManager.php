@@ -44,11 +44,9 @@
             import { messageFade } from '/src/js/errorMessage.js'
 
             // Hide delete btn if no images present
-            if (document.getElementById('imagePreviewCont').childElementCount == 0) {
-                document.getElementById('deleteBtn').style.display = 'none';
-                document.getElementById('deleteAllBtn').style.display = 'none';
-            }
-            else {
+            if (!document.getElementById('imagePreviewCont').childElementCount == 0) {
+                document.getElementById('deleteBtn').style.display = 'block';
+                document.getElementById('deleteAllBtn').style.display = 'block';
                 document.getElementById('deletePreviewText').style.display = 'none';
             }
 

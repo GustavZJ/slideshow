@@ -65,9 +65,9 @@ button.btnBlue,
   background-color: #1c8aff;
 }
 
-#loginCont {
-  display: inline-block;
-  width: min-content;
+#deleteBtn,
+#deleteAllBtn {
+  display: none;
 }
 
 #imageUploadCont #uploadImageFile {
