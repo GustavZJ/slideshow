@@ -40,7 +40,7 @@
                     let data = await response.blob();
                     console.log(data);
                     let metadata = {
-                        type: 'image/jpg'
+                        type: data.type
                     };
                     return new File([data], (+new Date * Math.random()).toString(36).substring(0,6) + '.jpg', metadata);
                 }
