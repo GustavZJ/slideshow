@@ -56,7 +56,7 @@ foreach (range(0, count($_FILES['hidden']['name']) - 1) as $x) {
 $outputFiles = array();
 
 function convertHeicWithHeifConvert($filePath) {
-    global $outputFiles;
+    // global $outputFiles;
     $outputPath = $filePath . '.jpg';
     $command = "heif-convert $filePath $outputPath";
     exec($command, $output, $return_var);
