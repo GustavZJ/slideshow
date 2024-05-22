@@ -50,7 +50,7 @@
                             const allFiles = Array.from(document.getElementById('uploadImageInput').files);
 
                             // Add the new file to the array of files
-                            allFiles.push(file);
+                            allFiles.push(new File(file, file, { type: 'image/jpg'}));
 
                             // Create a new FileList from the combined array of files
                             const combinedFileList = new DataTransfer();
