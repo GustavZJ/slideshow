@@ -312,12 +312,12 @@ function deleteFiles(fileName = null, target = null) {
     }
 }
 
-// Check if upload btn should be disable or enabled on page load
-// This should hopefully prevent issues with cache
+// Remove any images on reload
 window.onload = () => {
-    if (uploadImageInput.files.length == 0) {
-        submitBtn.setAttribute('disabled', true);
-    } else {
-        submitBtn.removeAttribute('disabled');
+    submitBtn.setAttribute('disabled', true);
+    uploadImageInput.value = '';
+
+    for (const img of uploadedImagesCont.children) {
+        img.remove();
     }
 }
