@@ -26,11 +26,15 @@ if (isset($_GET['url'])) {
         // Get the content type of the response
         $contentType = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
 
+        // Get the filename from the URL
+        $filename = basename(parse_url($url, PHP_URL_PATH));
+
         // Close the cURL session
         curl_close($ch);
 
         // Set the appropriate headers
         header("Content-Type: $contentType");
+        header("Content-Disposition: attachment; filename=\"$filename\"");
         echo $result;
     } else if (isset($headers['Content-Type']) && strpos($headers['Content-Type'], 'image/') === 0) {
         header("Content-Type: " . $headers['Content-Type']);
@@ -41,3 +45,4 @@ if (isset($_GET['url'])) {
 } else {
     echo "No URL provided";
 }
+?>
