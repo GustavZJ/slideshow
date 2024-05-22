@@ -60,9 +60,9 @@
                         const allFiles = [];
                         (async function () {
                             for await (const filePath of outputFiles) {
-                                console.log(filePath, filePath.slice(18, 0));
+                                console.log(filePath, filePath.slice(18));
                                // Add the new file to the array of files
-                               const file = await createFile(filePath.slice(18, 0)).then(function(result) {allFiles.push(result)});
+                               const file = await createFile(filePath.slice(18)).then(function(result) {allFiles.push(result)});
                                console.log(allFiles)
                                // Create a new FileList from the combined array of files
                             }
