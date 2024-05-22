@@ -65,8 +65,8 @@
 
                             // Create a new FileList from the combined array of files
                             const combinedFileList = new DataTransfer();
-                            allFiles.forEach(file => {
-                                combinedFileList.items.add(file);
+                            allFiles.forEach(fileItem => {
+                                combinedFileList.items.add(fileItem);
                             });
                         
                             // Set the files property of the file input to the combined FileList
