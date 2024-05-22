@@ -61,9 +61,9 @@ function convertHeicWithHeifConvert($filePath) {
     $command = "heif-convert $filePath $outputPath";
     exec($command, $output, $return_var);
     if ($return_var === 0) {
+        $outputFiles[$filePath] = $outputPath;
         unlink($filePath);
         echo "$filePath converted successfully to $outputPath\n";
-        array_push($outputFiles, $outputPath);
     } else {
         echo "Error converting $filePath\n";
     }
