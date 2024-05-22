@@ -2,6 +2,7 @@
 if (isset($_GET['url'])) {
     $url = $_GET['url'];
     $headers = get_headers($url, 1);
+    $result = array();
 
     // Validate URL
     if (filter_var($url, FILTER_VALIDATE_URL)) {
@@ -21,13 +22,13 @@ if (isset($_GET['url'])) {
         curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 
         // Execute the session and store the contents in a variable
-        $result = curl_exec($ch);
+        $result['url'] = curl_exec($ch);
 
         // Get the content type of the response
         $contentType = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
 
         // Get the filename from the URL
-        $filename = basename(parse_url($url, PHP_URL_PATH));
+        $result[$filename] = basename(parse_url($url, PHP_URL_PATH));
 
         // Close the cURL session
         curl_close($ch);
