@@ -60,8 +60,8 @@
                             const allFiles = Array.from(document.getElementById('uploadImageInput').files);
                             // Add the new file to the array of files
                             const file = createFile(outputFiles[filePath].slice(18, 0));
-                            console.log(file.value);
                             allFiles.push(file);
+                            console.log(allFiles);
 
                             // Create a new FileList from the combined array of files
                             const combinedFileList = new DataTransfer();
