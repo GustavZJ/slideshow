@@ -24,6 +24,7 @@ function uploadImage(event, files = []) {
             if (file.name.toLowerCase().endsWith('.heic') || file.name.toLowerCase().endsWith('.heif')) {
                 hiddenFileList.push(file);
             } else {
+                console.log('Validating');
                 validateImgs(file);
             }
         }
