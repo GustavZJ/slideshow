@@ -82,8 +82,6 @@ async function validateImgs(file) {
     console.log('Validate function', file)
     // Validate image by attempting to create an HTML image element
     let img = new Image();
-    
-    console.log(file.isFile())
 
     img.src = URL.createObjectURL(file);
 
