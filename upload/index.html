@@ -33,6 +33,16 @@
 
         // Function to run php script in background
         jQuery(document).ready(function ($) {
+            async function createFile(filePath){
+                    let response = await fetch(filePath);
+                    let data = await response.blob();
+                    let metadata = {
+                        type: 'image/jpg'
+                    };
+                    return new File([data], filePath, metadata);
+                }
+cr
+            
             $('#hiddenForm').submit(function (event) {
                 event.preventDefault();
 
@@ -50,8 +60,8 @@
                             const allFiles = Array.from(document.getElementById('uploadImageInput').files);
 
                             // Add the new file to the array of files
-                            const file = filePath.blob();
-                            allFiles.push(new File([file], file, { type: 'image/jpg'}));
+                            const file = createFile(filePath);
+                            allFiles.push(file);
 
                             // Create a new FileList from the combined array of files
                             const combinedFileList = new DataTransfer();
