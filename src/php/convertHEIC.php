@@ -63,16 +63,16 @@ function convertHeicWithHeifConvert($filePath) {
     if ($return_var === 0) {
         array_push($outputFiles, $outputPath);
         unlink($filePath);
-        echo "$filePath converted successfully to $outputPath\n";
+        echo "$filePath converted successfully to $outputPath";
     } else {
-        echo "Error converting $filePath\n";
+        echo "Error converting $filePath";
     }
 }
 
 function convertHeic() {
     $directory = '/var/www/slideshow/temp/';
     if (!is_dir($directory)) {
-        echo "Directory does not exist: $directory\n";
+        echo "Directory does not exist: $directory";
         return;
     }
 
