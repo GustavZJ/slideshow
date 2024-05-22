@@ -79,6 +79,7 @@ function uploadImage(event, files = []) {
 }
 
 async function validateImgs(file) {
+    console.log('Validate function')
     // Validate image by attempting to create an HTML image element
     let img = new Image();
     
@@ -88,6 +89,7 @@ async function validateImgs(file) {
 
     // Valid image file/URL
     img.onload = function() {
+        console.log('Validated')
         document.getElementById('previewText').style.display = 'block';
         createImagePreview(img.src, file['name']);
     };
@@ -101,6 +103,7 @@ async function validateImgs(file) {
 
 // Append image to HTML
 function createImagePreview(file, name) {
+    console.log('Creating preview')
     // Create image object and set src
     const imageCont = document.createElement('div');
     imageCont.className = 'imageCont';
