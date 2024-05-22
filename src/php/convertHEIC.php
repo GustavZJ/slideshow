@@ -83,7 +83,7 @@ foreach (range(0, count($_FILES['hidden']['name']) - 1) as $x) {
     }
 }
 
-convertHeic();
+// convertHeic();
 
 header('Content-Type: application/json');
 echo json_encode(['errors' => $errorStr, 'convertedFiles' => $outputFiles]);
