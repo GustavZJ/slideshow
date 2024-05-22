@@ -60,7 +60,7 @@ function convertHeicWithHeifConvert($filePath) {
     $outputPath = $filePath . '.jpg';
     $escapedFilePath = escapeshellarg($filePath);
     $escapedOutputPath = escapeshellarg($outputPath);
-    $command = 'heif-convert' . $escapedFilePath . $escapedOutputPath;
+    $command = "heifconvert $escapedFilePath $escapedOutputPath";
     exec($command, $output, $return_var);
     if ($return_var === 0) {
         array_push($outputFiles, $outputPath);
