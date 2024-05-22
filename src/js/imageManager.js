@@ -228,9 +228,7 @@ function extractImageUrlFromHtml(html) {
 
 function extractFilenameFromUrl(url) {
     const pathArray = url.split('/');
-    const filename = pathArray.pop();
-    console.log(filename.split('?')[0]);
-    return filename.split('?')[0]; // Remove query parameters
+    return pathArray.pop();
 }
 
 async function fetchImageFileThroughProxy(url) {
