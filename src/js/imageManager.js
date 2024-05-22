@@ -232,7 +232,7 @@ function extractFilenameFromUrl(url) {
     return filename.split('?')[0]; // Remove query parameters
 }
 
-async function fetchImageFileThroughProxy(url) {
+async function fetchImageFileThroughProxy(url, filename = '') {
     const response = await fetch(`proxy.php?url=${encodeURIComponent(url)}`);
     const contentType = response.headers.get('Content-Type');
 
