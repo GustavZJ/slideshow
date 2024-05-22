@@ -58,9 +58,7 @@ $outputFiles = array();
 function convertHeicWithHeifConvert($filePath) {
     global $outputFiles;
     $outputPath = $filePath . '.jpg';
-    $escapedFilePath = escapeshellarg($filePath);
-    $escapedOutputPath = escapeshellarg($outputPath);
-    $command = "heifconvert $escapedFilePath $escapedOutputPath";
+    $command = "heif-convert " . escapeshellarg($filePath) . " " . escapeshellarg($outputPath);
     exec($command, $output, $return_var);
     if ($return_var === 0) {
         array_push($outputFiles, $outputPath);
