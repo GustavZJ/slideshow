@@ -11,7 +11,7 @@ Picture frame:
 - We should perhaps move the file name change to PHP, so that it's done as soon as it's uploaded ☑
 
 Config page:
-- Display current values of each configurable item
+- Display current values of each configurable item ☑
 - Add settings for auto remove
 
 Admin page:
