@@ -35,7 +35,7 @@ function getConfigValue($filePath, $key)
 }
 
 // Example usage
-$filePath = 'path/to/';
+$filePath = '/var/www/slideshow/config.config';
 $keys = array("timedelay");
 $key_val = array();
 
