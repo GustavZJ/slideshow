@@ -202,7 +202,7 @@ async function dropFile(event) {
         // Clear errorObj
         Object.keys(errorObj).forEach(key => delete errorObj[key]);
     }
-    
+
     // Proceed with the files array
     uploadImage('dropUpload', files);
 }
@@ -218,19 +218,16 @@ function isValidURL(string) {
 
 function extractImageUrlFromHtml(html) {
     const doc = new DOMParser().parseFromString(html, 'text/html');
-    console.log(doc);
     const img = doc.querySelector('img');
     return img ? img.src : null;
 }
 
 async function fetchImageFileThroughProxy(url) {
     const response = await fetch(`/src/php/proxy.php?url=${encodeURIComponent(url)}`);
-    console.log(response);
     const contentType = response.headers.get('Content-Type');
 
     if (contentType && contentType.includes('text/html')) {
         const html = await response.text();
-        console.log(html)
         const imageUrl = extractImageUrlFromHtml(html);
         if (imageUrl) {
             return fetchImageFileThroughProxy(imageUrl);
@@ -240,7 +237,6 @@ async function fetchImageFileThroughProxy(url) {
     } else if (response.ok) {
         const blob = await response.blob();
         const filename = (+new Date * Math.random()).toString(36).substring(0,6) + blob.type.replace('image/', '.');
-        console.log(filename);
         return new File([blob], filename, { type: blob.type });
     } else {
         throw new Error(`Network response was not ok: ${response.statusText}`);
