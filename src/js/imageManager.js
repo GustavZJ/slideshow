@@ -221,7 +221,6 @@ function extractImageUrlFromHtml(html) {
     const doc = new DOMParser().parseFromString(html, 'text/html');
     console.log(doc);
     const img = doc.querySelector('img');
-    console.log(img);
     return img ? img.src : null;
 }
 
@@ -231,8 +230,8 @@ async function fetchImageFileThroughProxy(url) {
 
     if (contentType && contentType.includes('text/html')) {
         const html = await response.text();
+        console.log(html)
         const imageUrl = extractImageUrlFromHtml(html);
-        console.log(imageURL)
         if (imageUrl) {
             return fetchImageFileThroughProxy(imageUrl);
         } else {
