@@ -26,7 +26,7 @@ chmod +x pictureframe.sh
 
 mkdir -p ~/.config/systemd/user
 
-cp installFiles/pictureframe.service /.config/systemd/user/pictureframe.service
+cp installFiles/pictureframe.service  /etc/systemd/system/pictureframe.service
 systemctl --user daemon-reload
 systemctl --user enable pictureframe.service
 systemctl --user start pictureframe.service
