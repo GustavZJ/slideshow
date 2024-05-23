@@ -158,7 +158,9 @@ async function dropFile(event) {
                         try {
                             const response = await fetch(data);
                             const blob = await response.blob();
-                            const file = new File([blob], (+new Date * Math.random()).toString(36).substring(0,6), { type: "image/jpeg" });
+                            const file = new File([blob],
+                                (+new Date * Math.random()).toString(36).substring(0,6) + blob.type.replace('image/', '.'),
+                            { type: "image/jpeg" });
                             files.push(file);
                             appendFileToInput(file);
                             resolve();
