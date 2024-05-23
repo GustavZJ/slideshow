@@ -5,8 +5,29 @@ if (isset($_GET['url'])) {
 
 
     if (isset($headers['Content-Type']) && strpos($headers['Content-Type'], 'image/') === 0) {
+        $ch = curl_init();
+
+        // Set the URL
+        curl_setopt($ch, CURLOPT_URL, $url);
+        
+        // Return the transfer as a string instead of outputting it
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        
+        // Execute the request
+        $html = curl_exec($ch);
+        
+        // Check for errors
+        if(curl_errno($ch)) {
+            echo 'cURL error: ' . curl_error($ch);
+        } else {
+            echo $html;
+        }
+        
+        // Close the cURL session
+        curl_close($ch);
+
         header("Content-Type: " . $headers['Content-Type']);
-        readfile($url);
+        echo $result;
     } else if (filter_var($url, FILTER_VALIDATE_URL)) {
         // Initialize a cURL session
         $ch = curl_init();
