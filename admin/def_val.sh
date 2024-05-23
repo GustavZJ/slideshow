@@ -7,4 +7,4 @@ do
     countries+=( [$key]="$value" )
 
 done
-echo "$(#values}"
+echo "$(#values)"
