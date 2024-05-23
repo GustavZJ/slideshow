@@ -1,6 +1,22 @@
 #!/bin/bash
 
-# Don't run this as root!
+
+# Find the user currently logged into the graphical session
+USER=$(loginctl list-sessions | awk '/seat0/ {print $3}')
+
+# If no user is found, exit
+if [ -z "$USER" ]; then
+  echo "No user found on seat0."
+  exit 1
+fi
+
+# Set the DISPLAY and XAUTHORITY environment variables
+DISPLAY=:0
+XAUTHORITY="/home/$USER/.Xauthority"
+
+export DISPLAY
+export XAUTHORITY
+
 cd /var/www/slideshow/uploads
 
 source /var/www/slideshow/config.config
@@ -29,4 +45,4 @@ source /var/www/slideshow/config.config
 	# done
 cd ..
 
-XAUTHORITY=~/.Xauthority DISPLAY=:0.0 feh exif=1 --auto-rotate -q -p -Z -F -R 60 -Y -D $timedelay uploads/
+XAUTHORITY="/home/$USER/.Xauthority" DISPLAY=:0.0 feh --auto-rotate -q -p -Z -F -R 60 -Y -D "$timedelay" uploads/

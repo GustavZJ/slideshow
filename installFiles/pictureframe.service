@@ -1,12 +1,14 @@
 [Unit]
 Description=Run pictureframe.sh on startup
 After=graphical.target
+Wants=graphical.target
 
 [Service]
+Type=simple
 ExecStart=/var/www/slideshow/pictureframe.sh
 Environment=DISPLAY=:0
-Environment=XAUTHORITY=%h/.Xauthority
+ExecStartPre=/bin/bash -c 'while [ -z "$DISPLAY" ]; do sleep 1; done'
 Restart=on-failure
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target
