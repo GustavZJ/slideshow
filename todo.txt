@@ -27,6 +27,7 @@ Upload page:
   if the user refreshes, after having attempted to upload images (Need to test if it's possible to get some of the errors thru this method) ☑
 - Add indicators to show the user if they have selected too many files
 - Add counter to show how many images very uploaded succesfully, whenever an image encounters an error while uploading ☑
+- Fix error message for when images are denied drop not appearing
 
 Website:
 - Improve styling
