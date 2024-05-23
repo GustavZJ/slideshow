@@ -22,6 +22,12 @@ mkdir backup
 chmod 777 uploads/
 chmod 777 temp/
 chmod +x admin/changeconfig.sh
+chmod +x pictureframe.sh
+
+mkdir -p ~/.config/systemd/user
+
+cp installFiles/pictureframe.service /.config/systemd/user/pictureframe.service
+
 
 rm /etc/apache2/.htpasswd
 rm /etc/apache2/.htpasswdadmin

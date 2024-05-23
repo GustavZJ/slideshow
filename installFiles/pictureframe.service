@@ -1,0 +1,13 @@
+[Unit]
+Description=Run pictureframe.sh on startup
+After=default.target
+
+[Service]
+ExecStart=/var/www/slideshow/pictureframe.sh
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=~/.Xauthority
+Restart=always
+User=pi
+
+[Install]
+WantedBy=default.target
