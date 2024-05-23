@@ -95,8 +95,9 @@
                         success: function (response) {
                             for (let file in response) {
                                 if (response[file] === "success") {
+                                    console.log(file);
                                     deleteCount += 1;
-                                    $(`.previewImage[src='../uploads/${file.repace('?', '%3F')}']`).closest('.imageCont').remove();
+                                    $(`.previewImage[src='../uploads/${file}']`).closest('.imageCont').remove();
                                 } else {
                                     errorList.push(file);
                                 }
