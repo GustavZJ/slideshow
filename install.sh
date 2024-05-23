@@ -8,6 +8,7 @@ cp installFiles/rc.local /etc/rc.local
 cp installFiles/defaultphp.ini /var/www/slideshow/php.ini
 cp installFiles/defaultconfig.config /var/www/slideshow/config.config
 cp installFiles/slideshow.conf /etc/apache2/sites-available/slideshow.conf
+cp installFiles/autostart ~/.config/lxsession/LXDE-pi/autostart
 
 a2enmod headers
 a2enmod rewrite
@@ -24,12 +25,7 @@ chmod 777 temp/
 chmod +x admin/changeconfig.sh
 chmod +x pictureframe.sh
 
-mkdir -p ~/.config/systemd/user
 
-cp installFiles/pictureframe.service  /etc/systemd/system/pictureframe.service
-systemctl daemon-reload
-systemctl enable pictureframe.service
-systemctl start pictureframe.service
 
 
 rm /etc/apache2/.htpasswd
