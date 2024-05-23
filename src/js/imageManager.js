@@ -193,7 +193,7 @@ async function dropFile(event) {
 
     
     // Wait for all promises to resolve
-    await Promise.all(promises);
+    await Promise.allSettled(promises);
 
     console.log(errorObj);
 
