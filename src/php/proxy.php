@@ -60,4 +60,4 @@ if (isset($_GET['url'])) {
 } else {
     echo "No URL provided";
 }
-?>
+exit();
