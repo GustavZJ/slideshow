@@ -58,19 +58,22 @@
                             console.warn(`Element with id "${key}" not found.`);
                         }
                     }
-                    $("#configForm").submit(function (event) {
-                        $.ajax({
-                            type: 'POST',
-                            url: 'changeconfig.php',
-                            data: $(this).serialize(),
-                            success: function () {
-                                alert('Config successfully changed!');
-                            }
-                        });
-                        // Prevent default action of going to php page
-                        event.preventDefault();
-                    });
+                }
+            });
+
+            $("#configForm").submit(function (event) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'changeconfig.php',
+                    data: $(this).serialize(),
+                    success: function () {
+                        alert('Config successfully changed!');
+                    }
                 });
+                // Prevent default action of going to php page
+                event.preventDefault();
+            });
+        });
 
     </script>
 </body>
