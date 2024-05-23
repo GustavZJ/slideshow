@@ -22,6 +22,7 @@
                     // Load images from rpi, and display them
                     $images = scandir('../uploads');
                     foreach($images as $image) {
+                        str_replace('?', '%3F', $image);
                         $fullImage = '../uploads/'.$image;
                         if (is_file($fullImage)) {
                             if (str_ends_with(strtolower($fullImage), '.heic') || str_ends_with(strtolower($fullImage), '.heif')) {
@@ -92,7 +93,6 @@
                         data: $(this).serialize(),
                         success: function (response) {
                             for (let file in response) {
-                                replace('?', '%3F', file);
                                 if (response[file] === "success") {
                                     deleteCount += 1;
                                     $(`.previewImage[src='../uploads/${file}']`).closest('.imageCont').remove();
