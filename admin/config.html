@@ -39,11 +39,11 @@
                 url: 'default_val.php',
                 success: function (key_val) {
                     console.log(Object.entries(key_val));
-                    const key_val = Object.entries(key_val).reduce((obj, [key, val]) => {
+                    const key_val_object = Object.entries(key_val).reduce((obj, [key, val]) => {
                         obj[key] = val;
                         return obj;
                     }, {});
-                    for (const [key, val] in key_val) {
+                    for (const [key, val] in key_val_object) {
                         const element = document.getElementById(key);
                         if (element) {
                             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
