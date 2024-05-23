@@ -62,7 +62,7 @@ function convertHeicWithHeifConvert($filePath) {
     exec($command, $output, $return_var);
     if ($return_var === 0) {
         array_push($outputFiles, $outputPath);
-        unlink($filePath);
+        // unlink($filePath);
         // echo '$filePath converted successfully to $outputPath';
     } else {
         // echo 'Error converting $filePath';
