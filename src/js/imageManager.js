@@ -198,11 +198,11 @@ async function dropFile(event) {
             for (const [key, value] of Object.entries(errorObj)) {
                 messageFade('error', `Fejl:<br>${key}: ${value}`);
             }
-        
+
             // Clear errorObj
             Object.keys(errorObj).forEach(key => delete errorObj[key]);
         }
-    
+
         // Proceed with the files array
         uploadImage('dropUpload', files);
     });
@@ -224,7 +224,7 @@ function extractImageUrlFromHtml(html) {
 }
 
 async function fetchImageFileThroughProxy(url) {
-    const response = await fetch(`proxy.php?url=${encodeURIComponent(url)}`);
+    const response = await fetch(`/src/php/proxy.php?url=${encodeURIComponent(url)}`);
     const contentType = response.headers.get('Content-Type');
 
     if (contentType && contentType.includes('text/html')) {
