@@ -38,17 +38,19 @@
                 type: 'POST',
                 url: 'default_val.php',
                 success: function (key_val) {
-                    const element = document.getElementById(key);
-                    if (element) {
-                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                            // For input and textarea elements, set the value
-                            element.value = val;
+                    for (const [key, val] in Object.entries(key_val)) {
+                        const element = document.getElementById(key);
+                        if (element) {
+                            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                                // For input and textarea elements, set the value
+                                element.value = val;
+                            } else {
+                                // For other elements, set the text content
+                                element.textContent = val;
+                            }
                         } else {
-                            // For other elements, set the text content
-                            element.textContent = val;
+                            console.warn(`Element with id "${key}" not found.`);
                         }
-                    } else {
-                        console.warn(`Element with id "${key}" not found.`);
                     }
                 }
             });
