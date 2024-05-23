@@ -20,14 +20,12 @@ if (isset($_GET['url'])) {
         if(curl_errno($ch)) {
             echo 'cURL error: ' . curl_error($ch);
         } else {
+            header("Content-Type: " . $headers['Content-Type']);
             echo $html;
         }
         
         // Close the cURL session
         curl_close($ch);
-
-        header("Content-Type: " . $headers['Content-Type']);
-        echo $result;
     } else if (filter_var($url, FILTER_VALIDATE_URL)) {
         // Initialize a cURL session
         $ch = curl_init();
