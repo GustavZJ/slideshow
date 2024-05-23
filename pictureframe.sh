@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Find the user currently logged into the graphical session
 USER=$(loginctl list-sessions | awk '/seat0/ {print $3}')
 
@@ -11,17 +10,14 @@ if [ -z "$USER" ]; then
 fi
 
 # Set the DISPLAY and XAUTHORITY environment variables
-DISPLAY=:0
-XAUTHORITY="/home/$USER/.Xauthority"
+export DISPLAY=:0
+export XAUTHORITY="/home/$USER/.Xauthority"
 
-export DISPLAY
-export XAUTHORITY
-
-cd /var/www/slideshow/uploads
+cd /var/www/slideshow/uploads || exit
 
 source /var/www/slideshow/config.config
 
-
 cd ..
 
-sudo -u $USER DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY feh --auto-rotate -q -p -Z -F -R 60 -Y -D "$timedelay" uploads/
+# Run feh with the specified parameters as the user
+sudo -u "$USER" env DISPLAY="$DISPLAY" XAUTHORITY="$XAUTHORITY" feh --auto-rotate -q -p -Z -F -R 60 -Y -D "$timedelay" /var/www/slideshow/uploads/
