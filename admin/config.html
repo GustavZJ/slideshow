@@ -38,6 +38,7 @@
                 type: 'POST',
                 url: 'default_val.php',
                 success: function (key_val) {
+                    console.log(Object.entries(key_val));
                     for (const [key, val] in Object.entries(key_val)) {
                         const element = document.getElementById(key);
                         if (element) {
