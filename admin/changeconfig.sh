@@ -6,7 +6,7 @@ timedelay=$3
 max_file_uploads=$4
 
 
-for key in upload_max_filesize post_max_size max_execution_time max_input_time max_file_uploads
+for key in upload_max_filesize post_max_size max_file_uploads
 do
  sed -i "s/^\($key\).*/\1 $(eval echo = \${$key})/" /var/www/slideshow/php.ini
 done

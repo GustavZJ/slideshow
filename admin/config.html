@@ -18,14 +18,15 @@
 
     <form id="configForm" method="get" enctype="multipart/form-data">
         <div id="configCont">
+
             <label for="timedelay">Tid imellem billeder (Sekunder)</label>
-            <input type="text" name="timedelay" placeholder="Indtast værdi...">
+            <input type="text" name="timedelay" id="timedelay" placeholder="Indtast værdi...">
 
             <label for="maxsize">Maximal størrelse for et enkelt billede (mB)</label>
-            <input type="text" name="maxsize" placeholder="Indtast værdi...">
+            <input type="text" name="maxsize" id="upload_max_filesize" placeholder="Indtast værdi...">
 
             <label for="maxamount">Maximal mængde af filer, som kan uploads samtidigt</label>
-            <input type="text" name="maxamount" placeholder="Indtast værdi...">
+            <input type="text" name="maxamount" id="max_file_uploads" placeholder="Indtast værdi...">
         </div>
         <button id="confirmBtn" class="btnWhite" type="submit" value="true">Opdater config</button>
     </form>
@@ -37,7 +38,9 @@
                 type: 'POST',
                 url: 'default_val.php',
                 success: function (key_val) {
-                    console.log(key_val)
+                    for (const [key, val] in Object.entries(key_val)) {
+                        document.getElementById(key).placeholder = val;
+                    }
                 }
             });
 
@@ -54,6 +57,7 @@
                 event.preventDefault();
             });
         });
+
     </script>
 </body>
 
