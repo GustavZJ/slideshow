@@ -4,7 +4,7 @@ for key in upload_max_filesize post_max_size max_execution_time max_input_time m
 do
     value=$(grep "^$key" /var/www/slideshow/php.ini | awk '{print $3}')
     echo "$value"
-    values[$key]=$value
+    countries+=( [$key]="$value" )
 
 done
 echo "$values"
