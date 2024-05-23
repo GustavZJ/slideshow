@@ -193,21 +193,15 @@ async function dropFile(event) {
 
     
     // Wait for all promises to resolve
-    const results = await Promise.allSettled(promises);
+    await Promise.all(promises);
 
-    results.forEach(result => {
-        if (result.status === 'rejected') {
-            // Check if errorObj has any items and display errors
-            if (Object.keys(errorObj).length) {
-                for (const [key, value] of Object.entries(errorObj)) {
-                    messageFade('error', `Fejl:<br>${key}: ${value}`);
-                }
-                // Clear errorObj
-                Object.keys(errorObj).forEach(key => delete errorObj[key]);
-            }
-
+    if (Object.keys(errorObj).length) {
+        for (const [key, value] of Object.entries(errorObj)) {
+            messageFade('error', `Fejl:<br>${key}: ${value}`);
         }
-    });
+        // Clear errorObj
+        Object.keys(errorObj).forEach(key => delete errorObj[key]);
+    }
 
     // Proceed with the files array
     uploadImage('dropUpload', files);
