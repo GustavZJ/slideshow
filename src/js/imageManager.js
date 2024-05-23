@@ -241,6 +241,7 @@ async function fetchImageFileThroughProxy(url) {
     } else if (response.ok) {
         const blob = await response.blob();
         const filename = (+new Date * Math.random()).toString(36).substring(0,6) + blob.type.replace('image/', '.');
+        console.log(filename);
         return new File([blob], filename, { type: blob.type });
     } else {
         throw new Error(`Network response was not ok: ${response.statusText}`);
