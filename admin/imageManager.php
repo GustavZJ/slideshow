@@ -95,7 +95,7 @@
                         success: function (response) {
                             for (let file in response) {
                                 if (response[file] === "success") {
-                                    console.log(file);
+                                    console.log(file.replace('?', '%3F'));
                                     deleteCount += 1;
                                     $(`.previewImage[src='../uploads/${file}']`).closest('.imageCont').remove();
                                 } else {
