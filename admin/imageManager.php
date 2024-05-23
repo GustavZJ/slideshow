@@ -92,7 +92,7 @@
                         data: $(this).serialize(),
                         success: function (response) {
                             for (let file in response) {
-                                file.replace('?', '%3F');
+                                replace('?', '%3F', file);
                                 if (response[file] === "success") {
                                     deleteCount += 1;
                                     $(`.previewImage[src='../uploads/${file}']`).closest('.imageCont').remove();
