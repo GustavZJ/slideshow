@@ -33,7 +33,7 @@ done
 # 		mv "$f" "$new"
 # 	fi
 # done
-#If you have 20 or more files, move files that are 6 months or older to /home/pi/Backup/.
+# If you have 20 or more files, move files that are 6 months or older to /home/pi/Backup/.
 # for f in *;
 # do
 # 	file_count=$(ls | wc -l)
