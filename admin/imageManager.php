@@ -18,23 +18,24 @@
         <form id="deleteForm" method="get">
             <p id="deletePreviewText">Ingen billeder i systemet</p>
             <div id="imagePreviewCont">
-                <?php
-                    // Load images from rpi, and display them
-                    $images = scandir('../uploads');
-                    foreach($images as $image) {
-                        $image = str_replace('?', '%3F', $image);
-                        $fullImage = '../uploads/'.$image;
-                        if (is_file($fullImage)) {
-                            if (str_ends_with(strtolower($fullImage), '.heic') || str_ends_with(strtolower($fullImage), '.heif')) {
-                                $fullImage = '../temp/placeholder.png';
-                            }
-                            echo '<div class="imageCont elePointerIcon" onclick="checkboxThruDiv(this);">';
-                            echo '  <img class="previewImage" src="'.$fullImage.'">';
-                            echo '  <input type="checkbox" name="files[]" value="'.$image.'" onclick="event.stopPropagation();">';
-                            echo '</div>';
-                        }
+            <?php
+                // Load images from rpi, and display them
+                $images = scandir('../uploads');
+                foreach($images as $image) {
+                    $fullImage = '../uploads/'.$image;
+                    if (is_file($fullImage)) {
+                        // URL encode the file path for displaying in the HTML
+                        $encodedImage = str_replace('?', '%3F', $image);
+                        $fullImage = '../uploads/' . $encodedImage;
+                    
+                        echo '<div class="imageCont elePointerIcon" onclick="checkboxThruDiv(this);">';
+                        echo '  <img class="previewImage" src="'.$fullImage.'">';
+                        echo '  <input type="checkbox" name="files[]" value="'.htmlspecialchars($image).'" onclick="event.stopPropagation();">';
+                        echo '</div>';
                     }
-                ?>
+                }
+            ?>
+
             </div>
             <button id="deleteBtn" class="btnWhite" type="submit" disabled="true">Slet</button>
             <button id="deleteAllBtn" class="btnRed" type="button">Slet alt</button>
