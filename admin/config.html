@@ -38,8 +38,20 @@
                 type: 'POST',
                 url: 'default_val.php',
                 success: function (key_val) {
-                    for (const [key, val] in Object.entries(key_val)) {
-                        document.getElementById(key).placeholder = val;
+                    console.log(Object.entries(key_val));
+                    for (key, val in Object.entries(key_val)) {
+                        const element = document.getElementById(key);
+                        if (element) {
+                            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                                // For input and textarea elements, set the value
+                                element.value = val;
+                            } else {
+                                // For other elements, set the text content
+                                element.textContent = val;
+                            }
+                        } else {
+                            console.warn(`Element with id "${key}" not found.`);
+                        }
                     }
                 }
             });
