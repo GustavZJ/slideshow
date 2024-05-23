@@ -35,23 +35,26 @@ function getConfigValue($filePath, $key)
 }
 
 // Example usage
-$filePath = '/var/www/slideshow/config.config';
-$keys = array("timedelay");
-$key_val = array();
 
-foreach ($keys as $key) {
-    try {
-        $value = getConfigValue($filePath, $key);
-        if ($value !== null) {
-            array_push($key_val, $value);
-        } else {
-            array_push($key_val, "error");
+function getKeyValue($filePath, $keys)
+{
+    foreach ($keys as $key) {
+        try {
+            $value = getConfigValue($filePath, $key);
+            if ($value !== null) {
+                array_push($key_val, $value);
+            } else {
+                array_push($key_val, "error");
+            }
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
         }
-    } catch (Exception $e) {
-        echo "Error: " . $e->getMessage();
     }
+    return $key_val;
 }
-
+$config_config_data = getKeyValue('/var/www/slideshow/config.config', array("timedelay"));
+$php_ini_data = getKeyValue('/var/www/slideshow/php.ini', array("upload_max_filesize", "post_max_size", "max_execution_time", "max_input_time", "max_file_uploads"));
+$key_vals = array_merge($config_config_data, $php_ini_data);
 header("Content-Type: application/json");
 echo json_encode($key_val);
 exit();
