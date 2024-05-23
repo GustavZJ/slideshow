@@ -166,7 +166,7 @@ async function dropFile(event) {
                             resolve();
                         } catch (error) {
                             console.error("Error converting DataURI to File:", error);
-                            errorObj[item] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
+                            errorObj[data] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
                             reject(error);
                         }
                     } else if (isValidURL(data)) {
@@ -178,7 +178,7 @@ async function dropFile(event) {
                             resolve();
                         } catch (error) {
                             console.error("Error converting URL to File:", error);
-                            errorObj[item] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
+                            errorObj[url] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
                             reject(error);
                         }
                     } else {
@@ -193,17 +193,21 @@ async function dropFile(event) {
 
     
     // Wait for all promises to resolve
-    await Promise.all(promises);
-    console.log(errorObj)
+    const results = await Promise.allSettled(promises);
 
-    // Check if errorObj has any items and display errors
-    if (Object.keys(errorObj).length) {
-        for (const [key, value] of Object.entries(errorObj)) {
-            messageFade('error', `Fejl:<br>${key}: ${value}`);
+    results.forEach(result => {
+        if (result.status === 'rejected') {
+            // Check if errorObj has any items and display errors
+            if (Object.keys(errorObj).length) {
+                for (const [key, value] of Object.entries(errorObj)) {
+                    messageFade('error', `Fejl:<br>${key}: ${value}`);
+                }
+                // Clear errorObj
+                Object.keys(errorObj).forEach(key => delete errorObj[key]);
+            }
+
         }
-        // Clear errorObj
-        Object.keys(errorObj).forEach(key => delete errorObj[key]);
-    }
+    });
 
     // Proceed with the files array
     uploadImage('dropUpload', files);
