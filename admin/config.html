@@ -45,18 +45,7 @@
                     }, {});
 
                     for (const [key, val] of Object.entries(key_val_object)) {
-                        const element = document.getElementById(key);
-                        if (element) {
-                            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                                // For input and textarea elements, set the value
-                                element.value = val;
-                            } else {
-                                // For other elements, set the text content
-                                element.textContent = val;
-                            }
-                        } else {
-                            console.warn(`Element with id "${key}" not found.`);
-                        }
+                        document.getElementById(key).placeholder = val;
                     }
                 }
             });
