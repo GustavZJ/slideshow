@@ -166,7 +166,7 @@ async function dropFile(event) {
                             resolve();
                         } catch (error) {
                             console.error("Error converting DataURI to File:", error);
-                            errorObj[item] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
+                            errorObj[data] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
                             reject(error);
                         }
                     } else if (isValidURL(data)) {
@@ -178,7 +178,7 @@ async function dropFile(event) {
                             resolve();
                         } catch (error) {
                             console.error("Error converting URL to File:", error);
-                            errorObj[item] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
+                            errorObj[url] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
                             reject(error);
                         }
                     } else {
