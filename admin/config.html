@@ -1,50 +1,60 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Admin</title>
-        <meta name="Admin" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/src/scss/main.css">
-	    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
-    </head>
 
-    <body>
-        <a class="labelBtn btnWhite" href="/upload/index.html">Til upload-side</a>
-        <a class="labelBtn btnWhite" href="/admin/imageManager.php">Til billedmanager-side</a>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin</title>
+    <meta name="Admin" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/src/scss/main.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+</head>
 
-        <form id="configForm" method="get" enctype="multipart/form-data">
-            <div id="configCont">
-                <label for="timedelay">Tid imellem billeder (Sekunder)</label>
-                <input type="text" name="timedelay" placeholder="Indtast værdi...">
+<body>
+    <a class="labelBtn btnWhite" href="/upload/index.html">Til upload-side</a>
+    <a class="labelBtn btnWhite" href="/admin/imageManager.php">Til billedmanager-side</a>
 
-                <label for="maxsize">Maximal størrelse for et enkelt billede (mB)</label>
-                <input type="text" name="maxsize" placeholder="Indtast værdi...">
+    <form id="configForm" method="get" enctype="multipart/form-data">
+        <div id="configCont">
+            <label for="timedelay">Tid imellem billeder (Sekunder)</label>
+            <input type="text" name="timedelay" placeholder="Indtast værdi...">
 
-                <label for="maxamount">Maximal mængde af filer, som kan uploads samtidigt</label>
-                <input type="text" name="maxamount" placeholder="Indtast værdi...">
-            </div>
-            <button id="confirmBtn" class="btnWhite" type="submit" value="true">Opdater config</button>
-        </form>
+            <label for="maxsize">Maximal størrelse for et enkelt billede (mB)</label>
+            <input type="text" name="maxsize" placeholder="Indtast værdi...">
 
-        <script>
-            // Function to run php script in background
-            jQuery(document).ready(function ($) {
-                $("#configForm").submit(function (event) {
-                    $.ajax({
-                        type: 'POST',
-                        url: 'changeconfig.php',
-                        data: $(this).serialize(),
-                        success: function () {
-                            alert('Config successfully changed!');
-                        }
-                    });
-                    // Prevent default action of going to php page
-                    event.preventDefault();
-                });
+            <label for="maxamount">Maximal mængde af filer, som kan uploads samtidigt</label>
+            <input type="text" name="maxamount" placeholder="Indtast værdi...">
+        </div>
+        <button id="confirmBtn" class="btnWhite" type="submit" value="true">Opdater config</button>
+    </form>
+
+    <script>
+        // Function to run php script in background
+        jQuery(document).ready(function ($) {
+            $.ajax({
+                type: 'POST',
+                url: 'default_val.php',
+                success: function (key_val) {
+                    console.log(key_val)
+                }
             });
-        </script>
-    </body>
+
+            $("#configForm").submit(function (event) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'changeconfig.php',
+                    data: $(this).serialize(),
+                    success: function () {
+                        alert('Config successfully changed!');
+                    }
+                });
+                // Prevent default action of going to php page
+                event.preventDefault();
+            });
+        });
+    </script>
+</body>
+
 </html>
