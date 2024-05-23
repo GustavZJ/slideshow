@@ -189,10 +189,10 @@ async function dropFile(event) {
         }
     }
 
-    console.log(errorObj)
-
+    
     // Wait for all promises to resolve
     await Promise.all(promises);
+    console.log(errorObj)
 
     // Check if errorObj has any items and display errors
     if (Object.keys(errorObj).length) {
