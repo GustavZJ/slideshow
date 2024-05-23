@@ -226,6 +226,7 @@ function extractImageUrlFromHtml(html) {
 
 async function fetchImageFileThroughProxy(url) {
     const response = await fetch(`/src/php/proxy.php?url=${encodeURIComponent(url)}`);
+    console.log(response);
     const contentType = response.headers.get('Content-Type');
 
     if (contentType && contentType.includes('text/html')) {
