@@ -7,7 +7,6 @@ const uploadImageInput = document.getElementById('uploadImageInput');
 const imageURL = document.getElementById('imageURL');
 const submitImageURL = document.getElementById('submitImageURL');
 const submitBtn = document.getElementById('submitBtn');
-let errorObj = {};
 
 const hiddenImageInput = document.getElementById('hiddenImageInput');
 
@@ -144,6 +143,7 @@ async function dropFile(event) {
     const items = event.dataTransfer.items;
     const files = [];
     const promises = [];
+    const errorObj = {};
 
     for (const item of items) {
         if (item.kind === 'file') {
@@ -195,6 +195,9 @@ async function dropFile(event) {
     // Wait for all promises to resolve
     await Promise.all(promises);
 
+    console.log(errorObj);
+
+    // Check if errorObj has any items and display errors
     if (Object.keys(errorObj).length) {
         for (const [key, value] of Object.entries(errorObj)) {
             messageFade('error', `Fejl:<br>${key}: ${value}`);
