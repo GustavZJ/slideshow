@@ -192,20 +192,20 @@ async function dropFile(event) {
     console.log(errorObj)
 
     // Wait for all promises to resolve
-    await Promise.all(promises);
-
-    // Check if errorObj has any items and display errors
-    if (Object.keys(errorObj).length) {
-        for (const [key, value] of Object.entries(errorObj)) {
-            messageFade('error', `Fejl:<br>${key}: ${value}`);
+    await Promise.all(promises, function() {
+        // Check if errorObj has any items and display errors
+        if (Object.keys(errorObj).length) {
+            for (const [key, value] of Object.entries(errorObj)) {
+                messageFade('error', `Fejl:<br>${key}: ${value}`);
+            }
+        
+            // Clear errorObj
+            Object.keys(errorObj).forEach(key => delete errorObj[key]);
         }
-
-        // Clear errorObj
-        Object.keys(errorObj).forEach(key => delete errorObj[key]);
-    }
-
-    // Proceed with the files array
-    uploadImage('dropUpload', files);
+    
+        // Proceed with the files array
+        uploadImage('dropUpload', files);
+    });
 }
 
 function isValidURL(string) {
