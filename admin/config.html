@@ -43,7 +43,8 @@
                         obj[key] = val;
                         return obj;
                     }, {});
-                    for (const [key, val] in key_val_object) {
+
+                    for (const [key, val] of Object.entries(key_val_object)) {
                         const element = document.getElementById(key);
                         if (element) {
                             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
@@ -57,22 +58,19 @@
                             console.warn(`Element with id "${key}" not found.`);
                         }
                     }
-                }
-            });
-
-            $("#configForm").submit(function (event) {
-                $.ajax({
-                    type: 'POST',
-                    url: 'changeconfig.php',
-                    data: $(this).serialize(),
-                    success: function () {
-                        alert('Config successfully changed!');
-                    }
+                    $("#configForm").submit(function (event) {
+                        $.ajax({
+                            type: 'POST',
+                            url: 'changeconfig.php',
+                            data: $(this).serialize(),
+                            success: function () {
+                                alert('Config successfully changed!');
+                            }
+                        });
+                        // Prevent default action of going to php page
+                        event.preventDefault();
+                    });
                 });
-                // Prevent default action of going to php page
-                event.preventDefault();
-            });
-        });
 
     </script>
 </body>
