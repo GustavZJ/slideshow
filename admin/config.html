@@ -38,8 +38,17 @@
                 type: 'POST',
                 url: 'default_val.php',
                 success: function (key_val) {
-                    for (const [key, val] in Object.entries(key_val)) {
-                        document.getElementById(key).placeholder = val;
+                    const element = document.getElementById(key);
+                    if (element) {
+                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                            // For input and textarea elements, set the value
+                            element.value = val;
+                        } else {
+                            // For other elements, set the text content
+                            element.textContent = val;
+                        }
+                    } else {
+                        console.warn(`Element with id "${key}" not found.`);
                     }
                 }
             });
