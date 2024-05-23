@@ -51,7 +51,7 @@
 
             $("#configForm").submit(function (event) {
                 for (const child of document.getElementById(configCont).children) {
-                    if (child.tagName == "input" && !child.value) {
+                    if (child.tagName == "input" && child.value == "") {
                         child.value = child.placeholder;
                     }
                 }
