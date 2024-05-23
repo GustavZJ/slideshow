@@ -55,7 +55,7 @@ function getKeyValue($filePath, $keys)
 }
 
 $config_config_data = getKeyValue('/var/www/slideshow/config.config', array("timedelay"));
-$php_ini_data = getKeyValue('/var/www/slideshow/php.ini', array("upload_max_filesize", "post_max_size", "max_file_uploads"));
+$php_ini_data = getKeyValue('/var/www/slideshow/php.ini', array("upload_max_filesize", "max_file_uploads"));
 $key_vals = array_merge($config_config_data, $php_ini_data);
 
 header("Content-Type: application/json");
