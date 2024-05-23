@@ -165,8 +165,8 @@ async function dropFile(event) {
                             appendFileToInput(file);
                             resolve();
                         } catch (error) {
-                            console.error("Error converting DataURI to File:", error);
-                            errorObj[data] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
+                            // console.error("Error converting DataURI to File:", error);
+                            errorObj[data] = 'Blev ikke uploadet, hvis billedet er fra f.eks. Facebook, så prøv at trykke på opslaget, og så træk billedet';
                             reject(error);
                         }
                     } else if (isValidURL(data)) {
@@ -177,13 +177,13 @@ async function dropFile(event) {
                             appendFileToInput(file);
                             resolve();
                         } catch (error) {
-                            console.error("Error converting URL to File:", error);
-                            errorObj[data] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
+                            // console.error("Error converting URL to File:", error);
+                            errorObj[data] = 'Blev ikke uploadet, hvis billedet er fra f.eks. Facebook, så prøv at trykke på opslaget, og så træk billedet';
                             reject(error);
                         }
                     } else {
-                        console.error("Unsupported data type:", data);
-                        errorObj['Unsupported'] = 'Blev ikke uploadet, dette kan være fordi at siden du uploader fra ikke tillader det.';
+                        // console.error("Unsupported data type:", data);
+                        errorObj['Unsupported'] = 'Blev ikke uploadet, hvis billedet er fra f.eks. Facebook, så prøv at trykke på opslaget, og så træk billedet';
                         reject(new Error('Unsupported data type'));
                     }
                 });
