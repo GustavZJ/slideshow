@@ -3,8 +3,11 @@ if (isset($_GET['url'])) {
     $url = $_GET['url'];
     $headers = get_headers($url, 1);;
 
-    // Validate URL
-    if (filter_var($url, FILTER_VALIDATE_URL)) {
+
+    if (isset($headers['Content-Type']) && strpos($headers['Content-Type'], 'image/') === 0) {
+        header("Content-Type: " . $headers['Content-Type']);
+        readfile($url);
+    } else if (filter_var($url, FILTER_VALIDATE_URL)) {
         // Initialize a cURL session
         $ch = curl_init();
 
@@ -32,9 +35,6 @@ if (isset($_GET['url'])) {
         // Set the appropriate headers
         header("Content-Type: $contentType");
         echo $result;
-    } else if (isset($headers['Content-Type']) && strpos($headers['Content-Type'], 'image/') === 0) {
-        header("Content-Type: " . $headers['Content-Type']);
-        readfile($url);
     } else {
         echo "Invalid URL";
     }
