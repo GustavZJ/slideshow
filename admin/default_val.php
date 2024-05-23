@@ -38,17 +38,17 @@ function getConfigValue($filePath, $key)
 
 function getKeyValue($filePath, $keys)
 {
-    $key_val = []; // Initialize the array to store values
+    $key_val = []; // Initialize the associative array to store values
     foreach ($keys as $key) {
         try {
             $value = getConfigValue($filePath, $key);
             if ($value !== null) {
-                array_push($key_val, $value);
+                $key_val[$key] = $value;
             } else {
-                array_push($key_val, "error");
+                $key_val[$key] = "error";
             }
         } catch (Exception $e) {
-            array_push($key_val, "error"); // Add "error" if exception occurs
+            $key_val[$key] = "error"; // Add "error" if exception occurs
         }
     }
     return $key_val;
@@ -59,5 +59,5 @@ $php_ini_data = getKeyValue('/var/www/slideshow/php.ini', array("upload_max_file
 $key_vals = array_merge($config_config_data, $php_ini_data);
 
 header("Content-Type: application/json");
-echo json_encode($key_vals); // Corrected variable name
+echo json_encode($key_vals); // Corrected to use associative array
 exit();
