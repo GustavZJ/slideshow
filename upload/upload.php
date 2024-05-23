@@ -18,13 +18,17 @@
   // echo "<script>console.log('Debug Objects: " .json_encode($iniFile) . "' );</script>";
   // echo "<script>console.log('Debug Objects: " .json_encode(convertToBytes($iniFile['upload_max_filesize'])) . "' );</script>";
 
-  $target_dir = "../uploads/";
+  $targetDir = "../uploads/";
   $response = array();
   foreach(range(0, count($_FILES['files']['name']) - 1) as $x) {
-    $target_file = $target_dir . basename($_FILES['files']["name"][$x]);
+    $filename = basename($_FILES['files']["name"][$x]);
+    $targetFile = $targetDir . $filename;
     $imageFileType = strtolower($_FILES['files']['type'][$x]);
-    $uploadOk = 1;
+    $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+    $newFilename = date("Ymd") . $filename . $ext;
+
     $response[basename($_FILES['files']['name'][$x])] = [];
+    $uploadOk = 1;
 
     // Check if image file is an actual image or fake image
     if (!str_contains($imageFileType, 'image')) {
@@ -33,7 +37,7 @@
     }
   
     // Check if file already exists
-    if (file_exists($target_file)) {
+    if (file_exists($targetFile)) {
       $uploadOk = 0;
       array_push($response[basename($_FILES['files']['name'][$x])], 'eksisterer allerede');
     }
@@ -45,8 +49,8 @@
     }
 
     if ($uploadOk){
-      if (move_uploaded_file($_FILES['files']["tmp_name"][$x], $target_file)) {
-        array_push($response[basename($_FILES['files']['name'][$x])], 'success');
+      if (move_uploaded_file($_FILES['files']["tmp_name"][$x], $targetFile)) {
+        array_push($response[basename($_FILES['files']['name'][$x])], 'success'.$newFilename);
       } else {
         array_push($response[basename($_FILES['files']['name'][$x])], 'ukendt fejl :(');
       }
@@ -57,4 +61,3 @@
   header('Content-Type: application/json');
   echo json_encode($response);
   exit();
-?>
