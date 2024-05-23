@@ -22,10 +22,10 @@
   $response = array();
   foreach(range(0, count($_FILES['files']['name']) - 1) as $x) {
     $filename = basename($_FILES['files']["name"][$x]);
-    $targetFile = $targetDir . $filename;
+    $newFilename = date("Ymd") . $filename . $ext;
+    $targetFile = $targetDir . $newFilename;
     $imageFileType = strtolower($_FILES['files']['type'][$x]);
     $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-    $newFilename = date("Ymd") . $filename . $ext;
 
     $response[basename($_FILES['files']['name'][$x])] = [];
     $uploadOk = 1;
@@ -50,7 +50,7 @@
 
     if ($uploadOk){
       if (move_uploaded_file($_FILES['files']["tmp_name"][$x], $targetFile)) {
-        array_push($response[basename($_FILES['files']['name'][$x])], 'success'.$newFilename);
+        array_push($response[basename($_FILES['files']['name'][$x])], 'success');
       } else {
         array_push($response[basename($_FILES['files']['name'][$x])], 'ukendt fejl :(');
       }
