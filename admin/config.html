@@ -38,7 +38,6 @@
                 type: 'POST',
                 url: 'default_val.php',
                 success: function (key_val) {
-                    console.log(Object.entries(key_val));
                     const key_val_object = Object.entries(key_val).reduce((obj, [key, val]) => {
                         obj[key] = val;
                         return obj;
@@ -51,6 +50,11 @@
             });
 
             $("#configForm").submit(function (event) {
+                for (const child of document.getElementById(configCont).children) {
+                    if (child.tagName == "input" && !child.value) {
+                        child.value = child.placeholder;
+                    }
+                }
                 $.ajax({
                     type: 'POST',
                     url: 'changeconfig.php',
