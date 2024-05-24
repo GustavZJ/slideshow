@@ -22,5 +22,5 @@ bash /var/www/slideshow/update.sh &
 
 # Run slideshow
 
-bash /var/www/slideshow/pictureframe.sh  &
+#bash /var/www/slideshow/pictureframe.sh  &
 exit 0
