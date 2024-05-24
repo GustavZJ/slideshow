@@ -186,6 +186,11 @@ a {
 	label {
 		margin-top: 1vh;
 	}
+
+	#removeImageCont {
+		display: grid;
+		opacity: 50%;
+	}
 }
 
 // Confirm action modal styling
