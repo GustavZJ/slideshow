@@ -36,7 +36,7 @@
         jQuery(document).ready(function ($) {
             $.ajax({
                 type: 'POST',
-                url: 'default_val.php',
+                url: '/src/php/default_val.php',
                 success: function (key_val) {
                     const key_val_object = Object.entries(key_val).reduce((obj, [key, val]) => {
                         obj[key] = val;

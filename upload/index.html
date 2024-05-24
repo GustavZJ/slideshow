@@ -30,7 +30,8 @@
 
     <script type="module">
         import { messageFade } from '/src/js/errorMessage.js'
-
+        let max_file_uploads = 0;
+        let file_count = 0;
         // Function to run php script in background
         jQuery(document).ready(function ($) {
             async function createFile(filePath){
@@ -41,6 +42,18 @@
                     };
                     return new File([data], (+new Date * Math.random()).toString(36).substring(0,6) + '.jpg', metadata);
                 }
+            $.ajax({
+                type: 'POST',
+                url: '/src/php/default_val.php',
+                success: function (key_val) {
+                const key_val_object = Object.entries(key_val).reduce((obj, [key, val]) => {
+                    obj[key] = val;
+                    return obj;
+                }, {});
+
+                    max_file_uploads = key_val_object[max_file_uploads];
+                }
+            });
             
             $('#hiddenForm').submit(function (event) {
                 event.preventDefault();
@@ -76,61 +89,66 @@
                     }
                 })
             });
-
+            
             $('#uploadForm').submit(function (event) {
                 event.preventDefault(); // Prevent default form submission
-    
+                file_count = $("#uploadImageInput").files.length;
                 const formData = new FormData(this); // Create FormData object
-    
-                $.ajax({
-                    type: 'POST',
-                    url: 'upload.php',
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    success: function (response) {
-                        let allSuccess = true;
-                        let errMsg = '';
-                        let counter = 0;
+                
+                if (file_count > max_file_uploads) {
+                    messageFade("error", `Antallet af filer du prøver at uploade (${file_count}) overskrider grænsen sat af administratorerne (${max_file_uploads}).`)
+                }
+                else {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'upload.php',
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function (response) {
+                            let allSuccess = true;
+                            let errMsg = '';
+                            let counter = 0;
 
-                        for (const [key, value] of Object.entries(response)) {
-                            if (value.includes('success')) {
-                                counter += 1;
+                            for (const [key, value] of Object.entries(response)) {
+                                if (value.includes('success')) {
+                                    counter += 1;
+                                }
+                                else {
+                                    allSuccess = false;
+                                    errMsg += `${key}: ${[...value].join(' og ')}.<br>`;
+                                }
+                            }
+
+                            if (allSuccess) {
+                                let msg = '';
+                                if (counter > 1) {
+                                    msg += `Alle ${counter} billede(r) blev uploadet uden fejl.`
+                                }
+                                else {
+                                    msg += `${counter} billede blev uploadet uden fejl.`
+                                }
+                                messageFade('success', msg);
+                            }
+                            else if (counter > 0) {
+                                errMsg = `${counter} billede(r) blev uploadet uden fejl.<br>Men:<br>${errMsg}`;
+                                messageFade('error', errMsg);
                             }
                             else {
-                                allSuccess = false;
-                                errMsg += `${key}: ${[...value].join(' og ')}.<br>`;
+                                errMsg = `Fejl:<br>${errMsg}`;
+                                messageFade('error', errMsg);
                             }
-                        }
 
-                        if (allSuccess) {
-                            let msg = '';
-                            if (counter > 1) {
-                                msg += `Alle ${counter} billede(r) blev uploadet uden fejl.`
+                            for (let i = document.getElementById('imagePreviewCont').childElementCount - 1; i >= 0; i--) {
+                                document.getElementById('imagePreviewCont').children[i].remove();
+                                document.getElementById('uploadImageInput').value = '';
+                                document.getElementById('previewText').style.display = 'none';
                             }
-                            else {
-                                msg += `${counter} billede blev uploadet uden fejl.`
-                            }
-                            messageFade('success', msg);
-                        }
-                        else if (counter > 0) {
-                            errMsg = `${counter} billede(r) blev uploadet uden fejl.<br>Men:<br>${errMsg}`;
-                            messageFade('error', errMsg);
-                        }
-                        else {
-                            errMsg = `Fejl:<br>${errMsg}`;
-                            messageFade('error', errMsg);
-                        }
 
-                        for (let i = document.getElementById('imagePreviewCont').childElementCount - 1; i >= 0; i--) {
-                            document.getElementById('imagePreviewCont').children[i].remove();
-                            document.getElementById('uploadImageInput').value = '';
-                            document.getElementById('previewText').style.display = 'none';
+                            document.getElementById('submitBtn').setAttribute('disabled', true);
                         }
-
-                        document.getElementById('submitBtn').setAttribute('disabled', true);
-                    }
-                });
+                    });
+                }
             });
         });
     </script>
