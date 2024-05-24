@@ -160,6 +160,10 @@ a {
 #configCont label {
   margin-top: 1vh;
 }
+#configCont #removeImageCont {
+  display: grid;
+  opacity: 50%;
+}
 
 #confirmModal {
   display: none;
