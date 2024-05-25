@@ -19,7 +19,7 @@ export function confirmAction(action) {
         const confirmDialogEle = document.getElementById(dailogId);
         
         // Show the dialog
-        confirmDialogEle.showModal();
+        confirmDialogEle.show();
 
         const confirmActionBtn = document.getElementById('confirmActionBtn');
         confirmActionBtn.addEventListener('click', () => {
