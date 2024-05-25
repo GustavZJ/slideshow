@@ -63,7 +63,7 @@ function uploadImage(event, files = []) {
         }
     }
 
-    if (errorObj.length) {
+    if (errorObj.length > 0) {
         for (const [key, value] in Object.entries(errorObj)) {
             messageFade(`Fejl:<br>
             ${key}: ${[...value]}`);
@@ -194,8 +194,6 @@ async function dropFile(event) {
     
     // Wait for all promises to resolve
     await Promise.allSettled(promises);
-
-    console.log(errorObj);
 
     // Check if errorObj has any items and display errors
     if (Object.keys(errorObj).length) {
