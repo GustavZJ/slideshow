@@ -95,7 +95,15 @@
                 file_count = document.getElementById("uploadImageInput").files.length;
                 const formData = new FormData(this); // Create FormData object
                 $('#submitBtn').attr('disabled', true);
-                $('#submitBtn').val('Uploader...');
+                const dots = window.setInterval(function() {
+                    const $wait = $("#submitBtn");
+                    if ($wait.text().length > 9) {
+                        $wait.text("");
+                    } else {
+                        $wait.text($wait.text() + ".");
+                    }
+                }, 100);
+
                 
                 if (file_count > max_file_uploads) {
                     messageFade("error", `Antallet af filer du prøver at uploade (${file_count}) overskrider grænsen sat af administratorerne (${max_file_uploads}).`)
@@ -151,6 +159,11 @@
                             }
 
                             document.getElementById('submitBtn').setAttribute('disabled', true);
+                        },
+                        error: function () {
+                            messageFade('error', 'Noget gik galdt! Prøv igen.');
+                            $('#submitBtn').removeAttr('disabled');
+                            $('#submitBtn').val('Upload');
                         }
                     });
                 }
