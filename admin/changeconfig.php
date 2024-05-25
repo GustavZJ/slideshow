@@ -21,10 +21,10 @@ switch ($autoremovetime_option) {
       $autoremovetime = intval($autoremovetime_post);
       break;
     case "months":
-        $autoremovetime = intval($autoremovetime_post)*10;
+        $autoremovetime = intval($autoremovetime_post)*100;
       break;
     case "years":
-        $autoremovetime = intval($autoremovetime_post)*100;
+        $autoremovetime = intval($autoremovetime_post)*10000;
       break;
     default:
     $autoremovetime = 600;
@@ -35,6 +35,8 @@ switch ($autoremovetime_option) {
 
 $post_max_size = strval(intval($maxsize) * intval($maxamount)) . "M";
 
-shell_exec("./changeconfig.sh " . $maxsize . "M " . $post_max_size . " " . $timedelay . " " . $autoremove. " " . $autoremoveamount. " " . $autoremovetime);
-header('location: config.html');
+$command = "./changeconfig.sh " . $maxsize . "M " . $post_max_size . " " . $timedelay . " " . $autoremove. " " . $autoremoveamount. " " . $autoremovetime;
+
+shell_exec($command);
+header('location: config.html/'. $command);
 exit();
