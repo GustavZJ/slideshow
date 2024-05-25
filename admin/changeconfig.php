@@ -35,7 +35,7 @@ switch ($autoremovetime_option) {
 
 $post_max_size = strval(intval($maxsize) * intval($maxamount)) . "M";
 
-$command = "./changeconfig.sh " . $maxsize . "M " . $post_max_size . " " . $timedelay . " " . $autoremove. " " . $autoremoveamount. " " . $autoremovetime;
+$command = "./changeconfig.sh " . $maxsize . "M " . $post_max_size . " " . $maxamount . " " . $timedelay. " " . $autoremove. " " . $autoremoveamount. " " . $autoremovetime;
 
 shell_exec($command);
 header('location: config.html/');

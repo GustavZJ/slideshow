@@ -2,8 +2,8 @@
 
 upload_max_filesize=$1
 post_max_size=$2
-timedelay=$3
-max_file_uploads=$4
+max_file_uploads=$3
+timedelay=$4
 autoremove=$5
 autoremoveamount=$6
 autoremovetime=$7
