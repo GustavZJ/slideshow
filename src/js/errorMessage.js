@@ -1,38 +1,45 @@
 // Modal based timed message
 export function messageFade(type, message) {
-    const messageModalColor = {'error':'white', 'success':'green'};
-    let fadeTimer;
-    let deleteTimer;
+    const messageModalColor = {'error': 'white', 'success': 'green'};
 
-    if(type == "no_msg") {
-        return null
+    if (type == "no_msg") {
+        return null;
     }
     
+    // Generate unique ID for each dialog
+    const dailogId = `errorDialog-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    
     // Create modal
-    const errorModal = document.createElement('div');
-    errorModal.id = 'messageModalContent';
-    errorModal.innerHTML = (`<div> <!-- This div is intentional -->
-    <p id="statusMessage"></p>
-    </div>`)
+    const errorDialog = document.createElement('dialog');
+    errorDialog.id = dailogId;
+    errorDialog.className = 'errorDialog';
+    errorDialog.innerHTML = message;
+    document.body.appendChild(errorDialog);
+    const errorDialogEle = document.getElementById(dailogId);
 
-    // Append modal to HTML
-    document.body.appendChild(errorModal);
+    errorDialogEle.style.backgroundColor = messageModalColor[type.toLowerCase()];
+    errorDialogEle.innerHTML = message;
+    errorDialogEle.style.transition = 'opacity 0.25s';
+    errorDialogEle.style.opacity = 0;
 
-    const messageModalContent = document.getElementById('messageModalContent');
-    const statusMessage = document.getElementById('statusMessage');
-
-    // Clear all timers, to prevent new timer from finishing early
-    clearTimeout(fadeTimer);
-    clearTimeout(deleteTimer);
-    messageModalContent.style.backgroundColor = messageModalColor[type.toLowerCase()]; // Set matching color of modal
-    statusMessage.innerHTML = message; // Set message
+    // This fixes issue with modal not fading in, and instead appearing abruptly
     setTimeout(() => {
-        messageModalContent.style.opacity = 1; // This somehow ensure that it fades in, even when appended from JS
+        errorDialogEle.style.opacity = 1;
     }, 0);
-    fadeTimer = setTimeout(() => {
-        messageModalContent.style.opacity = 0; // Modal fade out
-        deleteTimer = setTimeout(() => {
-            errorModal.remove(); // Remove modal after fade out
-        }, 250)
+
+    
+    errorDialogEle.show();
+    // Set up fade out and delete timers for this specific modal
+    const fadeTimer = setTimeout(() => {
+        errorDialogEle.style.opacity = 0;
+        // Only delete after fade out
+        const deleteTimer = setTimeout(() => {
+            errorDialogEle.close();
+            errorDialogEle.remove();
+        }, 250);
     }, 5000);
+
+    // Store timers on the element to potentially clear later if needed
+    errorDialogEle.fadeTimer = fadeTimer;
+    errorDialogEle.deleteTimer = deleteTimer;
 }
