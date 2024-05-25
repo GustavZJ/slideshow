@@ -30,6 +30,7 @@
 
     <script type="module">
         import { messageFade } from '/src/js/errorMessage.js'
+
         let max_file_uploads = 0;
         let file_count = 0;
         // Function to run php script in background
@@ -110,9 +111,14 @@
                 }, 100);
                 
                 if (file_count > max_file_uploads) {
-                    messageFade("error", `Antallet af filer du prøver at uploade (${file_count}) overskrider grænsen sat af administratorerne (${max_file_uploads}).`)
-                }
-                else {
+                    clearInterval(dots);
+                    messageFade("error", `Antallet af filer du prøver at uploade (${file_count}) overskrider grænsen sat af administratorerne (${max_file_uploads}).`);
+                    $('#uploadImageInput').attr('disabled', false);
+                    $('#submitBtn').removeAttr('disabled');
+                    $('#submitBtn').val('Upload');
+                    $('#uploadLabel').css('cursor', 'pointer');
+
+                } else {
                     $.ajax({
                         type: 'POST',
                         url: 'upload.php',
@@ -120,6 +126,7 @@
                         contentType: false,
                         processData: false,
                         success: function (response) {
+                            clearInterval(dots);
                             $('#uploadImageInput').attr('disabled', true);
                             $('#submitBtn').removeAttr('disabled');
                             $('#submitBtn').val('Upload');
@@ -167,6 +174,7 @@
                             document.getElementById('submitBtn').setAttribute('disabled', true);
                         },
                         error: function () {
+                            clearInterval(dots);
                             messageFade('error', 'Noget gik galdt! Prøv igen.');
                             $('#uploadImageInput').attr('disabled', true);
                             $('#submitBtn').removeAttr('disabled');
