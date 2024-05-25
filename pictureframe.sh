@@ -15,7 +15,7 @@ if $autoremove; then
                 file_date_str+="${file:i:1}"
             done
             
-            current_date="$(date +"%Y%m%d")"
+            current_date="$(date +"%Y%m%d")" # Example: 20240525
             threshold_date=$((current_date - $autoremovetime))
             file_date_int=$((file_date_str))
             
