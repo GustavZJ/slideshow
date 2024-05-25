@@ -7,13 +7,14 @@ const uploadImageInput = document.getElementById('uploadImageInput');
 const imageURL = document.getElementById('imageURL');
 const submitImageURL = document.getElementById('submitImageURL');
 const submitBtn = document.getElementById('submitBtn');
+const errorObj = {};
+const allFiles = [];
 
 const hiddenImageInput = document.getElementById('hiddenImageInput');
 
 // Upload image
 function uploadImage(event, files = []) {
     const hiddenFileList = [];
-    const errorObj = {};
 
     // Handle image file input
     if (event.target && event.target.id == 'uploadImageInput') {
@@ -23,6 +24,7 @@ function uploadImage(event, files = []) {
                 hiddenFileList.push(file);
             } else {
                 validateImgs(file);
+                appendFileToInput(file);
             }
         }
 
@@ -144,7 +146,6 @@ async function dropFile(event) {
     const items = event.dataTransfer.items;
     const files = [];
     const promises = [];
-    const errorObj = {};
 
     for (const item of items) {
         if (item.kind === 'file') {
@@ -246,9 +247,6 @@ async function fetchImageFileThroughProxy(url) {
 }
 
 function appendFileToInput(file) {
-    // Create a new array to hold all files (existing + new)
-    const allFiles = Array.from(uploadImageInput.files);
-
     // Add the new file to the array of files
     allFiles.push(file);
 
