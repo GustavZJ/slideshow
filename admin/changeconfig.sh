@@ -8,6 +8,8 @@ timedelay=$4
 autoremove=$5
 autoremoveamount=$6
 autoremovetime=$7
+autoremovetimepost=$8
+autoremovetimeoption=$9
 
 # Update php.ini file
 for key in upload_max_filesize post_max_size max_file_uploads
@@ -17,7 +19,7 @@ do
 done
 
 # Update config.config file
-for key in timedelay autoremove autoremoveamount autoremovetime
+for key in timedelay autoremove autoremoveamount autoremovetime autoremovetimepost autoremovetimeoption
 do
     value=${!key}
     sed -i "s/^\($key\)\b.*/\1=$value/" /var/www/slideshow/config.config

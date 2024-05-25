@@ -28,17 +28,17 @@
             <input type="text" name="maxamount" id="max_file_uploads" class="configInputs">
 
             <label for="removeimagetoggle">Slå fjernelse af billeder til / fra</label>
-            <input type="checkbox" name="removeimagestoggle" id="remove_images_toggle">
+            <input type="checkbox" name="autoremove" id="autoremove">
                 
             <div id="removeImageCont">
                 <label for="removeimageamount">Hvor mange billeder skal der være, før de må blive fjernet</label>
-                <input class="configInputs removeImageInputs" type="text" name="removeimagesamount" id="remove_images_amount" disabled="true">
+                <input class="configInputs removeImageInputs" type="text" name="autoremoveamount" id="autoremoveamount" disabled="true">
                 
                 <label for="removeimagetime">Hvor længe skal et billede blive, før de bliver fjernet</label>
                 <div id="selectCont">
                     <!-- Add the value for option to post -->
-                    <input class="configInputs removeImageInputs" type="text" name="removeimagestime" id="remove_images_time" disabled="true">
-                    <select class="removeImageInputs" name="removeimagestimeperiod" id="remove_images_time_period" disabled="true">
+                    <input class="configInputs removeImageInputs" type="text" name="autoremovetimepost" id="autoremovetimepost" disabled="true">
+                    <select class="removeImageInputs" name="autoremovetimeoption" id="autoremovetimeoption" disabled="true">
                         <option value="days">dag(e)</option>
                         <option value="months">måned(er)</option>
                         <option value="years">år</option>
@@ -106,7 +106,21 @@
                     }, {});
 
                     for (const [key, val] of Object.entries(key_val_object)) {
-                        document.getElementById(key).placeholder = val;
+                        console.log(key_val_object)
+                        if (! ["autoremovetime", "autoremovetimeoption", "autoremove"].includes(key) ){
+                            document.getElementById(key).placeholder = val;
+                        }
+                        else if (key == "autoremovetimeoption"){
+                            document.getElementById(key).value = val;
+                        }
+                        else if (key == "autoremove"){
+                            if (val == "true") {
+                                document.getElementById(key).checked = true;
+                            }
+                            else {
+                                document.getElementById(key).checked = false;
+                            }
+                        }
                     }
                 }
             });
@@ -126,7 +140,7 @@
                     url: 'changeconfig.php',
                     data: $(this).serialize(),
                     success: function () {
-                        alert('Konfigureringer ændred')
+                        alert('Konfigureringer ændret')
                     }
                 });
                 // Prevent default action of going to php page
