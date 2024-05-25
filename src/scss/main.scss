@@ -212,7 +212,10 @@ dialog {
     padding: 1svh;
     border: none;
     border-radius: 2svh;
-	position: fixed;
+	position: absolute;
+	top: 20%;
+    left: 50%;
+    translate: -50%;
 }
 
 // Error dialog specific styling
