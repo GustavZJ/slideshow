@@ -12,10 +12,10 @@ $autoremovetime_option = preg_replace("/[^0-9.]/", "", $_POST["removeimagestimep
 $autoremove = false;
 $autoremove_post = preg_replace("/[^0-9.]/", "", $_POST['removeimagestoggle']); // =on not true
 if ($autoremove_post == "on") {
-    $autoremove = true;
+    $autoremove = "true";
 }
 else {
-    $autoremove = false;
+    $autoremove = "false";
 }
 
 switch ($autoremovetime_option) {
