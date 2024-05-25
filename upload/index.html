@@ -101,12 +101,12 @@
 
                 const dots = window.setInterval(function() {
                     const $wait = $("#submitBtn");
-                    const text = $wait.text();
-                                
+                    const text = $wait.val();
+
                     if (text.length == 11) {
-                        $wait.text('Uploader');
-                    } else {
-                        $wait.text(text + ".");
+                        $wait.val('Uploader');
+                    } else {val
+                        $wait.val(text + ".");
                     }
                 }, 100);
                 
