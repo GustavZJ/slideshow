@@ -57,7 +57,7 @@
         function validateInput() {
             let allValid = true;
             let atLeastOneFilled = false;
-            const removeImagesChecked = $('#removeimagestoggle').prop('checked');
+            const removeImagesChecked = $('#autoremove').prop('checked');
 
             const configInputs = document.querySelectorAll('.configInputs');
             configInputs.forEach(ele => {
@@ -81,7 +81,7 @@
         }
         
         function disableImageRemove() {
-            if ($('#removeimagestoggle').prop('checked')) {
+            if ($('#autoremove').prop('checked')) {
                 removeImageCont.style.opacity = '100%';
                 Object.values(removeImageInputs).forEach(ele => ele.removeAttribute('disabled'));
             } else {
@@ -92,7 +92,7 @@
 
         jQuery(document).ready(function ($) {
             document.querySelectorAll('.configInputs').forEach(ele => ele.addEventListener('input', validateInput));
-            $('#removeimagestoggle').attr('onchange', 'disableImageRemove();validateInput();');
+            $('#autoremove').attr('onchange', 'disableImageRemove();validateInput();');
             validateInput();
             disableImageRemove();
 
