@@ -12,7 +12,7 @@ $maxamount = preg_replace("/[^0-9.]/", "", $_POST["maxamount"]);
 
 // Testing
 $autoremove = "true";
-$autoremoveamount = "30":
+$autoremoveamount = "30";
 $autoremovetime_post = "5";
 $autoremovetime_option = "days"; // Add the option from post
 $autoremovetime = 600;
