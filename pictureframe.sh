@@ -1,29 +1,28 @@
 #!/bin/bash
 
+# Source the configuration file
 source /var/www/slideshow/config.config
 
-#If autoremoved enabled you have X or more files, move files that are Y days or older to /Backup (X / Y Definded in config).
+# If autoremoval is enabled and there are more than a specified number of files,
+# move files that are older than a specified number of days to /Backup.
 
 if $autoremove; then
-    for f in *;
-    do
-    	file_count=$(ls | wc -l)
-    	if [ $file_count -gt $autoremoveamount ];
-    	then
-    		str=""
-    		for i in {2..9};
-    		do
-    			str+="${f:i:1}"
-    		done
-    		cdate="$(date +"%Y%m%d")"
-    		cdateint=$((cdate - $autoremovetime))
-    		str=$((str))
-    		if [ $str -le $cdateint ];
-    		then
-    			mv $f /backup
-    
-    		fi
-    	fi
+    for file in *; do
+        file_count=$(ls | wc -l)
+        if [ $file_count -gt $autoremoveamount ]; then
+            file_date_str=""
+            for i in {0..7}; do
+                file_date_str+="${file:i:1}"
+            done
+            
+            current_date="$(date +"%Y%m%d")" # Example: 20240525
+            threshold_date=$((current_date - $autoremovetime))
+            file_date_int=$((file_date_str))
+            
+            if [ $file_date_int -le $threshold_date ]; then
+                mv $file /backup
+            fi
+        fi
     done
 fi
 
