@@ -1,12 +1,17 @@
 <?php
-
 // Sanitize input
 $timedelay = preg_replace("/[^0-9.]/", "", $_POST['timedelay']);
 $maxsize = preg_replace("/[^0-9.]/", "", $_POST["maxsize"]);
 $maxamount = preg_replace("/[^0-9.]/", "", $_POST["maxamount"]);
 $autoremoveamount = preg_replace("/[^0-9.]/", "", $_POST["removeimagesamount"]);
 $autoremovetime_post = preg_replace("/[^0-9.]/", "", $_POST["removeimagestime"]);
-$autoremovetime_option = preg_replace("/[^0-9.]/", "", $_POST["removeimagestimeperiod"]);
+
+// Ensure autoremovetime_option is valid
+$valid_options = ["days", "months", "years"];
+$autoremovetime_option = $_POST["removeimagestimeperiod"];
+if (!in_array($autoremovetime_option, $valid_options)) {
+    $autoremovetime_option = "days"; // Default to "days" or handle error as needed
+}
 
 // Determine autoremove
 $autoremove = isset($_POST['removeimagestoggle']) && $_POST['removeimagestoggle'] === "on" ? "true" : "false";
@@ -23,7 +28,7 @@ switch ($autoremovetime_option) {
         $autoremovetime = intval($autoremovetime_post) * 10000;
         break;
     default:
-        $autoremovetime = 600;
+        $autoremovetime = 600; // Default value in case of an error
 }
 
 // Calculate post_max_size
