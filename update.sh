@@ -24,8 +24,9 @@ if [  -f nothing.here -a "$oldmessage" != "$message" ]; then
 fi
 chmod 744 admin/changeconfig.sh
 chmod +w /var/www/slideshow/php.ini /var/www/slideshow/config.config
-chmod +x admin/changeconfig.sh
 chown www-data:www-data admin/changeconfig.sh
+chown www-data:www-data /var/www/slideshow/php.ini /var/www/slideshow/config.config
+
 
 systemctl restart apache2
 rm message.html
