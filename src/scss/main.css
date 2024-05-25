@@ -125,7 +125,7 @@ button.btnBlue,
     content: ", eller træk billeder her";
   }
 }
-#imageUploadCont #uploadImageFile #uploadLabel #uploadImageInput #uploadLabel {
+#imageUploadCont #uploadImageFile #uploadImageInput #uploadLabel {
   cursor: default;
 }
 #imageUploadCont #uploadImageInput {
