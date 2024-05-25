@@ -129,9 +129,10 @@
                         success: function (response) {
                             clearInterval(dots);
                             $('#uploadImageInput').attr('disabled', true);
-                            $('#submitBtn').removeAttr('disabled');
+                            $('#uploadImageInput').removeAttr('disabled');
                             $('#submitBtn').val('Upload');
                             $('#uploadLabel').css('cursor', 'pointer');
+                            $('submitBtn').attr('disabled', true);
 
                             let allSuccess = true;
                             let errMsg = '';
@@ -171,13 +172,11 @@
                                 document.getElementById('uploadImageInput').value = '';
                                 document.getElementById('previewText').style.display = 'none';
                             }
-
-                            document.getElementById('submitBtn').setAttribute('disabled', true);
                         },
                         error: function () {
                             clearInterval(dots);
                             messageFade('error', 'Noget gik galdt! Prøv igen.');
-                            $('#uploadImageInput').attr('disabled', true);
+                            $('#uploadImageInput').removeAttr('disabled');
                             $('#submitBtn').removeAttr('disabled');
                             $('#submitBtn').val('Upload');
                             $('#uploadLabel').css('cursor', 'pointer');
