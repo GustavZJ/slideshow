@@ -38,8 +38,4 @@ export function messageFade(type, message) {
             errorDialogEle.remove();
         }, 250);
     }, 5000);
-
-    // Store timers on the element to potentially clear later if needed
-    errorDialogEle.fadeTimer = fadeTimer;
-    errorDialogEle.deleteTimer = deleteTimer;
 }
