@@ -16,6 +16,8 @@
         <a class="labelBtn btnWhite" href="/admin/config.html">Til config-side</a>
 
         <form id="deleteForm" method="get">
+            <button id="deleteBtn" class="btnWhite" type="submit" disabled="true">Slet</button>
+            <button id="deleteAllBtn" class="btnRed" type="button">Slet alt</button>
             <p id="deletePreviewText">Ingen billeder i systemet</p>
             <div id="imagePreviewCont">
             <?php
@@ -37,8 +39,6 @@
             ?>
 
             </div>
-            <button id="deleteBtn" class="btnWhite" type="submit" disabled="true">Slet</button>
-            <button id="deleteAllBtn" class="btnRed" type="button">Slet alt</button>
         </form>
 
         <script type="module">
