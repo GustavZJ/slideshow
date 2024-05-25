@@ -54,7 +54,7 @@ function getKeyValue($filePath, $keys)
     return $key_val;
 }
 
-$config_config_data = getKeyValue('/var/www/slideshow/config.config', array("timedelay"));
+$config_config_data = getKeyValue('/var/www/slideshow/config.config', array("timedelay", "autoremove", "autoremoveamount", "autoremovetime"));
 $php_ini_data = getKeyValue('/var/www/slideshow/php.ini', array("upload_max_filesize", "max_file_uploads"));
 $key_vals = array_merge($config_config_data, $php_ini_data);
 
