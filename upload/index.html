@@ -104,7 +104,8 @@
                     const $wait = $("#submitBtn");
                     $wait.val('Uploader');
                     const dotCount = ($wait.val().match(/\./g) || []).length; // Count dots
-                        
+                    console.log(dotCount);
+
                     if (dotCount >= 3) {
                         $wait.val('Uploader');
                     } else {
