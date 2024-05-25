@@ -207,24 +207,15 @@ a {
 }
 
 // Confirm action modal styling
-.confirmDialog {
+dialog {
     margin: auto;
     padding: 1svh;
     border: none;
     border-radius: 2svh;
-
-	p {
-		color: black;
-	}
 }
 
 // Error modal styling
 .errorDialog {
-    margin: auto;
-    text-align: left;
-    padding: 1svh;
-    border: none;
-    border-radius: 2svh;
     opacity: 0;
     transition: opacity 0.25s ease-in-out;
 

@@ -125,9 +125,6 @@ button.btnBlue,
     content: ", eller træk billeder her";
   }
 }
-#imageUploadCont #uploadImageFile:has(#uploadImageInput:disabled) #uploadLabel {
-  cursor: default;
-}
 #imageUploadCont #uploadImageInput {
   display: none;
 }
@@ -179,22 +176,14 @@ a {
   opacity: 50%;
 }
 
-.confirmDialog {
+dialog {
   margin: auto;
   padding: 1svh;
   border: none;
   border-radius: 2svh;
-}
-.confirmDialog p {
-  color: black;
 }
 
 .errorDialog {
-  margin: auto;
-  text-align: left;
-  padding: 1svh;
-  border: none;
-  border-radius: 2svh;
   opacity: 0;
   transition: opacity 0.25s ease-in-out;
 }
