@@ -53,6 +53,7 @@
                 }, {});
 
                     max_file_uploads = key_val_object[max_file_uploads];
+                    console.log(max_file_uploads)
                 }
             });
             
@@ -74,8 +75,9 @@
                             for await (const filePath of outputFiles) {
                                // Add the new file to the array of files
                                const file = await createFile(filePath.slice(18)).then(function(result) {allFiles.push(result)});
-                               // Create a new FileList from the combined array of files
                             }
+
+                            // Create a new FileList from the combined array of files
                             const combinedFileList = new DataTransfer();
                             allFiles.forEach(fileItem => {
                                 combinedFileList.items.add(fileItem);
@@ -93,7 +95,7 @@
             
             $('#uploadForm').submit(function (event) {
                 event.preventDefault(); // Prevent default form submission
-                file_count = document.getElementById("uploadImageInput").files.length;
+                file_count = document.getElementById('uploadImageInput').files.length;
                 const formData = new FormData(this); // Create FormData object
 
                 $('#uploadImageInput').attr('disabled', true);
