@@ -18,7 +18,7 @@
   // echo "<script>console.log('Debug Objects: " .json_encode($iniFile) . "' );</script>";
   // echo "<script>console.log('Debug Objects: " .json_encode(convertToBytes($iniFile['upload_max_filesize'])) . "' );</script>";
   if (count($_FILES['files']['name']) > $iniFile["max_file_uploads"]) {
-    $response = "For mange filer!!!:("
+    $response = "For mange filer!!!:(";
   }
   else {
     $targetDir = "../uploads/";
