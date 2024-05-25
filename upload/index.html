@@ -94,7 +94,10 @@
                 event.preventDefault(); // Prevent default form submission
                 file_count = document.getElementById("uploadImageInput").files.length;
                 const formData = new FormData(this); // Create FormData object
+
+                $('#uploadImageInput').attr('disabled', true);
                 $('#submitBtn').attr('disabled', true);
+
                 const dots = window.setInterval(function() {
                     const $wait = $("#submitBtn");
                     if ($wait.text().length == 9) {
@@ -116,6 +119,7 @@
                         contentType: false,
                         processData: false,
                         success: function (response) {
+                            $('#uploadImageInput').attr('disabled', true);
                             $('#submitBtn').removeAttr('disabled');
                             $('#submitBtn').val('Upload');
 
@@ -162,6 +166,7 @@
                         },
                         error: function () {
                             messageFade('error', 'Noget gik galdt! Prøv igen.');
+                            $('#uploadImageInput').attr('disabled', true);
                             $('#submitBtn').removeAttr('disabled');
                             $('#submitBtn').val('Upload');
                         }

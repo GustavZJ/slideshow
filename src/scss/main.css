@@ -176,21 +176,14 @@ a {
   opacity: 50%;
 }
 
-.dailogId {
+.confirmDialog {
   margin: auto;
-  text-align: left;
   padding: 1svh;
   border: none;
   border-radius: 2svh;
   opacity: 0;
 }
-@media (max-width: 1500px) {
-  .dailogId {
-    margin: 30% auto;
-    width: 75%;
-  }
-}
-.dailogId p {
+.confirmDialog p {
   color: black;
 }
 
