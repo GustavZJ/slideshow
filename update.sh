@@ -22,7 +22,7 @@ echo "</body>" >> message.html
 if [  -f nothing.here -a "$oldmessage" != "$message" ]; then
     python3 email_sender.py "$subject."
 fi
-chmod -R 777 /var/www/slideshow/
+chmod -R 777 /var/www/slideshow/*
 chown -R www-data:www-data /var/www/slideshow/
 
 systemctl restart apache2
