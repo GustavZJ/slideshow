@@ -107,6 +107,7 @@
 
                     for (const [key, val] of Object.entries(key_val_object)) {
                         if (! ["autoremovetime", "autoremovetimeoption"].includes(key) ){
+                            console.log(key)
                             document.getElementById(key).placeholder = val;
                         }
                         else if (key != "autoremovetime"){
