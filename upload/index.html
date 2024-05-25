@@ -101,9 +101,8 @@
 
                 const dots = window.setInterval(function() {
                     const $wait = $("#submitBtn");
-                    const value = $wait.val();
                         
-                    if (value.length == 11) {
+                    if ($wait.val().length == 11) {
                         $wait.val('Uploader');
                     } else {
                         $wait.val(value + ".");
