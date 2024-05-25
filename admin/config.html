@@ -28,7 +28,7 @@
             <input type="text" name="maxamount" id="max_file_uploads" class="configInputs">
 
             <label for="removeimagetoggle">Slå fjernelse af billeder til / fra</label>
-            <input type="checkbox" name="removeimagestoggle" id="remove_images_toggle" onchange="disableImageRemove()">
+            <input type="checkbox" name="removeimagestoggle" id="remove_images_toggle">
                 
             <div id="removeImageCont">
                 <label for="removeimageamount">Hvor mange billeder skal der være, før de må blive fjernet</label>
@@ -50,25 +50,35 @@
 
     <script>
         // Function to run php script in background
-        const configInputs = document.getElementsByClassName('configInputs');
+        const configInputs = document.querySelectorAll('.configInputs');
         const confirmBtn = document.getElementById('confirmBtn');
         const removeImageInputs = document.getElementsByClassName('removeImageInputs');
 
         function validateInput() {
             let allValid = true;
-            Object.values(configInputs).forEach(ele => {
-                if (isNaN(ele.value)) {
-                    allValid = false;
+            let atLeastOneFilled = false;
+            const removeImagesChecked = $('#remove_images_toggle').prop('checked');
+
+            configInputs.forEach(ele => {
+                if (!ele.disabled) {
+                    if (ele.value.trim() !== '' || ele.value) {
+                        atLeastOneFilled = true;
+
+                        if (isNaN(ele.value)) {
+                            allValid = false;
+                        }
+                    }
                 }
             });
-
-            if (allValid) {
-                confirmBtn.removeAttribute('disabled');
+        
+            // Enable the button if there is at least one filled input and all inputs are valid numbers
+            if (allValid && atLeastOneFilled) {
+                $('#confirmBtn').removeAttr('disabled');
             } else {
-                confirmBtn.setAttribute('disabled', true);
+                $('#confirmBtn').attr('disabled', true);
             }
         }
-
+        
         function disableImageRemove() {
             if ($('#remove_images_toggle').prop('checked')) {
                 removeImageCont.style.opacity = '100%';
@@ -80,7 +90,8 @@
         }
 
         jQuery(document).ready(function ($) {
-            Object.values(configInputs).forEach(ele => ele.addEventListener('input', validateInput));
+            configInputs.forEach(ele => ele.addEventListener('input', validateInput));
+            $('#remove_images_toggle').attr('onchange', 'validateInput();disableImageRemove();');
             validateInput();
             disableImageRemove();
 
@@ -114,7 +125,7 @@
                     url: 'changeconfig.php',
                     data: $(this).serialize(),
                     success: function () {
-                        alert('Config successfully changed!');
+                        alert('Konfigureringer ændred')
                     }
                 });
                 // Prevent default action of going to php page
