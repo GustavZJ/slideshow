@@ -101,13 +101,14 @@
 
                 const dots = window.setInterval(function() {
                     const $wait = $("#submitBtn");
-                    if ($wait.text().length == 11) {
+                    const text = $wait.text();
+                                
+                    if (text.length == 11) {
                         $wait.text('Uploader');
                     } else {
-                        $wait.text($wait.text() + ".");
+                        $wait.text(text + ".");
                     }
                 }, 100);
-
                 
                 if (file_count > max_file_uploads) {
                     messageFade("error", `Antallet af filer du prøver at uploade (${file_count}) overskrider grænsen sat af administratorerne (${max_file_uploads}).`)
