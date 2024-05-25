@@ -43,7 +43,7 @@ function getKeyValue($filePath, $keys)
         try {
             $value = getConfigValue($filePath, $key);
             if ($value !== null) {
-                $key_val[$key] = preg_replace("/[^0-9.]/", "", $value);
+                $key_val[$key] = $value;
             } else {
                 $key_val[$key] = "error";
             }
