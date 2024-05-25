@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Assign variables from the script arguments
 upload_max_filesize=$1
 post_max_size=$2
 max_file_uploads=$3
@@ -8,12 +9,14 @@ autoremove=$5
 autoremoveamount=$6
 autoremovetime=$7
 
+# Update php.ini file
 for key in upload_max_filesize post_max_size max_file_uploads
 do
- sed -i "s/^\($key\).*/\1 $(eval echo = \${$key})/" /var/www/slideshow/php.ini
+    sed -i "s/^\($key\).*/\1 = ${!key}/" /var/www/slideshow/php.ini
 done
 
+# Update config.config file
 for key in timedelay autoremove autoremoveamount autoremovetime
 do
- sed -i "s/^\($key\).*/\1=$(eval echo \${$key})/" /var/www/slideshow/config.config
+    sed -i "s/^\($key\).*/\1=${!key}/" /var/www/slideshow/config.config
 done
