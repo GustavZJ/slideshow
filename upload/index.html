@@ -102,8 +102,10 @@
 
                 const dots = window.setInterval(function() {
                     const $wait = $("#submitBtn");
+                    $wait.val('Uploader');
+                    const dotCount = (value.match(/\./g) || []).length; // Count dots
                         
-                    if ($wait.val().length == 11) {
+                    if (dotCount >= 3) {
                         $wait.val('Uploader');
                     } else {
                         $wait.val($wait.val() + ".");
