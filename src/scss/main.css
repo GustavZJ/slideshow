@@ -183,8 +183,6 @@ dialog {
   border-radius: 2svh;
   position: absolute;
   top: 20%;
-  left: 50%;
-  translate: -50%;
 }
 
 .errorDialog {
