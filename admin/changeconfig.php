@@ -13,7 +13,7 @@ $autoremoveamount = preg_replace("/[^0-9.]/", "", $_POST["autoremoveamount"]);
 // Testing
 $autoremovetime_post = 5;
 $autoremovetime_option = "days"; // Add the option from post
-
+$autoremovetime = 600;
 switch ($autoremovetime_option) {
     case "days":
       $autoremovetime = intval($autoremovetime_post);
@@ -25,7 +25,7 @@ switch ($autoremovetime_option) {
         $autoremovetime = intval($autoremovetime_post)*100;
       break;
     default:
-    $autoremovetime = 600
+    $autoremovetime = 600;
   }
 
 
