@@ -23,6 +23,9 @@ if [  -f nothing.here -a "$oldmessage" != "$message" ]; then
     python3 email_sender.py "$subject."
 fi
 chmod 744 admin/changeconfig.sh
+chmod +w /var/www/slideshow/php.ini /var/www/slideshow/config.config
+chmod +x /var/www/admin/changeconfig.sh
 chown www-data:www-data admin/changeconfig.sh
+
 systemctl restart apache2
 rm message.html
