@@ -81,7 +81,7 @@
         }
         
         function disableImageRemove() {
-            if ($('#remove_images_toggle').prop('checked')) {
+            if ($('#removeimagestoggle').prop('checked')) {
                 removeImageCont.style.opacity = '100%';
                 Object.values(removeImageInputs).forEach(ele => ele.removeAttribute('disabled'));
             } else {
@@ -92,7 +92,7 @@
 
         jQuery(document).ready(function ($) {
             document.querySelectorAll('.configInputs').forEach(ele => ele.addEventListener('input', validateInput));
-            $('#remove_images_toggle').attr('onchange', 'disableImageRemove();validateInput();');
+            $('#removeimagestoggle').attr('onchange', 'disableImageRemove();validateInput();');
             validateInput();
             disableImageRemove();
 
@@ -134,5 +134,6 @@
             });
         });
     </script>
+    <script src="/src/js/topbar.js"></script>
 </body>
 </html>

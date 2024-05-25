@@ -9,6 +9,40 @@ body {
     text-align: center;
     color: white;
     background-color: $primaryColor;
+	margin: 0;
+}
+
+// Top bar ele
+#topbar {
+	height: 6svh;
+	width: 100%;
+	background-color: lightgrey;
+
+    #navWrapper {
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        a {
+			color: black;
+            margin-right: 0.25dvw;
+            width: 6svh;
+            height: 6svh;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+
+            // Active nav marker (Green bar at bottom of btn)
+            .activeNav {
+                display: none;
+                position: absolute;
+                bottom: 0;
+                background-color: green;
+                width: 5dvh;
+                height: 0.5dvh;
+            }
+        }
+    }
 }
 
 // Class to add pointer icon to ele

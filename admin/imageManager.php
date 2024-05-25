@@ -152,5 +152,6 @@
                 }
             }
         </script>
+    <script src="/src/js/topbar.js"></script>
     </body>
 </html>
