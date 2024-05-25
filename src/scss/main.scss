@@ -141,7 +141,7 @@ button,
 			}
 		}
 
-		#uploadImageInput {
+		#uploadImageInput:disabled {
 			#uploadLabel {
 				cursor: default;
 			}
