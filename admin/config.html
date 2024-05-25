@@ -51,7 +51,6 @@
 
     <script>
         // Function to run php script in background
-        const configInputs = document.querySelectorAll('.configInputs');
         const confirmBtn = document.getElementById('confirmBtn');
         const removeImageInputs = document.getElementsByClassName('removeImageInputs');
 
@@ -60,6 +59,7 @@
             let atLeastOneFilled = false;
             const removeImagesChecked = $('#remove_images_toggle').prop('checked');
 
+            const configInputs = document.querySelectorAll('.configInputs');
             configInputs.forEach(ele => {
                 if (!ele.disabled) {
                     if (ele.value.trim() !== '' || ele.value) {
@@ -91,8 +91,8 @@
         }
 
         jQuery(document).ready(function ($) {
-            configInputs.forEach(ele => ele.addEventListener('input', validateInput));
-            $('#remove_images_toggle').attr('onchange', 'validateInput();disableImageRemove();');
+            document.querySelectorAll('.configInputs').forEach(ele => ele.addEventListener('input', validateInput));
+            $('#remove_images_toggle').attr('onchange', 'disableImageRemove();validateInput();');
             validateInput();
             disableImageRemove();
 
