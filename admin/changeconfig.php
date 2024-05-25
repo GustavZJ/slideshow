@@ -38,5 +38,5 @@ $post_max_size = strval(intval($maxsize) * intval($maxamount)) . "M";
 $command = "./changeconfig.sh " . $maxsize . "M " . $post_max_size . " " . $maxamount . " " . $timedelay. " " . $autoremove. " " . $autoremoveamount. " " . $autoremovetime;
 
 shell_exec($command);
-header('location: config.html/');
+header('location: config.html');
 exit();
