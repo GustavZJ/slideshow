@@ -139,6 +139,12 @@ button,
 					content: ', eller træk billeder her';
 				}
 			}
+
+			#uploadImageInput {
+				#uploadLabel {
+					cursor: default;
+				}
+			}
 		}
 	}
 
