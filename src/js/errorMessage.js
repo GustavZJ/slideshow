@@ -7,7 +7,7 @@ export function messageFade(type, message) {
     }
     
     // Generate unique ID for each dialog
-    const dailogId = `errorDialog-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    const dailogId = `errorDialog-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
     
     // Create modal
     const errorDialog = document.createElement('dialog');

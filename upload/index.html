@@ -97,7 +97,7 @@
                 $('#submitBtn').attr('disabled', true);
                 const dots = window.setInterval(function() {
                     const $wait = $("#submitBtn");
-                    if ($wait.text().length > 9) {
+                    if ($wait.text().length == 9) {
                         $wait.text("");
                     } else {
                         $wait.text($wait.text() + ".");
