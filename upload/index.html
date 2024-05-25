@@ -101,14 +101,12 @@
                 $('#uploadLabel').css('cursor', 'default');
 
                 const dots = window.setInterval(function() {
-                    const $wait = $("#submitBtn");
-                    $wait.val('Uploader');
-                    console.log(dotCount);
+                    $("#submitBtn").val('Uploader');
 
-                    if (value.endsWith('...')) {
-                        $wait.val('Uploader');
+                    if ($("#submitBtn").val().endsWith('...')) {
+                        $("#submitBtn").val('Uploader');
                     } else {
-                        $wait.val(value + ".");
+                        $("#submitBtn").val($("#submitBtn").val() + ".");
                     }
                 }, 500);
                 
