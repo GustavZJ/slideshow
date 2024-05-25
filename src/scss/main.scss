@@ -206,15 +206,16 @@ a {
 	}
 }
 
-// Confirm action modal styling
+// Dialog styling
 dialog {
     margin: auto;
     padding: 1svh;
     border: none;
     border-radius: 2svh;
+	position: absolute;
 }
 
-// Error modal styling
+// Error dialog specific styling
 .errorDialog {
     opacity: 0;
     transition: opacity 0.25s ease-in-out;

@@ -181,6 +181,7 @@ dialog {
   padding: 1svh;
   border: none;
   border-radius: 2svh;
+  position: absolute;
 }
 
 .errorDialog {
