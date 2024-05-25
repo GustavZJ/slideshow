@@ -102,8 +102,9 @@
                 $("#submitBtn").val('Uploader');
 
                 const dots = window.setInterval(function() {
+                    const dotCount = ($("#submitBtn").val().match(/\./g) || []).length;
 
-                    if ($("#submitBtn").val().endsWith('...')) {
+                    if (dotCount >= 3) {
                         $("#submitBtn").val('Uploader');
                     } else {
                         $("#submitBtn").val($("#submitBtn").val() + '.');
