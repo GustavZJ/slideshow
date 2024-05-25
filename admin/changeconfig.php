@@ -5,17 +5,19 @@ echo ("<script>console.log('PHP: " . json_encode($_POST) . "');</script>");
 $timedelay = preg_replace("/[^0-9.]/", "", $_POST['timedelay']);
 $maxsize = preg_replace("/[^0-9.]/", "", $_POST["maxsize"]);
 $maxamount = preg_replace("/[^0-9.]/", "", $_POST["maxamount"]);
-// $autoremove = preg_replace("/[^0-9.]/", "", $_POST['autoremove']);
-// $autoremoveamount = preg_replace("/[^0-9.]/", "", $_POST["autoremoveamount"]);
-// $autoremovetime_post = preg_replace("/[^0-9.]/", "", $_POST["autoremovetime"]);
-// $autoremovetime_option = null; # Add the option from post
+$autoremoveamount = preg_replace("/[^0-9.]/", "", $_POST["removeimagesamount"]);
+$autoremovetime_post = preg_replace("/[^0-9.]/", "", $_POST["removeimagestime"]);
+$autoremovetime_option = preg_replace("/[^0-9.]/", "", $_POST["removeimagestimeperiod"]);; # Add the option from post
 
-// Testing
-$autoremove = "true";
-$autoremoveamount = "30";
-$autoremovetime_post = "5";
-$autoremovetime_option = "days"; // Add the option from post
-$autoremovetime = 600;
+$autoremove = false;
+$autoremove_post = preg_replace("/[^0-9.]/", "", $_POST['removeimagestoggle']); // =on not true
+if ($autoremove_post == "on") {
+    $autoremove = true;
+}
+else {
+    $autoremove = false;
+}
+
 switch ($autoremovetime_option) {
     case "days":
       $autoremovetime = intval($autoremovetime_post);
