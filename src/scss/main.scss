@@ -141,10 +141,9 @@ button,
 			}
 		}
 
-		#uploadImageInput:disabled {
-			#uploadLabel {
-				cursor: default;
-			}
+		// Change cursor to default if input is disabled
+		&:has(#uploadImageInput:disabled) #uploadLabel {
+			cursor: default;
 		}
 	}
 
