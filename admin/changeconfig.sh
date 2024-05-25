@@ -11,7 +11,7 @@ do
  sed -i "s/^\($key\).*/\1 $(eval echo = \${$key})/" /var/www/slideshow/php.ini
 done
 
-for key in timedelay
+for key in timedelay autoremove autoremoveamount autoremovetime
 do
  sed -i "s/^\($key\).*/\1=$(eval echo \${$key})/" /var/www/slideshow/config.config
 done
