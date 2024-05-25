@@ -99,14 +99,14 @@
                 $('#uploadImageInput').attr('disabled', true);
                 $('#submitBtn').attr('disabled', true);
                 $('#uploadLabel').css('cursor', 'default');
+                $("#submitBtn").val('Uploader');
 
                 const dots = window.setInterval(function() {
-                    $("#submitBtn").val('Uploader');
 
                     if ($("#submitBtn").val().endsWith('...')) {
                         $("#submitBtn").val('Uploader');
                     } else {
-                        $("#submitBtn").val($("#submitBtn").val() + ".");
+                        $("#submitBtn").val($("#submitBtn").val() + '.');
                     }
                 }, 500);
                 
