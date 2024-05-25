@@ -111,8 +111,15 @@
                             document.getElementById(key).placeholder = val;
                         }
                         else if (key == "autoremovetimeoption"){
-                            console.log(val)
                             document.getElementById(key).value = val;
+                        }
+                        else if (key == "autoremove"){
+                            if (val == "true") {
+                                document.getElementById(key).checked = true;
+                            }
+                            else {
+                                document.getElementById(key).checked = false;
+                            }
                         }
                     }
                 }
