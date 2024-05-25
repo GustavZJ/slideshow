@@ -106,10 +106,10 @@
                     }, {});
 
                     for (const [key, val] of Object.entries(key_val_object)) {
-                        if (! ["days", "months", "years"].includes(key) ){
+                        if (! ["autoremovetime", "autoremovetimeoption"].includes(key) ){
                             document.getElementById(key).placeholder = val;
                         }
-                        else {
+                        else if (key != "autoremovetime"){
                             document.getElementById(key).value = val;
                         }
                     }
