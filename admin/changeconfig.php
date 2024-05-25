@@ -5,13 +5,15 @@ echo ("<script>console.log('PHP: " . json_encode($_POST) . "');</script>");
 $timedelay = preg_replace("/[^0-9.]/", "", $_POST['timedelay']);
 $maxsize = preg_replace("/[^0-9.]/", "", $_POST["maxsize"]);
 $maxamount = preg_replace("/[^0-9.]/", "", $_POST["maxamount"]);
-$autoremove = preg_replace("/[^0-9.]/", "", $_POST['autoremove']);
-$autoremoveamount = preg_replace("/[^0-9.]/", "", $_POST["autoremoveamount"]);
+// $autoremove = preg_replace("/[^0-9.]/", "", $_POST['autoremove']);
+// $autoremoveamount = preg_replace("/[^0-9.]/", "", $_POST["autoremoveamount"]);
 // $autoremovetime_post = preg_replace("/[^0-9.]/", "", $_POST["autoremovetime"]);
 // $autoremovetime_option = null; # Add the option from post
 
 // Testing
-$autoremovetime_post = 5;
+$autoremove = "true";
+$autoremoveamount = "30":
+$autoremovetime_post = "5";
 $autoremovetime_option = "days"; // Add the option from post
 $autoremovetime = 600;
 switch ($autoremovetime_option) {
