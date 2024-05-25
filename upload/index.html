@@ -97,6 +97,7 @@
 
                 $('#uploadImageInput').attr('disabled', true);
                 $('#submitBtn').attr('disabled', true);
+                $('#uploadLabel').css('cursor', 'default');
 
                 const dots = window.setInterval(function() {
                     const $wait = $("#submitBtn");
@@ -122,6 +123,7 @@
                             $('#uploadImageInput').attr('disabled', true);
                             $('#submitBtn').removeAttr('disabled');
                             $('#submitBtn').val('Upload');
+                            $('#uploadLabel').css('cursor', 'pointer');
 
                             let allSuccess = true;
                             let errMsg = '';
@@ -169,6 +171,7 @@
                             $('#uploadImageInput').attr('disabled', true);
                             $('#submitBtn').removeAttr('disabled');
                             $('#submitBtn').val('Upload');
+                            $('#uploadLabel').css('cursor', 'pointer');
                         }
                     });
                 }

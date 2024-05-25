@@ -140,11 +140,6 @@ button,
 				}
 			}
 		}
-
-		// Change cursor to default if input is disabled
-		&:has(#uploadImageInput:disabled) #uploadLabel {
-			cursor: default;
-		}
 	}
 
 	// Hde input
