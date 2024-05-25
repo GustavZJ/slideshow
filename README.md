@@ -37,7 +37,7 @@ Select reboot<br>
 To access go to (Domain name).local
 
 
-If you ever lose your password go to the place in this readme, that explains how you run install.sh. <em>Note: This will undo any config changes you have made.</em>
+If you ever lose your password go to the place in this readme, that explains how you run install.sh. <em>WARNING: This will undo any config changes you have made.</em>
 
 
 <h2>How to use admin</h2>
