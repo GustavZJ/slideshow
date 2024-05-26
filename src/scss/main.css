@@ -107,9 +107,28 @@ button:disabled,
   background-color: initial;
   filter: brightness(0.75);
 }
-button.btnWhite,
-.labelBtn.btnWhite {
-  background-color: white;
+button.btnWhite .image-container,
+.labelBtn.btnWhite .image-container {
+  position: relative;
+  display: inline-block;
+}
+button.btnWhite .image-container img,
+.labelBtn.btnWhite .image-container img {
+  display: block;
+}
+button.btnWhite .image-container .overlay-text,
+.labelBtn.btnWhite .image-container .overlay-text {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  border-radius: 3px;
+  width: 100%;
+  text-align: center;
 }
 button.btnRed,
 .labelBtn.btnRed {
