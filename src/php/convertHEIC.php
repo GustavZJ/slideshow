@@ -28,7 +28,7 @@ foreach (range(0, count($_FILES["hidden"]["name"]) - 1) as $x) {
     // Check if file is an actual image (basic check by MIME type)
     if (!str_contains($imageFileType, "image")) {
         $uploadOk = 0;
-        $response["upload"][$file][] = "er ikke et billede";
+        $response["upload"][$file][] = "er ikke et billede".$imageFileType;
     }
 
     // Check if file already exists
