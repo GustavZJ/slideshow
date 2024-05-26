@@ -118,7 +118,7 @@ const createArrowButton = () => {
 // Add arrow button if user is on a mobile device
 if (isMobileDevice()) {
     const arrowButton = createArrowButton();
-    dropdownBtn.appendChild(arrowButton);
+    navWrapper.appendChild(arrowButton);
 
     arrowButton.addEventListener('click', () => {
         const dropdownCont = document.getElementById('dropdownCont');
