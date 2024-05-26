@@ -10,7 +10,7 @@ body {
 #topbar {
   height: 6svh;
   width: 100%;
-  background-color: lightgrey;
+  background-color: #50a9f2;
 }
 #topbar #navWrapper {
   position: absolute;
@@ -43,7 +43,7 @@ body {
   display: none;
   position: absolute;
   bottom: 0;
-  background-color: green;
+  background-color: darkblue;
   width: 5dvh;
   height: 0.5dvh;
 }
@@ -104,7 +104,7 @@ button.btnRed,
 }
 button.btnBlue,
 .labelBtn.btnBlue {
-  background-color: #1c8aff;
+  background-color: #50a9f2;
 }
 
 #deleteBtn,
