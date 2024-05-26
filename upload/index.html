@@ -69,7 +69,6 @@
                     contentType: false,
                     processData: false,
                     success: function (response) {
-                        console.log(response);
                         const allFiles = [];
                         (async function () {
                             for await (const filePath of response['files']) {
