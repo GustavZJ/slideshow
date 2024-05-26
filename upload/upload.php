@@ -25,10 +25,10 @@
     $response = array();
     foreach(range(0, count($_FILES['files']['name']) - 1) as $x) {
       $file = basename($_FILES['files']["name"][$x]);
+      $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
       $newFilename = date("Ymd") . $file . $ext;
       $targetFile = $targetDir . $newFilename;
       $imageFileType = strtolower($_FILES['files']['type'][$x]);
-      $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
     
       $response[$file] = [];
       $uploadOk = 1;
