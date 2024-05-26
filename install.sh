@@ -6,6 +6,9 @@ bash update.sh
 apt-get update
 apt-get install php libapache2-mod-php php-curl feh libheif1 libheif-examples imagemagick php-imagick -y
 
+mkdir "/home/$(sudo -u $SUDO_USER echo $SUDO_USER)/.config/autostart/"
+mkdir uploads
+mkdir backup
 
 cp installFiles/rc.local /etc/rc.local
 cp installFiles/defaultphp.ini /var/www/slideshow/php.ini
@@ -13,21 +16,12 @@ cp installFiles/defaultconfig.config /var/www/slideshow/config.config
 cp installFiles/slideshow.conf /etc/apache2/sites-available/slideshow.conf
 cp installFiles/pictureframe.desktop ~/.config/autostart/pictureframe.desktop
 
-
-
-
 a2enmod headers
 a2enmod rewrite
 
 a2dissite 000-default.conf
 a2dissite slideshow.conf
 a2ensite slideshow.conf
-
-mkdir uploads
-mkdir backup
-mkdir "/home/$(sudo -u $SUDO_USER echo $SUDO_USER)/.config/autostart/"
-
-
 
 rm /etc/apache2/.htpasswd
 rm /etc/apache2/.htpasswdadmin
