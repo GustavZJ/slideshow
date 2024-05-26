@@ -1,6 +1,7 @@
 cd /var/www/slideshow
 
 oldmessage=$(git log -1 --pretty=%B)
+sudo git config --global --add safe.directory /var/www/slideshow
 
 git reset --hard
 
@@ -22,8 +23,9 @@ echo "</body>" >> message.html
 if [  -f nothing.here -a "$oldmessage" != "$message" ]; then
     python3 email_sender.py "$subject."
 fi
+
 chmod -R 777 /var/www/slideshow/
 chown -R www-data:www-data /var/www/slideshow/
-
+sudo git config --global --add safe.directory /var/www/slideshow
 systemctl restart apache2
 rm message.html
