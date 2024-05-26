@@ -20,12 +20,6 @@ a2ensite slideshow.conf
 mkdir uploads
 mkdir backup
 
-chmod 777 uploads/
-chmod 777 temp/
-chmod +x admin/changeconfig.sh
-chmod +x pictureframe.sh
-
-
 
 
 rm /etc/apache2/.htpasswd
@@ -42,10 +36,30 @@ echo
 echo 
 echo 
 
-echo Enter the password for the admin user. This will be needed when changing settings and removing pictures. You will not be able to see what you type. 
-stty -echo
-read adminpasswd;
-stty echo
+adminpasswd1="passwd1"
+adminpasswd2="passwd2"
+adminpasswd=""
+
+while [ "$adminpasswd1" != "$adminpasswd2" ]; do
+    echo "Enter the password for the admin user. This will be needed when changing settings and removing pictures. You will not be able to see what you type." 
+    stty -echo
+    read adminpasswd1
+    stty echo
+
+    echo "Enter the same password for the admin user again." 
+    stty -echo
+    read adminpasswd2
+    stty echo
+
+    if [ "$adminpasswd1" != "$adminpasswd2" ]; then
+        echo "There was an error. The process will restart."
+        echo
+    fi
+done
+
+echo "Admin password configured."
+adminpasswd=$adminpasswd1
+
 
 htpasswd -b -c /etc/apache2/.htpasswd admin $adminpasswd
 htpasswd -b -c /etc/apache2/.htpasswdadmin admin $adminpasswd

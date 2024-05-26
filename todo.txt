@@ -2,8 +2,8 @@ Config file:
 - Upload max size ☑
 - Max amount of pictures ☑
 - Picture delay time ☑
-- Enable / disable auto removal of image
-- Auto remove image time
+- Enable / disable auto removal of image ☑
+- Auto remove image time ☑
 
 Picture frame:
 - Fix issue with images that have had their name changed by the script,
@@ -12,7 +12,7 @@ Picture frame:
 
 Config page:
 - Display current values of each configurable item ☑
-- Add settings for auto remove
+- Add settings for auto remove ☑
 
 Admin page:
 - Change config settings ☑
