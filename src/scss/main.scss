@@ -119,14 +119,16 @@ button,
 	
 		  .overlay-text {
 			position: absolute;
-			top: 50%;
+			bottom: 0;
 			left: 50%;
-			transform: translate(-50%, -50%);
+			transform: translateX(-50%);
 			color: white;
 			font-size: 16px; // Adjust as needed
 			background-color: rgba(0, 0, 0, 0.5); // Optional: to make text more readable
 			padding: 5px; // Optional: to give some padding to the text
 			border-radius: 3px; // Optional: for rounded corners
+			width: 100%; // Optional: to ensure the text box spans the full width of the image
+			text-align: center; // Optional: to center the text within the text box
 		  }
 		}
 	  }

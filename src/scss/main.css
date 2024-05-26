@@ -106,14 +106,16 @@ button.btnWhite .image-container img,
 button.btnWhite .image-container .overlay-text,
 .labelBtn.btnWhite .image-container .overlay-text {
   position: absolute;
-  top: 50%;
+  bottom: 0;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   color: white;
   font-size: 16px;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 5px;
   border-radius: 3px;
+  width: 100%;
+  text-align: center;
 }
 button.btnRed,
 .labelBtn.btnRed {
