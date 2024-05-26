@@ -16,12 +16,16 @@ topbar.innerHTML = (`
 
 document.body.prepend(topbar);
 
-const navBtns = document.getElementsByClassName('navBtns');
+const navBtns = Array.from(document.getElementsByClassName('navBtns'));
 
-// Find active page, and mark corrosponding button
+// Sort navigation buttons by href length in descending order
+navBtns.sort((a, b) => b.attributes.href.value.length - a.attributes.href.value.length);
+
+// Find active page, and mark corresponding button
 for (const btn of navBtns) {
-	if (btn.attributes.href.value.includes(window.location.pathname)) {
-		btn.children[0].style.display = 'inline-block';
-		break
-	}
+    const href = btn.attributes.href.value;
+    if (window.location.pathname.startsWith(href)) {
+        btn.children[0].style.display = 'inline-block';
+        break;
+    }
 }
