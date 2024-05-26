@@ -68,12 +68,11 @@
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: function (outputFiles, response) {
+                    success: function (response) {
                         console.log(outputFiles);
-                        console.log(response);
                         const allFiles = [];
                         (async function () {
-                            for await (const filePath of outputFiles) {
+                            for await (const filePath of outputFiles['files']) {
                                // Add the new file to the array of files
                                const file = await createFile(filePath.slice(18)).then(function(result) {allFiles.push(result)});
                             }
