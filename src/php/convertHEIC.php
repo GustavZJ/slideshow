@@ -19,35 +19,36 @@ function convertToBytes($value) {
 $target_dir = "/var/www/slideshow/temp/";
 $errorStr = "";
 foreach (range(0, count($_FILES["hidden"]["name"]) - 1) as $x) {
-    $target_file = $target_dir . basename($_FILES["hidden"]["name"][$x]);
+    $file = basename($_FILES["hidden"]["name"][$x]);
+    $target_file = $target_dir . $file;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $uploadOk = 1;
 
     // Check if file is an actual image (basic check by MIME type)
     if (!str_contains($imageFileType, "image")) {
         $uploadOk = 0;
-        $errorStr .= basename($_FILES["hidden"]["name"][$x]) . " is not an image.\n";
+        $errorStr .= $file . " is not an image.\n";
     }
 
     // Check if file already exists
     if (file_exists($target_file)) {
         $uploadOk = 0;
-        $errorStr .= basename($_FILES["hidden"]["name"][$x]) . " already exists.\n";
+        $errorStr .= $file . " already exists.\n";
     }
 
     // Check if file is too large
     if ($_FILES["hidden"]["size"][$x] > convertToBytes($iniFile["upload_max_filesize"])) {
         $uploadOk = 0;
-        $errorStr .= basename($_FILES["hidden"]["name"][$x]) . " is too large.\n";
+        $errorStr .= $file . " is too large.\n";
     }
 
     $uploadOk = 1;
 
     if ($uploadOk) {
         if (move_uploaded_file($_FILES["hidden"]["tmp_name"][$x], $target_file)) {
-            $errorStr .= basename($_FILES["hidden"]["name"][$x]) . " uploaded successfully.\n";
+            $errorStr .= $file . " uploaded successfully.\n";
         } else {
-            $errorStr .= "Unknown error occurred while uploading " . basename($_FILES["hidden"]["name"][$x]) . ".\n";
+            $errorStr .= "Unknown error occurred while uploading " . $file . ".\n";
         }
     }
 }
