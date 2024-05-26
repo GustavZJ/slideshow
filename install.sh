@@ -25,7 +25,7 @@ a2ensite slideshow.conf
 
 mkdir uploads
 mkdir backup
-mkdir "$HOME/.config/autostart/"
+mkdir "/home/$(sudo -u $SUDO_USER echo $SUDO_USER)/.config/autostart/"
 
 
 
