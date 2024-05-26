@@ -68,8 +68,8 @@
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: function (outputFiles) {
-                        console.log(outputFiles)
+                    success: function (outputFiles, response) {
+                        console.log(outputFiles, response);
                         const allFiles = [];
                         (async function () {
                             for await (const filePath of outputFiles) {
