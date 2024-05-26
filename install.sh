@@ -1,6 +1,6 @@
 #!/bin/bash
 cd /var/www/slideshow/
-export GIT_TESTING_NO_DUBIOUS_OWNER_CHECK=1
+sudo git config --global --add safe.directory /var/www/slideshow
 bash update.sh
 
 apt-get update
