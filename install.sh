@@ -5,11 +5,18 @@ bash update.sh
 
 apt-get update
 apt-get install php libapache2-mod-php php-curl feh libheif1 libheif-examples imagemagick php-imagick -y
+
+mkdir -p ~/.config/autostart
+
 cp installFiles/rc.local /etc/rc.local
 cp installFiles/defaultphp.ini /var/www/slideshow/php.ini
 cp installFiles/defaultconfig.config /var/www/slideshow/config.config
 cp installFiles/slideshow.conf /etc/apache2/sites-available/slideshow.conf
 cp installFiles/autostart ~/.config/lxsession/LXDE-pi/autostart
+cp installFiles/pictureframe.desktop ~/.config/autostart/pictureframe.desktop
+
+
+
 
 a2enmod headers
 a2enmod rewrite
