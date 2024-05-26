@@ -21,11 +21,19 @@ body {
   display: grid;
 }
 #topbar #navWrapper #dropdownCont {
+  display: none;
   position: absolute;
   top: 6svh;
-  display: none;
   background-color: #C0C0C0;
+}
+#topbar #navWrapper #dropdownCont.open {
+  display: grid;
   animation: growDown 300ms ease-in-out forwards;
+  transform-origin: top center;
+}
+#topbar #navWrapper #dropdownCont.close {
+  display: grid;
+  animation: shrinkUp 300ms ease-in-out forwards;
   transform-origin: top center;
 }
 @keyframes growDown {
@@ -37,6 +45,17 @@ body {
   }
   100% {
     transform: scaleY(1);
+  }
+}
+@keyframes shrinkUp {
+  0% {
+    transform: scaleY(1);
+  }
+  20% {
+    transform: scaleY(1.1);
+  }
+  100% {
+    transform: scaleY(0);
   }
 }
 #topbar #navWrapper a {
@@ -52,10 +71,10 @@ body {
 #topbar #navWrapper a .activeNav {
   display: none;
   position: absolute;
-  bottom: 0;
+  bottom: 0.4svh;
   background-color: darkblue;
-  width: 5dvh;
-  height: 0.5dvh;
+  width: 5svh;
+  height: 0.5svh;
 }
 
 .elePointerIcon {

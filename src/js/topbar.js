@@ -46,7 +46,7 @@ for (const [key, path] of Object.entries(navPaths)) {
 		const navEle = createNewElement('a', key, 'navBtns');
 		navEle.setAttribute('href', path);
 
-		const activeNavEle = createNewElement('a', '', 'activeNav');
+		const activeNavEle = createNewElement('div', '', 'activeNav');
 		navEle.appendChild(activeNavEle);
 		navWrapper.appendChild(navEle);
 	}
@@ -72,11 +72,31 @@ for (const btn of navBtns) {
 function createNewElement(tag, html, className = '', idName = '') {
 	const newEle = document.createElement(tag);
 	newEle.innerHTML = html;
-	if (typeof(className) == 'list') {
+	if (className && typeof(className) == 'list') {
 		newEle.classList.add([...className]);
-	} else {
+	} else if (className) {
 		newEle.classList.add(className);
 	}
-	newEle.id = idName;
+	if (idName) {
+		newEle.id = idName;
+	}
 	return newEle;
 }
+
+const dropdownBtn = document.getElementById('dropdownBtn');
+const dropdownCont = document.getElementById('dropdownCont');
+let hideTimer;
+
+dropdownBtn.addEventListener('mouseenter', () => {
+	dropdownCont.classList.remove('close');
+	dropdownCont.classList.add('open');
+});
+
+dropdownBtn.addEventListener('mouseleave', () => {
+	dropdownCont.classList.remove('open');
+	dropdownCont.classList.add('close');
+	clearTimeout(hideTimer);
+	hideTimer.setTimeout(() => {
+        dropdownCont.style.display = 'none';
+    }, 300);
+});
