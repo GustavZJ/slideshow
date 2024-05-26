@@ -17,6 +17,7 @@
                 <label for="uploadImageInput" id="uploadLabel">Klik for at uploade</label>
             </div>
             <input class="labelBtn btnWhite" type="submit" value="Upload" id="submitBtn" disabled>
+            <button class="labelBtn btnRed" type="button" id="clearBtn" disabled>Ryd</button>
         </form>
         <p id="previewText">Billeder:</p>
         <div id="imagePreviewCont"></div>
@@ -99,6 +100,7 @@
 
                 $('#uploadImageInput').attr('disabled', true);
                 $('#submitBtn').attr('disabled', true);
+                $('#clearBtn').attr('disabled', true);
                 $('#uploadLabel').css('cursor', 'default');
                 $("#submitBtn").val('Uploader');
 
@@ -115,8 +117,9 @@
                 if (file_count > max_file_uploads) {
                     clearInterval(dots);
                     messageFade("error", `Antallet af filer du prøver at uploade (${file_count}) overskrider grænsen sat af administratorerne (${max_file_uploads}).`);
-                    $('#uploadImageInput').attr('disabled', false);
+                    $('#uploadImageInput').removeAttr('disabled');
                     $('#submitBtn').removeAttr('disabled');
+                    $('#clearBtn').removeAttr('disabled');
                     $('#submitBtn').val('Upload');
                     $('#uploadLabel').css('cursor', 'pointer');
 
@@ -129,8 +132,8 @@
                         processData: false,
                         success: function (response) {
                             clearInterval(dots);
-                            $('#uploadImageInput').attr('disabled', true);
                             $('#uploadImageInput').removeAttr('disabled');
+                            $('#clearBtn').removeAttr('disabled');
                             $('#submitBtn').val('Upload');
                             $('#uploadLabel').css('cursor', 'pointer');
                             $('submitBtn').attr('disabled', true);
@@ -180,6 +183,7 @@
                             $('#uploadImageInput').removeAttr('disabled');
                             $('#submitBtn').removeAttr('disabled');
                             $('#submitBtn').val('Upload');
+                            $('#clearBtn').removeAttr('disabled');
                             $('#uploadLabel').css('cursor', 'pointer');
                         }
                     });

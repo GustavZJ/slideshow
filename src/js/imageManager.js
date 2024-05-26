@@ -280,6 +280,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add event listener to file input
     uploadImageInput.addEventListener('change', event => uploadImage(event))
+
+    // Add event listener to clear btn
+    document.getElementById('clearBtn').addEventListener('click', clearAll);
 });
 
 // Delete file from input
@@ -307,17 +310,23 @@ function deleteFiles(fileName = null, target = null) {
     // Disable upload btn if no images remain
     if (uploadImageInput.files.length == 0) {
         submitBtn.setAttribute('disabled', true);
+        document.getElementById('clearBtn').setAttribute('disabled', true);
         document.getElementById('previewText').style.display = 'none';
     }
 }
 
-// Remove any images on reload
-window.onload = () => {
+function clearAll() {
     submitBtn.setAttribute('disabled', true);
+    document.getElementById('clearBtn').setAttribute('disabled', true);
     uploadImageInput.value = '';
     hiddenImageInput.value = '';
 
     for (const img of uploadedImagesCont.children) {
         img.remove();
     }
+}
+
+// Remove any images on reload
+window.onload = () => {
+    clearAll();
 }
