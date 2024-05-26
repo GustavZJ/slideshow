@@ -28,10 +28,6 @@ body {
   animation: growDown 300ms ease-in-out forwards;
   transform-origin: top center;
 }
-#topbar #navWrapper #dropdownCont a {
-  padding: 0.2svh;
-  width: auto;
-}
 @keyframes growDown {
   0% {
     transform: scaleY(0);
@@ -46,8 +42,9 @@ body {
 #topbar #navWrapper a {
   color: black;
   margin-right: 0.25dvw;
-  width: 6svh;
   height: 6svh;
+  padding: 0.2svh;
+  width: auto;
   display: inline-flex;
   justify-content: center;
   align-items: center;
