@@ -100,28 +100,3 @@ dropdownBtn.addEventListener('mouseleave', () => {
         dropdownCont.style.display = 'none';
     }, 300);
 });
-
-// Check if the user is on a mobile device
-const isMobileDevice = () => {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
-
-// Function to create arrow button
-const createArrowButton = () => {
-    const arrowButton = document.createElement('div');
-    arrowButton.className = 'arrowButton';
-    // You can customize the appearance of the arrow button here
-    arrowButton.innerHTML = '&#9660;'; // Downward pointing triangle or any other suitable icon
-    return arrowButton;
-}
-
-// Add arrow button if user is on a mobile device
-if (isMobileDevice()) {
-    const arrowButton = createArrowButton();
-    navWrapper.appendChild(arrowButton);
-
-    arrowButton.addEventListener('click', () => {
-        const dropdownCont = document.getElementById('dropdownCont');
-        dropdownCont.classList.toggle('open');
-    });
-}
