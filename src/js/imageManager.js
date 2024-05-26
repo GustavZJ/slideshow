@@ -122,6 +122,7 @@ function createImagePreview(file, name) {
 
     // Enable upload btn
     submitBtn.removeAttribute('disabled');
+    document.getElementById('clearBtn').removeAttribute('disabled');
 }
 
 // Drag image to upload
@@ -270,21 +271,6 @@ function deleteImagePreview(event) {
     deleteFiles(null, event.target);
 }
 
-// Add event listeners, this ensures HTML elements can run function, while script is a module
-document.addEventListener('DOMContentLoaded', () => {
-    // Add event listener for drag events on uploadLabel
-    uploadImageFile.addEventListener('dragover', event => dragOver(event));
-    uploadImageFile.addEventListener('dragenter', event => dragEnter(event));
-    uploadImageFile.addEventListener('dragleave', event => dragLeave(event));
-    uploadImageFile.addEventListener('drop', event => dropFile(event));
-
-    // Add event listener to file input
-    uploadImageInput.addEventListener('change', event => uploadImage(event))
-
-    // Add event listener to clear btn
-    document.getElementById('clearBtn').addEventListener('click', clearAll);
-});
-
 // Delete file from input
 function deleteFiles(fileName = null, target = null) {
     // If target is true, delete was called by image delete btn, so we use the targeted image to get the name
@@ -321,12 +307,28 @@ function clearAll() {
     uploadImageInput.value = '';
     hiddenImageInput.value = '';
 
-    for (const img of uploadedImagesCont.children) {
+    const childrenArray = Array.from(uploadedImagesCont.children);
+    for (const img of childrenArray) {
         img.remove();
-    }
+    }    
+   
+    allFiles.length = 0;
 }
 
-// Remove any images on reload
+// Add event listeners, this ensures HTML elements can run function, while script is a module
 window.onload = () => {
+    // Add event listener for drag events on uploadLabel
+    uploadImageFile.addEventListener('dragover', event => dragOver(event));
+    uploadImageFile.addEventListener('dragenter', event => dragEnter(event));
+    uploadImageFile.addEventListener('dragleave', event => dragLeave(event));
+    uploadImageFile.addEventListener('drop', event => dropFile(event));
+
+    // Add event listener to file input
+    uploadImageInput.addEventListener('change', event => uploadImage(event))
+
+    // Add event listener to clear btn
+    document.getElementById('clearBtn').addEventListener('click', clearAll);
+    
+    // Clear everything, to prevent potential issues on refresh
     clearAll();
-}
+};

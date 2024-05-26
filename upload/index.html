@@ -133,10 +133,10 @@
                         success: function (response) {
                             clearInterval(dots);
                             $('#uploadImageInput').removeAttr('disabled');
-                            $('#clearBtn').removeAttr('disabled');
                             $('#submitBtn').val('Upload');
                             $('#uploadLabel').css('cursor', 'pointer');
-                            $('submitBtn').attr('disabled', true);
+                            $('#submitBtn').attr('disabled', true);
+                            $('#clearBtn').attr('disabled', true);
 
                             let allSuccess = true;
                             let errMsg = '';
