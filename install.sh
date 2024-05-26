@@ -6,7 +6,7 @@ bash update.sh
 apt-get update
 apt-get install php libapache2-mod-php php-curl feh libheif1 libheif-examples imagemagick php-imagick -y
 
-mkdir ~/.config/autostart
+mkdir ~/.config/autostart/
 
 cp installFiles/rc.local /etc/rc.local
 cp installFiles/defaultphp.ini /var/www/slideshow/php.ini
