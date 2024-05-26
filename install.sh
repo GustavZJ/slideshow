@@ -1,5 +1,6 @@
 #!/bin/bash
 cd /var/www/slideshow/
+git config --global --add safe.directory /var/www/slideshow
 bash update.sh
 
 apt-get update
