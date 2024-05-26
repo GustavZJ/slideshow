@@ -100,3 +100,14 @@ dropdownBtn.addEventListener('mouseleave', () => {
         dropdownCont.style.display = 'none';
     }, 300);
 });
+
+dropdownBtn.addEventListener('click', () => {
+    dropdownCont.classList.toggle('open');
+});
+
+document.addEventListener('click', (event) => {
+    const isClickInsideDropdown = dropdownBtn.contains(event.target) || dropdownCont.contains(event.target);
+    if (!isClickInsideDropdown) {
+        dropdownCont.classList.remove('open');
+    }
+});
