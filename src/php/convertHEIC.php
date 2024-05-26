@@ -22,7 +22,7 @@ function convertToBytes($value) {
 foreach (range(0, count($_FILES["hidden"]["name"]) - 1) as $x) {
     $file = basename($_FILES["hidden"]["name"][$x]);
     $target_file = $target_dir . $file;
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $imageFileType = strtolower(pathinfo($_FILES["hidden"]["name"][$x], PATHINFO_EXTENSION));
     $uploadOk = 1;
 
     // Check if file is an actual image (basic check by MIME type)
