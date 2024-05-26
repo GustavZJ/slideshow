@@ -1,14 +1,14 @@
 // Variables
 $fontStack: Helvetica, sans-serif;
 $primaryColor: #333;
-$blueColor: #1c8aff;
+$blueColor: #50a9f2;
 
 // Styling
 body {
 	font: 100% $fontStack;
     text-align: center;
     color: white;
-    background-color: $primaryColor;
+    background-color: lightgrey;
 	margin: 0;
 }
 
@@ -16,7 +16,7 @@ body {
 #topbar {
 	height: 6svh;
 	width: 100%;
-	background-color: lightgrey;
+	background-color: $primaryColor;
 
     #navWrapper {
         position: absolute;
@@ -48,12 +48,12 @@ body {
             justify-content: center;
             align-items: center;
 
-            // Active nav marker (Green bar at bottom of btn)
+            // Active nav marker (Blue bar at bottom of btn)
             .activeNav {
                 display: none;
                 position: absolute;
                 bottom: 0;
-                background-color: green;
+                background-color: $blueColor;
                 width: 5dvh;
                 height: 0.5dvh;
             }
