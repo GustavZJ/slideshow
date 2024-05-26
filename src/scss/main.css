@@ -21,14 +21,27 @@ body {
   display: grid;
 }
 #topbar #navWrapper #dropdownCont {
-  display: none;
-  background-color: #C0C0C0;
   position: absolute;
   top: 6svh;
+  display: none;
+  background-color: #C0C0C0;
+  animation: growDown 300ms ease-in-out forwards;
+  transform-origin: top center;
 }
 #topbar #navWrapper #dropdownCont a {
   padding: 0.2svh;
   width: auto;
+}
+@keyframes growDown {
+  0% {
+    transform: scaleY(0);
+  }
+  80% {
+    transform: scaleY(1.1);
+  }
+  100% {
+    transform: scaleY(1);
+  }
 }
 #topbar #navWrapper a {
   color: black;
