@@ -133,13 +133,13 @@ button,
 	&.btnBlue {
 		background-color: $blueColor;
 	}
+
 	&.imageBtn {
 		.image-container {
 			position: relative;
-			display: inline-block;
-	  
+
 			img {
-			  display: block;
+				width: 30svh;
 			}
 	  
 			.overlay-text {
@@ -148,12 +148,12 @@ button,
 			  left: 50%;
 			  transform: translateX(-50%);
 			  color: white;
-			  font-size: 16px; // Adjust as needed
-			  background-color: rgba(0, 0, 0, 0.5); // Optional: to make text more readable
-			  padding: 5px; // Optional: to give some padding to the text
-			  border-radius: 3px; // Optional: for rounded corners
-			  width: 100%; // Optional: to ensure the text box spans the full width of the image
-			  text-align: center; // Optional: to center the text within the text box
+			  font-size: 1rem;
+			  background-color: rgba(0, 0, 0, 0.5);
+			  padding: 0.2svh;
+			  border-radius: 0.2svh;
+			  width: 100%;
+			  text-align: center;
 			}
 		  }
 	}

@@ -122,11 +122,10 @@ button.btnBlue,
 button.imageBtn .image-container,
 .labelBtn.imageBtn .image-container {
   position: relative;
-  display: inline-block;
 }
 button.imageBtn .image-container img,
 .labelBtn.imageBtn .image-container img {
-  display: block;
+  width: 30svh;
 }
 button.imageBtn .image-container .overlay-text,
 .labelBtn.imageBtn .image-container .overlay-text {
@@ -135,10 +134,10 @@ button.imageBtn .image-container .overlay-text,
   left: 50%;
   transform: translateX(-50%);
   color: white;
-  font-size: 16px;
+  font-size: 1rem;
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 5px;
-  border-radius: 3px;
+  padding: 0.2svh;
+  border-radius: 0.2svh;
   width: 100%;
   text-align: center;
 }
