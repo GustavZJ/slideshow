@@ -101,13 +101,27 @@ dropdownBtn.addEventListener('mouseleave', () => {
     }, 300);
 });
 
-dropdownBtn.addEventListener('click', () => {
-    dropdownCont.classList.toggle('open');
-});
+// Check if the user is on a mobile device
+const isMobileDevice = () => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
 
-document.addEventListener('click', (event) => {
-    const isClickInsideDropdown = dropdownBtn.contains(event.target) || dropdownCont.contains(event.target);
-    if (!isClickInsideDropdown) {
-        dropdownCont.classList.remove('open');
-    }
-});
+// Function to create arrow button
+const createArrowButton = () => {
+    const arrowButton = document.createElement('div');
+    arrowButton.className = 'arrowButton';
+    // You can customize the appearance of the arrow button here
+    arrowButton.innerHTML = '&#9660;'; // Downward pointing triangle or any other suitable icon
+    return arrowButton;
+}
+
+// Add arrow button if user is on a mobile device
+if (isMobileDevice()) {
+    const arrowButton = createArrowButton();
+    dropdownBtn.appendChild(arrowButton);
+
+    arrowButton.addEventListener('click', () => {
+        const dropdownCont = document.getElementById('dropdownCont');
+        dropdownCont.classList.toggle('open');
+    });
+}
