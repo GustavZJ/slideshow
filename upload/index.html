@@ -88,7 +88,16 @@
 
                             document.getElementById('hiddenImageInput').value = '';
                         })();
-                    }
+                    },
+                        error: function () {
+                            clearInterval(dots);
+                            messageFade('error', 'Noget gik galdt! Prøv igen.');
+                            $('#uploadImageInput').removeAttr('disabled');
+                            $('#submitBtn').removeAttr('disabled');
+                            $('#submitBtn').val('Upload');
+                            $('#clearBtn').removeAttr('disabled');
+                            $('#uploadLabel').css('cursor', 'pointer');
+                        }
                 })
             });
             
