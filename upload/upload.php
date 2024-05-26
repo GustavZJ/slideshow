@@ -24,38 +24,38 @@
     $targetDir = "../uploads/";
     $response = array();
     foreach(range(0, count($_FILES['files']['name']) - 1) as $x) {
-      $filename = basename($_FILES['files']["name"][$x]);
-      $newFilename = date("Ymd") . $filename . $ext;
+      $file = basename($_FILES['files']["name"][$x]);
+      $newFilename = date("Ymd") . $file . $ext;
       $targetFile = $targetDir . $newFilename;
       $imageFileType = strtolower($_FILES['files']['type'][$x]);
       $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
     
-      $response[basename($_FILES['files']['name'][$x])] = [];
+      $response[$file] = [];
       $uploadOk = 1;
     
       // Check if image file is an actual image or fake image
       if (!str_contains($imageFileType, 'image')) {
         $uploadOk = 0;
-        array_push($response[basename($_FILES['files']['name'][$x])], 'er ikke et billede');
+        array_push($response[$file], 'er ikke et billede');
       }
     
       // Check if file already exists
       if (file_exists($targetFile)) {
         $uploadOk = 0;
-        array_push($response[basename($_FILES['files']['name'][$x])], 'eksisterer allerede');
+        array_push($response[$file], 'eksisterer allerede');
       }
     
       // Check if file is too large
       if ($_FILES['files']["size"][$x] > convertToBytes($iniFile['upload_max_filesize'])) {
         $uploadOk = 0;
-        array_push($response[basename($_FILES['files']['name'][$x])], 'er for stor');
+        array_push($response[$file], 'er for stor');
       }
     
       if ($uploadOk){
         if (move_uploaded_file($_FILES['files']["tmp_name"][$x], $targetFile)) {
-          array_push($response[basename($_FILES['files']['name'][$x])], 'success');
+          array_push($response[$file], 'success');
         } else {
-          array_push($response[basename($_FILES['files']['name'][$x])], 'ukendt fejl :(');
+          array_push($response[$file], 'ukendt fejl :(');
         }
       }
     }
