@@ -1,14 +1,14 @@
 // Variables
 $fontStack: Helvetica, sans-serif;
 $primaryColor: #333;
-$blueColor: #1c8aff;
+$blueColor: #50a9f2;
 
 // Styling
 body {
 	font: 100% $fontStack;
     text-align: center;
     color: white;
-    background-color: $primaryColor;
+    background-color: lightgrey;
 	margin: 0;
 }
 
@@ -16,7 +16,7 @@ body {
 #topbar {
 	height: 6svh;
 	width: 100%;
-	background-color: lightgrey;
+	background-color: $primaryColor;
 
     #navWrapper {
         position: absolute;
@@ -37,7 +37,7 @@ body {
                 display: none;
                 position: absolute;
                 bottom: 0;
-                background-color: #50a9f2;
+                background-color: $blueColor;
                 width: 5dvh;
                 height: 0.5dvh;
             }
