@@ -2,6 +2,9 @@
 
 // Load php.ini file to read max file size
 $iniFile = parse_ini_file("/var/www/slideshow/php.ini");
+$target_dir = "/var/www/slideshow/temp/";
+$response = array('upload' => array(), 'convert' => array());
+$outputFiles = array();
 
 // Convert php.ini max file size to bytes
 function convertToBytes($value) {
@@ -16,8 +19,6 @@ function convertToBytes($value) {
     }, $value);
 }
 
-$target_dir = "/var/www/slideshow/temp/";
-$errorStr = "";
 foreach (range(0, count($_FILES["hidden"]["name"]) - 1) as $x) {
     $file = basename($_FILES["hidden"]["name"][$x]);
     $target_file = $target_dir . $file;
@@ -27,53 +28,49 @@ foreach (range(0, count($_FILES["hidden"]["name"]) - 1) as $x) {
     // Check if file is an actual image (basic check by MIME type)
     if (!str_contains($imageFileType, "image")) {
         $uploadOk = 0;
-        $errorStr .= $file . " is not an image.\n";
+        $response['upload'][$file][] = 'er ikke et billede';
     }
 
     // Check if file already exists
     if (file_exists($target_file)) {
         $uploadOk = 0;
-        $errorStr .= $file . " already exists.\n";
+        $response['upload'][$file][] = 'eksisterer allerede';
     }
 
     // Check if file is too large
     if ($_FILES["hidden"]["size"][$x] > convertToBytes($iniFile["upload_max_filesize"])) {
         $uploadOk = 0;
-        $errorStr .= $file . " is too large.\n";
+        $response['upload'][$file][] = 'er for stor';
     }
-
-    $uploadOk = 1;
 
     if ($uploadOk) {
         if (move_uploaded_file($_FILES["hidden"]["tmp_name"][$x], $target_file)) {
-            $errorStr .= $file . " uploaded successfully.\n";
+            $response['upload'][$file][] = 'success';
         } else {
-            $errorStr .= "Unknown error occurred while uploading " . $file . ".\n";
+            $response['upload'][$file][] = 'ukendt fejl :(';
         }
     }
 }
 
-
-$outputFiles = array();
-
 function convertHeicWithHeifConvert($filePath) {
-    global $outputFiles;
+    global $response, $outputFiles; // Add global keyword to access these arrays
     $outputPath = $filePath . ".jpg";
     $command = "heif-convert " . escapeshellarg($filePath) . " " . escapeshellarg($outputPath);
     exec($command, $output, $return_var);
     if ($return_var === 0) {
-        array_push($outputFiles, $outputPath);
+        $outputFiles[] = $outputPath;
         // unlink($filePath);
-        // echo "$filePath converted successfully to $outputPath";
+        $response['convert'][$filePath][] = 'Success';
     } else {
-        // echo "Error converting $filePath";
+        $response['convert'][$filePath][] = 'Fejl';
     }
 }
 
 function convertHeic() {
+    global $response; // Add global keyword to access the response array
     $directory = "/var/www/slideshow/temp/";
     if (!is_dir($directory)) {
-        // echo "Directory does not exist: $directory";
+        $response['convert'][$directory][] = 'Eksistere ikke';
         return;
     }
 
