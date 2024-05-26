@@ -23,6 +23,22 @@ body {
         left: 0;
         top: 0;
 
+		#dropdownBtn:hover #dropdownCont {
+			display: grid;
+		}
+
+		#dropdownCont {
+			display: none;
+			background-color: #C0C0C0;
+			position: absolute;
+			top: 6svh;
+
+			a {
+				padding: 0.2svh;
+				width: auto;
+			}
+		}
+
         a {
 			color: black;
             margin-right: 0.25dvw;
