@@ -14,7 +14,7 @@ cp installFiles/rc.local /etc/rc.local
 cp installFiles/defaultphp.ini /var/www/slideshow/php.ini
 cp installFiles/defaultconfig.config /var/www/slideshow/config.config
 cp installFiles/slideshow.conf /etc/apache2/sites-available/slideshow.conf
-cp installFiles/pictureframe.desktop ~/.config/autostart/pictureframe.desktop
+cp installFiles/pictureframe.desktop /home/"$(sudo -u $SUDO_USER echo $SUDO_USER)"/.config/autostart/pictureframe.desktop
 
 a2enmod headers
 a2enmod rewrite
