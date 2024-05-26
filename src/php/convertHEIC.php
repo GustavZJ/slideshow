@@ -28,26 +28,26 @@ foreach (range(0, count($_FILES["hidden"]["name"]) - 1) as $x) {
     // Check if file is an actual image (basic check by MIME type)
     if (!str_contains($imageFileType, "image")) {
         $uploadOk = 0;
-        $response['upload'][$file][] = 'er ikke et billede';
+        $response['upload'][$file] = 'er ikke et billede';
     }
 
     // Check if file already exists
     if (file_exists($target_file)) {
         $uploadOk = 0;
-        $response['upload'][$file][] = 'eksisterer allerede';
+        $response['upload'][$file] = 'eksisterer allerede';
     }
 
     // Check if file is too large
     if ($_FILES["hidden"]["size"][$x] > convertToBytes($iniFile["upload_max_filesize"])) {
         $uploadOk = 0;
-        $response['upload'][$file][] = 'er for stor';
+        $response['upload'][$file] = 'er for stor';
     }
 
     if ($uploadOk) {
         if (move_uploaded_file($_FILES["hidden"]["tmp_name"][$x], $target_file)) {
-            $response['upload'][$file][] = 'success';
+            $response['upload'][$file] = 'success';
         } else {
-            $response['upload'][$file][] = 'ukendt fejl :(';
+            $response['upload'][$file] = 'ukendt fejl :(';
         }
     }
 }
@@ -58,11 +58,11 @@ function convertHeicWithHeifConvert($filePath) {
     $command = "heif-convert " . escapeshellarg($filePath) . " " . escapeshellarg($outputPath);
     exec($command, $output, $return_var);
     if ($return_var === 0) {
-        $outputFiles[] = $outputPath;
+        $outputFiles = $outputPath;
         // unlink($filePath);
-        $response['convert'][$filePath][] = 'Success';
+        $response['convert'][$filePath] = 'Success';
     } else {
-        $response['convert'][$filePath][] = 'Fejl';
+        $response['convert'][$filePath] = 'Fejl';
     }
 }
 
@@ -70,7 +70,7 @@ function convertHeic() {
     global $response; // Add global keyword to access the response array
     $directory = "/var/www/slideshow/temp/";
     if (!is_dir($directory)) {
-        $response['convert'][$directory][] = 'Eksistere ikke';
+        $response['convert'][$directory] = 'Eksistere ikke';
         return;
     }
 
