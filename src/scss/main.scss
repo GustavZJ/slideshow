@@ -72,15 +72,18 @@ body {
 			}
 		}
 
-		a {
+		a  {
 			color: black;
-			margin-right: 0.66dvw;
 			height: 6svh;
 			padding: 0.3svh;
 			width: auto;
 			display: inline-flex;
 			justify-content: center;
 			align-items: center;
+
+			a:not(#dropdownCont a) {
+				margin-right: 0.66dvw; // Apply margin here so that it dosen't affect dropdown
+			}
 
 			// Active nav marker (Blue bar at bottom of btn)
 			.activeNav {

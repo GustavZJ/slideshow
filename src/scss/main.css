@@ -58,13 +58,15 @@ body {
 }
 #topbar #navWrapper a {
   color: black;
-  margin-right: 0.66dvw;
   height: 6svh;
   padding: 0.3svh;
   width: auto;
   display: inline-flex;
   justify-content: center;
   align-items: center;
+}
+#topbar #navWrapper a a:not(#dropdownCont a) {
+  margin-right: 0.66dvw;
 }
 #topbar #navWrapper a .activeNav {
   display: none;
