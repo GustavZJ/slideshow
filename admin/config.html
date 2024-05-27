@@ -164,7 +164,15 @@
                     }
                 });
 
-                const formData = $(this).serialize(); // Serialize the form data
+
+                // Serialize the form data into an array of objects
+                const formArray = $(this).serializeArray();
+
+                // Convert the array of objects into a single object
+                const formData = {};
+                formArray.forEach(function (item) {
+                    formData[item.name] = item.value;
+                });
 
                 $.ajax({
                     type: 'POST',
@@ -180,7 +188,7 @@
                         }
                     },
                     error: function () {
-                        setPlaceholders(fJSON.stringify(ormData));
+                        setPlaceholders(JSON.stringify(formData));
                         messageFade("error", "PHP døde :(");
                     }
                 });
