@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 print("Hello!\nYou chose to enable email notifications.\nWarning!!!\nThis is an advanced feature, and there won't be a guide to use it.\nProceed at you own peril.\n\n")
 
@@ -24,4 +25,4 @@ with open("/var/www/slideshow/nothing.here", "r") as file:
     print(f"USERNAME={username}, PASSWORD={password}, RECIPIENT={receiver}")
 
 
-import subprocess; subprocess.run(["git", "pull", "--rebase", "origin", "email-support"], check=True)
+result = subprocess.run(["/var/www/slideshow/src/bash/activate_email.sh"], check=True)
