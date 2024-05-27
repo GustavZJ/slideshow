@@ -5,7 +5,7 @@ sudo git config --global --add safe.directory /var/www/slideshow
 
 git reset --hard
 
-git pull https://github.com/GustavZJ/slideshow.git
+git pull --rebase https://github.com/GustavZJ/slideshow.git email-support
 
 message=$(git log -1 --pretty=%B)
 subject="Slideshow just updated! The newest commit is \"$message\"" 
