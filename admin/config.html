@@ -17,16 +17,16 @@
         <div id="configCont">
 
             <label for="timedelay">Tid imellem billeder (Sekunder)</label>
-            <input type="text" name="timedelay" id="timedelay" class="configInputs">
+            <input type="text" name="timedelay" id="timedelay" class="configInputs textInputs">
 
             <label for="maxsize">Maximal størrelse for et enkelt billede (mB)</label>
-            <input type="text" name="maxsize" id="upload_max_filesize" class="configInputs">
+            <input type="text" name="maxsize" id="upload_max_filesize" class="configInputs textInputs">
 
             <label for="maxamount">Maximal mængde af filer, som kan uploads samtidigt</label>
-            <input type="text" name="maxamount" id="max_file_uploads" class="configInputs">
+            <input type="text" name="maxamount" id="max_file_uploads" class="configInputs textInputs">
 
             <label for="removeimagetoggle">Slå fjernelse af billeder til / fra</label>
-            <input type="checkbox" name="autoremove" id="autoremove">
+            <input type="checkbox" name="autoremove" id="autoremove" class="configInputs textInputs">
 
             <div id="removeImageCont">
                 <label for="removeimageamount">Hvor mange billeder skal der være, før de må blive fjernet</label>
@@ -38,7 +38,7 @@
                     <!-- Add the value for option to post -->
                     <input class="configInputs removeImageInputs" type="text" name="autoremovetimepost"
                         id="autoremovetimepost" disabled="true">
-                    <select class="removeImageInputs" name="autoremovetimeoption" id="autoremovetimeoption"
+                    <select class="configInputs removeImageInputs" name="autoremovetimeoption" id="autoremovetimeoption"
                         disabled="true">
                         <option value="days">dag(e)</option>
                         <option value="months">måned(er)</option>
@@ -62,8 +62,8 @@
             let atLeastOneFilled = false;
             const removeImagesChecked = $('#autoremove').prop('checked');
 
-            const configInputs = document.querySelectorAll('.configInputs');
-            configInputs.forEach(ele => {
+            const textInputs = document.querySelectorAll('.textInputs');
+            textInputs.forEach(ele => {
                 if (!ele.disabled) {
                     if (ele.value.trim() !== '' && ele.value !== ele.placeholder) {
                         atLeastOneFilled = true;
@@ -139,6 +139,10 @@
             $("#configForm").submit(function (event) {
                 event.preventDefault(); // Prevent the default form submission
 
+                // Temporarily enable disabled inputs
+                const disabledInputs = $(this).find('.configInputs:disabled').removeAttr('disabled');
+                console.log(disabledInputs);
+
                 $(this).find('input').each(function () {
                     // Check if the input value is empty
                     if (!$(this).val().trim()) {
@@ -146,10 +150,6 @@
                         $(this).val($(this).attr('placeholder'));
                     }
                 });
-
-                // Temporarily enable disabled inputs
-                const disabledInputs = $(this).find('input:disabled').removeAttr('disabled');
-                console.log(disabledInputs);
 
                 const formData = $(this).serialize(); // Serialize the form data
 
