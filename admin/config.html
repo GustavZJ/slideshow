@@ -58,13 +58,13 @@
 
 
         function validateInput() {
+            console.log('validating')
             let allValid = true;
             let atLeastOneFilled = false;
             const removeImagesChecked = $('#autoremove').prop('checked');
 
             const textInputs = document.querySelectorAll('.textInputs');
             textInputs.forEach(ele => {
-                console.log(ele);
                 if (!ele.disabled) {
                     if (ele.value.trim() !== '' && ele.value !== ele.placeholder) {
                         atLeastOneFilled = true;
