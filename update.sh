@@ -23,6 +23,8 @@ echo "</body>" >> message.html
 
 cat message.html
 
+
+
 if [  -f nothing.here -a "$oldmessage" != "$message" ]; then
     python3 email_sender.py "$subject."
 fi
