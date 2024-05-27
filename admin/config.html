@@ -66,6 +66,7 @@
             configInputs.forEach(ele => {
                 if (!ele.disabled) {
                     if (ele.value.trim() !== '' && ele.value !== ele.placeholder) {
+                        console.log(ele);
                         atLeastOneFilled = true;
                     
                         if (isNaN(ele.value)) {
