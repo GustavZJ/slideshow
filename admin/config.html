@@ -65,7 +65,7 @@
             const configInputs = document.querySelectorAll('.configInputs');
             configInputs.forEach(ele => {
                 if (!ele.disabled) {
-                    if (ele.value.trim() !== '' || ele.value || ele.value !== ele.placeholder || $('#autoremove').prop('checked') == $('#autoremoved').data('curState')) {
+                    if (ele.value.trim() !== '' || ele.value || ele.value == ele.placeholder || $('#autoremove').prop('checked') == $('#autoremoved').data('curState')) {
                         atLeastOneFilled = true;
 
                         if (ele.id != 'autoremove' || isNaN(ele.value)) {
