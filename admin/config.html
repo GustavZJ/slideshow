@@ -178,7 +178,7 @@
                     data: formData,
                     dataType: 'json', // Expect a JSON response
                     success: function (response) {
-                        $('input[class="textInputs"]').each(function () {
+                        $('input.textInputs').each(function () {
                             $(this).attr('placeholder', $(this).val());
                         });
 
