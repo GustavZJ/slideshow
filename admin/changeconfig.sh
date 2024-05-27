@@ -14,9 +14,7 @@ autoremovetimeoption=$9
 
 
 if [ -z "$1" -o -z "$2" -o -z "$3" -o -z "$4" -o -z "$5" -o -z "$6" -o -z "$7" -o -z "$8" -o -z "$9" ]; then
-    echo "Not all are set"
-else
-    echo "All are set"
+    return "Error: Not all args are set!!!"
 fi
 
 # Update php.ini file
@@ -32,3 +30,4 @@ do
     value=${!key}
     sed -i "s/^\($key\)\b.*/\1=$value/" /var/www/slideshow/config.config
 done
+return ""
