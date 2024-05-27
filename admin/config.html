@@ -76,6 +76,12 @@
                     }
                 }
             }
+
+            $('.removeImageInputs').each(function () { $(this).attr('disabled', true) });
+
+            $('#confirmBtn').attr('disabled', true);
+            $('.textInputs').each(function () { $(this).val('')});
+            
             disableImageRemove();
             validateInput();
         }
@@ -148,7 +154,7 @@
                 event.preventDefault(); // Prevent the default form submission
 
                 // Temporarily enable disabled inputs
-                const disabledInputs = $(this).find('.configInputs:disabled').removeAttr('disabled');
+                $(this).find('.configInputs:disabled').removeAttr('disabled');
 
                 $(this).find('input').each(function () {
                     // Check if the input value is empty
@@ -172,21 +178,10 @@
                         } else {
                             messageFade("error", "Not all variables were set!");
                         }
-
-                        // Re-disable the previously disabled inputs
-                        disabledInputs.each(function () { $(this).attr('disabled', true) });
-
-                        $('#confirmBtn').attr('disabled', true);
-                        $('.textInputs').each(function () { $(this).val('') });
                     },
                     error: function () {
                         setPlaceholders(formData);
                         messageFade("error", "PHP døde :(");
-                        // Re-disable the previously disabled inputs
-                        disabledInputs.each(function () { $(this).attr('disabled', true) });
-
-                        $('#confirmBtn').attr('disabled', true);
-                        $('.textInputs').each(function () { $(this).val('') });
                     }
                 });
                 // Prevent default action of going to php page
