@@ -126,10 +126,10 @@ function createImagePreview(file, name) {
     const maxFileUploads = amountText.innerHTML.split('/')[1];
     amountText.innerHTML = `Billeder: ${uploadImageInput.files.length}/${maxFileUploads}`;
     if (uploadImageInput.files.length > maxFileUploads) {
-        amountText.style.color = red;
+        amountText.style.color = 'red';
         submitBtn.setAttribute('disabled', true);
     } else if (submitBtn.disabled) {
-        amountText.style.color = white;
+        amountText.style.color = 'white';
         submitBtn.removeAttribute('disabled');
     }
 }
