@@ -123,6 +123,9 @@ function createImagePreview(file, name) {
     // Enable upload btn
     submitBtn.removeAttribute('disabled');
     document.getElementById('clearBtn').removeAttribute('disabled');
+
+    const maxFileUploads = document.getElementById('amountText').innerHTML.split('/')[1];
+    document.getElementById('amountText').innerHTML = `Billeder: ${uploadImageInput.files.length}/${maxFileUploads}`;
 }
 
 // Drag image to upload
@@ -299,6 +302,9 @@ function deleteFiles(fileName = null, target = null) {
         document.getElementById('clearBtn').setAttribute('disabled', true);
         document.getElementById('previewText').style.display = 'none';
     }
+
+    const maxFileUploads = document.getElementById('amountText').innerHTML.split('/')[1];
+    document.getElementById('amountText').innerHTML = `Billeder: ${uploadImageInput.files.length}/${maxFileUploads}`;
 }
 
 function clearAll() {
@@ -313,6 +319,9 @@ function clearAll() {
     }    
    
     allFiles.length = 0;
+
+    const maxFileUploads = document.getElementById('amountText').innerHTML.split('/')[1];
+    document.getElementById('amountText').innerHTML = `Billeder: ${uploadImageInput.files.length}/${maxFileUploads}`;
 }
 
 // Add event listeners, this ensures HTML elements can run function, while script is a module
