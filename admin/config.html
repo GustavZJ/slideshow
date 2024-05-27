@@ -76,13 +76,13 @@
             });
         
             // Check if the checkbox state has changed
-            if ($('#autoremove').prop('checked') != $('#autoremove').data('curState')) {
+            if ($('#autoremove').prop('checked') !== $('#autoremove').data('curState')) {
                 atLeastOneFilled = true;
             }
         
             // Enable the button if there is at least one filled input and all inputs are valid numbers
             if (allValid && atLeastOneFilled) {
-                console.log('enable');
+                console.log('enable', allValid, atLeastOneFilled);
                 $('#confirmBtn').removeAttr('disabled');
             } else {
                 $('#confirmBtn').attr('disabled', true);
