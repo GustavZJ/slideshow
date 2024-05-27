@@ -164,7 +164,16 @@
                     }
                 });
 
-                const formData = $(this).serialize();
+
+                // Serialize the form data into an array of objects
+                const formArray = $(this).serialize();
+
+                // Convert the array of objects into a single object
+                const formData = {};
+                formArray.forEach(function (item) {
+                    formData[item.name] = item.value;
+                });
+
                 $.ajax({
                     type: 'POST',
                     url: 'changeconfig.php',
