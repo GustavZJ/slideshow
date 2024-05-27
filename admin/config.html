@@ -183,7 +183,7 @@
                     success: function (response) {
                         $('input.textInputs').each(function () {
                             $(this).attr('placeholder', $(this).val());
-                            console.log(this.id);
+                            console.log($(this).id);
                             if ($(this).id == 'upload_max_filesize') {
                                 $(this).attr('placeholder', $(this).attr(placeholder) + 'M');
                             }
