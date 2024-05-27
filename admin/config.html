@@ -180,6 +180,7 @@
                     data: formData,
                     dataType: 'json', // Expect a JSON response
                     success: function (response) {
+                        console.log(formData);
                         setPlaceholders(JSON.stringify(formData));
                         if (response.exit_code === 0) {
                             messageFade("success", "Configuration updated successfully!");
