@@ -65,7 +65,7 @@
             const configInputs = document.querySelectorAll('.configInputs');
             configInputs.forEach(ele => {
                 if (!ele.disabled) {
-                    if (ele.value.trim() !== '' || ele.value) {
+                    if (ele.value.trim() !== '' || ele.value || ele.value !== ele.placeholder || $('#autoremove').checked == $('#autoremoved').dataset.curState) {
                         atLeastOneFilled = true;
 
                         if (isNaN(ele.value)) {
@@ -115,16 +115,16 @@
                         console.log(key_val_object)
                         if (!["autoremovetime", "autoremovetimeoption", "autoremove"].includes(key)) {
                             document.getElementById(key).placeholder = val;
-                        }
-                        else if (key == "autoremovetimeoption") {
+                        } else if (key == "autoremovetimeoption") {
                             document.getElementById(key).value = val;
-                        }
-                        else if (key == "autoremove") {
+                        } else if (key == "autoremove") {
                             if (val == "true") {
                                 document.getElementById(key).checked = true;
+                                document.getElementById(key).dataset.curState = true;
                             }
                             else {
                                 document.getElementById(key).checked = false;
+                                document.getElementById(key).dataset.curState = false;
                             }
                         }
                     }
