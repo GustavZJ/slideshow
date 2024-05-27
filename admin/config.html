@@ -76,7 +76,7 @@
             });
         
             // Check if the checkbox state has changed
-            if ($('#autoremove').prop('checked') != $('#autoremove').data(curState)) {
+            if ($('#autoremove').prop('checked') !== $('#autoremove').data('curState')) {
                 atLeastOneFilled = true;
             }
         
