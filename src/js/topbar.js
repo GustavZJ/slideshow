@@ -64,6 +64,7 @@ navBtns.sort((a, b) => b.attributes.href.value.length - a.attributes.href.value.
 for (const btn of navBtns) {
     const href = btn.attributes.href.value;
     if (window.location.pathname.startsWith(href)) {
+		console.log(btn, btn.children[0], href, window.location.pathname, window.location.pathname.startsWith(href));
         btn.children[0].style.display = 'inline-block';
         break;
     }
