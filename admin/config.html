@@ -84,7 +84,7 @@
 
             // Check if the checkbox state has changed
             console.log($('#autoremovetimeoption').value, $('#autoremovetimeoption').data('curState'));
-            if ($('#autoremovetimeoption').value != $('#autoremovetimeoption').data('curState')) {
+            if ($('#autoremovetimeoption').val() != $('#autoremovetimeoption').data('curState')) {
                 atLeastOneFilled = true;
             }
         
@@ -131,7 +131,7 @@
                             document.getElementById(key).placeholder = val;
                         } else if (key == "autoremovetimeoption") {
                             document.getElementById(key).value = val;
-                                document.getElementById(key).dataset.curState = val;
+                            document.getElementById(key).dataset.curState = val;
                         } else if (key == "autoremove") {
                             if (val == "true") {
                                 document.getElementById(key).checked = true;
