@@ -17,6 +17,7 @@ body {
 	height: 6svh;
 	width: 100%;
 	background-color: $blueColor;
+	position: relative;
 
 	#navWrapper {
 		position: absolute;
@@ -86,13 +87,17 @@ body {
 			}
 
 			// Active nav marker (Blue bar at bottom of btn)
-			.activeNav {
-				display: none;
-				position: absolute;
-				bottom: 0.4svh;
-				background-color: darkblue;
-				width: 5svh;
-				height: 0.5svh;
+			&.active {
+				position: relative;
+				&:after {
+					content: "";
+					position: absolute;
+					bottom: 0.5svh;
+					left: 0;
+					width: 100%;
+					height: 0.5svh;
+					background-color: darkblue;
+				}
 			}
 		}
 	}

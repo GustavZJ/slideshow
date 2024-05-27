@@ -11,6 +11,7 @@ body {
   height: 6svh;
   width: 100%;
   background-color: #50a9f2;
+  position: relative;
 }
 #topbar #navWrapper {
   position: absolute;
@@ -68,13 +69,17 @@ body {
 #topbar #navWrapper a:not(#dropdownCont a) {
   margin-right: 0.66dvw;
 }
-#topbar #navWrapper a .activeNav {
-  display: none;
+#topbar #navWrapper a.active {
+  position: relative;
+}
+#topbar #navWrapper a.active:after {
+  content: "";
   position: absolute;
-  bottom: 0.4svh;
-  background-color: darkblue;
-  width: 5svh;
+  bottom: 0.5svh;
+  left: 0;
+  width: 100%;
   height: 0.5svh;
+  background-color: darkblue;
 }
 
 .elePointerIcon {

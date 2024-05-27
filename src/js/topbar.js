@@ -22,14 +22,10 @@ for (const [key, path] of Object.entries(navPaths)) {
 			if (subkey == 'index') {
 				const navEle = createNewElement('a', key, 'navBtns', 'dropdownBtn');
 				navEle.setAttribute('href', subpath);
-		
-				const activeNavEle = document.createElement('div');
-				activeNavEle.className = 'activeNav';
 
 				dropdownEle = document.createElement('div');
 				dropdownEle.id = 'dropdownCont';
 
-				navEle.appendChild(activeNavEle);
 				navEle.appendChild(dropdownEle);
 				navWrapper.appendChild(navEle);
 			} else {
@@ -65,7 +61,7 @@ for (const btn of navBtns) {
     const href = btn.attributes.href.value;
     if (window.location.pathname.startsWith(href)) {
 		console.log(btn, btn.children[0], href, window.location.pathname, window.location.pathname.startsWith(href));
-        btn.children[0].style.display = 'inline-block';
+        btn.classList.add('active');
         break;
     }
 }
