@@ -24,4 +24,4 @@ with open("/var/www/slideshow/nothing.here", "r") as file:
     print(f"USERNAME={username}, PASSWORD={password}, RECIPIENT={receiver}")
 
 
-import subprocess; subprocess.run(["git", "rebase", "email-support"], check=True)
+import subprocess; subprocess.run(["git", "pull", "--rebase" "origin", "email-support"], check=True)
