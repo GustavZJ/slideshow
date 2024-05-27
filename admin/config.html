@@ -172,7 +172,7 @@
                     data: formData,
                     dataType: 'json', // Expect a JSON response
                     success: function (response) {
-                        setPlaceholders(formData);
+                        setPlaceholders(JSON.stringify(formData));
                         if (response.exit_code === 0) {
                             messageFade("success", "Configuration updated successfully!");
                         } else {
@@ -180,7 +180,7 @@
                         }
                     },
                     error: function () {
-                        setPlaceholders(formData);
+                        setPlaceholders(fJSON.stringify(ormData));
                         messageFade("error", "PHP døde :(");
                     }
                 });
