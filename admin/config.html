@@ -141,6 +141,9 @@
                     disableImageRemove();
                     validateInput();
 
+                },
+                error: function () {
+                    messageFade('error', 'Noget gik galt, nuværende indstillnger kunne ikke indlæses');
                 }
             });
 
@@ -191,13 +194,13 @@
                             validateInput();
 
                         if (response.exit_code === 0) {
-                            messageFade("success", "Configuration updated successfully!");
+                            messageFade("success", "Konfigureringer opdateret successfuldt!");
                         } else {
-                            messageFade("error", "Not all variables were set!");
+                            messageFade("error", "Ikke alle variable blev sat!");
                         }
                     },
                     error: function () {
-                        messageFade("error", "PHP døde :(");
+                        messageFade("error", "Noget gik galt, konfigureringen blev ikke opdateret");
 
                         $('.removeImageInputs').each(function () { $(this).attr('disabled', true) });
 

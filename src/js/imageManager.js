@@ -4,8 +4,7 @@ import { messageFade } from "./errorMessage.js";
 const uploadImageFile = document.getElementById('uploadImageFile');
 const uploadedImagesCont = document.getElementById('imagePreviewCont');
 const uploadImageInput = document.getElementById('uploadImageInput');
-const imageURL = document.getElementById('imageURL');
-const submitImageURL = document.getElementById('submitImageURL');
+const amountText = document.getElementById('amountText');
 const submitBtn = document.getElementById('submitBtn');
 const errorObj = {};
 const allFiles = [];
@@ -124,8 +123,15 @@ function createImagePreview(file, name) {
     submitBtn.removeAttribute('disabled');
     document.getElementById('clearBtn').removeAttribute('disabled');
 
-    const maxFileUploads = document.getElementById('amountText').innerHTML.split('/')[1];
-    document.getElementById('amountText').innerHTML = `Billeder: ${uploadImageInput.files.length}/${maxFileUploads}`;
+    const maxFileUploads = amountText.innerHTML.split('/')[1];
+    amountText.innerHTML = `Billeder: ${uploadImageInput.files.length}/${maxFileUploads}`;
+    if (uploadImageInput.files.length > maxFileUploads) {
+        amountText.style.color = red;
+        submitBtn.setAttribute('disabled', true);
+    } else if (submitBtn.disabled) {
+        amountText.style.color = white;
+        submitBtn.removeAttribute('disabled');
+    }
 }
 
 // Drag image to upload
