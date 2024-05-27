@@ -61,11 +61,11 @@
             let allValid = true;
             let atLeastOneFilled = false;
             const removeImagesChecked = $('#autoremove').prop('checked');
-                
+
             const configInputs = document.querySelectorAll('.configInputs');
             configInputs.forEach(ele => {
                 if (!ele.disabled) {
-                    if (ele.value.trim() !== '' || ele.value !== ele.placeholder) {
+                    if (ele.value.trim() !== '' && ele.value !== ele.placeholder) {
                         atLeastOneFilled = true;
                     
                         if (ele.id !== 'autoremove' && isNaN(ele.value)) {
