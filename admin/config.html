@@ -174,7 +174,7 @@
                         } else {
                             messageFade("error", "Not all variables were set!");
                         }
-
+                        window.location.reload();
                         // Re-disable the previously disabled inputs
                         disabledInputs.each(function () { $(this).attr('disabled', true) });
 
@@ -185,6 +185,7 @@
                         messageFade("error", "PHP døde :(");
                         // Re-disable the previously disabled inputs
                         disabledInputs.each(function () { $(this).attr('disabled', true) });
+                        window.location.reload();
 
                         $('#confirmBtn').attr('disabled', true);
                         $('.textInputs').each(function () { $(this).val('') });
@@ -193,7 +194,7 @@
                 });
                 // Prevent default action of going to php page
                 event.preventDefault();
-                window.location.reload();
+
             });
         });
     </script>
