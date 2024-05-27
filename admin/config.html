@@ -68,7 +68,7 @@
                     if (ele.value.trim() !== '' && ele.value !== ele.placeholder) {
                         atLeastOneFilled = true;
                     
-                        if (ele.id !== 'autoremove' && isNaN(ele.value)) {
+                        if (isNaN(ele.value)) {
                             allValid = false;
                         }
                     }
