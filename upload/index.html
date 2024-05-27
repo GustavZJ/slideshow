@@ -20,6 +20,7 @@
             <button class="labelBtn btnRed" type="button" id="clearBtn" disabled>Ryd</button>
         </form>
         <p id="previewText">Billeder:</p>
+        <p id="amountText">Billeder valgt: 0/x</p>
         <div id="imagePreviewCont"></div>
     </div>
 
@@ -53,6 +54,7 @@
                 }, {});
 
                     max_file_uploads = key_val_object[max_file_uploads];
+                    $('#amountText').text(`Billeder: ${$('#uploadImageInput').files.size()}/${max_file_uploads}`);
                 }
             });
             
