@@ -149,6 +149,22 @@
 
             $("#configForm").submit(function (event) {
                 event.preventDefault(); // Prevent the default form submission
+                $("#confirmBtn").attr('disabled', true);
+                // Loading dots, so that you can see it's not frozen incase it's slow
+                $("#confirmBtn").text('Opdaterer');
+                const dots = window.setInterval(function() {
+                    const dotCount = ($("#confirmBtn").text().match(/\./g) || []).length;
+
+                    if (dotCount >= 3) {
+                        $("#confirmBtn").text('Opdaterer');
+                    } else {
+                        $("#confirmBtn").text($("#confirmBtn").text() + '.');
+                    }
+                }, 500);
+
+                if (!$('#autoremove').prop('checked')) {
+                    formData['autoremove'] = 'off';
+                }
 
                 // Temporarily enable disabled inputs
                 $(this).find('.configInputs:disabled').removeAttr('disabled');
@@ -171,31 +187,15 @@
                     formData[item.name] = item.value;
                 });
 
-                
-                // Loading dots, so that you can see it's not frozen incase it's slow
-                $("#confirmBtn").text('Opdaterer');
-                const dots = window.setInterval(function() {
-                    const dotCount = ($("#confirmBtn").text().match(/\./g) || []).length;
-
-                    if (dotCount >= 3) {
-                        $("#confirmBtn").text('Opdaterer');
-                    } else {
-                        $("#confirmBtn").text($("#confirmBtn").text() + '.');
-                    }
-                }, 500);
-
-                if (!$('#autoremove').prop('checked')) {
-                    formData['autoremove'] = 'off';
-                }
-
                 $.ajax({
                     type: 'POST',
                     url: 'changeconfig.php',
                     data: formData,
-                    dataType: 'json', // Expect a JSON response
+                    dataType: 'json',
                     success: function (response) {
                         clearInterval(dots);
                         $("#confirmBtn").text('Opdater konfig');
+                        $('#confirmBtn').removeAttr('disabled');
                         $('input.textInputs').each(function () {
                             $(this).attr('placeholder', $(this).val());
                             if ($(this).attr('id') == 'upload_max_filesize') {
@@ -219,7 +219,8 @@
                     },
                     error: function () {
                         clearInterval(dots);
-                        $("#confirmBtn").val('Opdater konfig');
+                        $("#confirmBtn").text('Opdater konfig');
+                        $('#confirmBtn').removeAttr('disabled');
                         messageFade("error", "Noget gik galt, konfigureringen blev ikke opdateret");
 
                         $('.removeImageInputs').each(function () { $(this).attr('disabled', true) });
