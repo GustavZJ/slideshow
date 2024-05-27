@@ -54,7 +54,7 @@
                 }, {});
 
                     max_file_uploads = key_val_object[max_file_uploads];
-                    $('#amountText').text(`Billeder: ${$('#uploadImageInput').files.length}/${max_file_uploads}`);
+                    $('#amountText').text(`Billeder: ${$('#uploadImageInput').files[0].length}/${max_file_uploads}`);
                 }
             });
             
