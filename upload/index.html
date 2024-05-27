@@ -19,7 +19,6 @@
             <input class="labelBtn btnWhite" type="submit" value="Upload" id="submitBtn" disabled>
             <button class="labelBtn btnRed" type="button" id="clearBtn" disabled>Ryd</button>
         </form>
-        <p id="previewText">Billeder:</p>
         <p id="amountText">Billeder valgt: 0/x</p>
         <div id="imagePreviewCont"></div>
     </div>
@@ -204,7 +203,6 @@
                             for (let i = document.getElementById('imagePreviewCont').childElementCount - 1; i >= 0; i--) {
                                 document.getElementById('imagePreviewCont').children[i].remove();
                                 document.getElementById('uploadImageInput').value = '';
-                                document.getElementById('previewText').style.display = 'none';
                             }
                         },
                         error: function () {

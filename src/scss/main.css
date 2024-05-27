@@ -191,10 +191,6 @@ button.imageBtn .image-container .overlay-text,
   display: none;
 }
 
-#previewText {
-  display: none;
-}
-
 #imagePreviewCont .imageCont {
   position: relative;
   display: inline-block;

@@ -84,7 +84,6 @@ async function validateImgs(file) {
 
     // Valid image file/URL
     img.onload = function() {
-        document.getElementById('previewText').style.display = 'block';
         createImagePreview(img.src, file['name']);
     };
     
@@ -303,7 +302,6 @@ function deleteFiles(fileName = null, target = null) {
     if (uploadImageInput.files.length == 0) {
         submitBtn.setAttribute('disabled', true);
         document.getElementById('clearBtn').setAttribute('disabled', true);
-        document.getElementById('previewText').style.display = 'none';
     }
 
     const maxFileUploads = amountText.innerHTML.split('/')[1];
