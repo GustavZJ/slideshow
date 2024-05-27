@@ -87,18 +87,20 @@ body {
 			}
 
 			// Active nav marker (Blue bar at bottom of btn)
-			&.active {
+            &.active {
 				position: relative;
-				&:after {
-					content: "";
-					position: absolute;
-					bottom: 0.5svh;
-					left: 0;
-					width: 100%;
-					height: 0.5svh;
-					background-color: darkblue;
-				}
-			}
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 4svh;
+                    height: 0.5svh;
+                    bottom: 0.5svh;
+                    background-color: darkblue;
+                }
+            }
 		}
 	}
 }
