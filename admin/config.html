@@ -192,10 +192,10 @@
                                 $(this).attr('placeholder', $(this).attr('placeholder'));
                             }
 
-                            $('.removeImageInputs').each(function () { $(this).attr('disabled', true) });
+                            $('.removeImageInputs').each(function (item) {item.attr('disabled', true) });
 
                             $('#confirmBtn').attr('disabled', true);
-                            $('.textInputs').each(function () { $(this).val('')});
+                            $('.textInputs').each(function (item) {item.val('')});
 
                             disableImageRemove();
                             validateInput();
@@ -210,10 +210,10 @@
                     error: function () {
                         messageFade("error", "PHP døde :(");
 
-                        $('.removeImageInputs').each(function () { $(this).attr('disabled', true) });
+                        $('.removeImageInputs').each(function (item) {item.attr('disabled', true) });
 
                         $('#confirmBtn').attr('disabled', true);
-                        $('.textInputs').each(function () { $(this).val('')});
+                        $('.textInputs').each(function (item) {item.val('')});
 
                         disableImageRemove();
                         validateInput();
