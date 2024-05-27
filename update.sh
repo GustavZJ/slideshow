@@ -17,7 +17,7 @@ echo "<html>" >> message.html
 echo "<body>" >> message.html
 echo $subject >> message.html
 echo $readme >> message.html
-echo "<a href=\"" + "$(hostname)" + "\">Click here to unsubscribe</a>" >> message.html
+echo "<a href=\"$(hostname).local\">Click here to unsubscribe</a>" >> message.html
 echo "</html>" >> message.html
 echo "</body>" >> message.html
 
