@@ -67,7 +67,6 @@
             textInputs.forEach(ele => {
                 if (!ele.disabled) {
                     if (ele.value.trim() !== '' && ele.value !== ele.placeholder) {
-                        console.log(ele.value)
                         atLeastOneFilled = true;
                     
                         if (isNaN(ele.value)) {
@@ -78,11 +77,13 @@
             });
 
             // Check if the checkbox state has changed
+            console.log($('#autoremove').prop('checked'), $('#autoremove').data('curState'))
             if ($('#autoremove').prop('checked') != $('#autoremove').data('curState')) {
                 atLeastOneFilled = true;
             }
 
             // Check if the checkbox state has changed
+            console.log($('#autoremovetimeoption').value, $('#autoremovetimeoption').data('curState'));
             if ($('#autoremovetimeoption').value != $('#autoremovetimeoption').data('curState')) {
                 atLeastOneFilled = true;
             }
