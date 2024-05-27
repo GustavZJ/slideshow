@@ -58,7 +58,6 @@
 
 
         function setPlaceholders(settings) {
-            console.log(settings);
             for (const [key, val] of Object.entries(settings)) {
                 if (!["autoremovetime", "autoremovetimeoption", "autoremove"].includes(key)) {
                     document.getElementById(key).placeholder = val;
@@ -171,7 +170,6 @@
                 // Convert the array of objects into a single object
                 const formData = {};
                 formArray.forEach(function (item) {
-                    console.log(item)
                     formData[item.name] = item.value;
                 });
 
@@ -186,8 +184,7 @@
                     dataType: 'json', // Expect a JSON response
                     success: function (response) {
                         $(this).find('.textInputs').each(function () {
-                            // If it's empty, set it to the placeholder value
-                            $(this).attr('placeholder', $(this).attr('placeholder'));
+                            $(this).attr('placeholder', $(this).val());
                         });
 
                             $('.removeImageInputs').each(function () { $(this).attr('disabled', true) });
