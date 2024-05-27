@@ -66,6 +66,7 @@
             configInputs.forEach(ele => {
                 if (!ele.disabled) {
                     if (ele.value.trim() !== '' && ele.value !== ele.placeholder) {
+                        console.log(ele);
                         atLeastOneFilled = true;
                     
                         if (isNaN(ele.value)) {
@@ -77,6 +78,7 @@
         
             // Check if the checkbox state has changed
             if ($('#autoremove').prop('checked') != $('#autoremove').data('curState')) {
+                console.log('checked');
                 atLeastOneFilled = true;
             }
         
