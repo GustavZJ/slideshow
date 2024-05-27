@@ -3,7 +3,7 @@
 $timedelay = preg_replace("/[^0-9.]/", "", $_POST['timedelay']);
 $maxsize = preg_replace("/[^0-9.]/", "", $_POST["maxsize"]);
 $maxamount = preg_replace("/[^0-9.]/", "", $_POST["maxamount"]);
-$autoremoveamount = preg_replace("/[^0-9.]/", "", $_POST["removeimagesamount"]);
+$autoremoveamount = preg_replace("/[^0-9.]/", "", $_POST["autoremoveamount"]);
 $autoremovetimepost = preg_replace("/[^0-9.]/", "", $_POST["autoremovetimepost"]);
 
 // Ensure autoremovetimeoption is valid
