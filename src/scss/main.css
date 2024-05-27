@@ -58,9 +58,9 @@ body {
 }
 #topbar #navWrapper a {
   color: black;
-  margin-right: 0.25dvw;
+  margin-right: 0.66dvw;
   height: 6svh;
-  padding: 0.2svh;
+  padding: 0.3svh;
   width: auto;
   display: inline-flex;
   justify-content: center;
