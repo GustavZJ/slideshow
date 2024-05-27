@@ -197,9 +197,13 @@
                         $("#confirmBtn").text('Opdater konfig');
                         $('#confirmBtn').removeAttr('disabled');
                         $('input.textInputs').each(function () {
+                            // Set the placeholder to the value of the input
                             $(this).attr('placeholder', $(this).val());
+
                             if ($(this).attr('id') == 'upload_max_filesize') {
-                                $(this).attr('placeholder', $(this).attr('placeholder') + 'M');
+                                if (!$(this).attr('placeholder').endsWith('M')) {
+                                    $(this).attr('placeholder', $(this).attr('placeholder') + 'M');
+                                }
                             }
                         });
 
