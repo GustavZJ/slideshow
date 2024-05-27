@@ -128,7 +128,7 @@ function createImagePreview(file, name) {
     if (uploadImageInput.files.length > maxFileUploads) {
         amountText.style.color = 'red';
         submitBtn.setAttribute('disabled', true);
-    } else if (submitBtn.disabled) {
+    } else if (uploadImageInput.files.length <= maxFileUploads && submitBtn.disabled) {
         amountText.style.color = 'white';
         submitBtn.removeAttribute('disabled');
     }
