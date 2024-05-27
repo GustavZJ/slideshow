@@ -173,14 +173,14 @@
 
                 
                 // Loading dots, so that you can see it's not frozen incase it's slow
-                $("#confirmBtn").val('Opdaterer');
+                $("#confirmBtn").text('Opdaterer');
                 const dots = window.setInterval(function() {
-                    const dotCount = ($("#confirmBtn").val().match(/\./g) || []).length;
+                    const dotCount = ($("#confirmBtn").text().match(/\./g) || []).length;
 
                     if (dotCount >= 3) {
-                        $("#confirmBtn").val('Opdaterer');
+                        $("#confirmBtn").text('Opdaterer');
                     } else {
-                        $("#confirmBtn").val($("#confirmBtn").val() + '.');
+                        $("#confirmBtn").text($("#confirmBtn").text() + '.');
                     }
                 }, 500);
 
@@ -195,7 +195,7 @@
                     dataType: 'json', // Expect a JSON response
                     success: function (response) {
                         clearInterval(dots);
-                        $("#confirmBtn").val('Opdater konfig');
+                        $("#confirmBtn").text('Opdater konfig');
                         $('input.textInputs').each(function () {
                             $(this).attr('placeholder', $(this).val());
                             if ($(this).attr('id') == 'upload_max_filesize') {
