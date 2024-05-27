@@ -76,7 +76,7 @@
             });
         
             // Check if the checkbox state has changed
-            if ($('#autoremove').prop('checked') !== $('#autoremove').data('curState')) {
+            if ($('#autoremove').prop('checked') != $('#autoremove').data('curState')) {
                 atLeastOneFilled = true;
             }
         
@@ -142,6 +142,9 @@
                 $(this).find('input').each(function () {
                     // Check if the input value is empty
                     if (!$(this).val().trim()) {
+                        if ($(this).attr('disabled')) {
+                            $(this.removeAttr('disabled'));
+                        }
                         // If it's empty, set it to the placeholder value
                         $(this).val($(this).attr('placeholder'));
                     }
