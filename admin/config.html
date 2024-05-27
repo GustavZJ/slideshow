@@ -38,8 +38,8 @@
                     <!-- Add the value for option to post -->
                     <input class="configInputs textInputs removeImageInputs" type="text" name="autoremovetimepost"
                         id="autoremovetimepost" disabled="true">
-                    <select class="configInputs textInputs removeImageInputs" name="autoremovetimeoption" id="autoremovetimeoption"
-                        disabled="true">
+                    <select class="configInputs textInputs removeImageInputs" name="autoremovetimeoption"
+                        id="autoremovetimeoption" disabled="true">
                         <option value="days">dag(e)</option>
                         <option value="months">måned(er)</option>
                         <option value="years">år</option>
@@ -68,14 +68,14 @@
                 if (!ele.disabled) {
                     if (ele.value.trim() !== '' && ele.value !== ele.placeholder) {
                         atLeastOneFilled = true;
-                    
+
                         if (isNaN(ele.value)) {
                             allValid = false;
                         }
                     }
                 }
             });
-        
+
             // Check if the checkbox state has changed
             if ($('#autoremove').prop('checked') != $('#autoremove').data('curState')) {
                 atLeastOneFilled = true;
@@ -85,7 +85,7 @@
             if ($('#autoremovetimeoption').value != $('#autoremovetimeoption').data('curState')) {
                 atLeastOneFilled = true;
             }
-        
+
             // Enable the button if there is at least one filled input and all inputs are valid numbers
             if (allValid && atLeastOneFilled) {
                 console.log('enable', allValid, atLeastOneFilled);
@@ -129,7 +129,7 @@
                             document.getElementById(key).placeholder = val;
                         } else if (key == "autoremovetimeoption") {
                             document.getElementById(key).value = val;
-                                document.getElementById(key).dataset.curState = val;
+                            document.getElementById(key).dataset.curState = val;
                         } else if (key == "autoremove") {
                             if (val == "true") {
                                 document.getElementById(key).checked = true;
@@ -142,7 +142,7 @@
                         }
                     }
 
-                    
+
                     disableImageRemove();
                     validateInput();
                 }
@@ -176,25 +176,57 @@
                         } else {
                             messageFade("error", "Not all variables were set!");
                         }
-                        
+
                         // Re-disable the previously disabled inputs
-                        disabledInputs.each(function () {$(this).attr('disabled', true)});
-                        
+                        disabledInputs.each(function () { $(this).attr('disabled', true) });
+
                         $('#confirmBtn').attr('disabled', true);
-                        $('.textInputs').each(function () {$(this).val('')});
+                        $('.textInputs').each(function () { $(this).val('') });
                     },
                     error: function () {
                         messageFade("error", "PHP døde :(");
                         // Re-disable the previously disabled inputs
-                        disabledInputs.each(function () {$(this).attr('disabled', true)});
+                        disabledInputs.each(function () { $(this).attr('disabled', true) });
 
                         $('#confirmBtn').attr('disabled', true);
-                        $('.textInputs').each(function () {$(this).val('')});
+                        $('.textInputs').each(function () { $(this).val('') });
                     }
 
                 });
                 // Prevent default action of going to php page
                 event.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '/src/php/default_val.php',
+                    success: function (key_val) {
+                        const key_val_object = Object.entries(key_val).reduce((obj, [key, val]) => {
+                            obj[key] = val;
+                            return obj;
+                        }, {});
+
+                        for (const [key, val] of Object.entries(key_val_object)) {
+                            if (!["autoremovetime", "autoremovetimeoption", "autoremove"].includes(key)) {
+                                document.getElementById(key).placeholder = val;
+                            } else if (key == "autoremovetimeoption") {
+                                document.getElementById(key).value = val;
+                                document.getElementById(key).dataset.curState = val;
+                            } else if (key == "autoremove") {
+                                if (val == "true") {
+                                    document.getElementById(key).checked = true;
+                                    document.getElementById(key).dataset.curState = 'true';
+                                }
+                                else {
+                                    document.getElementById(key).checked = false;
+                                    document.getElementById(key).dataset.curState = 'false';
+                                }
+                            }
+                        }
+
+
+                        disableImageRemove();
+                        validateInput();
+                    }
+                });
             });
         });
     </script>
