@@ -39,9 +39,8 @@ $command = escapeshellcmd("./changeconfig.sh") . " " . escapeshellarg($maxsize .
 
 // Execute the command and capture the exit code
 $return_var = 0;
-// exec($command, $output, $return_var);
+exec($command, $output, $return_var);
 
-$return_var = $command;
 // Prepare the response
 $response = [
     'exit_code' => $return_var
