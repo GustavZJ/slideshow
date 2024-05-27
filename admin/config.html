@@ -65,7 +65,7 @@
             const configInputs = document.querySelectorAll('.configInputs');
             configInputs.forEach(ele => {
                 if (!ele.disabled) {
-                    if (ele.value.trim() !== '' || ele.value || ele.value !== ele.placeholder || $('#autoremove').value != $('#autoremoved').data('curState')) {
+                    if (ele.value.trim() !== '' || ele.value || ele.value !== ele.placeholder || $('#autoremove').prop('checked') != $('#autoremoved').data('curState')) {
                         atLeastOneFilled = true;
 
                         if (ele.id !== 'autoremove' && isNaN(ele.value)) {
@@ -119,11 +119,11 @@
                         } else if (key == "autoremove") {
                             if (val == "true") {
                                 document.getElementById(key).checked = true;
-                                document.getElementById(key).dataset.curState = val;
+                                document.getElementById(key).dataset.curState = 'true';
                             }
                             else {
                                 document.getElementById(key).checked = false;
-                                document.getElementById(key).dataset.curState = val;
+                                document.getElementById(key).dataset.curState = 'false';
                             }
                         }
                     }
