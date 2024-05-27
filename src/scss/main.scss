@@ -81,7 +81,7 @@ body {
 			justify-content: center;
 			align-items: center;
 
-			a:not(#dropdownCont a) {
+			&:not(#dropdownCont a) {
 				margin-right: 0.66dvw; // Apply margin here so that it dosen't affect dropdown
 			}
 

@@ -65,7 +65,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-#topbar #navWrapper a a:not(#dropdownCont a) {
+#topbar #navWrapper a:not(#dropdownCont a) {
   margin-right: 0.66dvw;
 }
 #topbar #navWrapper a .activeNav {
