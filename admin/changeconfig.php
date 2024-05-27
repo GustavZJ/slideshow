@@ -14,7 +14,7 @@ if (!in_array($autoremovetimeoption, $valid_options)) {
 }
 
 // Determine autoremove
-$autoremove = isset($_POST['removeimagestoggle']) ? "true" : "false";
+$autoremove = isset($_POST['autoremove']) ? "true" : "false";
 
 // Calculate autoremovetime based on option
 switch ($autoremovetimeoption) {
