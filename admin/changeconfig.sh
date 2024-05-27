@@ -12,7 +12,7 @@ autoremovetimepost=$8
 autoremovetimeoption=$9
 
 
-if [ -z ${1+x} -a  -z ${2+x} -a  -z ${3+x} -a  -z ${4+x} -a  -z ${5+x} -a  -z ${6+x} -a  -z ${7+x} ]; then
+if [ -z ${$1+x} -a  -z ${$2+x} -a  -z ${$3+x} -a  -z ${$4+x} -a  -z ${$5+x} -a  -z ${$6+x} -a  -z ${$7+x} ]; then
     echo "All are set"
 else
     echo "Not all are set"
