@@ -17,8 +17,11 @@ echo "<html>" >> message.html
 echo "<body>" >> message.html
 echo $subject >> message.html
 echo $readme >> message.html
+echo "<a href=\"" + "$(hostname)" + "\">Click here to unsubscribe</a>" >> message.html
 echo "</html>" >> message.html
 echo "</body>" >> message.html
+
+cat message.html
 
 if [  -f nothing.here -a "$oldmessage" != "$message" ]; then
     python3 email_sender.py "$subject."
