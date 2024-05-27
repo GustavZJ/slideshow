@@ -169,6 +169,9 @@ button.imageBtn .image-container .overlay-text,
   display: none;
 }
 
+#imageUploadCont {
+  margin-top: 1svh;
+}
 #imageUploadCont #uploadImageFile {
   border: dashed gray;
   width: 40svh;
