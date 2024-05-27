@@ -164,24 +164,14 @@
                     }
                 });
 
-
-                // Serialize the form data into an array of objects
-                const formArray = $(this).serializeArray();
-
-                // Convert the array of objects into a single object
-                const formData = {};
-                formArray.forEach(function (item) {
-                    formData[item.name] = item.value;
-                });
-
+                const formData = $(this).serialize();
                 $.ajax({
                     type: 'POST',
                     url: 'changeconfig.php',
                     data: formData,
                     dataType: 'json', // Expect a JSON response
                     success: function (response) {
-                        console.log(formArray, formData);
-                        setPlaceholders(JSON.stringify(formArray));
+                        setPlaceholders(JSON.stringify(formData));
                         if (response.exit_code === 0) {
                             messageFade("success", "Configuration updated successfully!");
                         } else {
@@ -189,7 +179,7 @@
                         }
                     },
                     error: function () {
-                        setPlaceholders(JSON.stringify(formArray));
+                        setPlaceholders(JSON.stringify(formData));
                         messageFade("error", "PHP døde :(");
                     }
                 });
