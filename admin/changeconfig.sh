@@ -12,11 +12,13 @@ autoremovetimepost=$8
 autoremovetimeoption=$9
 
 
-if [ -z "$1" -a  -z "$2" -a  -z "$3" -a  -z "$4" -a  -z "$5" -a  -z "$6" -a  -z "$7" ]; then
-    echo "All are set"
-else
+
+if [ -z "$1" -o -z "$2" -o -z "$3" -o -z "$4" -o -z "$5" -o -z "$6" -o -z "$7" -o -z "$8" -o -z "$9" ]; then
     echo "Not all are set"
+else
+    echo "All are set"
 fi
+
 # Update php.ini file
 for key in upload_max_filesize post_max_size max_file_uploads
 do
