@@ -191,15 +191,15 @@
                                 // If it's empty, set it to the placeholder value
                                 $(this).attr('placeholder', $(this).attr('placeholder'));
                             }
+                        });
 
-                            $('.removeImageInputs').each(function () {$(this).attr('disabled', true) });
+                            $('.removeImageInputs').each(function () { $(this).attr('disabled', true) });
 
                             $('#confirmBtn').attr('disabled', true);
                             $('.textInputs').each(function () {$(this).val('')});
 
                             disableImageRemove();
                             validateInput();
-                        });
 
                         if (response.exit_code === 0) {
                             messageFade("success", "Configuration updated successfully!");
@@ -210,10 +210,10 @@
                     error: function () {
                         messageFade("error", "PHP døde :(");
 
-                        $('.removeImageInputs').each(function () {$(this).attr('disabled', true) });
+                        $('.removeImageInputs').each(function () { $(this).attr('disabled', true) });
 
                         $('#confirmBtn').attr('disabled', true);
-                        $('.textInputs').each(function () {$(this).val('')});
+                        $('.textInputs').each(function () { $(this).val('') });
 
                         disableImageRemove();
                         validateInput();
