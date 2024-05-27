@@ -5,6 +5,7 @@ $maxsize = preg_replace("/[^0-9.]/", "", $_POST["maxsize"]);
 $maxamount = preg_replace("/[^0-9.]/", "", $_POST["maxamount"]);
 $autoremoveamount = preg_replace("/[^0-9.]/", "", $_POST["autoremoveamount"]);
 $autoremovetimepost = preg_replace("/[^0-9.]/", "", $_POST["autoremovetimepost"]);
+
 // Ensure autoremovetimeoption is valid
 $valid_options = ["days", "months", "years"];
 $autoremovetimeoption = $_POST["autoremovetimeoption"];
@@ -13,7 +14,7 @@ if (!in_array($autoremovetimeoption, $valid_options)) {
 }
 
 // Determine autoremove
-$autoremove = isset($_POST['autoremove']) ? "true" : "false";
+$autoremove = isset($_POST['autoremove']) && $_POST['autoremove'] === "on" ? "true" : "false";
 
 // Calculate autoremovetime based on option
 switch ($autoremovetimeoption) {
@@ -42,7 +43,7 @@ exec($command, $output, $return_var);
 
 // Prepare the response
 $response = [
-    'exit_code' => $return_var.'autoremove: '.$autoremove
+    'exit_code' => $return_var
 ];
 
 header('Content-Type: application/json');
