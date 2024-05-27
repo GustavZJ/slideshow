@@ -168,14 +168,14 @@
                         // Re-disable the previously disabled inputs
                         disabledInputs.attr('disabled', 'disabled');
 
-                        $(this).find('input').each($(this).val = '');
+                        $('.configinputs').find('input').each($(this).val = '');
                     },
                     error: function () {
                         messageFade("error", "PHP døde :(");
                         // Re-disable the previously disabled inputs
                         disabledInputs.attr('disabled', 'disabled');
 
-                        $(this).find('input').each($(this).val = '');
+                        $('.configinputs').find('input').each($(this).val = '');
                     }
 
                 });
