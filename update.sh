@@ -22,11 +22,11 @@ echo "</html>" >> message.html
 echo "</body>" >> message.html
 
 cat message.html
-
+python3 email_sender.py "$subject."
 
 
 if [  -f nothing.here -a "$oldmessage" != "$message" ]; then
-    python3 email_sender.py "$subject."
+    
 fi
 
 chmod -R 777 /var/www/slideshow/
