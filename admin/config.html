@@ -77,12 +77,12 @@
         
             // Check if the checkbox state has changed
             if ($('#autoremove').prop('checked') != $('#autoremove').data('curState')) {
-                console.log(ele);
                 atLeastOneFilled = true;
             }
         
             // Enable the button if there is at least one filled input and all inputs are valid numbers
             if (allValid && atLeastOneFilled) {
+                console.log('enable');
                 $('#confirmBtn').removeAttr('disabled');
             } else {
                 $('#confirmBtn').attr('disabled', true);
