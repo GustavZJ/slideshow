@@ -149,7 +149,6 @@
 
                 // Temporarily enable disabled inputs
                 const disabledInputs = $(this).find('.configInputs:disabled').removeAttr('disabled');
-                console.log(disabledInputs);
 
                 $(this).find('input').each(function () {
                     // Check if the input value is empty
@@ -164,10 +163,10 @@
                 $.ajax({
                     type: 'POST',
                     url: 'changeconfig.php',
-                    data: $(this).serialize(),
+                    data: formData,
                     dataType: 'json', // Expect a JSON response
                     success: function (response) {
-                        setPlaceholders($(this).serialize());
+                        setPlaceholders(formData);
                         if (response.exit_code === 0) {
                             messageFade("success", "Configuration updated successfully!");
                         } else {
@@ -181,7 +180,7 @@
                         $('.textInputs').each(function () { $(this).val('') });
                     },
                     error: function () {
-                        setPlaceholders();
+                        setPlaceholders(formData);
                         messageFade("error", "PHP døde :(");
                         // Re-disable the previously disabled inputs
                         disabledInputs.each(function () { $(this).attr('disabled', true) });
