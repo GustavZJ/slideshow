@@ -54,36 +54,6 @@
         import { messageFade } from "/src/js/errorMessage.js"
         const confirmBtn = document.getElementById('confirmBtn');
         const removeImageInputs = document.getElementsByClassName('removeImageInputs');
-        let currentConfigs;
-
-
-        function setPlaceholders(settings) {
-            for (const [key, val] of Object.entries(settings)) {
-                if (!["autoremovetime", "autoremovetimeoption", "autoremove"].includes(key)) {
-                    document.getElementById(key).placeholder = val;
-                } else if (key == "autoremovetimeoption") {
-                    document.getElementById(key).value = val;
-                    document.getElementById(key).dataset.curState = val;
-                } else if (key == "autoremove") {
-                    if (val == "true" || val == 'on') {
-                        document.getElementById(key).checked = true;
-                        document.getElementById(key).dataset.curState = 'true';
-                    }
-                    else {
-                        document.getElementById(key).checked = false;
-                        document.getElementById(key).dataset.curState = 'false';
-                    }
-                }
-            }
-
-            $('.removeImageInputs').each(function () { $(this).attr('disabled', true) });
-
-            $('#confirmBtn').attr('disabled', true);
-            $('.textInputs').each(function () { $(this).val('')});
-            
-            disableImageRemove();
-            validateInput();
-        }
 
         function validateInput() {
             let allValid = true;
@@ -145,7 +115,32 @@
                 type: 'POST',
                 url: '/src/php/default_val.php',
                 success: function (key_val) {
-                    setPlaceholders(key_val);
+                    for (const [key, val] of Object.entries(key_val)) {
+                        if (!["autoremovetime", "autoremovetimeoption", "autoremove"].includes(key)) {
+                            document.getElementById(key).placeholder = val;
+                        } else if (key == "autoremovetimeoption") {
+                            document.getElementById(key).value = val;
+                            document.getElementById(key).dataset.curState = val;
+                        } else if (key == "autoremove") {
+                            if (val == "true" || val == 'on') {
+                                document.getElementById(key).checked = true;
+                                document.getElementById(key).dataset.curState = 'true';
+                            }
+                            else {
+                                document.getElementById(key).checked = false;
+                                document.getElementById(key).dataset.curState = 'false';
+                            }
+                        }
+                    }
+
+                    $('.removeImageInputs').each(function () { $(this).attr('disabled', true) });
+
+                    $('#confirmBtn').attr('disabled', true);
+                    $('.textInputs').each(function () { $(this).val('')});
+                        
+                    disableImageRemove();
+                    validateInput();
+
                 }
             });
 
@@ -183,8 +178,7 @@
                     data: formData,
                     dataType: 'json', // Expect a JSON response
                     success: function (response) {
-                        $(this).find('input[class="textInputs"]').each(function () {
-                            console.log($(this).val());
+                        $('input[class="textInputs"]').each(function () {
                             $(this).attr('placeholder', $(this).val());
                         });
 
