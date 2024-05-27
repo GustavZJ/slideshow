@@ -36,9 +36,9 @@
                 <label for="removeimagetime">Hvor længe skal et billede blive, før de bliver fjernet</label>
                 <div id="selectCont">
                     <!-- Add the value for option to post -->
-                    <input class="configInputs removeImageInputs" type="text" name="autoremovetimepost"
+                    <input class="configInputs textInputs removeImageInputs" type="text" name="autoremovetimepost"
                         id="autoremovetimepost" disabled="true">
-                    <select class="configInputs removeImageInputs" name="autoremovetimeoption" id="autoremovetimeoption"
+                    <select class="configInputs textInputs removeImageInputs" name="autoremovetimeoption" id="autoremovetimeoption"
                         disabled="true">
                         <option value="days">dag(e)</option>
                         <option value="months">måned(er)</option>
@@ -58,13 +58,13 @@
 
 
         function validateInput() {
-            console.log('Validating');
             let allValid = true;
             let atLeastOneFilled = false;
             const removeImagesChecked = $('#autoremove').prop('checked');
 
             const textInputs = document.querySelectorAll('.textInputs');
             textInputs.forEach(ele => {
+                console.log(ele);
                 if (!ele.disabled) {
                     if (ele.value.trim() !== '' && ele.value !== ele.placeholder) {
                         atLeastOneFilled = true;
