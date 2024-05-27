@@ -60,7 +60,7 @@
         function setPlaceholders(settings) {
             console.log(settings);
             for (const [key, val] of Object.entries(settings)) {
-                if (!["autoremovetime", "autoremovetimeoption", "autoremove"].includes(key)) {
+                if (!["autoremovetime", "autoremovetimeoption"].includes(key)) {
                     document.getElementById(key).placeholder = val;
                 } else if (key == "autoremovetimeoption") {
                     document.getElementById(key).value = val;
