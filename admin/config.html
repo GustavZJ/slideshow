@@ -142,13 +142,19 @@
                 $(this).find('input').each(function () {
                     // Check if the input value is empty
                     if (!$(this).val().trim()) {
-                        if ($(this).attr('disabled')) {
-                            $(this.removeAttr('disabled'));
-                        }
                         // If it's empty, set it to the placeholder value
                         $(this).val($(this).attr('placeholder'));
                     }
                 });
+
+                // Temporarily enable disabled inputs
+                const disabledInputs = $(this).find('input:disabled').removeAttr('disabled');
+
+                const formData = $(this).serialize(); // Serialize the form data
+
+                // Re-disable the previously disabled inputs
+                disabledInputs.attr('disabled', 'disabled');
+
 
                 $.ajax({
                     type: 'POST',
