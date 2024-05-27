@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <button id="confirmBtn" class="btnWhite" type="submit" disabled="true">Opdater config</button>
+        <button id="confirmBtn" class="btnWhite" type="submit" disabled="true">Opdater konfig</button>
     </form>
 
     <script type="module">
@@ -171,6 +171,19 @@
                     formData[item.name] = item.value;
                 });
 
+                
+                // Loading dots, so that you can see it's not frozen incase it's slow
+                $("#confirmBtn").val('Opdaterer');
+                const dots = window.setInterval(function() {
+                    const dotCount = ($("#confirmBtn").val().match(/\./g) || []).length;
+
+                    if (dotCount >= 3) {
+                        $("#confirmBtn").val('Opdaterer');
+                    } else {
+                        $("#confirmBtn").val($("#confirmBtn").val() + '.');
+                    }
+                }, 500);
+
                 if (!$('#autoremove').prop('checked')) {
                     formData['autoremove'] = 'off';
                 }
@@ -181,6 +194,8 @@
                     data: formData,
                     dataType: 'json', // Expect a JSON response
                     success: function (response) {
+                        clearInterval(dots);
+                        $("#confirmBtn").val('Opdater konfig');
                         $('input.textInputs').each(function () {
                             $(this).attr('placeholder', $(this).val());
                             if ($(this).attr('id') == 'upload_max_filesize') {
@@ -203,6 +218,8 @@
                         }
                     },
                     error: function () {
+                        clearInterval(dots);
+                        $("#confirmBtn").val('Opdater konfig');
                         messageFade("error", "Noget gik galt, konfigureringen blev ikke opdateret");
 
                         $('.removeImageInputs').each(function () { $(this).attr('disabled', true) });

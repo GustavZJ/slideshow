@@ -131,8 +131,9 @@
                 $('#submitBtn').attr('disabled', true);
                 $('#clearBtn').attr('disabled', true);
                 $('#uploadLabel').css('cursor', 'default');
+                
+                // Loading dots, so that you can see it's not frozen incase it's slow
                 $("#submitBtn").val('Uploader');
-
                 const dots = window.setInterval(function() {
                     const dotCount = ($("#submitBtn").val().match(/\./g) || []).length;
 
