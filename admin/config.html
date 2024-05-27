@@ -193,38 +193,7 @@
                 });
                 // Prevent default action of going to php page
                 event.preventDefault();
-                $.ajax({
-                    type: 'POST',
-                    url: '/src/php/default_val.php',
-                    success: function (key_val) {
-                        const key_val_object = Object.entries(key_val).reduce((obj, [key, val]) => {
-                            obj[key] = val;
-                            return obj;
-                        }, {});
-
-                        for (const [key, val] of Object.entries(key_val_object)) {
-                            if (!["autoremovetime", "autoremovetimeoption", "autoremove"].includes(key)) {
-                                document.getElementById(key).placeholder = val;
-                            } else if (key == "autoremovetimeoption") {
-                                document.getElementById(key).value = val;
-                                document.getElementById(key).dataset.curState = val;
-                            } else if (key == "autoremove") {
-                                if (val == "true") {
-                                    document.getElementById(key).checked = true;
-                                    document.getElementById(key).dataset.curState = 'true';
-                                }
-                                else {
-                                    document.getElementById(key).checked = false;
-                                    document.getElementById(key).dataset.curState = 'false';
-                                }
-                            }
-                        }
-
-
-                        disableImageRemove();
-                        validateInput();
-                    }
-                });
+                window.location.reload();
             });
         });
     </script>
