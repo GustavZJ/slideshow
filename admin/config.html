@@ -66,7 +66,7 @@
                     document.getElementById(key).value = val;
                     document.getElementById(key).dataset.curState = val;
                 } else if (key == "autoremove") {
-                    if (val == "true") {
+                    if (val == "true" || val == 'on') {
                         document.getElementById(key).checked = true;
                         document.getElementById(key).dataset.curState = 'true';
                     }
