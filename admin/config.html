@@ -26,7 +26,7 @@
             <input type="text" name="maxamount" id="max_file_uploads" class="configInputs textInputs">
 
             <label for="removeimagetoggle">Slå fjernelse af billeder til / fra</label>
-            <input type="checkbox" name="autoremove" id="autoremove" class="configInputs textInputs">
+            <input type="checkbox" name="autoremove" id="autoremove" class="configInputs">
 
             <div id="removeImageCont">
                 <label for="removeimageamount">Hvor mange billeder skal der være, før de må blive fjernet</label>
@@ -38,8 +38,8 @@
                     <!-- Add the value for option to post -->
                     <input class="configInputs textInputs removeImageInputs" type="text" name="autoremovetimepost"
                         id="autoremovetimepost" disabled="true">
-                    <select class="configInputs textInputs removeImageInputs" name="autoremovetimeoption"
-                        id="autoremovetimeoption" disabled="true">
+                    <select class="configInputs removeImageInputs" name="autoremovetimeoption" id="autoremovetimeoption"
+                        disabled="true">
                         <option value="days">dag(e)</option>
                         <option value="months">måned(er)</option>
                         <option value="years">år</option>
@@ -77,12 +77,14 @@
             });
 
             // Check if the checkbox state has changed
+            console.log($('#autoremove').prop('checked'), $('#autoremove').data('curState'))
             if ($('#autoremove').prop('checked') != $('#autoremove').data('curState')) {
                 atLeastOneFilled = true;
             }
 
             // Check if the checkbox state has changed
-            if ($('#autoremovetimeoption').value != $('#autoremovetimeoption').data('curState')) {
+            console.log($('#autoremovetimeoption').value, $('#autoremovetimeoption').data('curState'));
+            if ($('#autoremovetimeoption').val() != $('#autoremovetimeoption').data('curState')) {
                 atLeastOneFilled = true;
             }
 
