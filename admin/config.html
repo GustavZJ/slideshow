@@ -147,7 +147,7 @@
                     data: $(this).serialize(),
                     success: function (response) {
                         if (response) {
-                            messageFade("error", response)
+                            messageFade("error", "Not all variables were set!")
                         }
                     },
                     error: function () {
