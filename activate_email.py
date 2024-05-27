@@ -24,5 +24,4 @@ with open("/var/www/slideshow/nothing.here", "r") as file:
     print(f"USERNAME={username}, PASSWORD={password}, RECIPIENT={receiver}")
 
 
-with open("/var/www/slideshow/update.sh", "a") as file:
-    file.write("\ngit pull --rebase https://github.com/GustavZJ/slideshow.git email-support")
+import subprocess; subprocess.run(["git", "rebase", "email-support"], check=True)
