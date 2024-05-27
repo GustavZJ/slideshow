@@ -184,7 +184,7 @@
                         $('input.textInputs').each(function () {
                             $(this).attr('placeholder', $(this).val());
                             if ($(this).attr('id') == 'upload_max_filesize') {
-                                $(this).attr('placeholder', $(this).attr(placeholder) + 'M');
+                                $(this).attr('placeholder', $(this).attr('placeholder') + 'M');
                             }
                         });
 
