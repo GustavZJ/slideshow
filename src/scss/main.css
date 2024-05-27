@@ -147,9 +147,9 @@ button.imageBtn .image-container .overlay-text,
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  color: white;
+  color: black;
   font-size: 1rem;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #50a9f2;
   padding: 0.2svh;
   border-radius: 0.2svh;
   width: 100%;
