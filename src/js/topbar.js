@@ -96,7 +96,7 @@ dropdownBtn.addEventListener('mouseleave', () => {
 	dropdownCont.classList.remove('open');
 	dropdownCont.classList.add('close');
 	clearTimeout(hideTimer);
-	hideTimer.setTimeout(() => {
+	hideTimer = setTimeout(() => {
         dropdownCont.style.display = 'none';
     }, 300);
 });
