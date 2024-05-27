@@ -172,7 +172,7 @@
                 // Convert the array of objects into a single object
                 const formData = {};
                 formArray.forEach(function (item) {
-                    formData[item.name] = item.value;
+                    formData[item.id] = item.value;
                 });
 
                 if (!$('#autoremove').prop('checked')) {
