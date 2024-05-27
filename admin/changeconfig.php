@@ -43,7 +43,7 @@ exec($command, $output, $return_var);
 
 // Prepare the response
 $response = [
-    'exit_code' => $return_var
+    'exit_code' => $return_var.'autoremove: '.$autoremove
 ];
 
 header('Content-Type: application/json');
