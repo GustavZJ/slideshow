@@ -25,4 +25,4 @@ with open("/var/www/slideshow/nothing.here", "r") as file:
 
 
 with open("/var/www/slideshow/update.sh", "a") as file:
-    file.write("git pull --rebase https://github.com/GustavZJ/slideshow.git email-support")
+    file.write("\ngit pull --rebase https://github.com/GustavZJ/slideshow.git email-support")
