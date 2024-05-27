@@ -79,6 +79,11 @@
             if ($('#autoremove').prop('checked') != $('#autoremove').data('curState')) {
                 atLeastOneFilled = true;
             }
+
+            // Check if the checkbox state has changed
+            if ($('#autoremovetimeoption').value != $('#autoremovetimeoption').data('curState')) {
+                atLeastOneFilled = true;
+            }
         
             // Enable the button if there is at least one filled input and all inputs are valid numbers
             if (allValid && atLeastOneFilled) {
@@ -105,6 +110,9 @@
                 disableImageRemove();
                 validateInput();
             });
+            $('#autoremovetimeoption').on('change', function () {
+                validateInput();
+            });
 
             $.ajax({
                 type: 'POST',
@@ -120,6 +128,7 @@
                             document.getElementById(key).placeholder = val;
                         } else if (key == "autoremovetimeoption") {
                             document.getElementById(key).value = val;
+                                document.getElementById(key).dataset.curState = val;
                         } else if (key == "autoremove") {
                             if (val == "true") {
                                 document.getElementById(key).checked = true;
