@@ -57,7 +57,7 @@
 
 
 
-        function validateInput() {
+        function validateInput() {  
             let allValid = true;
             let atLeastOneFilled = false;
             const removeImagesChecked = $('#autoremove').prop('checked');
@@ -65,10 +65,10 @@
             const configInputs = document.querySelectorAll('.configInputs');
             configInputs.forEach(ele => {
                 if (!ele.disabled) {
-                    if (ele.value.trim() !== '' || ele.value || ele.value !== ele.placeholder || $('#autoremove').checked == $('#autoremoved').dataset.curState) {
+                    if (ele.value.trim() !== '' || ele.value || ele.value !== ele.placeholder || $('#autoremove').prop('checked') != $('#autoremoved').data('curState')) {
                         atLeastOneFilled = true;
 
-                        if (isNaN(ele.value)) {
+                        if (ele.id !== 'autoremove' && isNaN(ele.value)) {
                             allValid = false;
                         }
                     }
@@ -99,8 +99,8 @@
                 disableImageRemove();
                 validateInput();
             });
-            validateInput();
             disableImageRemove();
+            validateInput();
 
             $.ajax({
                 type: 'POST',
@@ -112,7 +112,6 @@
                     }, {});
 
                     for (const [key, val] of Object.entries(key_val_object)) {
-                        console.log(key_val_object)
                         if (!["autoremovetime", "autoremovetimeoption", "autoremove"].includes(key)) {
                             document.getElementById(key).placeholder = val;
                         } else if (key == "autoremovetimeoption") {
@@ -120,11 +119,11 @@
                         } else if (key == "autoremove") {
                             if (val == "true") {
                                 document.getElementById(key).checked = true;
-                                document.getElementById(key).dataset.curState = true;
+                                document.getElementById(key).dataset.curState = 'true';
                             }
                             else {
                                 document.getElementById(key).checked = false;
-                                document.getElementById(key).dataset.curState = false;
+                                document.getElementById(key).dataset.curState = 'false';
                             }
                         }
                     }
