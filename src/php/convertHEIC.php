@@ -28,26 +28,26 @@ foreach (range(0, count($_FILES["hidden"]["name"]) - 1) as $x) {
     // Check if file is an actual image (basic check by MIME type)
     if (!strtolower($imageFileType === "heic")) {
         $uploadOk = 0;
-        $response["upload"][$file][] = "er ikke et billede";
+        $response["user"][$file][] = "Er ikke et billede";
     }
 
     // Check if file already exists
     if (file_exists($target_file)) {
         $uploadOk = 0;
-        $response["upload"][$file][] = "eksisterer allerede";
+        $response["user"][$file][] = "Eksisterer allerede";
     }
 
     // Check if file is too large
     if ($_FILES["hidden"]["size"][$x] > convertToBytes($iniFile["upload_max_filesize"])) {
         $uploadOk = 0;
-        $response["upload"][$file][] = "er for stor";
+        $response["user"][$file][] = "Er for stor";
     }
 
     if ($uploadOk) {
         if (move_uploaded_file($_FILES["hidden"]["tmp_name"][$x], $target_file)) {
-            $response["upload"][$file][] = "success";
+            $response["user"][$file][] = "Success";
         } else {
-            $response["upload"][$file][] = "ukendt fejl :(";
+            $response["user"][$file][] = "Ukendt fejl :(";
         }
     }
 }
@@ -59,9 +59,10 @@ function convertHeicWithHeifConvert($filePath) {
     exec($command, $output, $return_var);
     if ($return_var === 0) {
         array_push($outputFiles, $outputPath);
-        $response["convert"][$filePath][] = "Success";
+        // unlink($filePath);
+        $response["user"][$filePath][] = "Success";
     } else {
-        $response["convert"][$filePath][] = "Fejl";
+        $response["user"][$filePath][] = "Fejl";
     }
 }
 
@@ -69,7 +70,7 @@ function convertHeic() {
     global $response; // Add global keyword to access the response array
     $directory = "/var/www/slideshow/temp/";
     if (!is_dir($directory)) {
-        $response["convert"][$directory][] = "Eksistere ikke";
+        $response["system"][$directory][] = "Eksistere ikke";
         return;
     }
 

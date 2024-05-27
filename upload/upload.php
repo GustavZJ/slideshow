@@ -36,30 +36,31 @@
       // Check if image file is an actual image or fake image
       if (!str_contains($imageFileType, 'image')) {
         $uploadOk = 0;
-        array_push($response[$file], 'er ikke et billede');
+        array_push($response[$file], 'Er ikke et billede');
       }
     
       // Check if file already exists
       if (file_exists($targetFile)) {
         $uploadOk = 0;
-        array_push($response[$file], 'eksisterer allerede');
+        array_push($response[$file], 'Eksisterer allerede');
       }
     
       // Check if file is too large
       if ($_FILES['files']["size"][$x] > convertToBytes($iniFile['upload_max_filesize'])) {
         $uploadOk = 0;
-        array_push($response[$file], 'er for stor');
+        array_push($response[$file], 'Er for stor');
       }
     
       if ($uploadOk){
         if (move_uploaded_file($_FILES['files']["tmp_name"][$x], $targetFile)) {
-          array_push($response[$file], 'success');
+          array_push($response[$file], 'Success');
         } else {
-          array_push($response[$file], 'ukendt fejl :(');
+          array_push($response[$file], 'Ukendt fejl :(');
         }
       }
     }
   }
+  
   // Return to upload page
   header('Content-Type: application/json');
   echo json_encode($response);

@@ -86,6 +86,27 @@
                             document.getElementById('uploadImageInput').dispatchEvent(new Event('change'));
 
                             document.getElementById('hiddenImageInput').value = '';
+
+                            let errMsg = '';
+                            let counter = 0;
+
+                            for (const [key, value] of Object.entries(response)) {
+                                if (value.includes('success')) {
+                                    counter += 1;
+                                }
+                                else {
+                                    errMsg += `${key}: ${[...value].join(' og ')}.<br>`;
+                                }
+                            }
+
+                            if (counter > 0) {
+                                errMsg = `${counter} billede(r) blev konverteret uden fejl.<br>Men:<br>${errMsg}`;
+                                messageFade('error', errMsg);
+                            }
+                            else {
+                                errMsg = `Fejl:<br>${errMsg}`;
+                                messageFade('error', errMsg);
+                            }
                         })();
                     },
                         error: function () {
