@@ -21,7 +21,6 @@ echo "<br> <a href=\"$(hostname).local/captcha/index.html\">Click here to unsubs
 echo "</html>" >> message.html
 echo "</body>" >> message.html
 
-cat message.html
 
 
 
