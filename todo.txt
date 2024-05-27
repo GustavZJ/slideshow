@@ -14,6 +14,9 @@ Picture frame:
 Config page:
 - Display current values of each configurable item ☑
 - Add settings for auto remove ☑
+- Show if auto remove is enable / disabled
+- Ensure config btn enables if checkbox state is changed (Or any other)
+- Show proper success / error message
 
 Admin page:
 - Change config settings ☑
@@ -30,11 +33,13 @@ Upload page:
 - Add indicators to show the user if they have selected too many files ☑
 - Add counter to show how many images very uploaded succesfully, whenever an image encounters an error while uploading ☑
 - Fix error message for when images are denied drop not appearing ☑
+- Add indicator showing max images, so you don't have to upload
 
 Website:
 - Improve styling
 - Full responsive for different devices (Need to test if any issue on devices)
-- Better nav (Perhaps a simple top bar with dropdown menus)
+- Better nav (Perhaps a simple top bar with dropdown menus) ☑
+- Fix dropdown on mobile (Or don't since you can still navigate)
 
 Guide:
 - How to use admin ☑
