@@ -27,34 +27,36 @@ body {
   top: 6svh;
   background-color: #C0C0C0;
 }
-#topbar #navWrapper #dropdownCont.open {
-  animation: growDown 300ms ease-in-out forwards;
-  transform-origin: top center;
-}
-#topbar #navWrapper #dropdownCont.close {
-  animation: shrinkUp 300ms ease-in-out forwards;
-  transform-origin: top center;
-}
-@keyframes growDown {
-  0% {
-    transform: scaleY(0);
+@media (hover: hover) {
+  #topbar #navWrapper #dropdownCont.open {
+    animation: growDown 300ms ease-in-out forwards;
+    transform-origin: top center;
   }
-  80% {
-    transform: scaleY(1.1);
+  #topbar #navWrapper #dropdownCont.close {
+    animation: shrinkUp 300ms ease-in-out forwards;
+    transform-origin: top center;
   }
-  100% {
-    transform: scaleY(1);
+  @keyframes growDown {
+    0% {
+      transform: scaleY(0);
+    }
+    80% {
+      transform: scaleY(1.1);
+    }
+    100% {
+      transform: scaleY(1);
+    }
   }
-}
-@keyframes shrinkUp {
-  0% {
-    transform: scaleY(1);
-  }
-  20% {
-    transform: scaleY(1.1);
-  }
-  100% {
-    transform: scaleY(0);
+  @keyframes shrinkUp {
+    0% {
+      transform: scaleY(1);
+    }
+    20% {
+      transform: scaleY(1.1);
+    }
+    100% {
+      transform: scaleY(0);
+    }
   }
 }
 #topbar #navWrapper a {
