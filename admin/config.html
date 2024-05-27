@@ -169,12 +169,13 @@
                     data: $(this).serialize(),
                     dataType: 'json', // Expect a JSON response
                     success: function (response) {
+                        window.location.reload();
                         if (response.exit_code === 0) {
                             messageFade("success", "Configuration updated successfully!");
                         } else {
                             messageFade("error", "Not all variables were set!");
                         }
-                        window.location.reload();
+
                         // Re-disable the previously disabled inputs
                         disabledInputs.each(function () { $(this).attr('disabled', true) });
 
@@ -182,10 +183,10 @@
                         $('.textInputs').each(function () { $(this).val('') });
                     },
                     error: function () {
+                        window.location.reload();
                         messageFade("error", "PHP døde :(");
                         // Re-disable the previously disabled inputs
                         disabledInputs.each(function () { $(this).attr('disabled', true) });
-                        window.location.reload();
 
                         $('#confirmBtn').attr('disabled', true);
                         $('.textInputs').each(function () { $(this).val('') });
