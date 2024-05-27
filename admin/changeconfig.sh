@@ -16,7 +16,7 @@ if [ -z ${1+x} -a  -z ${2+x} -a  -z ${3+x} -a  -z ${4+x} -a  -z ${5+x} -a  -z ${
     echo "All are set"
 else
     echo "Not all are set"
-
+fi
 # Update php.ini file
 for key in upload_max_filesize post_max_size max_file_uploads
 do
