@@ -95,7 +95,10 @@
 
         jQuery(document).ready(function ($) {
             document.querySelectorAll('.configInputs').forEach(ele => ele.addEventListener('input', validateInput));
-            $('#autoremove').attr('onchange', 'disableImageRemove();validateInput();');
+            $('#autoremove').on('change', function () {
+                disableImageRemove();
+                validateInput();
+            });
             validateInput();
             disableImageRemove();
 
