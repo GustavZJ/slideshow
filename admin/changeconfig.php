@@ -37,8 +37,14 @@ $post_max_size = strval(intval($maxsize) * intval($maxamount)) . "M";
 // Construct the command
 $command = escapeshellcmd("./changeconfig.sh") . " " . escapeshellarg($maxsize . "M") . " " . escapeshellarg($post_max_size) . " " . escapeshellarg($maxamount) . " " . escapeshellarg($timedelay) . " " . escapeshellarg($autoremove) . " " . escapeshellarg($autoremoveamount) . " " . escapeshellarg($autoremovetime) . " " . escapeshellarg($autoremovetimepost) . " " . escapeshellarg($autoremovetimeoption);
 
-// Execute the command
-$response = shell_exec($command);
+// Execute the command and capture the exit code
+$return_var = 0;
+exec($command, $output, $return_var);
+
+// Prepare the response
+$response = [
+    'exit_code' => $return_var
+];
 
 header('Content-Type: application/json');
 echo json_encode($response);

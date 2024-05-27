@@ -136,11 +136,12 @@
             });
 
             $("#configForm").submit(function (event) {
+                event.preventDefault(); // Prevent the default form submission
+
                 $(this).find('input').each(function () {
                     // Check if the input value is empty
                     if (!$(this).val().trim()) {
                         // If it's empty, set it to the placeholder value
-
                         $(this).val($(this).attr('placeholder'));
                     }
                 });
@@ -149,14 +150,18 @@
                     type: 'POST',
                     url: 'changeconfig.php',
                     data: $(this).serialize(),
+                    dataType: 'json', // Expect a JSON response
                     success: function (response) {
-                        if (response) {
-                            messageFade("error", "Not all variables were set!")
+                        if (response.exit_code === 0) {
+                            messageFade("success", "Configuration updated successfully!");
+                        } else {
+                            messageFade("error", "Not all variables were set!");
                         }
                     },
                     error: function () {
-                        messageFade("error", "PHP døde :(")
+                        messageFade("error", "PHP døde :(");
                     }
+
                 });
                 // Prevent default action of going to php page
                 event.preventDefault();
