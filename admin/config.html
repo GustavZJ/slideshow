@@ -184,6 +184,7 @@
                     dataType: 'json', // Expect a JSON response
                     success: function (response) {
                         $(this).find('.textInputs').each(function () {
+                            console.log($(this).val());
                             $(this).attr('placeholder', $(this).val());
                         });
 
