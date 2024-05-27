@@ -105,8 +105,6 @@
                 disableImageRemove();
                 validateInput();
             });
-            disableImageRemove();
-            validateInput();
 
             $.ajax({
                 type: 'POST',
@@ -133,6 +131,10 @@
                             }
                         }
                     }
+
+                    
+                    disableImageRemove();
+                    validateInput();
                 }
             });
 
@@ -166,17 +168,17 @@
                         }
                         
                         // Re-disable the previously disabled inputs
-                        disabledInputs.each(function () {$(this).attr('disabled', 'disabled')});
+                        disabledInputs.each(function () {$(this).attr('disabled', true)});
                         
-                        $('#confirmBtn').attr('disabled', 'disabled');
+                        $('#confirmBtn').attr('disabled', true);
                         $('.textInputs').each(function () {$(this).val('')});
                     },
                     error: function () {
                         messageFade("error", "PHP døde :(");
                         // Re-disable the previously disabled inputs
-                        disabledInputs.each(function () {$(this).attr('disabled', 'disabled')});
+                        disabledInputs.each(function () {$(this).attr('disabled', true)});
 
-                        $('#confirmBtn').attr('disabled', 'disabled');
+                        $('#confirmBtn').attr('disabled', true);
                         $('.textInputs').each(function () {$(this).val('')});
                     }
 
