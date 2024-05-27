@@ -27,12 +27,10 @@ body {
   background-color: #C0C0C0;
 }
 #topbar #navWrapper #dropdownCont.open {
-  display: grid;
   animation: growDown 300ms ease-in-out forwards;
   transform-origin: top center;
 }
 #topbar #navWrapper #dropdownCont.close {
-  display: grid;
   animation: shrinkUp 300ms ease-in-out forwards;
   transform-origin: top center;
 }

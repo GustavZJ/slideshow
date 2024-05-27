@@ -88,6 +88,7 @@ const dropdownCont = document.getElementById('dropdownCont');
 let hideTimer;
 
 dropdownBtn.addEventListener('mouseenter', () => {
+	dropdownCont.style.display = 'grid';
 	dropdownCont.classList.remove('close');
 	dropdownCont.classList.add('open');
 });

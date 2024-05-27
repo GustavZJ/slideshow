@@ -34,13 +34,11 @@ body {
 			background-color: #C0C0C0;
 			
 			&.open {
-                display: grid;
                 animation: growDown 300ms ease-in-out forwards;
 				transform-origin: top center;
             }
 
             &.close {
-				display: grid;
                 animation: shrinkUp 300ms ease-in-out forwards;
 				transform-origin: top center;
             }
