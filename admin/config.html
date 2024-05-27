@@ -82,7 +82,7 @@
         
             // Enable the button if there is at least one filled input and all inputs are valid numbers
             if (allValid && atLeastOneFilled) {
-                console.log('enable');
+                console.log('enable', allValid, atLeastOneFilled);
                 $('#confirmBtn').removeAttr('disabled');
             } else {
                 $('#confirmBtn').attr('disabled', true);
