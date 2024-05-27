@@ -128,9 +128,6 @@ function createImagePreview(file, name) {
     if (uploadImageInput.files.length > maxFileUploads) {
         amountText.style.color = 'red';
         submitBtn.setAttribute('disabled', true);
-    } else if (uploadImageInput.files.length <= maxFileUploads && submitBtn.disabled) {
-        amountText.style.color = 'white';
-        submitBtn.removeAttribute('disabled');
     }
 }
 
@@ -309,8 +306,13 @@ function deleteFiles(fileName = null, target = null) {
         document.getElementById('previewText').style.display = 'none';
     }
 
-    const maxFileUploads = document.getElementById('amountText').innerHTML.split('/')[1];
-    document.getElementById('amountText').innerHTML = `Billeder: ${uploadImageInput.files.length}/${maxFileUploads}`;
+    const maxFileUploads = amountText.innerHTML.split('/')[1];
+    amountText.innerHTML = `Billeder: ${uploadImageInput.files.length}/${maxFileUploads}`;
+
+    if (uploadImageInput.files.length <= maxFileUploads && submitBtn.disabled) {
+        amountText.style.color = 'white';
+        submitBtn.removeAttribute('disabled');
+    }
 }
 
 function clearAll() {
