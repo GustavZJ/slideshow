@@ -33,7 +33,7 @@ Upload page:
 - Add indicators to show the user if they have selected too many files ☑
 - Add counter to show how many images very uploaded succesfully, whenever an image encounters an error while uploading ☑
 - Fix error message for when images are denied drop not appearing ☑
-- Add indicator showing max images, so you don't have to upload
+- Add indicator showing max images, so you don't have to upload ☑
 
 Website:
 - Improve styling

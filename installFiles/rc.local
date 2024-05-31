@@ -17,11 +17,10 @@ if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
 
+
 # Update slideshow
+sleep 10
+
 bash /var/www/slideshow/update.sh &
 
-# Run slideshow
-# sleep 10
-
-# bash /var/www/slideshow/pictureframe.sh  &
 exit 0
