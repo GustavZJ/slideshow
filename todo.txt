@@ -44,5 +44,9 @@ Website:
 Guide:
 - How to use admin ☑
 
+Other (Not very important):
+- Move some JS and PHP scripts into the src dirs, for consistency
+- Change names of variables and such so they use same naming convention
+
 Final:
 - Testing

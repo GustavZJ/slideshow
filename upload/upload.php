@@ -2,6 +2,8 @@
   // Load php ini file to read max file size
   $iniFile = parse_ini_file('../php.ini');
 
+  $docRoot = $_SERVER['DOCUMENT_ROOT'];
+
   // Convert php ini max file size to bytes, so we can compare to image file size
   function convertToBytes($value) {
     return preg_replace_callback('/^\s*(\d+)\s*(?:([kmgt]?)b?)?\s*$/i', function ($m) {
@@ -53,7 +55,7 @@
     
       if ($uploadOk){
         if (move_uploaded_file($_FILES['files']["tmp_name"][$x], $targetFile)) {
-          array_push($response[$file], 'Success');
+          array_push($response[$file], 'Success'.$docRoot);
         } else {
           array_push($response[$file], 'Ukendt fejl :(');
         }
