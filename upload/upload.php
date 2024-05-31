@@ -1,8 +1,9 @@
 <?php
-  // Load php ini file to read max file size
-  $iniFile = parse_ini_file('../php.ini');
-
+  // Get root of web
   $docRoot = $_SERVER['DOCUMENT_ROOT'];
+
+  // Load php ini file to read max file size
+  $iniFile = parse_ini_file($docRoot . '/php.ini');
 
   // Convert php ini max file size to bytes, so we can compare to image file size
   function convertToBytes($value) {
@@ -21,9 +22,8 @@
   // echo "<script>console.log('Debug Objects: " .json_encode(convertToBytes($iniFile['upload_max_filesize'])) . "' );</script>";
   if (count($_FILES['files']['name']) > $iniFile["max_file_uploads"]) {
     $response = "For mange filer!!!:(";
-  }
-  else {
-    $targetDir = "../uploads/";
+  } else {
+    $targetDir = $docRoot . "/uploads/";
     $response = array();
     foreach(range(0, count($_FILES['files']['name']) - 1) as $x) {
       $file = basename($_FILES['files']["name"][$x]);
@@ -55,7 +55,7 @@
     
       if ($uploadOk){
         if (move_uploaded_file($_FILES['files']["tmp_name"][$x], $targetFile)) {
-          array_push($response[$file], 'Success'.$docRoot);
+          array_push($response[$file], 'Success');
         } else {
           array_push($response[$file], 'Ukendt fejl :(');
         }

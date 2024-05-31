@@ -6,6 +6,10 @@
  * @param string $key The key to search for
  * @return string|null The value of the key if found, or null if not found
  */
+
+// Get root of web
+$docRoot = $_SERVER['DOCUMENT_ROOT'];
+
 function getConfigValue($filePath, $key)
 {
     if (!file_exists($filePath)) {
@@ -54,10 +58,10 @@ function getKeyValue($filePath, $keys)
     return $key_val;
 }
 
-$config_config_data = getKeyValue('/var/www/slideshow/config.config', array("timedelay", "autoremove", "autoremoveamount", "autoremovetime", "autoremovetimeoption", "autoremovetimepost"));
-$php_ini_data = getKeyValue('/var/www/slideshow/php.ini', array("upload_max_filesize", "max_file_uploads"));
+$config_config_data = getKeyValue($docRoot . '/config.config', array("timedelay", "autoremove", "autoremoveamount", "autoremovetime", "autoremovetimeoption", "autoremovetimepost"));
+$php_ini_data = getKeyValue($docRoot . '/php.ini', array("upload_max_filesize", "max_file_uploads"));
 $key_vals = array_merge($config_config_data, $php_ini_data);
 
 header("Content-Type: application/json");
-echo json_encode($key_vals); // Corrected to use associative array
+echo json_encode($key_vals);
 exit();

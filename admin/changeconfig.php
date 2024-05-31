@@ -1,4 +1,7 @@
 <?php
+// Get root of web
+$docRoot = $_SERVER['DOCUMENT_ROOT'];
+
 // Sanitize input
 $timedelay = preg_replace("/[^0-9.]/", "", $_POST['timedelay']);
 $maxsize = preg_replace("/[^0-9.]/", "", $_POST["maxsize"]);
@@ -35,7 +38,7 @@ switch ($autoremovetimeoption) {
 $post_max_size = strval(intval($maxsize) * intval($maxamount)) . "M";
 
 // Construct the command
-$command = escapeshellcmd("./changeconfig.sh") . " " . escapeshellarg($maxsize . "M") . " " . escapeshellarg($post_max_size) . " " . escapeshellarg($maxamount) . " " . escapeshellarg($timedelay) . " " . escapeshellarg($autoremove) . " " . escapeshellarg($autoremoveamount) . " " . escapeshellarg($autoremovetime) . " " . escapeshellarg($autoremovetimepost) . " " . escapeshellarg($autoremovetimeoption);
+$command = escapeshellcmd($docRoot . "/admin/changeconfig.sh") . " " . escapeshellarg($maxsize . "M") . " " . escapeshellarg($post_max_size) . " " . escapeshellarg($maxamount) . " " . escapeshellarg($timedelay) . " " . escapeshellarg($autoremove) . " " . escapeshellarg($autoremoveamount) . " " . escapeshellarg($autoremovetime) . " " . escapeshellarg($autoremovetimepost) . " " . escapeshellarg($autoremovetimeoption);
 
 // Execute the command and capture the exit code
 $return_var = 0;

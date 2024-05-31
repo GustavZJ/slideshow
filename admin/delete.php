@@ -1,7 +1,10 @@
 <?php
+// Get root of web
+$docRoot = $_SERVER['DOCUMENT_ROOT'];
+
 $response = array();
 foreach ($_POST['files'] as $file) {
-    if (rename('../uploads/' . $file, '../backup/' . $file)) {
+    if (rename($docRoot . '/uploads/' . $file, $docRoot . '/backup/' . $file)) {
         $response[$file] = "success";
     } else {
         $response[$file] = "error";

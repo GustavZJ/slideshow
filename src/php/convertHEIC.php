@@ -1,8 +1,10 @@
 <?php
+// Get root of web
+$docRoot = $_SERVER['DOCUMENT_ROOT'];
 
 // Load php.ini file to read max file size
-$iniFile = parse_ini_file("/var/www/slideshow/php.ini");
-$target_dir = "/var/www/slideshow/temp/";
+$iniFile = parse_ini_file($docRoot . "/php.ini");
+$targetDir = $docRoot . "/temp/";
 $response = array("upload" => array(), "convert" => array());
 $outputFiles = array();
 
@@ -21,7 +23,7 @@ function convertToBytes($value) {
 
 foreach (range(0, count($_FILES["hidden"]["name"]) - 1) as $x) {
     $file = basename($_FILES["hidden"]["name"][$x]);
-    $target_file = $target_dir . $file;
+    $target_file = $targetDir . $file;
     $imageFileType = strtolower(pathinfo($_FILES["hidden"]["name"][$x], PATHINFO_EXTENSION));
     $uploadOk = 1;
 
@@ -67,17 +69,16 @@ function convertHeicWithHeifConvert($filePath) {
 }
 
 function convertHeic() {
-    global $response; // Add global keyword to access the response array
-    $directory = "/var/www/slideshow/temp/";
-    if (!is_dir($directory)) {
-        $response["system"][$directory][] = "Eksistere ikke";
+    global $response, $targetDir; // Add global keyword to access the response array
+    if (!is_dir($targetDir)) {
+        $response["system"][$targetDir][] = "Eksistere ikke";
         return;
     }
 
-    $files = scandir($directory);
+    $files = scandir($targetDir);
 
     foreach($files as $file) {
-        $filePath = $directory . $file;
+        $filePath = $targetDir . $file;
         if (is_file($filePath) && strtolower(pathinfo($filePath, PATHINFO_EXTENSION)) === "heic") {
             convertHeicWithHeifConvert($filePath);
         }
