@@ -225,15 +225,7 @@
                         clearInterval(dots);
                         $("#confirmBtn").text('Opdater konfig');
                         $('#confirmBtn').removeAttr('disabled');
-                        messageFade("error", "Noget gik galt, konfigureringen blev ikke opdateret");
-
-                        $('.removeImageInputs').each(function () { $(this).attr('disabled', true) });
-
-                        $('#confirmBtn').attr('disabled', true);
-                        $('.textInputs').each(function () { $(this).val('') });
-
-                        disableImageRemove();
-                        validateInput();
+                        messageFade("error", "Noget gik galt, konfigureringen blev ikke opdateret, prøv igen!");
                     }
                 });
             });
