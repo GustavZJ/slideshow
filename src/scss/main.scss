@@ -34,41 +34,43 @@ body {
 			position: absolute;
 			top: 6svh;
 			background-color: #C0C0C0;
-			z-index: 1;
-	
+			transform: scaleY(0); // Initial state
+		
 			&.open {
+				display: block; // Ensure it's visible when open
 				animation: growDown 300ms ease-in-out forwards;
 				transform-origin: top center;
+				z-index: 100; // Set z-index appropriately
 			}
-	
+		
 			&.close {
 				animation: shrinkUp 300ms ease-in-out forwards;
 				transform-origin: top center;
 			}
-	
+		
 			@keyframes growDown {
 				0% {
 					transform: scaleY(0);
 				}
-	
+		
 				80% {
 					transform: scaleY(1.1);
 				}
-	
+		
 				100% {
 					transform: scaleY(1);
 				}
 			}
-	
+		
 			@keyframes shrinkUp {
 				0% {
 					transform: scaleY(1);
 				}
-	
+		
 				20% {
 					transform: scaleY(1.1);
 				}
-	
+		
 				100% {
 					transform: scaleY(0);
 				}
