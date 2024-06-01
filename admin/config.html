@@ -162,9 +162,6 @@
                     }
                 }, 500);
 
-                if (!$('#autoremove').prop('checked')) {
-                    formData['autoremove'] = 'off';
-                }
 
                 // Temporarily enable disabled inputs
                 $(this).find('.configInputs:disabled').removeAttr('disabled');
@@ -186,6 +183,10 @@
                 formArray.forEach(function (item) {
                     formData[item.name] = item.value;
                 });
+
+                if (!$('#autoremove').prop('checked')) {
+                    formData['autoremove'] = 'off';
+                }
 
                 $.ajax({
                     type: 'POST',
