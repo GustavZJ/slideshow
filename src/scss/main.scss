@@ -84,8 +84,8 @@ body {
 			justify-content: center;
 			align-items: center;
 	
-			&:not(#dropdownCont a) {
-				margin-right: 0.66dvw; // Apply margin here so that it dosen't affect dropdown
+			&:not(#dropdownCont a):not(#dropdownBtn) {
+				margin-right: 0.66vw; // Apply margin here so that it doesn't affect dropdown
 			}
 	
 			// Active nav marker (Blue bar at bottom of btn)
@@ -111,7 +111,7 @@ body {
 			background: none;
 			border: none;
 			font-size: 1.5rem;
-			cursor: pointer;
+			margin: 0;
 		}
 
 		// Media query for touch devices

@@ -68,8 +68,8 @@ body {
   justify-content: center;
   align-items: center;
 }
-#topbar #navWrapper a:not(#dropdownCont a) {
-  margin-right: 0.66dvw;
+#topbar #navWrapper a:not(#dropdownCont a):not(#dropdownBtn) {
+  margin-right: 0.66vw;
 }
 #topbar #navWrapper a.active {
   position: relative;
@@ -89,7 +89,7 @@ body {
   background: none;
   border: none;
   font-size: 1.5rem;
-  cursor: pointer;
+  margin: 0;
 }
 @media (hover: none) {
   #topbar #navWrapper #dropdownBtn:hover #dropdownCont {

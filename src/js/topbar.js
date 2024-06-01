@@ -21,14 +21,17 @@ for (const [key, path] of Object.entries(navPaths)) {
 	if (typeof(path) == 'object') {	
 		for (const [subkey, subpath] of Object.entries(path)) {
 			if (subkey == 'index') {
-				const navEle = createNewElement('a', `${key} <button id="expandDropdownBtn" class="expandBtn" aria-label="Expand Dropdown">&#9660;</button>`, 'navBtns', 'dropdownBtn');
+				const navEle = createNewElement('a', key, 'navBtns', 'dropdownBtn');
 				navEle.setAttribute('href', subpath);
 
-				dropdownEle = document.createElement('div');
-				dropdownEle.id = 'dropdownCont';
+				dropdownEle = createNewElement('div', '', '', 'dropdownCont');
+
+                // For mobile devices
+                const dropdownBtnEle = createNewElement('button', '<i class="fa fa-caret-down"></i>', 'expandBtn', 'expandDropdownBtn');
 
 				navEle.appendChild(dropdownEle);
 				navWrapper.appendChild(navEle);
+				navWrapper.appendChild(dropdownBtnEle);
 			} else {
 				const navEle = createNewElement('a', subkey, 'navBtns');
 				navEle.setAttribute('href', subpath);
@@ -105,9 +108,12 @@ dropdownBtn.addEventListener('mouseleave', () => {
 expandDropdownBtn.addEventListener('click', (e) => {
     e.preventDefault(); // Prevent the default button action
     if (dropdownCont.style.display === 'grid') {
-        dropdownCont.style.display = 'none';
         dropdownCont.classList.remove('open');
         dropdownCont.classList.add('close');
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+            dropdownCont.style.display = 'none';
+        }, 300);
     } else {
         dropdownCont.style.display = 'grid';
         dropdownCont.classList.remove('close');
