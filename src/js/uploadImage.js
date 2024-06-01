@@ -42,7 +42,7 @@ jQuery(document).ready(function ($) {
                 (async function () {
                     for await (const filePath of response['files']) {
                         // Add the new file to the array of files
-                        const file = await createFile(filePath.slice(18)).then(function(result) {allFiles.push(result)});
+                        await createFile(filePath.slice(18)).then(function(result) {allFiles.push(result)});
                     }
 
                     // Create a new FileList from the combined array of files
@@ -63,8 +63,7 @@ jQuery(document).ready(function ($) {
                     for (const [key, value] of Object.entries(response)) {
                         if (value.includes('success')) {
                             counter += 1;
-                        }
-                        else {
+                        } else {
                             errMsg += `${key}: ${[...value].join(' og ')}.<br>`;
                         }
                     }
@@ -72,8 +71,7 @@ jQuery(document).ready(function ($) {
                     if (counter > 0) {
                         errMsg = `${counter} billede(r) blev konverteret uden fejl.<br>Men:<br>${errMsg}`;
                         messageFade('error', errMsg);
-                    }
-                    else {
+                    } else {
                         errMsg = `Fejl:<br>${errMsg}`;
                         messageFade('error', errMsg);
                     }
@@ -121,7 +119,6 @@ jQuery(document).ready(function ($) {
             $('#clearBtn').removeAttr('disabled');
             $('#submitBtn').val('Upload');
             $('#uploadLabel').css('cursor', 'pointer');
-
         } else {
             $.ajax({
                 type: 'POST',
@@ -144,8 +141,7 @@ jQuery(document).ready(function ($) {
                     for (const [key, value] of Object.entries(response)) {
                         if (value.includes('Success')) {
                             counter += 1;
-                        }
-                        else {
+                        } else {
                             allSuccess = false;
                             errMsg += `${key}: ${[...value].join(' og ')}.<br>`;
                         }
@@ -155,17 +151,14 @@ jQuery(document).ready(function ($) {
                         let msg = '';
                         if (counter > 1) {
                             msg += `Alle ${counter} billede(r) blev uploadet uden fejl.`
-                        }
-                        else {
+                        } else {
                             msg += `${counter} billede blev uploadet uden fejl.`
                         }
                         messageFade('success', msg);
-                    }
-                    else if (counter > 0) {
+                    } else if (counter > 0) {
                         errMsg = `${counter} billede(r) blev uploadet uden fejl.<br>Men:<br>${errMsg}`;
                         messageFade('error', errMsg);
-                    }
-                    else {
+                    } else {
                         errMsg = `Fejl:<br>${errMsg}`;
                         messageFade('error', errMsg);
                     }
