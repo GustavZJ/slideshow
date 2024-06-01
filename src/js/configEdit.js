@@ -1,11 +1,9 @@
 import { messageFade } from "/src/js/errorMessage.js"
-        const confirmBtn = document.getElementById('confirmBtn');
         const removeImageInputs = document.getElementsByClassName('removeImageInputs');
 
         function validateInput() {
             let allValid = true;
             let atLeastOneFilled = false;
-            const removeImagesChecked = $('#autoremove').prop('checked');
 
             const textInputs = document.querySelectorAll('.textInputs');
             textInputs.forEach(ele => {
@@ -123,13 +121,13 @@ import { messageFade } from "/src/js/errorMessage.js"
 
 
                 // Serialize the form data into an array of objects
-                const formArray = $(this).serializeArray();
+                const formData = $(this).serialize();
 
                 // Convert the array of objects into a single object
-                const formData = {};
-                formArray.forEach(function (item) {
-                    formData[item.name] = item.value;
-                });
+                // const formData = {};
+                // formArray.forEach(function (item) {
+                //     formData[item.name] = item.value;
+                // });
 
                 if (!$('#autoremove').prop('checked')) {
                     formData['autoremove'] = 'off';
