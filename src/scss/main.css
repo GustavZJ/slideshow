@@ -27,7 +27,6 @@ body {
   position: absolute;
   top: 6svh;
   background-color: #C0C0C0;
-  z-index: 100;
 }
 #topbar #navWrapper #dropdownCont.open {
   display: block;
