@@ -27,13 +27,12 @@ body {
   position: absolute;
   top: 6svh;
   background-color: #C0C0C0;
-  transform: scaleY(0);
+  z-index: 100;
 }
 #topbar #navWrapper #dropdownCont.open {
   display: block;
   animation: growDown 300ms ease-in-out forwards;
   transform-origin: top center;
-  z-index: 100;
 }
 #topbar #navWrapper #dropdownCont.close {
   animation: shrinkUp 300ms ease-in-out forwards;
