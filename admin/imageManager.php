@@ -88,7 +88,7 @@
                 $("#deleteForm").submit(function (event) {
                     $.ajax({
                         type: 'POST',
-                        url: 'delete.php',
+                        url: '/src/php/delete.php',
                         data: $(this).serialize(),
                         success: function (response) {
                             for (let file in response) {

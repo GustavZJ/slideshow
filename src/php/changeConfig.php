@@ -38,7 +38,7 @@ switch ($autoremovetimeoption) {
 $post_max_size = strval(intval($maxsize) * intval($maxamount)) . "M";
 
 // Construct the command
-$command = escapeshellcmd($docRoot . "/admin/changeconfig.sh") . " " . escapeshellarg($maxsize . "M") . " " . escapeshellarg($post_max_size) . " " . escapeshellarg($maxamount) . " " . escapeshellarg($timedelay) . " " . escapeshellarg($autoremove) . " " . escapeshellarg($autoremoveamount) . " " . escapeshellarg($autoremovetime) . " " . escapeshellarg($autoremovetimepost) . " " . escapeshellarg($autoremovetimeoption);
+$command = escapeshellcmd($docRoot . "/src/bash/changeConfig.sh") . " " . escapeshellarg($maxsize . "M") . " " . escapeshellarg($post_max_size) . " " . escapeshellarg($maxamount) . " " . escapeshellarg($timedelay) . " " . escapeshellarg($autoremove) . " " . escapeshellarg($autoremoveamount) . " " . escapeshellarg($autoremovetime) . " " . escapeshellarg($autoremovetimepost) . " " . escapeshellarg($autoremovetimeoption);
 
 // Execute the command and capture the exit code
 $return_var = 0;

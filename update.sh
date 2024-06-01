@@ -25,7 +25,7 @@ echo "</body>" >> message.html
 
 
 if [  -f nothing.here -a "$oldmessage" != "$message" ]; then
-    python3 email_sender.py "$subject."
+    python3 /var/www/slideshow/src/py/emailSender.py "$subject."
 fi
 
 chmod -R 777 /var/www/slideshow/

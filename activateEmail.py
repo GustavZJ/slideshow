@@ -24,4 +24,4 @@ with open("/var/www/slideshow/nothing.here", "r") as file:
     receiver = lines[2].strip()
     print(f"USERNAME={username}, PASSWORD={password}, RECIPIENT={receiver}")
 
-result = subprocess.run(["/var/www/slideshow/src/bash/activate_email.sh"], check=True)
+result = subprocess.run(["/var/www/slideshow/src/bash/activateEmail.sh"], check=True)

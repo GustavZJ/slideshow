@@ -6,7 +6,7 @@
     <title>Billedeupload</title>
     <link rel="stylesheet" href="/src/scss/main.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="icon" type="image/x-icon" href="/src/pictures/favicon.ico">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
 </head>
 <body>
@@ -45,7 +45,7 @@
                 }
             $.ajax({
                 type: 'POST',
-                url: '/src/php/default_val.php',
+                url: '/src/php/defaultVal.php',
                 success: function (key_val) {
                 const key_val_object = Object.entries(key_val).reduce((obj, [key, val]) => {
                     obj[key] = val;
@@ -156,7 +156,7 @@
                 } else {
                     $.ajax({
                         type: 'POST',
-                        url: 'upload.php',
+                        url: '/src/php/upload.php',
                         data: formData,
                         contentType: false,
                         processData: false,

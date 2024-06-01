@@ -8,7 +8,7 @@
     <meta name="Admin" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/src/scss/main.css">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/src/pictures/favicon.ico">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
 </head>
 
@@ -113,7 +113,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: '/src/php/default_val.php',
+                url: '/src/php/defaultVal.php',
                 success: function (key_val) {
                     for (const [key, val] of Object.entries(key_val)) {
                         if (!["autoremovetime", "autoremovetimeoption", "autoremove"].includes(key)) {
@@ -189,7 +189,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: 'changeconfig.php',
+                    url: '/src/php/changeConfig.php',
                     data: formData,
                     dataType: 'json',
                     success: function (response) {

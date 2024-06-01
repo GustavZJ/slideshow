@@ -2,7 +2,7 @@
 Version=1.0
 Name=Pictureframe
 Comment=Run my custom script
-Exec=/var/www/slideshow/pictureframe.sh
+Exec=/var/www/slideshow/pictureFrame.sh
 Icon=utilities-terminal
 Terminal=true
 Type=Application
