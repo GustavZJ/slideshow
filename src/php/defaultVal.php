@@ -45,6 +45,12 @@ function getKeyValue($filePath, $keys)
     $key_val = []; // Initialize the associative array to store values
     foreach ($keys as $key) {
         try {
+            if ($key == "upload_max_filesize") {
+                $value = preg_replace("/[^0-9]/", "", getConfigValue($filePath, $key));
+            }
+            else {
+                $value = getConfigValue($filePath, $key);    
+            }
             $value = getConfigValue($filePath, $key);
             if ($value !== null) {
                 $key_val[$key] = $value;
