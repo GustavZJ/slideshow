@@ -56,6 +56,7 @@ jQuery(document).ready(function ($) {
                     document.getElementById('uploadImageInput').dispatchEvent(new Event('change'));
 
                     document.getElementById('hiddenImageInput').value = '';
+                    allFiles.length = 0;
 
                     let errMsg = '';
                     let counter = 0;
