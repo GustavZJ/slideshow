@@ -115,7 +115,6 @@
                 type: 'POST',
                 url: '/src/php/defaultVal.php',
                 success: function (key_val) {
-                    console.log(key_val)
                     for (const [key, val] of Object.entries(key_val)) {
                         if (!["autoremovetime", "autoremovetimeoption", "autoremove"].includes(key)) {
                             document.getElementById(key).placeholder = val;
