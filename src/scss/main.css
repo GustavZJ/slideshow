@@ -19,9 +19,6 @@ body {
   top: 0;
   margin-left: 0.5svh;
 }
-#topbar #navWrapper #dropdownBtn:hover #dropdownCont {
-  display: grid;
-}
 #topbar #navWrapper #dropdownCont {
   display: none;
   position: absolute;
@@ -29,7 +26,6 @@ body {
   background-color: #C0C0C0;
 }
 #topbar #navWrapper #dropdownCont.open {
-  display: block;
   animation: growDown 300ms ease-in-out forwards;
   transform-origin: top center;
 }
@@ -92,9 +88,6 @@ body {
   margin: 0;
 }
 @media (hover: none) {
-  #topbar #navWrapper #dropdownBtn:hover #dropdownCont {
-    display: none;
-  }
   #topbar #navWrapper .expandBtn {
     display: inline;
   }
@@ -161,6 +154,7 @@ button.btnBlue,
 button.imageBtn .image-container,
 .labelBtn.imageBtn .image-container {
   position: relative;
+  z-index: -1;
 }
 button.imageBtn .image-container img,
 .labelBtn.imageBtn .image-container img {

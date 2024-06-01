@@ -25,10 +25,6 @@ body {
 		top: 0;
 		margin-left: 0.5svh;
 	
-		#dropdownBtn:hover #dropdownCont {
-			display: grid;
-		}
-	
 		#dropdownCont {
 			display: none;
 			position: absolute;
@@ -36,7 +32,6 @@ body {
 			background-color: #C0C0C0;
 		
 			&.open {
-				display: block; // Ensure it's visible when open
 				animation: growDown 300ms ease-in-out forwards;
 				transform-origin: top center;
 			}
@@ -105,23 +100,17 @@ body {
 			}
 		}
 	
-		// Style for the expand button
 		.expandBtn {
 			display: none;
 			background: none;
 			border: none;
 			font-size: 1.5rem;
 			margin: 0;
-		}
 
-		// Media query for touch devices
-		@media (hover: none) {
-			#dropdownBtn:hover #dropdownCont {
-				display: none; // Disable hover effect on touch devices
-			}
-		
-			.expandBtn {
-				display: inline; // Show the expand button on touch devices
+			@media (hover: none) {
+				& {
+					display: inline; // Show the expand button on touch devices
+				}
 			}
 		}
 	}
@@ -189,6 +178,7 @@ button,
 	&.imageBtn {
 		.image-container {
 			position: relative;
+			z-index: -1;
 
 			img {
 				width: 30svh;
