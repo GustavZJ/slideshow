@@ -79,12 +79,7 @@ jQuery(document).ready(function ($) {
             },
                 error: function () {
                     clearInterval(dots);
-                    messageFade('error', 'Noget gik galt! Prøv igen.');
-                    $('#uploadImageInput').removeAttr('disabled');
-                    $('#submitBtn').removeAttr('disabled');
-                    $('#submitBtn').val('Upload');
-                    $('#clearBtn').removeAttr('disabled');
-                    $('#uploadLabel').css('cursor', 'pointer');
+                    messageFade('error', 'Noget gik galt med konvetering! Prøv igen.');
                 }
         })
     });
