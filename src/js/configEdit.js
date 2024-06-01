@@ -121,7 +121,7 @@ import { messageFade } from "/src/js/errorMessage.js"
 
 
                 // Serialize the form data into an array of objects
-                const formArray = $(this).serialize();
+                const formArray = $(this).serializeArray();
 
                 // Convert the array of objects into a single object
                 const formData = {};
