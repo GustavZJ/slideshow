@@ -5,7 +5,7 @@ $docRoot = $_SERVER['DOCUMENT_ROOT'];
 // Load php.ini file to read max file size
 $iniFile = parse_ini_file($docRoot . "/php.ini");
 $targetDir = $docRoot . "/temp/";
-$response = array("upload" => array(), "convert" => array());
+$response = array();
 $outputFiles = array();
 
 // Convert php.ini max file size to bytes
