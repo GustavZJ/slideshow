@@ -152,8 +152,8 @@ jQuery(document).ready(function ($) {
 
                 $('#confirmBtn').attr('disabled', true);
                 $('.textInputs').each(function () {$(this).val('')});
-                $('#autoremove').data('curState', $(this).prop('checked'));
-                $('#autoremovetimeoption').data('curState', $(this).val());
+                $('#autoremove').data('curState', $('#autoremove').prop('checked'));
+                $('#autoremovetimeoption').data('curState', $('#autoremovetimeoption').val());
 
                 disableImageRemove();
                 validateInput();
