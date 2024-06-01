@@ -121,6 +121,8 @@
                         } else if (key == "autoremovetimeoption") {
                             document.getElementById(key).value = val;
                             document.getElementById(key).dataset.curState = val;
+                        } else if (key == "upload_max_size") {
+                            document.getElementById(key).value = val.substring(0, val.length - 1);
                         } else if (key == "autoremove") {
                             if (val == "true" || val == 'on') {
                                 document.getElementById(key).checked = true;
@@ -202,7 +204,7 @@
 
                             if ($(this).attr('id') == 'upload_max_filesize') {
                                 if (!$(this).attr('placeholder').endsWith('M')) {
-                                    $(this).attr('placeholder', $(this).attr('placeholder'));
+                                    $(this).attr('placeholder', $(this).attr('placeholder') + 'M');
                                 }
                             }
                         });
