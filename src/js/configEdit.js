@@ -147,7 +147,9 @@ import { messageFade } from "/src/js/errorMessage.js"
                             $(this).attr('placeholder', $(this).val());
 
                             if ($(this).attr('id') == 'upload_max_filesize') {
+                                console.log('1');
                                 if (!$(this).attr('placeholder').endsWith('M')) {
+                                    console.log('2');
                                     $(this).attr('placeholder', $(this).attr('placeholder') + 'M');
                                 }
                             }
