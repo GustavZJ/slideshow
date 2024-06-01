@@ -94,7 +94,6 @@ jQuery(document).ready(function ($) {
     });
 
     $("#configForm").submit(function (event) {
-        event.preventDefault(); // Prevent the default form submission
         $("#confirmBtn").attr('disabled', true);
         // Loading dots, so that you can see it's not frozen incase it's slow
         $("#confirmBtn").text('Opdaterer');
@@ -177,5 +176,6 @@ jQuery(document).ready(function ($) {
                 });
             }
         });
+        event.preventDefault();
     });
 });
