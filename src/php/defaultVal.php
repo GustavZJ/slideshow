@@ -40,18 +40,18 @@ function getConfigValue($filePath, $key)
 
 // Example usage
 
-function getKeyValue($filePath, $keys)
-{
+function getKeyValue($filePath, $keys) {
     $key_val = []; // Initialize the associative array to store values
     foreach ($keys as $key) {
         try {
-            if ($key == "upload_max_filesize") {
-                $value = preg_replace("/[^0-9]/", "", getConfigValue($filePath, $key));
-            }
-            else {
-                $value = getConfigValue($filePath, $key);    
-            }
             $value = getConfigValue($filePath, $key);
+            if ($key == "upload_max_filesize") {
+                if (preg_match("/(\d+)/", $value, $matches)) {
+                    $value = $matches[1];
+                } else {
+                    $value = "error";
+                }
+            }
             if ($value !== null) {
                 $key_val[$key] = $value;
             } else {
@@ -63,7 +63,6 @@ function getKeyValue($filePath, $keys)
     }
     return $key_val;
 }
-
 $config_config_data = getKeyValue($docRoot . '/config.config', array("timedelay", "autoremove", "autoremoveamount", "autoremovetime", "autoremovetimeoption", "autoremovetimepost"));
 $php_ini_data = getKeyValue($docRoot . '/php.ini', array("upload_max_filesize", "max_file_uploads"));
 $key_vals = array_merge($config_config_data, $php_ini_data);
