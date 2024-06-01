@@ -51,7 +51,7 @@ Other (Not very important):
 - Add time outs for PHP functions, incase they take too long
 - Move some JS and PHP scripts into the src dirs, for consistency
 - Change names of variables and such so they use same naming convention
-- Do something to avoid confusion about max_image_size input (It shows 'M' in placeholder, but user is not allowed to input it)
+- Do something to avoid confusion about max_image_size input (It shows 'M' in placeholder, but user is not allowed to input it) ☑
 
 Final:
 - Testing

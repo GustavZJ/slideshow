@@ -35,10 +35,16 @@ switch ($autoremovetimeoption) {
 }
 
 // Calculate post_max_size
-$post_max_size = strval(intval($maxsize) * intval($maxamount)) . "M";
+$post_max_filesize = strval(intval($maxsize) * intval($maxamount));
+if (intval($post_max_filesize) > 1024) {
+    $post_max_filesize = "20G";
+}
+else {
+    $post_max_filesize .= "M";
+}
 
 // Construct the command
-$command = escapeshellcmd($docRoot . "/src/bash/changeConfig.sh") . " " . escapeshellarg($maxsize . "M") . " " . escapeshellarg($post_max_size) . " " . escapeshellarg($maxamount) . " " . escapeshellarg($timedelay) . " " . escapeshellarg($autoremove) . " " . escapeshellarg($autoremoveamount) . " " . escapeshellarg($autoremovetime) . " " . escapeshellarg($autoremovetimepost) . " " . escapeshellarg($autoremovetimeoption);
+$command = escapeshellcmd($docRoot . "/src/bash/changeConfig.sh") . " " . escapeshellarg($maxsize . "M") . " " . escapeshellarg($post_max_filesize) . " " . escapeshellarg($maxamount) . " " . escapeshellarg($timedelay) . " " . escapeshellarg($autoremove) . " " . escapeshellarg($autoremoveamount) . " " . escapeshellarg($autoremovetime) . " " . escapeshellarg($autoremovetimepost) . " " . escapeshellarg($autoremovetimeoption);
 
 // Execute the command and capture the exit code
 $return_var = 0;
