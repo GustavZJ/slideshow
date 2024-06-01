@@ -45,13 +45,13 @@ Guide:
 - How to use admin ☑
 
 Other (Important):
-- Fix post_max_size being out of range (PHP Warning: Invalid "post_max_size" setting. Invalid quantity "4500M": value is out of range, usiing overflow backwards compatibility in Unknown on line 0)
+- Fix post_max_size being out of range (PHP Warning: Invalid "post_max_size" setting. Invalid quantity "4500M": value is out of range, usiing overflow backwards compatibility in Unknown on line 0) ☑
 
 Other (Not very important):
 - Add time outs for PHP functions, incase they take too long
-- Move some JS and PHP scripts into the src dirs, for consistency
+- Move some JS and PHP scripts into the src dirs, for consistency ☑
 - Change names of variables and such so they use same naming convention
-- Do something to avoid confusion about max_image_size input (It shows 'M' in placeholder, but user is not allowed to input it)
+- Do something to avoid confusion about max_image_size input (It shows 'M' in placeholder, but user is not allowed to input it) ☑
 
 Final:
 - Testing

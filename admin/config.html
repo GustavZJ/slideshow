@@ -160,9 +160,6 @@
                     }
                 }, 500);
 
-                if (!$('#autoremove').prop('checked')) {
-                    formData['autoremove'] = 'off';
-                }
 
                 // Temporarily enable disabled inputs
                 $(this).find('.configInputs:disabled').removeAttr('disabled');
@@ -185,6 +182,10 @@
                     formData[item.name] = item.value;
                 });
 
+                if (!$('#autoremove').prop('checked')) {
+                    formData['autoremove'] = 'off';
+                }
+
                 $.ajax({
                     type: 'POST',
                     url: '/src/php/changeConfig.php',
@@ -200,7 +201,7 @@
 
                             if ($(this).attr('id') == 'upload_max_filesize') {
                                 if (!$(this).attr('placeholder').endsWith('M')) {
-                                    $(this).attr('placeholder', $(this).attr('placeholder'));
+                                    $(this).attr('placeholder', $(this).attr('placeholder') + 'M');
                                 }
                             }
                         });
