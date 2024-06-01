@@ -11,7 +11,7 @@ apt-get install php libapache2-mod-php php-curl feh libheif1 libheif-examples im
 mkdir "/home/$(sudo -u $SUDO_USER echo $SUDO_USER)/.config/autostart/"
 mkdir uploads
 mkdir backup
-
+mkdir temp
 
 # Create cron job for auto update
 # Define the new cron job
