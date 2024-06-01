@@ -121,13 +121,13 @@ import { messageFade } from "/src/js/errorMessage.js"
 
 
                 // Serialize the form data into an array of objects
-                const formData = $(this).serialize();
+                const formArray = $(this).serialize();
 
                 // Convert the array of objects into a single object
-                // const formData = {};
-                // formArray.forEach(function (item) {
-                //     formData[item.name] = item.value;
-                // });
+                const formData = {};
+                formArray.forEach(function (item) {
+                    formData[item.name] = item.value;
+                });
 
                 if (!$('#autoremove').prop('checked')) {
                     formData['autoremove'] = 'off';
