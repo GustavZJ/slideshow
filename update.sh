@@ -1,5 +1,15 @@
 cd /var/www/slideshow
 
+is_connected() {
+    wget -q --spider http://google.com
+    return $?  # Return the exit status of wget (0 if connected, non-zero if not connected)
+}
+
+# Wait until the network is available
+while ! is_connected; do
+    sleep 10
+done
+
 oldmessage=$(git log -1 --pretty=%B)
 sudo git config --global --add safe.directory /var/www/slideshow
 
