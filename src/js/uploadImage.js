@@ -1,8 +1,7 @@
 import { messageFade } from '/src/js/errorMessage.js'
 
 let max_file_uploads = 0;
-let file_count = 0;
-// Function to run php script in background
+
 jQuery(document).ready(function ($) {
     async function createFile(filePath){
             let response = await fetch(filePath);
@@ -87,7 +86,7 @@ jQuery(document).ready(function ($) {
     
     $('#uploadForm').submit(function (event) {
         event.preventDefault(); // Prevent default form submission
-        file_count = document.getElementById('uploadImageInput').files.length;
+        const file_count = document.getElementById('uploadImageInput').files.length;
         const formData = new FormData(this); // Create FormData object
 
         $('#uploadImageInput').attr('disabled', true);
