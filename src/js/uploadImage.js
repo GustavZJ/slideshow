@@ -38,7 +38,6 @@ jQuery(document).ready(function ($) {
             processData: false,
             success: function (response) {
                 const allFiles = [];
-                console.log(response);
                 (async function () {
                     for await (const filePath of response['files']) {
                         // Add the new file to the array of files
@@ -60,19 +59,21 @@ jQuery(document).ready(function ($) {
 
                     let errMsg = '';
                     let counter = 0;
+                    let allSuccess = true;
                     
                     for (const [key, value] of Object.entries(response['errors'])) {
                         if (value.includes('success')) {
                             counter += 1;
                         } else {
                             errMsg += `${key}: ${[...value].join(' og ')}.<br>`;
+                            allSuccess = false;
                         }
                     }
 
                     if (counter > 0) {
                         errMsg = `${counter} billede(r) blev konverteret uden fejl.<br>Men:<br>${errMsg}`;
                         messageFade('error', errMsg);
-                    } else {
+                    } else if (!allSuccess) {
                         errMsg = `Fejl:<br>${errMsg}`;
                         messageFade('error', errMsg);
                     }
