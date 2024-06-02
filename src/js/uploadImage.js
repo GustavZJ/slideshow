@@ -3,6 +3,11 @@ import { messageFade } from '/src/js/errorMessage.js'
 let max_file_uploads = 0;
 
 jQuery(document).ready(function ($) {
+    $('#uploadImageInput').attr('disabled', true);
+    $('#submitBtn').attr('disabled', true);
+    $('#clearBtn').attr('disabled', true);
+    $('#uploadLabel').css('cursor', 'default');
+    
     async function createFile(filePath){
             let response = await fetch(filePath);
             let data = await response.blob();
@@ -107,6 +112,7 @@ jQuery(document).ready(function ($) {
         
         if (file_count > max_file_uploads) {
             clearInterval(dots);
+            console.log('this');
             messageFade("error", `Antallet af filer du prøver at uploade (${file_count}) overskrider grænsen sat af administratorerne (${max_file_uploads}).`);
             $('#uploadImageInput').removeAttr('disabled');
             $('#submitBtn').removeAttr('disabled');
