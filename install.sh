@@ -15,7 +15,7 @@ mkdir temp
 
 # Create cron job for auto update
 # Define the new cron job
-new_cron_job="@reboot /bin/bash /var/www/slideshow/update.sh &"
+new_cron_job="@reboot sudo /bin/bash /var/www/slideshow/update.sh &"
 
 # Get the current crontab entries
 current_cron=$(crontab -l 2>/dev/null)
@@ -29,7 +29,7 @@ if ! echo "$current_cron" | grep -F "$new_cron_job" > /dev/null; then
 
   # Add an extra line break before the comment and the new job
   updated_cron="$current_cron"$'\n'"# Update slideshow"$'\n'"$new_cron_job"
-  # update
+  
   # Install the new crontab
   echo "$updated_cron" | crontab -
 fi
