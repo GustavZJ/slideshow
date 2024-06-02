@@ -78,7 +78,6 @@ jQuery(document).ready(function ($) {
                 })();
             },
                 error: function () {
-                    clearInterval(dots);
                     messageFade('error', 'Noget gik galt med konvetering! Prøv igen.');
                 }
         })
