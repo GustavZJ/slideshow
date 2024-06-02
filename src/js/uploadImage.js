@@ -62,7 +62,7 @@ jQuery(document).ready(function ($) {
                     let allSuccess = true;
                     
                     for (const [key, value] of Object.entries(response['errors'])) {
-                        if (value.includes('success')) {
+                        if (value.toLowerCase().includes('success')) {
                             counter += 1;
                         } else {
                             errMsg += `${key}: ${[...value].join(' og ')}.<br>`;
@@ -135,7 +135,7 @@ jQuery(document).ready(function ($) {
                     let counter = 0;
 
                     for (const [key, value] of Object.entries(response)) {
-                        if (value.includes('Success')) {
+                        if (value.toLowerCase().includes('success')) {
                             counter += 1;
                         } else {
                             allSuccess = false;
