@@ -15,7 +15,7 @@ mkdir temp
 
 # Create cron job for auto update
 # Define the new cron job
-new_cron_job="@reboot /var/www/slideshow/update.sh &"
+new_cron_job="@reboot /bin/sh /var/www/slideshow/update.sh &"
 
 # Get the current crontab entries
 current_cron=$(crontab -l 2>/dev/null)
