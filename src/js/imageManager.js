@@ -302,6 +302,7 @@ function deleteFiles(fileName = null, target = null) {
     if (uploadImageInput.files.length == 0) {
         submitBtn.setAttribute('disabled', true);
         document.getElementById('clearBtn').setAttribute('disabled', true);
+        console.log('disable');
     }
 
     const maxFileUploads = amountText.innerHTML.split('/')[1];
@@ -310,6 +311,7 @@ function deleteFiles(fileName = null, target = null) {
     if (uploadImageInput.files.length <= maxFileUploads && submitBtn.disabled) {
         amountText.style.color = 'white';
         submitBtn.removeAttribute('disabled');
+        console.log('enable');
     }
 }
 
