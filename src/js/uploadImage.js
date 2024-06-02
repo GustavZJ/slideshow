@@ -70,10 +70,10 @@ jQuery(document).ready(function ($) {
                         }
                     }
 
-                    if (counter > 0) {
+                    if (!allSuccess && counter > 0) {
                         errMsg = `${counter} billede(r) blev konverteret uden fejl.<br>Men:<br>${errMsg}`;
                         messageFade('error', errMsg);
-                    } else if (!allSuccess) {
+                    } else {
                         errMsg = `Fejl:<br>${errMsg}`;
                         messageFade('error', errMsg);
                     }
