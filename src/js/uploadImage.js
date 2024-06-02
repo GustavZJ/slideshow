@@ -38,6 +38,7 @@ jQuery(document).ready(function ($) {
             processData: false,
             success: function (response) {
                 const allFiles = [];
+                console.log(response);
                 (async function () {
                     for await (const filePath of response['files']) {
                         // Add the new file to the array of files
