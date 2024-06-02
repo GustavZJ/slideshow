@@ -3,6 +3,11 @@ import { messageFade } from '/src/js/errorMessage.js'
 let max_file_uploads = 0;
 
 jQuery(document).ready(function ($) {
+    $('#uploadImageInput').attr('disabled', true);
+    $('#submitBtn').attr('disabled', true);
+    $('#clearBtn').attr('disabled', true);
+    $('#uploadLabel').css('cursor', 'default');
+    
     async function createFile(filePath){
             let response = await fetch(filePath);
             let data = await response.blob();
