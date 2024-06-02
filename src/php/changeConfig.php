@@ -23,9 +23,10 @@ $autoremove = isset($_POST['autoremove']) && $_POST['autoremove'] === "on" ? "tr
 switch ($autoremovetimeoption) {
     case "days":
         $autoremovetime = intval($autoremovetimepost);
-        $excessdays = $autoremovetime % 1200 % 31;
+        $excessdays = ($autoremovetime % 1200) % 31;
         $excessmonths = ((($autoremovetime - ($excessdays)) / 31) * 100);
         $years = ((($autoremovetime - ($autoremovetime % 12)) / 12) * 100) + $autoremovetime % 12;
+        $autoremovetime = $years * 10000 + $excessmonths * 100 + $excessdays;
         break;
     case "months":
         $autoremovetime = intval($autoremovetimepost) * 100;
