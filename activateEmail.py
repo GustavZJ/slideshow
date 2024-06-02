@@ -8,7 +8,7 @@ password = input("Input the special key from your account : ")
 receiver = input("Who is the intended recipient?: ")
 
 
-# This is obviously very safe...
+# This is obviously very safe... 
 with open("/var/www/slideshow/nothing.here", "w") as file:
     file.write(f"{email}\n{password}\n{receiver}")
 
