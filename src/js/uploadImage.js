@@ -5,7 +5,6 @@ let max_file_uploads = 0;
 jQuery(document).ready(function ($) {
     $('#submitBtn').attr('disabled', true);
     $('#clearBtn').attr('disabled', true);
-    $('#uploadLabel').css('cursor', 'default');
     
     async function createFile(filePath){
             let response = await fetch(filePath);
