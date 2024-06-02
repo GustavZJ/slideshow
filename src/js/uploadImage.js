@@ -62,6 +62,7 @@ jQuery(document).ready(function ($) {
                     let allSuccess = true;
                     
                     for (const [key, value] of Object.entries(response['errors'])) {
+                        console.log(value);
                         if (value.toLowerCase().includes('success')) {
                             counter += 1;
                         } else {
