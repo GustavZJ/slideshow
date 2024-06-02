@@ -20,23 +20,37 @@ if (!in_array($autoremovetimeoption, $valid_options)) {
 $autoremove = isset($_POST['autoremove']) && $_POST['autoremove'] === "on" ? "true" : "false";
 
 // Calculate autoremovetime based on option
+
+// Calculate autoremovetime based on option
 switch ($autoremovetimeoption) {
     case "days":
-        $autoremovetime = intval($autoremovetimepost);
-        $excessdays = $autoremovetime % 1200 % 31;
-        $excessmonths = ((($autoremovetime - ($excessdays)) / 31) * 100);
-        $years = ((($autoremovetime - ($autoremovetime % 12)) / 12) * 100) + $autoremovetime % 12;
+        $years = intdiv($autoremovetimepost, 365);
+        $remainingDaysAfterYears = $autoremovetimepost % 365;
+        $months = intdiv($remainingDaysAfterYears, 30);
+        $days = $remainingDaysAfterYears % 30;
+        $autoremovetime = $years * 10000 + $months * 100 + $days;
         break;
     case "months":
-        $autoremovetime = intval($autoremovetimepost) * 100;
-        $autoremovetime = ((($autoremovetime - ($autoremovetime % 12)) / 12) * 100) + $autoremovetime % 12;
+        $totalDays = $autoremovetimepost * 30;
+        $years = intdiv($totalDays, 365);
+        $remainingDaysAfterYears = $totalDays % 365;
+        $months = intdiv($remainingDaysAfterYears, 30);
+        $days = $remainingDaysAfterYears % 30;
+        $autoremovetime = $years * 10000 + $months * 100 + $days;
         break;
     case "years":
-        $autoremovetime = intval($autoremovetimepost) * 10000;
+        $totalDays = $autoremovetimepost * 365;
+        $years = intdiv($totalDays, 365);
+        $remainingDaysAfterYears = $totalDays % 365;
+        $months = intdiv($remainingDaysAfterYears, 30);
+        $days = $remainingDaysAfterYears % 30;
+        $autoremovetime = $years * 10000 + $months * 100 + $days;
         break;
     default:
         $autoremovetime = 600; // Default value in case of an error
 }
+
+
 if ($autoremovetime > 100000) {
     $autoremove = false;
 }
