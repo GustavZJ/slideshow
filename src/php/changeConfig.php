@@ -25,7 +25,7 @@ switch ($autoremovetimeoption) {
         $years = intdiv($autoremovetime, 365);
 
         // Remaining days after extracting years
-        $remainingDaysAfterYears = $totalDays % 365;
+        $remainingDaysAfterYears = $autoremovetime % 365;
 
         // Calculate the number of months
         $months = intdiv($remainingDaysAfterYears, 31);
@@ -33,31 +33,35 @@ switch ($autoremovetimeoption) {
         // Calculate the remaining days
         $days = $remainingDaysAfterYears % 31;
 
-
+        $autoremovetime = $years * 10000 + $months * 100 + $days;
         break;
     case "months":
         $years = intdiv($autoremovetime * 31, 365);
 
         // Remaining days after extracting years
-        $remainingDaysAfterYears = $totalDays % 365;
+        $remainingDaysAfterYears = $autoremovetime % 365;
 
         // Calculate the number of months
         $months = intdiv($remainingDaysAfterYears, 31);
 
         // Calculate the remaining days
         $days = $remainingDaysAfterYears % 31;
+
+        $autoremovetime = $years * 10000 + $months * 100 + $days;
         break;
     case "years":
         $years = intdiv($autoremovetime * 365, 365);
 
         // Remaining days after extracting years
-        $remainingDaysAfterYears = $totalDays % 365;
+        $remainingDaysAfterYears = $autoremovetime % 365;
 
         // Calculate the number of months
         $months = intdiv($remainingDaysAfterYears, 31);
 
         // Calculate the remaining days
         $days = $remainingDaysAfterYears % 31;
+
+        $autoremovetime = $years * 10000 + $months * 100 + $days;
         break;
     default:
         $autoremovetime = 600; // Default value in case of an error
