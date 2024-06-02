@@ -30,26 +30,25 @@ foreach (range(0, count($_FILES["hidden"]["name"]) - 1) as $x) {
     // Check if file is an actual image (basic check by MIME type)
     if (!strtolower($imageFileType === "heic")) {
         $uploadOk = 0;
-        $response["user"][$file][] = "Er ikke et billede";
+        $response[$file][] = "Er ikke et billede";
     }
 
     // Check if file already exists
     if (file_exists($target_file)) {
         $uploadOk = 0;
-        $response["user"][$file][] = "Eksisterer allerede";
+        $response[$file][] = "Eksisterer allerede";
     }
 
     // Check if file is too large
     if ($_FILES["hidden"]["size"][$x] > convertToBytes($iniFile["upload_max_filesize"])) {
         $uploadOk = 0;
-        $response["user"][$file][] = "Er for stor";
+        $response[$file][] = "Er for stor";
     }
 
     if ($uploadOk) {
         if (move_uploaded_file($_FILES["hidden"]["tmp_name"][$x], $target_file)) {
-            $response["user"][$file][] = "Success";
         } else {
-            $response["user"][$file][] = "Ukendt fejl :(";
+            $response[$file][] = "Ukendt fejl :(";
         }
     }
 }
@@ -62,16 +61,16 @@ function convertHeicWithHeifConvert($filePath) {
     if ($return_var === 0) {
         array_push($outputFiles, $outputPath);
         unlink($filePath);
-        $response["user"][$filePath][] = "Success";
+        $response[$filePath][] = "Success";
     } else {
-        $response["user"][$filePath][] = "Fejl";
+        $response[$filePath][] = "Fejl";
     }
 }
 
 function convertHeic() {
     global $response, $targetDir; // Add global keyword to access the response array
     if (!is_dir($targetDir)) {
-        $response["system"][$targetDir][] = "Eksistere ikke";
+        $response[$targetDir][] = "Eksistere ikke";
         return;
     }
 

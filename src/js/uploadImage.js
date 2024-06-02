@@ -59,7 +59,7 @@ jQuery(document).ready(function ($) {
 
                     let errMsg = '';
                     let counter = 0;
-
+                    
                     for (const [key, value] of Object.entries(response)) {
                         if (value.includes('success')) {
                             counter += 1;
