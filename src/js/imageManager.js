@@ -307,6 +307,7 @@ function deleteFiles(fileName = null, target = null) {
 
     const maxFileUploads = amountText.innerHTML.split('/')[1];
     amountText.innerHTML = `Billeder: ${uploadImageInput.files.length}/${maxFileUploads}`;
+    console.log(maxFileUploads);
 
     if (uploadImageInput.files.length <= maxFileUploads && submitBtn.disabled) {
         amountText.style.color = 'white';
