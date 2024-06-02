@@ -13,27 +13,6 @@ mkdir uploads
 mkdir backup
 mkdir temp
 
-# Create cron job for auto update
-# Define the new cron job
-new_cron_job="@reboot sudo /bin/bash /var/www/slideshow/update.sh &"
-
-# Get the current crontab entries
-current_cron=$(crontab -l 2>/dev/null)
-
-# Check if the job already exists
-if ! echo "$current_cron" | grep -F "$new_cron_job" > /dev/null; then
-  # Add a newline if current_cron is not empty and does not end with a newline
-  if [ -n "$current_cron" ] && [ "${current_cron: -1}" != $'\n' ]; then
-    current_cron="$current_cron"$'\n'
-  fi
-
-  # Add an extra line break before the comment and the new job
-  updated_cron="$current_cron"$'\n'"# Update slideshow"$'\n'"$new_cron_job"
-
-  # Install the new crontab
-  echo "$updated_cron" | crontab -
-fi
-
 cp installFiles/defaultphp.ini /var/www/slideshow/php.ini
 cp installFiles/defaultconfig.config /var/www/slideshow/config.config
 cp installFiles/slideshow.conf /etc/apache2/sites-available/slideshow.conf
