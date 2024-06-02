@@ -73,7 +73,7 @@ jQuery(document).ready(function ($) {
                     if (!allSuccess && counter > 0) {
                         errMsg = `${counter} billede(r) blev konverteret uden fejl.<br>Men:<br>${errMsg}`;
                         messageFade('error', errMsg);
-                    } else {
+                    } else if (!allSuccess) {
                         errMsg = `Fejl:<br>${errMsg}`;
                         messageFade('error', errMsg);
                     }
