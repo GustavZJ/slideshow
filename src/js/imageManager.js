@@ -329,7 +329,7 @@ function clearAll() {
     const maxFileUploads = amountText.innerHTML.split('/')[1];
     amountText.innerHTML = `Billeder: ${uploadImageInput.files.length}/${maxFileUploads}`;
     amountText.style.color = 'white';
-    submitBtn.removeAttribute('disabled');
+    submitBtn.setAttribute('disabled', true);
 }
 
 // Add event listeners, this ensures HTML elements can run function, while script is a module

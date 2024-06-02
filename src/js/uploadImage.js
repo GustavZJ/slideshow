@@ -112,7 +112,6 @@ jQuery(document).ready(function ($) {
         
         if (file_count > max_file_uploads) {
             clearInterval(dots);
-            console.log('this');
             messageFade("error", `Antallet af filer du prøver at uploade (${file_count}) overskrider grænsen sat af administratorerne (${max_file_uploads}).`);
             $('#uploadImageInput').removeAttr('disabled');
             $('#submitBtn').removeAttr('disabled');
