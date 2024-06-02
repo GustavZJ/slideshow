@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo bash update.sh
+
 # Source the configuration file
 source /var/www/slideshow/config.config
 
