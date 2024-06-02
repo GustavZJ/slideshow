@@ -11,6 +11,12 @@ while ! is_connected; do
 done
 
 oldmessage=$(git log -1 --pretty=%B)
+# Ensure no other git processes are running
+if [ -f .git/index.lock ]; then
+    rm .git/index.lock
+fi
+
+
 sudo git config --global --add safe.directory /var/www/slideshow
 
 git reset --hard
