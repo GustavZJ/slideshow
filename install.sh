@@ -80,21 +80,24 @@ DISALLOW_ROOT_LOGIN_REMOTELY="y"
 REMOVE_TEST_DATABASE="y"
 RELOAD_PRIVILEGE_TABLES="y"
 
+passwd 
 # Create the Expect script for mysql_secure_installation
 SECURE_MYSQL=$(expect -c "
 spawn sudo mysql_secure_installation
-expect \"Enter password for user root:\"
+expect \"Enter current password for root (enter for none): \"
 send \"$MYSQL_ROOT_PASSWORD\r\"
-expect \"Change the password for root ? ((Press y|Y for Yes, any other key for No) :\"
+expect \"Switch to unix_socket authentication [Y/n] \"
 send \"n\r\"
-expect \"Remove anonymous users? (Press y|Y for Yes, any other key for No) :\"
-send \"y\r\"
-expect \"Disallow root login remotely? (Press y|Y for Yes, any other key for No) :\"
-send \"y\r\"
-expect \"Remove test database and access to it? (Press y|Y for Yes, any other key for No) :\"
-send \"y\r\"
-expect \"Reload privilege tables now? (Press y|Y for Yes, any other key for No) :\"
-send \"y\r\"
+expect \"Change the root password? [Y/n] \"
+send \"n\r\"
+expect \"Remove anonymous users? [Y/n] \"
+send \"Y\r\"
+expect \"Disallow root login remotely? [Y/n] \"
+send \"n\r\"
+expect \"Remove test database and access to it? [Y/n] \"
+send \"Y\r\"
+expect \"Reload privilege tables now? [Y/n] \"
+send \"Y\r\"
 expect eof
 ")
 # Run the Expect script
