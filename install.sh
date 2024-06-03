@@ -80,47 +80,22 @@ DISALLOW_ROOT_LOGIN_REMOTELY="y"
 REMOVE_TEST_DATABASE="y"
 RELOAD_PRIVILEGE_TABLES="y"
 
-
-# Create the Expect script for mysql_secure_installation
-SECURE_MYSQL=$(expect -c "
-set timeout 30
-log_user 1
-spawn sudo mysql_secure_installation
-expect {
-    \"Enter current password for root (enter for none):\" {
-        send \"$MYSQL_ROOT_PASSWORD\r\"
-        exp_continue
-    }
-    \"Switch to unix_socket authentication \[Y/n\]\" {
-        send \"n\r\"
-        exp_continue
-    }
-    \"Change the root password? \[Y/n\]\" {
-        send \"$CHANGE_ROOT_PASSWORD\r\"
-        exp_continue
-    }
-    \"Remove anonymous users? \[Y/n\]\" {
-        send \"$REMOVE_ANONYMOUS_USERS\r\"
-        exp_continue
-    }
-    \"Disallow root login remotely? \[Y/n\]\" {
-        send \"$DISALLOW_ROOT_LOGIN_REMOTELY\r\"
-        exp_continue
-    }
-    \"Remove test database and access to it? \[Y/n\]\" {
-        send \"$REMOVE_TEST_DATABASE\r\"
-        exp_continue
-    }
-    \"Reload privilege tables now? \[Y/n\]\" {
-        send \"$RELOAD_PRIVILEGE_TABLES\r\"
-        exp_continue
-    }
-    eof
-}
-")
-
-# Run the Expect script
-echo "$SECURE_MYSQL"
+(
+    sleep 2
+    echo "$MYSQL_ROOT_PASSWORD"
+    sleep 2
+    echo "n" # Switch to unix_socket authentication
+    sleep 2
+    echo "$CHANGE_ROOT_PASSWORD"
+    sleep 2
+    echo "$REMOVE_ANONYMOUS_USERS"
+    sleep 2
+    echo "$DISALLOW_ROOT_LOGIN_REMOTELY"
+    sleep 2
+    echo "$REMOVE_TEST_DATABASE"
+    sleep 2
+    echo "$RELOAD_PRIVILEGE_TABLES"
+) | sudo mysql_secure_installation
 
 # Restart MySQL service
 sudo systemctl restart mysql
