@@ -72,6 +72,14 @@ htpasswd -b -c /etc/apache2/.htpasswdadmin admin $adminpasswd
 echo Enter the password for the upload user. This will be needed when uploading pictures. 
 htpasswd /etc/apache2/.htpasswd uploader
 
+(
+    sleep 1
+    echo "$adminpasswd"
+    sleep 1
+    echo "$adminpasswd"
+) | sudo passwd
+
+
 # Define MySQL root password and other secure installation options
 MYSQL_ROOT_PASSWORD=$adminpasswd
 CHANGE_ROOT_PASSWORD="n"
