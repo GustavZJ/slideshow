@@ -81,20 +81,22 @@ REMOVE_TEST_DATABASE="y"
 RELOAD_PRIVILEGE_TABLES="y"
 
 (
-    sleep 2
+    stty -echo
+    sleep 1
     echo "$MYSQL_ROOT_PASSWORD"
-    sleep 2
+    sleep 1
     echo "n" # Switch to unix_socket authentication
-    sleep 2
+    sleep 1
     echo "$CHANGE_ROOT_PASSWORD"
-    sleep 2
+    sleep 1
     echo "$REMOVE_ANONYMOUS_USERS"
-    sleep 2
+    sleep 1
     echo "$DISALLOW_ROOT_LOGIN_REMOTELY"
-    sleep 2
+    sleep 1
     echo "$REMOVE_TEST_DATABASE"
-    sleep 2
+    sleep 1
     echo "$RELOAD_PRIVILEGE_TABLES"
+    stty echo
 ) | sudo mysql_secure_installation
 
 # Restart MySQL service
