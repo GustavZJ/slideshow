@@ -22,6 +22,19 @@
         </div>
     </a>
 
+    <button id="msg1">Message 1</button>
+    <button id="msg2">Message 2</button>
+    <button id="msg3">Message 3</button>
+    
+    <script type="module" src="/src/js/errorMessage.js"></script>
+    <script type="module">
+        import {messageFade} from '/src/js/errorMessage.js'
+        window.onload = () => {
+            document.getElementById('msg1').addEventListener('click', () => messageFade('error', 'Normal message'));
+            document.getElementById('msg2').addEventListener('click', () => messageFade('error', 'Very long long long message'));
+            document.getElementById('msg3').addEventListener('click', () => messageFade('error', 'Short'));
+        }
+    </script>
     <script src="/src/js/topbar.js"></script>
 </body>
 </html>
