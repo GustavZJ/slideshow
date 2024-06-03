@@ -82,27 +82,21 @@ RELOAD_PRIVILEGE_TABLES="y"
 
 # Create the Expect script for mysql_secure_installation
 SECURE_MYSQL=$(expect -c "
-set timeout 10
 spawn sudo mysql_secure_installation
 expect \"Enter password for user root:\"
-send \"\r\"
-expect \"New password:\"
-send \"$MYSQL_ROOT_PASSWORD\r\"
-expect \"Re-enter new password:\"
 send \"$MYSQL_ROOT_PASSWORD\r\"
 expect \"Change the password for root ? ((Press y|Y for Yes, any other key for No) :\"
-send \"$CHANGE_ROOT_PASSWORD\r\"
+send \"n\r\"
 expect \"Remove anonymous users? (Press y|Y for Yes, any other key for No) :\"
-send \"$REMOVE_ANONYMOUS_USERS\r\"
+send \"y\r\"
 expect \"Disallow root login remotely? (Press y|Y for Yes, any other key for No) :\"
-send \"$DISALLOW_ROOT_LOGIN_REMOTELY\r\"
+send \"y\r\"
 expect \"Remove test database and access to it? (Press y|Y for Yes, any other key for No) :\"
-send \"$REMOVE_TEST_DATABASE\r\"
+send \"y\r\"
 expect \"Reload privilege tables now? (Press y|Y for Yes, any other key for No) :\"
-send \"$RELOAD_PRIVILEGE_TABLES\r\"
+send \"y\r\"
 expect eof
 ")
-
 # Run the Expect script
 echo "$SECURE_MYSQL"
 
