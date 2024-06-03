@@ -6,7 +6,7 @@ bash update.sh
 
 # Install dependencies
 apt-get update
-apt-get install php mariadb-server php-mysql libapache2-mod-php php-curl feh libheif1 libheif-examples imagemagick php-imagick -y
+apt-get install php mariadb-server php-mysql libapache2-mod-php php-curl feh libheif1 libheif-examples imagemagick php-imagick expect -y
 
 mkdir "/home/$(sudo -u $SUDO_USER echo $SUDO_USER)/.config/autostart/"
 mkdir uploads
@@ -67,7 +67,49 @@ adminpasswd=$adminpasswd1
 htpasswd -b -c /etc/apache2/.htpasswd admin $adminpasswd
 htpasswd -b -c /etc/apache2/.htpasswdadmin admin $adminpasswd
 
+
+
 echo Enter the password for the upload user. This will be needed when uploading pictures. 
 htpasswd /etc/apache2/.htpasswd uploader
+
+# Define MySQL root password and other secure installation options
+MYSQL_ROOT_PASSWORD=$adminpasswd
+CHANGE_ROOT_PASSWORD="n"
+REMOVE_ANONYMOUS_USERS="y"
+DISALLOW_ROOT_LOGIN_REMOTELY="y"
+REMOVE_TEST_DATABASE="y"
+RELOAD_PRIVILEGE_TABLES="y"
+
+# Create the Expect script for mysql_secure_installation
+SECURE_MYSQL=$(expect -c "
+set timeout 10
+spawn sudo mysql_secure_installation
+expect \"Enter password for user root:\"
+send \"\r\"
+expect \"New password:\"
+send \"$MYSQL_ROOT_PASSWORD\r\"
+expect \"Re-enter new password:\"
+send \"$MYSQL_ROOT_PASSWORD\r\"
+expect \"Change the password for root ? ((Press y|Y for Yes, any other key for No) :\"
+send \"$CHANGE_ROOT_PASSWORD\r\"
+expect \"Remove anonymous users? (Press y|Y for Yes, any other key for No) :\"
+send \"$REMOVE_ANONYMOUS_USERS\r\"
+expect \"Disallow root login remotely? (Press y|Y for Yes, any other key for No) :\"
+send \"$DISALLOW_ROOT_LOGIN_REMOTELY\r\"
+expect \"Remove test database and access to it? (Press y|Y for Yes, any other key for No) :\"
+send \"$REMOVE_TEST_DATABASE\r\"
+expect \"Reload privilege tables now? (Press y|Y for Yes, any other key for No) :\"
+send \"$RELOAD_PRIVILEGE_TABLES\r\"
+expect eof
+")
+
+# Run the Expect script
+echo "$SECURE_MYSQL"
+
+# Restart MySQL service
+sudo systemctl restart mysql
+
+# Output success message
+echo "MySQL secure installation completed successfully."
 
 bash update.sh
