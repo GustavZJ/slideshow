@@ -56,3 +56,9 @@ Other (Not very important):
 
 Final:
 - Testing
+
+
+
+IMPORTANT:
+- Setup root passwd auto
+- Setup mysql secure install
