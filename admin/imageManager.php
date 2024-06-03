@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="/src/scss/main.css">
 	    <link rel="icon" type="image/x-icon" href="/favicon.ico">
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+        <script type="module" src="/src/js/deleteImage.js"></script>
     </head>
     <body>
         <form id="deleteForm" method="get">
@@ -37,7 +38,6 @@
             </div>
         </form>
 
-        <script type="module" src="/src/js/deleteImage.js"></script>
         <!-- This has to be in a seperate script, otherwise, the import module will break it -->
         <script>
             // Function to allow clicking on image to check checkbox
