@@ -97,7 +97,11 @@ RELOAD_PRIVILEGE_TABLES="y"
     sleep 1
     echo "$RELOAD_PRIVILEGE_TABLES"
     stty echo
-) | sudo mysql_secure_installation
+) | (
+    stty -echo
+    sudo mysql_secure_installation
+    stty echo
+    )
 
 # Restart MySQL service
 sudo systemctl restart mysql
