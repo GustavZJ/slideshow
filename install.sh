@@ -74,29 +74,24 @@ htpasswd /etc/apache2/.htpasswd uploader
 
 # Define MySQL root password and other secure installation options
 MYSQL_ROOT_PASSWORD=$adminpasswd
-CHANGE_ROOT_PASSWORD="n"
-REMOVE_ANONYMOUS_USERS="y"
-DISALLOW_ROOT_LOGIN_REMOTELY="y"
-REMOVE_TEST_DATABASE="y"
-RELOAD_PRIVILEGE_TABLES="y"
 
-passwd 
+#passwd
 # Create the Expect script for mysql_secure_installation
 SECURE_MYSQL=$(expect -c "
 spawn sudo mysql_secure_installation
 expect \"Enter current password for root (enter for none): \"
 send \"$MYSQL_ROOT_PASSWORD\r\"
-expect \"Switch to unix_socket authentication [Y/n] \"
+expect \"Switch to unix_socket authentication \[Y/n\] \"
 send \"n\r\"
-expect \"Change the root password? [Y/n] \"
+expect \"Change the root password? \[Y/n\] \"
 send \"n\r\"
-expect \"Remove anonymous users? [Y/n] \"
+expect \"Remove anonymous users? \[Y/n\] \"
 send \"Y\r\"
-expect \"Disallow root login remotely? [Y/n] \"
+expect \"Disallow root login remotely? \[Y/n\] \"
 send \"n\r\"
-expect \"Remove test database and access to it? [Y/n] \"
+expect \"Remove test database and access to it? \[Y/n\] \"
 send \"Y\r\"
-expect \"Reload privilege tables now? [Y/n] \"
+expect \"Reload privilege tables now? \[Y/n\] \"
 send \"Y\r\"
 expect eof
 ")
