@@ -95,7 +95,7 @@ stty -echo
     echo "$REMOVE_TEST_DATABASE"
     sleep 1
     echo "$RELOAD_PRIVILEGE_TABLES"
-) | sudo mysql_secure_installation
+) | sudo mysql_secure_installation &
 stty echo
 # Restart MySQL service
 sudo systemctl restart mysql
