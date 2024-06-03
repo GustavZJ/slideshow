@@ -16,7 +16,7 @@ Config page:
 - Add settings for auto remove ☑
 - Show if auto remove is enable / disabled ☑
 - Ensure config btn enables if checkbox state is changed (Or any other) ☑
-- Show proper success / error message
+- Show proper success / error message ☑
 
 Admin page:
 - Change config settings ☑
@@ -35,12 +35,15 @@ Upload page:
 - Fix error message for when images are denied drop not appearing ☑
 - Add indicator showing max images, so you don't have to upload ☑
 - Fix .heic upload
+- Fix files not clearing from file lists in imageManager.js after upload
 
 Website:
 - Improve styling ☑
 - Full responsive for different devices (Need to test if any issue on devices)
 - Better nav (Perhaps a simple top bar with dropdown menus) ☑
 - Fix dropdown on mobile (Or don't since you can still navigate) ☑
+- Fix error dialogs stacking on top of each other ☑
+- Add proper login page
 
 Guide:
 - How to use admin ☑

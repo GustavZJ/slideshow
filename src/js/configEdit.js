@@ -48,7 +48,7 @@ function disableImageRemove() {
 }
 
 jQuery(document).ready(function ($) {
-    document.querySelectorAll('.textInputs').forEach(ele => ele.addEventListener('input', validateInput));
+    document.querySelectorAll('.textInputs').forEach(ele => ele.addEventListener('input', () => validateInput()));
     $('#autoremove').on('change', function () {
         disableImageRemove();
         validateInput();

@@ -344,7 +344,7 @@ window.onload = () => {
     uploadImageInput.addEventListener('change', event => uploadImage(event))
 
     // Add event listener to clear btn
-    document.getElementById('clearBtn').addEventListener('click', clearAll);
+    document.getElementById('clearBtn').addEventListener('click', () => clearAll());
     
     // Clear everything, to prevent potential issues on refresh
     clearAll();

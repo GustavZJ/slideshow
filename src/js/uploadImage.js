@@ -161,8 +161,8 @@ jQuery(document).ready(function ($) {
 
                     for (let i = document.getElementById('imagePreviewCont').childElementCount - 1; i >= 0; i--) {
                         document.getElementById('imagePreviewCont').children[i].remove();
-                        document.getElementById('uploadImageInput').value = '';
                     }
+                    document.getElementById('uploadImageInput').value = '';
                 },
                 error: function () {
                     clearInterval(dots);
