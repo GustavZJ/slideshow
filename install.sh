@@ -79,9 +79,8 @@ REMOVE_ANONYMOUS_USERS="y"
 DISALLOW_ROOT_LOGIN_REMOTELY="y"
 REMOVE_TEST_DATABASE="y"
 RELOAD_PRIVILEGE_TABLES="y"
-
+stty -echo
 (
-    stty -echo
     sleep 1
     echo "$MYSQL_ROOT_PASSWORD"
     sleep 1
@@ -96,13 +95,8 @@ RELOAD_PRIVILEGE_TABLES="y"
     echo "$REMOVE_TEST_DATABASE"
     sleep 1
     echo "$RELOAD_PRIVILEGE_TABLES"
-    stty echo
-) | (
-    stty -echo
-    sudo mysql_secure_installation
-    stty echo
-    )
-
+) | sudo mysql_secure_installation
+stty echo
 # Restart MySQL service
 sudo systemctl restart mysql
 
