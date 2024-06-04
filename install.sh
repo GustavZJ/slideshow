@@ -67,50 +67,31 @@ adminpasswd=$adminpasswd1
 htpasswd -b -B -c /etc/apache2/.htpasswd admin $adminpasswd
 htpasswd -b -B -c /etc/apache2/.htpasswdadmin admin $adminpasswd
 
+uploaderpasswd1="passwd1"
+uploaderpasswd2="passwd2"
+uploaderpasswd=""
 
+while [ "$uploaderpasswd1" != "$uploaderpasswd2" -a "$uploaderpasswd1" != "$adminpasswd"]; do
+    echo "Enter the password for the uploader user. This will be needed when uploading pictures. You will not be able to see what you type." 
+    stty -echo
+    read uploaderpasswd1
+    stty echo
 
-echo Enter the password for the upload user. This will be needed when uploading pictures. 
-htpasswd -B /etc/apache2/.htpasswd uploader
+    echo "Enter the same password for the uploader user again." 
+    stty -echo
+    read uploaderpasswd2
+    stty echo
 
+    if [ "$uploaderpasswd1" != "$uploaderpasswd2" ]; then
+        echo "There was an error. The process will restart."
+        echo
+    else if [ "$uploaderpasswd1" == "$adminpasswd" ]; then
+        echo "You are not allowed to use the same password for both uploader and admin. The process will restart."
+        echo
+    fi
+done
 
-# # Set root passwd
-# (
-#     sleep 1
-#     echo "$adminpasswd"
-#     sleep 1
-#     echo "$adminpasswd"
-# ) | sudo passwd
-
-
-# # Define MySQL root password and other secure installation options
-# MYSQL_ROOT_PASSWORD=$adminpasswd
-# CHANGE_ROOT_PASSWORD="n"
-# REMOVE_ANONYMOUS_USERS="y"
-# DISALLOW_ROOT_LOGIN_REMOTELY="y"
-# REMOVE_TEST_DATABASE="y"
-# RELOAD_PRIVILEGE_TABLES="y"
-# stty -echo
-# (
-#     sleep 1
-#     echo "$MYSQL_ROOT_PASSWORD"
-#     sleep 1
-#     echo "n" # Switch to unix_socket authentication
-#     sleep 1
-#     echo "$CHANGE_ROOT_PASSWORD"
-#     sleep 1
-#     echo "$REMOVE_ANONYMOUS_USERS"
-#     sleep 1
-#     echo "$DISALLOW_ROOT_LOGIN_REMOTELY"
-#     sleep 1
-#     echo "$REMOVE_TEST_DATABASE"
-#     sleep 1
-#     echo "$RELOAD_PRIVILEGE_TABLES"
-# ) | sudo mysql_secure_installation
-# stty echo
-# Restart MySQL service
-# sudo systemctl restart mysql
-
-# Output success message
-# echo "MySQL secure installation completed successfully."
+echo "Uploader password configured."
+uploaderpasswd=$uploaderpasswd1
 
 bash update.sh
