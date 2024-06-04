@@ -26,8 +26,6 @@ function get_htpasswd_credentials($file_path) {
 
 // Path to the .htpasswd file
 $htpasswd_file = '/etc/apache2/.htpasswd';
-$response = '';
-$error = '';
 
 try {
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['password'])) {
@@ -45,12 +43,13 @@ try {
             header('Location: /landing.php');
         } else {
             $response = "Invalid password.";
+            header('Content-Type: application/json');
+            echo json_encode($response);
         }
     }
 } catch (Exception $e) {
     $error = $e->getMessage();
+    header('Content-Type: application/json');
+    echo json_encode($error);
 }
-
-header('Content-Type: application/json');
-echo json_encode(array('response' => $response, 'error' => $error));
 exit();

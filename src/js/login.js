@@ -8,7 +8,7 @@ jQuery(document).ready(function ($) {
                 url: '/src/php/login.php',
                 data: $(this).serialize(),
                 success: function (response) {
-                    $('#loginText').text(response['response']);
+                    $('#loginText').text(response);
                     setTimeout(() => {
                         $('#loginText').text('');
                     }, 5000)
