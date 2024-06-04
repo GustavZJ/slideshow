@@ -10,6 +10,7 @@ jQuery(document).ready(function ($) {
                 success: function (response) {
                     // Parse the JSON response
                         if (response['redirect']) {
+                            console.log(response['redirect'])
                             window.location.href = response['redirect'];
                         } else {
                             $('#loginText').text(response['message']);
