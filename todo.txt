@@ -43,7 +43,7 @@ Website:
 - Better nav (Perhaps a simple top bar with dropdown menus) ☑
 - Fix dropdown on mobile (Or don't since you can still navigate) ☑
 - Fix error dialogs stacking on top of each other ☑
-- Add proper login page
+- Add proper login page ☑
 
 Guide:
 - How to use admin ☑
@@ -59,9 +59,3 @@ Other (Not very important):
 
 Final:
 - Testing
-
-
-
-IMPORTANT:
-- Setup root passwd auto
-- Setup mysql secure install
