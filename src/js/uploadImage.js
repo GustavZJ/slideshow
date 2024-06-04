@@ -1,4 +1,5 @@
-import { messageFade } from '/src/js/errorMessage.js'
+import { messageFade } from '/src/js/errorMessage.js';
+import { allFiles } from '/src/js/imageManager.js';
 
 let max_file_uploads = 0;
 
@@ -164,6 +165,9 @@ jQuery(document).ready(function ($) {
                         document.getElementById('imagePreviewCont').children[i].remove();
                     }
                     document.getElementById('uploadImageInput').value = '';
+                    allFiles.length = 0;
+                    document.getElementById('amountText').innerHTML = `Billeder: ${document.getElementById('uploadImageInput').files.length}/${max_file_uploads}`;
+
                 },
                 error: function () {
                     clearInterval(dots);
