@@ -47,7 +47,7 @@ try {
         }
     }
 } catch (Exception $e) {
-    echo $e->getMessage();
+    $response = $e->getMessage();
 }
 
 header('Content-Type: application/json');

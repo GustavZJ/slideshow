@@ -2,17 +2,22 @@ jQuery(document).ready(function ($) {
     $(window).on('load', function () {
         $('#loginWrapper').submit(function (event) {
             event.preventDefault();  // Prevent the default form submission
-            console.log(event);
-            console.log($(this), $(this).serialize());
+            clearTimeout();
             $.ajax({
                 type: 'POST',
                 url: '/src/php/login.php',
                 data: $(this).serialize(),
                 success: function (response) {
-                    console.log(response);
+                    $('#loginText').text(response);
+                    setTimeout(() => {
+                        $('#loginText').text()
+                    }, 5000)
                 },
                 error: function (response) {
-                    console.log(response);
+                    $('#loginText').text(response);
+                    setTimeout(() => {
+                        $('#loginText').text()
+                    }, 5000)
                 }
             });
         });
