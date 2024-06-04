@@ -26,6 +26,8 @@ function get_htpasswd_credentials($file_path) {
 
 // Path to the .htpasswd file
 $htpasswd_file = '/etc/apache2/.htpasswd';
+$response = '';
+$error = '';
 
 try {
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['password'])) {
