@@ -12,7 +12,13 @@
     <script type="module" src="/src/js/uploadImage.js"></script>
 </head>
 
+<?php
+session_start();
 
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin' || $_SESSION['role'] !== 'uploader') {
+    header("Location: ../index.html");
+}
+?>
 
 <body>
     <div id="imageUploadCont">

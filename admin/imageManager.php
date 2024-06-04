@@ -14,12 +14,11 @@
 </head>
 
 <?php
-    session_start();
+session_start();
 
-    if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-        header("Location: ../index.html");
-        exit();
-    }
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../index.html");
+}
 ?>
 
     <body>
