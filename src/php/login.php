@@ -26,6 +26,7 @@ function get_htpasswd_credentials($file_path) {
 
 // Path to the .htpasswd file
 $htpasswd_file = '/etc/apache2/.htpasswd';
+$response = '';
 
 try {
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['password'])) {
@@ -51,3 +52,4 @@ try {
 
 header('Content-Type: application/json');
 echo json_encode($response);
+exit();
