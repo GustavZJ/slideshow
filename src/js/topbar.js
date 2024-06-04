@@ -53,7 +53,7 @@ for (const [key, path] of Object.entries(navPaths)) {
 }
 topbar.appendChild(navWrapper);
 
-const logoutWrapper = createNewElement('div', '<p id="adminStatus">Admin: X</p><button class="btnWhite" id="logoutBtn">Log ud</button>', '', 'logoutWrapper');
+const logoutWrapper = createNewElement('div', '<button class="btnWhite" id="logoutBtn">Log ud</button>', '', 'logoutWrapper');
 topbar.appendChild(logoutWrapper);
 
 document.body.prepend(topbar);

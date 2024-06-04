@@ -32,5 +32,6 @@ if (!isset($_SESSION['role']) || !( $_SESSION['role'] == 'admin' || $_SESSION['r
     </a>
     
     <script src="/src/js/topbar.js"></script>
+    <script src="/src/js/logout.js"></script>
 </body>
 </html>

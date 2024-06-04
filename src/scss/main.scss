@@ -114,6 +114,16 @@ body {
 			}
 		}
 	}
+
+	// Log out styling
+	#logoutWrapper {
+		position: absolute;
+		right: 0;
+		height: 100%;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center
+	}
 }
 
 // Class to add pointer icon to ele
