@@ -11,13 +11,13 @@ jQuery(document).ready(function ($) {
                     $('#loginText').text(response);
                     setTimeout(() => {
                         $('#loginText').text()
-                    }, 5000)
+                    }, 500)
                 },
                 error: function (response) {
                     $('#loginText').text(response);
                     setTimeout(() => {
                         $('#loginText').text()
-                    }, 5000)
+                    }, 500)
                 }
             });
         });
