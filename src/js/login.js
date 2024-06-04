@@ -9,12 +9,10 @@ jQuery(document).ready(function ($) {
                 data: $(this).serialize(),
                 success: function (response) {
                     // Parse the JSON response
-                        const jsonResponse = JSON.parse(response);
-                        console.log(jsonResponse, response);
-                        if (jsonResponse['redirect']) {
-                            window.location.href = jsonResponse['redirect'];
+                        if (response['redirect']) {
+                            window.location.href = response['redirect'];
                         } else {
-                            $('#loginText').text(jsonResponse['message']);
+                            $('#loginText').text(response['message']);
                         }
                     setTimeout(() => {
                         $('#loginText').text('');
