@@ -8,7 +8,6 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="icon" type="image/x-icon" href="/src/pictures/favicon.ico">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
-    <script src="/src/js/logout.js"></script>
     <script type="module" src="/src/js/imageManager.js"></script>
     <script type="module" src="/src/js/uploadImage.js"></script>
 </head>
