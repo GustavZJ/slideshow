@@ -32,27 +32,26 @@ try {
         $password = $_POST['password'];
         $credentials = get_htpasswd_credentials($htpasswd_file);
 
-        // Check user credentials
+
         if (isset($credentials['uploader']) && password_verify($password, $credentials['uploader'])) {
             $_SESSION['role'] = 'uploader';
             header('Location: /landing.php');
-            exit(); // Ensure the script stops executing here
+            exit;
         }
-        // Check admin credentials
         elseif (isset($credentials['admin']) && password_verify($password, $credentials['admin'])) {
             $_SESSION['role'] = 'admin';
             header('Location: /landing.php');
-            exit(); // Ensure the script stops executing here
+            exit;
         } else {
             $response = "Invalid password.";
             header('Content-Type: application/json');
             echo json_encode($response);
-            exit(); // Ensure the script stops executing here
+            exit;
         }
     }
 } catch (Exception $e) {
     $error = $e->getMessage();
     header('Content-Type: application/json');
     echo json_encode($error);
-    exit(); // Ensure the script stops executing here
+    exit;
 }
