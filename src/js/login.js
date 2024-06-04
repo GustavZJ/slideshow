@@ -1,6 +1,7 @@
 jQuery(document).ready(function ($) {
     $(window).on('load', function () {
         $('#loginWrapper').submit(function (event) {
+            event.preventDefault();  // Prevent the default form submission
             clearTimeout();
             $.ajax({
                 type: 'POST',
