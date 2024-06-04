@@ -12,6 +12,35 @@ body {
 	margin: 0;
 }
 
+#loginWrapper {
+	display: grid;
+	margin: auto;
+	width: fit-content;
+	grid-template-columns: auto;
+
+	& > * {
+		margin: 0.25svh;
+	}
+
+	#inputWrapper {
+		display: flex;
+	}
+
+	input[type=text] {
+		font-size: 1em;
+	}
+
+	input[type=submit] {
+		margin-left: 0.5svh;
+		font-size: 1em;
+		padding: 0.15vw 0.5svh;
+		border-radius: 1em;
+		border: 0;
+		transition: background-color 0.1s ease;
+		cursor: pointer;
+	}
+}
+
 // Top bar ele
 #topbar {
 	height: 6svh;

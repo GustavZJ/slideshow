@@ -7,6 +7,31 @@ body {
   margin: 0;
 }
 
+#loginWrapper {
+  display: grid;
+  margin: auto;
+  width: fit-content;
+  grid-template-columns: auto;
+}
+#loginWrapper > * {
+  margin: 0.25svh;
+}
+#loginWrapper #inputWrapper {
+  display: flex;
+}
+#loginWrapper input[type=text] {
+  font-size: 1em;
+}
+#loginWrapper input[type=submit] {
+  margin-left: 0.5svh;
+  font-size: 1em;
+  padding: 0.15vw 0.5svh;
+  border-radius: 1em;
+  border: 0;
+  transition: background-color 0.1s ease;
+  cursor: pointer;
+}
+
 #topbar {
   height: 6svh;
   width: 100%;

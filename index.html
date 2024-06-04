@@ -7,14 +7,16 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
     <link rel="stylesheet" href="src/scss/main.css">
 	<link rel="icon" type="image/x-icon" href="/src/pictures/favicon.ico">
-    <title>Logind side</title>
+    <title>Log ind</title>
 </head>
 <body>
-    <h2>Logind side</h2>
-    <form action="/src/php/login.php" method="post">
-        <label for="password">Kodeord:</label><br>
-        <input type="password" id="password" name="password" placeholder="Indtast kodeord...">
-        <input type="submit" value="Login">
+    <h2>Log ind</h2>
+    <form id="loginWrapper" action="/src/php/login.php" method="post">
+        <label for="password">Kodeord:</label>
+        <div id="inputWrapper">
+            <input type="password" id="password" name="password" placeholder="Indtast kodeord...">
+            <input type="submit" value="Log ind">
+        </div>
     </form>
 </body>
 </html>
