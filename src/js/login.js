@@ -9,16 +9,13 @@ jQuery(document).ready(function ($) {
                 data: $(this).serialize(),
                 success: function (response) {
                     // Parse the JSON response
-                    try {
                         const jsonResponse = JSON.parse(response);
-                        if (jsonResponse.redirect) {
-                            window.location.href = jsonResponse.redirect;
+                        console.log(jsonResponse, response);
+                        if (jsonResponse['redirect']) {
+                            window.location.href = jsonResponse['redirect'];
                         } else {
-                            $('#loginText').text(jsonResponse.message || response);
+                            $('#loginText').text(jsonResponse['message']);
                         }
-                    } catch (e) {
-                        $('#loginText').text('Noget gik galt! Prøv igen. 1');
-                    }
                     setTimeout(() => {
                         $('#loginText').text('');
                     }, 5000);
