@@ -1,3 +1,3 @@
 <?php
 unset($_SESSION['role']);
-Header('Location: /index.html');
+header('Location: /index.html');
