@@ -132,7 +132,7 @@ jQuery(document).ready(function ($) {
                     $('#uploadLabel').css('cursor', 'pointer');
                     $('#submitBtn').attr('disabled', true);
                     $('#clearBtn').attr('disabled', true);
-                    $('.deleteImageBtn').each($(this).removeAttr('disabled'));
+                    $('.deleteImageBtn').each(function () {$(this).removeAttr('disabled')});
 
                     let allSuccess = true;
                     let errMsg = '';
