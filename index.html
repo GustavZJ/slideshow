@@ -1,14 +1,19 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="dk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login page</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+    <link rel="stylesheet" href="src/scss/main.css">
+	<link rel="icon" type="image/x-icon" href="/src/pictures/favicon.ico">
+    <title>Logind side</title>
 </head>
 <body>
-    <h2>Login Page</h2>
+    <h2>Logind side</h2>
     <form action="/src/php/login.php" method="post">
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password"><br><br>
+        <label for="password">Kodeord:</label><br>
+        <input type="password" id="password" name="password" placeholder="Indtast kodeord...">
         <input type="submit" value="Login">
     </form>
 </body>
