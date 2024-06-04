@@ -6,6 +6,7 @@ jQuery(document).ready(function ($) {
         url: '/src/php/getRole.php',
         success: function (response) {
             role = response;
+            console.log(role);
              // Remember to set the main page of subsites as index, then use the key of the main site so get the name
             const navPaths = {
                 'Hjem': '/landing.php',
