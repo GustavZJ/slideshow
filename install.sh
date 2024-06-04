@@ -71,7 +71,7 @@ uploaderpasswd1="passwd1"
 uploaderpasswd2="passwd2"
 uploaderpasswd=""
 
-while [ "$uploaderpasswd1" != "$uploaderpasswd2" -a "$uploaderpasswd1" != "$adminpasswd"]; do
+while [ "$uploaderpasswd1" != "$uploaderpasswd2" -a "$uploaderpasswd1" != "$adminpasswd" ]; do
     echo "Enter the password for the uploader user. This will be needed when uploading pictures. You will not be able to see what you type." 
     stty -echo
     read uploaderpasswd1
@@ -85,7 +85,7 @@ while [ "$uploaderpasswd1" != "$uploaderpasswd2" -a "$uploaderpasswd1" != "$admi
     if [ "$uploaderpasswd1" != "$uploaderpasswd2" ]; then
         echo "There was an error. The process will restart."
         echo
-    else if [ "$uploaderpasswd1" == "$adminpasswd" ]; then
+    elif [ "$uploaderpasswd1" == "$adminpasswd" ]; then
         echo "You are not allowed to use the same password for both uploader and admin. The process will restart."
         echo
     fi
