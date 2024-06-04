@@ -35,12 +35,12 @@ try {
 
         if (isset($credentials['uploader']) && password_verify($password, $credentials['uploader'])) {
             $_SESSION['role'] = 'uploader';
-            header('Location: /landing.php');
+            header('Location: landing.php');
             exit;
         }
         elseif (isset($credentials['admin']) && password_verify($password, $credentials['admin'])) {
             $_SESSION['role'] = 'admin';
-            header('Location: /landing.php');
+            header('Location: landing.php');
             exit;
         } else {
             $response = "Invalid password.";
