@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
-    $(window).load(function () {
-        $('loginBtn').submit(function (event) {
+    // $(#loginBtn).load(function () {
+        $('#loginBtn').submit(function (event) {
             event.preventDefault();
             $.ajax({
                 type: 'POST',
@@ -16,5 +16,5 @@ jQuery(document).ready(function ($) {
                 }
             });
         });
-    })
+    // })
 })
