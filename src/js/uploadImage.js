@@ -87,7 +87,6 @@ jQuery(document).ready(function ($) {
     });
     
     $('#uploadForm').submit(function (event) {
-        console.log(allFiles);
         event.preventDefault(); // Prevent default form submission
         const file_count = document.getElementById('uploadImageInput').files.length;
         const formData = new FormData(this); // Create FormData object
@@ -165,6 +164,7 @@ jQuery(document).ready(function ($) {
                         document.getElementById('imagePreviewCont').children[i].remove();
                     }
                     document.getElementById('uploadImageInput').value = '';
+                    allFiles.length = 0;
                 },
                 error: function () {
                     clearInterval(dots);
