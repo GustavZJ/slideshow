@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-    // $(#loginBtn).load(function () {
+    $('#loginBtn').load(function () {
         $('#loginBtn').submit(function (event) {
             event.preventDefault();
             $.ajax({
@@ -16,5 +16,5 @@ jQuery(document).ready(function ($) {
                 }
             });
         });
-    // })
+    })
 })
