@@ -28,6 +28,7 @@ jQuery(document).ready(function ($) {
 
             for (const [key, path] of Object.entries(navPaths)) {
                 if (typeof(path) == 'object' && role == 'admin') {	
+                    console.log('hello')
                     for (const [subkey, subpath] of Object.entries(path)) {
                         if (subkey == 'index') {
                             const navEle = createNewElement('a', key, 'navBtns', 'dropdownBtn');
