@@ -8,6 +8,7 @@
     <link rel="icon" type="image/x-icon" href="/src/pictures/favicon.ico">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+    <script src="/src/js/logout.js"></script>
     <script type="module" src="/src/js/configEdit.js"></script>
 </head>
 <?php
