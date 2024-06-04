@@ -4,7 +4,7 @@ jQuery(document).ready(function ($) {
             type: 'POST',
             url: '/src/php/logout.php',
             success: function() {
-                window.location.pathname('/index.html');
+                window.location.pathname = '/index.html';
             }
         })
     })
