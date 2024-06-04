@@ -165,6 +165,8 @@ jQuery(document).ready(function ($) {
                     }
                     document.getElementById('uploadImageInput').value = '';
                     allFiles.length = 0;
+                    document.getElementById('amountText').innerHTML = `Billeder: ${document.getElementById('uploadImageInput').files.length}/${max_file_uploads}`;
+
                 },
                 error: function () {
                     clearInterval(dots);
