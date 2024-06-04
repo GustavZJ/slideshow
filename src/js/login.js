@@ -9,7 +9,7 @@ jQuery(document).ready(function ($) {
                 data: $(this).serialize(),
                 success: function (response) {
                     console.log(response)
-                    if (response['redirect']) {
+                    if (response.redirect) {
                         window.location.href = response['redirect'];
                     } else {
                         $('#loginText').text(response['message']);
