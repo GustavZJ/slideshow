@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sudo rm temp/*
 sudo bash update.sh
 
 # Source the configuration file
