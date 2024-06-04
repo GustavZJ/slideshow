@@ -1,4 +1,5 @@
-import { messageFade } from '/src/js/errorMessage.js'
+import { messageFade } from '/src/js/errorMessage.js';
+import { allFiles } from '/src/js/imageManager.js';
 
 let max_file_uploads = 0;
 
@@ -86,6 +87,7 @@ jQuery(document).ready(function ($) {
     });
     
     $('#uploadForm').submit(function (event) {
+        console.log(allFiles);
         event.preventDefault(); // Prevent default form submission
         const file_count = document.getElementById('uploadImageInput').files.length;
         const formData = new FormData(this); // Create FormData object

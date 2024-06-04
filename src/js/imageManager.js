@@ -1,4 +1,5 @@
 import { messageFade } from "./errorMessage.js";
+export { allFiles };
 
 // Image manager
 const uploadImageFile = document.getElementById('uploadImageFile');
