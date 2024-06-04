@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-    const user = '@Request.RequestContext.HttpContext.Session["role"]';
+    const user = '@Session["role"]';
     console.log(user);
 
     // Remember to set the main page of subsites as index, then use the key of the main site so get the name
