@@ -8,13 +8,12 @@ jQuery(document).ready(function ($) {
                 url: '/src/php/login.php',
                 data: $(this).serialize(),
                 success: function (response) {
-                    // Parse the JSON response
-                        if (response['redirect']) {
-                            console.log(response['redirect'])
-                            window.location.href = response['redirect'];
-                        } else {
-                            $('#loginText').text(response['message']);
-                        }
+                    console.log(response)
+                    if (response['redirect']) {
+                        window.location.href = response['redirect'];
+                    } else {
+                        $('#loginText').text(response['message']);
+                    }
                     setTimeout(() => {
                         $('#loginText').text('');
                     }, 5000);
