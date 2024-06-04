@@ -5,6 +5,8 @@ jQuery(document).ready(function ($) {
             type: 'POST',
             url: '/src/php/login.php',
             data: $(this).serialize(),
+            contentType: false,
+            processData: false,
             success: function (response) {
                 console.log(response);
             },
