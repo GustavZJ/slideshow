@@ -15,7 +15,7 @@
     session_start();
 
     echo $_SESSION['role'];
-    if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'uploader') {
+    if (isset($_SESSION['role']) && ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'uploader')) {
         header("Location: /landing.php");
     }
     ?>
