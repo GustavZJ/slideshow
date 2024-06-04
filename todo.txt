@@ -34,8 +34,8 @@ Upload page:
 - Add counter to show how many images very uploaded succesfully, whenever an image encounters an error while uploading ☑
 - Fix error message for when images are denied drop not appearing ☑
 - Add indicator showing max images, so you don't have to upload ☑
-- Fix .heic upload
-- Fix files not clearing from file lists in imageManager.js after upload
+- Fix .heic upload ☑
+- Fix files not clearing from file lists in imageManager.js after upload ☑
 
 Website:
 - Improve styling ☑
