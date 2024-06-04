@@ -1,12 +1,9 @@
 jQuery(document).ready(function ($) {
-    let role;
-
     $.ajax({
         type: 'POST',
         url: '/src/php/getRole.php',
-        success: function (response) {
-            role = response;
-             // Remember to set the main page of subsites as index, then use the key of the main site so get the name
+        success: function (role) {
+            // Remember to set the main page of subsites as index, then use the key of the main site so get the name
             const navPaths = {
                 'Hjem': '/landing.php',
                 'Upload': '/upload/',
@@ -133,17 +130,17 @@ jQuery(document).ready(function ($) {
                     }
                 });
             }
+
+            $('#logoutBtn').click(function () {
+                console.log('click logout')
+                $.ajax({
+                    type: 'POST',
+                    url: '/src/php/logout.php',
+                    success: function() {
+                        window.location.pathname = '/index.html';
+                    }
+                })
+            })
         }
     });
-
-    $('#logoutBtn').click(function () {
-        console.log('click logout')
-        $.ajax({
-            type: 'POST',
-            url: '/src/php/logout.php',
-            success: function() {
-                window.location.pathname = '/index.html';
-            }
-        })
-    })
 });
