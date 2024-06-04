@@ -15,7 +15,6 @@ session_start();
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../index.html");
     unset($_SESSION['role']);
-    exit();
 }
 ?>
 
