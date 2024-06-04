@@ -1,11 +1,11 @@
 // Remember to set the main page of subsites as index, then use the key of the main site so get the name
 const navPaths = {
-	'Hjem': '/',
+	'Hjem': '/landing.php',
 	'Upload': '/upload/',
 	'Admin': {
 		'index': '/admin/',
 		'Billedmanager': '/admin/imageManager.php',
-		'Konfig': '/admin/config.html'
+		'Konfig': '/admin/config.php'
 	}
 }
 
