@@ -1,6 +1,7 @@
 jQuery(document).ready(function ($) {
     $(window).load(function () {
         $('#loginBtn').submit(function (event) {
+            console.log(event);
             console.log($(this), $(this).serialize);
             $.ajax({
                 type: 'POST',
