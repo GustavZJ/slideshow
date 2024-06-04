@@ -35,23 +35,23 @@ try {
 
         if (isset($credentials['uploader']) && password_verify($password, $credentials['uploader'])) {
             $_SESSION['role'] = 'uploader';
-            header('Location: /landing.php'.'user');
+            header('Location: /landing.php');
             exit;
         }
         elseif (isset($credentials['admin']) && password_verify($password, $credentials['admin'])) {
             $_SESSION['role'] = 'admin';
-            header('Location: /landing.php'.'admin');
+            header('Location: /landing.php');
             exit;
         } else {
             $response = "Invalid password.";
             header('Content-Type: application/json');
-            echo json_encode($response.'incorrect');
+            echo json_encode($response);
             exit;
         }
     }
 } catch (Exception $e) {
     $error = $e->getMessage();
     header('Content-Type: application/json');
-    echo json_encode($error.'error');
+    echo json_encode($error);
     exit;
 }
