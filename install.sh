@@ -71,7 +71,7 @@ uploaderpasswd1="passwd1"
 uploaderpasswd2="passwd2"
 uploaderpasswd=""
 
-while [ "$uploaderpasswd1" != "$uploaderpasswd2" -a "$uploaderpasswd1" != "$adminpasswd"]; do
+while [ "$uploaderpasswd1" != "$uploaderpasswd2" -a "$uploaderpasswd1" != "$adminpasswd" ]; do
     echo "Enter the password for the uploader user. This will be needed when uploading pictures. You will not be able to see what you type." 
     stty -echo
     read uploaderpasswd1
