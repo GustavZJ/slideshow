@@ -17,7 +17,7 @@ jQuery(document).ready(function ($) {
                             $('#loginText').text(jsonResponse.message || response);
                         }
                     } catch (e) {
-                        $('#loginText').text('Noget gik galt! Prøv igen.');
+                        $('#loginText').text('Noget gik galt! Prøv igen. 1');
                     }
                     setTimeout(() => {
                         $('#loginText').text('');
