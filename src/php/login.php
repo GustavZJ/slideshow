@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start(); // Start output buffering
 
 // Function to read the .htpasswd file and return an associative array of username => hashed_password
 function get_htpasswd_credentials($file_path) {
@@ -32,26 +33,30 @@ try {
         $password = $_POST['password'];
         $credentials = get_htpasswd_credentials($htpasswd_file);
 
-
+        // Check user credentials
         if (isset($credentials['uploader']) && password_verify($password, $credentials['uploader'])) {
             $_SESSION['role'] = 'uploader';
             header('Location: /landing.php');
-            exit();
+            ob_end_flush(); // Flush the output buffer
+            exit(); // Ensure no further code is executed
         }
+        // Check admin credentials
         elseif (isset($credentials['admin']) && password_verify($password, $credentials['admin'])) {
             $_SESSION['role'] = 'admin';
             header('Location: /landing.php');
-            exit();
+            ob_end_flush(); // Flush the output buffer
+            exit(); // Ensure no further code is executed
         } else {
-            $response = "Invalid password.";
-            header('Content-Type: application/json');
-            echo json_encode($response);
-            exit();
+            $response = ["error" => "Invalid password."];
         }
     }
 } catch (Exception $e) {
-    $error = $e->getMessage();
-    header('Content-Type: application/json');
-    echo json_encode($error);
-    exit();
+    $response = ["error" => $e->getMessage()];
 }
+
+if (isset($response)) {
+    header('Content-Type: application/json');
+    echo json_encode($response);
+    ob_end_flush(); // Flush the output buffer
+}
+?>
