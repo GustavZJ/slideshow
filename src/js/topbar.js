@@ -1,4 +1,4 @@
-const session = sessionStorage.getItem('phpsessid');
+const session = sessionStorage.getItem('PHPSESSID');
 const role = session['role'];
 console.log(session, role);
 
@@ -96,13 +96,13 @@ if (role == 'Admin') {
     const dropdownCont = document.getElementById('dropdownCont');
     const expandDropdownBtn = document.getElementById('expandDropdownBtn');
     let hideTimer;
-    
+
     dropdownBtn.addEventListener('mouseenter', () => {
         dropdownCont.style.display = 'grid';
         dropdownCont.classList.remove('close');
         dropdownCont.classList.add('open');
     });
-    
+
     dropdownBtn.addEventListener('mouseleave', () => {
         dropdownCont.classList.remove('open');
         dropdownCont.classList.add('close');
@@ -111,7 +111,7 @@ if (role == 'Admin') {
             dropdownCont.style.display = 'none';
         }, 300);
     });
-    
+
     // Handle click event for mobile devices
     expandDropdownBtn.addEventListener('click', (e) => {
         e.preventDefault(); // Prevent the default button action
