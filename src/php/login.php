@@ -55,4 +55,5 @@ try {
     // echo json_encode($error);
     exit();
 }
+exit();
 ?>
