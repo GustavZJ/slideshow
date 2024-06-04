@@ -42,10 +42,12 @@ try {
             $_SESSION['role'] = 'admin';
             header('Location: /landing.php');
         } else {
-            echo "Invalid password.";
+            $response = "Invalid password.";
         }
     }
 } catch (Exception $e) {
     echo $e->getMessage();
 }
-?>
+
+header('Content-Type: application/json');
+echo json_encode($response);
