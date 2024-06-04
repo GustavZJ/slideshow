@@ -44,15 +44,15 @@ try {
             exit();
         } else {
             $response = "Invalid password.";
-            header('Content-Type: application/json');
-            echo json_encode($response);
+            // header('Content-Type: application/json');
+            // echo json_encode($response);
             exit();
         }
     }
 } catch (Exception $e) {
     $error = $e->getMessage();
-    header('Content-Type: application/json');
-    echo json_encode($error);
+    // header('Content-Type: application/json');
+    // echo json_encode($error);
     exit();
 }
 ?>
