@@ -1,7 +1,6 @@
-jQuery(document).ready(function ($) {
+jQuery(window).load(function ($) {
     $('loginBtn').submit(function (event) {
         event.preventDefault();
-        console.log('hello')
         $.ajax({
             type: 'POST',
             url: '/src/php/login.php',
