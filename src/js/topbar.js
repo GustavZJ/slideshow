@@ -29,7 +29,7 @@ jQuery(document).ready(function ($) {
     let dropdownEle
     
     for (const [key, path] of Object.entries(navPaths)) {
-        if (typeof(path) == 'object' && role == 'Admin') {	
+        if (typeof(path) == 'object' && role == 'admin') {	
             for (const [subkey, subpath] of Object.entries(path)) {
                 if (subkey == 'index') {
                     const navEle = createNewElement('a', key, 'navBtns', 'dropdownBtn');
@@ -97,7 +97,7 @@ jQuery(document).ready(function ($) {
         return newEle;
     }
     
-    if (role == 'Admin') {
+    if (role == 'admin') {
         // Dropdown menu for non-mobile devices
         const dropdownBtn = document.getElementById('dropdownBtn');
         const dropdownCont = document.getElementById('dropdownCont');
