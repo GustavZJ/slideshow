@@ -10,7 +10,14 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
     <script type="module" src="/src/js/configEdit.js"></script>
 </head>
+<?php
+session_start();
 
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../index.html");
+    exit();
+}
+?>
 <body>
     <form id="configForm" method="get" enctype="multipart/form-data">
         <div id="configCont">

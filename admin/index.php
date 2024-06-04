@@ -9,6 +9,15 @@
     <link rel="icon" type="image/x-icon" href="/src/pictures/favicon.ico">
 </head>
 
+<?php
+session_start();
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../index.html");
+    exit();
+}
+?>
+
 <body>
     <a class="labelBtn imageBtn" href="/admin/imageManager.php">
         <div class="image-container">

@@ -11,6 +11,9 @@
     <script type="module" src="/src/js/imageManager.js"></script>
     <script type="module" src="/src/js/uploadImage.js"></script>
 </head>
+
+
+
 <body>
     <div id="imageUploadCont">
         <form id="uploadForm" method="get" enctype="multipart/form-data">

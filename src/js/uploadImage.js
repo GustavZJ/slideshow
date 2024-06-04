@@ -77,6 +77,7 @@ jQuery(document).ready(function ($) {
                         errMsg = `Fejl:<br>${errMsg}`;
                         messageFade('error', errMsg);
                     }
+                    
                 })();
             },
                 error: function () {
