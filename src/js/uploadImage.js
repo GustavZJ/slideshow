@@ -96,7 +96,7 @@ jQuery(document).ready(function ($) {
         $('#submitBtn').attr('disabled', true);
         $('#clearBtn').attr('disabled', true);
         $('#uploadLabel').css('cursor', 'default');
-        $('.deleteImageBtn').each($(this).attr('disabled', true));
+        $('.deleteImageBtn').each(function () {$(this).attr('disabled', true)});
         
         // Loading dots, so that you can see it's not frozen incase it's slow
         $("#submitBtn").val('Uploader');
@@ -179,7 +179,7 @@ jQuery(document).ready(function ($) {
                     $('#submitBtn').val('Upload');
                     $('#clearBtn').removeAttr('disabled');
                     $('#uploadLabel').css('cursor', 'pointer');
-                    $('.deleteImageBtn').each($(this).removeAttr('disabled'));
+                    $('.deleteImageBtn').each(function () {$(this).removeAttr('disabled')});
                 }
             });
         }
