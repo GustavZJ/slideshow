@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-    $('#loginBtn').load(function () {
+    $(window).load(function () {
         $('#loginBtn').submit(function (event) {
             event.preventDefault();
             $.ajax({
