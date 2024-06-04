@@ -35,12 +35,14 @@ try {
         // Check user credentials
         if (isset($credentials['uploader']) && password_verify($password, $credentials['uploader'])) {
             $_SESSION['role'] = 'uploader';
+            header('Content-Type: application/json');
             echo json_encode(['redirect' => '/landing.php']);
             exit();
         }
         // Check admin credentials
         elseif (isset($credentials['admin']) && password_verify($password, $credentials['admin'])) {
             $_SESSION['role'] = 'admin';
+            header('Content-Type: application/json');
             echo json_encode(['redirect' => '/landing.php']);
             exit();
         } else {
