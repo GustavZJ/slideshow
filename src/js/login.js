@@ -1,8 +1,9 @@
 jQuery(document).ready(function ($) {
-    $(window).load(function () {
-        $('#loginBtn').submit(function (event) {
+    $(window).on('load', function () {
+        $('#loginWrapper').submit(function (event) {
+            event.preventDefault();  // Prevent the default form submission
             console.log(event);
-            console.log($(this), $(this).serialize);
+            console.log($(this), $(this).serialize());
             $.ajax({
                 type: 'POST',
                 url: '/src/php/login.php',
@@ -14,7 +15,6 @@ jQuery(document).ready(function ($) {
                     console.log(response);
                 }
             });
-            event.preventDefault();
         });
-    })
-})
+    });
+});
