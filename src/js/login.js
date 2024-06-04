@@ -17,14 +17,14 @@ jQuery(document).ready(function ($) {
                             $('#loginText').text(jsonResponse.message || response);
                         }
                     } catch (e) {
-                        $('#loginText').text('Invalid response from server');
+                        $('#loginText').text('Noget gik galt! Prøv igen.');
                     }
                     setTimeout(() => {
                         $('#loginText').text('');
                     }, 5000);
                 },
                 error: function () {
-                    $('#loginText').text('Noget gik galt! Prøv igen');
+                    $('#loginText').text('Noget gik galt! Prøv igen.');
                     setTimeout(() => {
                         $('#loginText').text('');
                     }, 5000);

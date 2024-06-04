@@ -44,7 +44,7 @@ try {
             echo json_encode(['redirect' => '/landing.php']);
             exit();
         } else {
-            $response = ["message" => "Invalid password."];
+            $response = ["message" => "Forkert kodeord."];
         }
     }
 } catch (Exception $e) {
