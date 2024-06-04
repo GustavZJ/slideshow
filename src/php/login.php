@@ -1,6 +1,6 @@
 <?php
 session_start();
-ob_start(); // Start output buffering
+// ob_start(); // Start output buffering
 
 // Function to read the .htpasswd file and return an associative array of username => hashed_password
 function get_htpasswd_credentials($file_path) {
@@ -37,15 +37,15 @@ try {
         if (isset($credentials['uploader']) && password_verify($password, $credentials['uploader'])) {
             $_SESSION['role'] = 'uploader';
             echo json_encode(['redirect' => '/landing.php']);
-            ob_end_flush(); // Flush the output buffer
-            exit(); // Ensure no further code is executed
+            // ob_end_flush();
+            exit();
         }
         // Check admin credentials
         elseif (isset($credentials['admin']) && password_verify($password, $credentials['admin'])) {
             $_SESSION['role'] = 'admin';
             echo json_encode(['redirect' => '/landing.php']);
-            ob_end_flush(); // Flush the output buffer
-            exit(); // Ensure no further code is executed
+            // ob_end_flush();
+            exit();
         } else {
             $response = ["message" => "Invalid password."];
         }
@@ -57,5 +57,5 @@ try {
 if (isset($response)) {
     header('Content-Type: application/json');
     echo json_encode($response);
-    ob_end_flush(); // Flush the output buffer
+    // ob_end_flush();
 }
