@@ -8,8 +8,7 @@ jQuery(document).ready(function ($) {
                 url: '/src/php/login.php',
                 data: $(this).serialize(),
                 success: function (response) {
-                    console.log(response)
-                    if (response.redirect) {
+                    if ('redirect' in response) {
                         window.location.href = response['redirect'];
                     } else {
                         $('#loginText').text(response['message']);
