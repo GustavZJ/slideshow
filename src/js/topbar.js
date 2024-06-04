@@ -6,7 +6,6 @@ jQuery(document).ready(function ($) {
         url: '/src/php/getRole.php',
         success: function (response) {
             role = response;
-            console.log(role, typeof(role), role == 'admin');
              // Remember to set the main page of subsites as index, then use the key of the main site so get the name
             const navPaths = {
                 'Hjem': '/landing.php',
@@ -27,8 +26,7 @@ jQuery(document).ready(function ($) {
             let dropdownEle
 
             for (const [key, path] of Object.entries(navPaths)) {
-                if (typeof(path) == 'object' && role == 'admin') {	
-                    console.log('hello')
+                if (typeof(path) == 'object' && role == 'admin') {
                     for (const [subkey, subpath] of Object.entries(path)) {
                         if (subkey == 'index') {
                             const navEle = createNewElement('a', key, 'navBtns', 'dropdownBtn');
@@ -52,7 +50,7 @@ jQuery(document).ready(function ($) {
                             dropdownEle.appendChild(navEle);
                         }
                     }
-                } else {
+                } else if (typeof(path) != 'object') {
                     const navEle = createNewElement('a', key, 'navBtns');
                     navEle.setAttribute('href', path);
                 
@@ -139,6 +137,7 @@ jQuery(document).ready(function ($) {
     });
 
     $('#logoutBtn').click(function () {
+        console.log('click logout')
         $.ajax({
             type: 'POST',
             url: '/src/php/logout.php',
