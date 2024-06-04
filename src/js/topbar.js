@@ -137,6 +137,7 @@ jQuery(document).ready(function ($) {
     });
 
     $('#logoutBtn').click(function () {
+        console.log('click logout')
         $.ajax({
             type: 'POST',
             url: '/src/php/logout.php',
