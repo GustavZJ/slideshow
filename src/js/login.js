@@ -1,7 +1,7 @@
 jQuery(document).ready(function ($) {
     $(window).load(function () {
         $('#loginBtn').submit(function (event) {
-            event.preventDefault();
+            console.log($(this), $(this).serialize);
             $.ajax({
                 type: 'POST',
                 url: '/src/php/login.php',
@@ -13,6 +13,7 @@ jQuery(document).ready(function ($) {
                     console.log(response);
                 }
             });
+            event.preventDefault();
         });
     })
 })
