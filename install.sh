@@ -85,7 +85,7 @@ while [ "$uploaderpasswd1" != "$uploaderpasswd2" -a "$uploaderpasswd1" != "$admi
     if [ "$uploaderpasswd1" != "$uploaderpasswd2" ]; then
         echo "There was an error. The process will restart."
         echo
-    else if [ "$uploaderpasswd1" == "$adminpasswd" ]; then
+    elif [ "$uploaderpasswd1" == "$adminpasswd" ]; then
         echo "You are not allowed to use the same password for both uploader and admin. The process will restart."
         echo
     fi
