@@ -10,14 +10,14 @@ jQuery(document).ready(function ($) {
                 success: function (response) {
                     $('#loginText').text(response);
                     setTimeout(() => {
-                        $('#loginText').text()
-                    }, 500)
+                        $('#loginText').text('');
+                    }, 5000)
                 },
                 error: function (response) {
                     $('#loginText').text(response);
                     setTimeout(() => {
-                        $('#loginText').text()
-                    }, 500)
+                        $('#loginText').text('');
+                    }, 5000)
                 }
             });
         });
