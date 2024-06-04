@@ -15,7 +15,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin' || $_SESSION['role'] !== 'uploader') {
+if (!isset($_SESSION['role']) || !( $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'uploader') ) {
     header("Location: ../index.html");
 }
 ?>

@@ -16,7 +16,7 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 'uploader') {
     header("Location: ../landing.php");
 }
 
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+else if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../index.html");
 }
 ?>

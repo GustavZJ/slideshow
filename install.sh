@@ -70,7 +70,7 @@ htpasswd -b -B -c /etc/apache2/.htpasswdadmin admin $adminpasswd
 
 
 echo Enter the password for the upload user. This will be needed when uploading pictures. 
-htpasswd /etc/apache2/.htpasswd uploader
+htpasswd -B /etc/apache2/.htpasswd uploader
 
 
 # # Set root passwd
