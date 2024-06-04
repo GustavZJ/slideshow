@@ -8,6 +8,15 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="icon" type="image/x-icon" href="/src/pictures/favicon.ico">
 </head>
+
+<?php
+session_start();
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin' || $_SESSION['role'] !== 'uploader') {
+    header("Location: ../index.html");
+}
+?>
+
 <body>
     <a class="labelBtn imageBtn" href="/admin/index.html">
         <div class="image-container">
