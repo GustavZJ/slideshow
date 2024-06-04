@@ -8,16 +8,26 @@ jQuery(document).ready(function ($) {
                 url: '/src/php/login.php',
                 data: $(this).serialize(),
                 success: function (response) {
-                    $('#loginText').text(response);
+                    // Parse the JSON response
+                    try {
+                        const jsonResponse = JSON.parse(response);
+                        if (jsonResponse.redirect) {
+                            window.location.href = jsonResponse.redirect;
+                        } else {
+                            $('#loginText').text(jsonResponse.message || response);
+                        }
+                    } catch (e) {
+                        $('#loginText').text('Invalid response from server');
+                    }
                     setTimeout(() => {
                         $('#loginText').text('');
-                    }, 5000)
+                    }, 5000);
                 },
                 error: function () {
                     $('#loginText').text('Noget gik galt! Prøv igen');
                     setTimeout(() => {
                         $('#loginText').text('');
-                    }, 5000)
+                    }, 5000);
                 }
             });
         });
