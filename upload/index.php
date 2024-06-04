@@ -16,7 +16,7 @@
 session_start();
 
 if (!isset($_SESSION['role']) || !( $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'uploader') ) {
-    header("Location: ../index.html");
+    header("Location: /index.html");
 }
 ?>
 

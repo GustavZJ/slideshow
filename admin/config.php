@@ -14,11 +14,11 @@
 session_start();
 
 if (isset($_SESSION['role']) && $_SESSION['role'] == 'uploader') {
-    header("Location: ../landing.php");
+    header("Location: /landing.php");
 }
 
 else if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../index.html");
+    header("Location: /index.html");
 }
 ?>
 <body>

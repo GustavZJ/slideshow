@@ -11,6 +11,14 @@
     <title>Log ind</title>
 </head>
 <body>
+    <?php
+    session_start();
+
+    if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'uploader') {
+        header("Location: /index.html");
+    }
+    ?>
+
     <h2>Log ind</h2>
     <form id="loginWrapper" method="get">
         <label for="password">Kodeord:</label>

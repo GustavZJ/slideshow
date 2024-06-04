@@ -14,11 +14,11 @@
 session_start();
 
 if (isset($_SESSION['role']) && $_SESSION['role'] == 'uploader') {
-    header("Location: ../landing.php");
+    header("Location: /landing.php");
 }
 
 else if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../index.html");
+    header("Location: /index.html");
 }
 ?>
 
@@ -30,7 +30,7 @@ else if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
         </div>
     </a>
 
-    <a class="labelBtn imageBtn" href="/admin/config.html">
+    <a class="labelBtn imageBtn" href="/admin/config.php">
         <div class="image-container">
             <img src="/src/pictures/config.png" alt="Configside">
             <span class="overlay-text">Config</span>
