@@ -8,13 +8,13 @@ jQuery(document).ready(function ($) {
                 url: '/src/php/login.php',
                 data: $(this).serialize(),
                 success: function (response) {
-                    $('#loginText').text(response);
+                    $('#loginText').text(response['response']);
                     setTimeout(() => {
                         $('#loginText').text('');
                     }, 5000)
                 },
-                error: function (response) {
-                    $('#loginText').text(response);
+                error: function () {
+                    $('#loginText').text('Noget gik galt! Prøv igen');
                     setTimeout(() => {
                         $('#loginText').text('');
                     }, 5000)
