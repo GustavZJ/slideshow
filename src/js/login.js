@@ -1,8 +1,9 @@
+import { messageFade } from '/src/js/errorMessage.js';
+
 jQuery(document).ready(function ($) {
     $(window).on('load', function () {
         $('#loginWrapper').submit(function (event) {
             event.preventDefault();  // Prevent the default form submission
-            clearTimeout();
             $.ajax({
                 type: 'POST',
                 url: '/src/php/login.php',
@@ -11,17 +12,11 @@ jQuery(document).ready(function ($) {
                     if (response.hasOwnProperty('redirect')) {
                         window.location.href = response['redirect'];
                     } else {
-                        $('#loginText').text(response['message']);
+                        messageFade('error', 'Forkert kodeord.');
                     }
-                    setTimeout(() => {
-                        $('#loginText').text('');
-                    }, 5000);
                 },
                 error: function () {
-                    $('#loginText').text('Noget gik galt! Prøv igen.');
-                    setTimeout(() => {
-                        $('#loginText').text('');
-                    }, 5000);
+                    messageFade('error', 'Noget gik galt, prøv igen.');
                 }
             });
         });

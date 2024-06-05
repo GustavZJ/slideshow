@@ -294,6 +294,7 @@ dialog {
   border: none;
   border-radius: 2svh;
   position: fixed;
+  top: 20%;
 }
 
 .errorDialog {
