@@ -14,7 +14,7 @@ body {
   grid-template-columns: auto;
 }
 #loginWrapper > * {
-  margin: 0.25svh;
+  margin: 0.25dvh;
 }
 #loginWrapper #inputWrapper {
   display: flex;
@@ -23,9 +23,9 @@ body {
   font-size: 1em;
 }
 #loginWrapper input[type=submit] {
-  margin-left: 0.5svh;
+  margin-left: 0.5dvh;
   font-size: 1em;
-  padding: 0.15vw 0.5svh;
+  padding: 0.15vw 0.5dvh;
   border-radius: 1em;
   border: 0;
   transition: background-color 0.1s ease;
@@ -33,7 +33,7 @@ body {
 }
 
 #topbar {
-  height: 6svh;
+  height: 6dvh;
   width: 100%;
   background-color: #50a9f2;
   position: relative;
@@ -42,12 +42,12 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  margin-left: 0.5svh;
+  margin-left: 0.5dvh;
 }
 #topbar #navWrapper #dropdownCont {
   display: none;
   position: absolute;
-  top: 6svh;
+  top: 6dvh;
   background-color: #C0C0C0;
 }
 #topbar #navWrapper #dropdownCont.open {
@@ -82,8 +82,8 @@ body {
 }
 #topbar #navWrapper a {
   color: black;
-  height: 6svh;
-  padding: 0.3svh;
+  height: 6dvh;
+  padding: 0.3dvh;
   width: auto;
   display: inline-flex;
   justify-content: center;
@@ -100,9 +100,9 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 4svh;
-  height: 0.5svh;
-  bottom: 0.5svh;
+  width: 4dvh;
+  height: 0.5dvh;
+  bottom: 0.5dvh;
   background-color: darkblue;
 }
 #topbar #navWrapper .expandBtn {
@@ -134,7 +134,7 @@ body {
   z-index: -1;
 }
 #navImgWrapper .imageBtn .image-container img {
-  width: 30svh;
+  width: 30dvh;
 }
 #navImgWrapper .imageBtn .image-container .overlay-text {
   position: absolute;
@@ -144,8 +144,8 @@ body {
   color: black;
   font-size: 1rem;
   background-color: #50a9f2;
-  padding: 0.2svh;
-  border-radius: 0.2svh;
+  padding: 0.2dvh;
+  border-radius: 0.2dvh;
   width: 100%;
   text-align: center;
 }
@@ -155,7 +155,7 @@ body {
 }
 
 #qr {
-  max-height: 30svh;
+  max-height: 30dvh;
 }
 
 button,
@@ -163,7 +163,7 @@ button,
   margin: 0.5rem;
   color: black;
   font-size: 1em;
-  padding: 0.2vw 0.6svh;
+  padding: 0.2vw 0.6dvh;
   border-radius: 1em;
   border: 0;
   transition: background-color 0.1s ease;
@@ -219,12 +219,12 @@ button.btnBlue,
 }
 
 #imageUploadCont {
-  margin-top: 1svh;
+  margin-top: 1dvh;
 }
 #imageUploadCont #uploadImageFile {
   border: dashed gray;
-  width: 40svh;
-  height: 20svh;
+  width: 40dvh;
+  height: 20dvh;
   margin: auto;
   font-style: italic;
 }
@@ -236,7 +236,7 @@ button.btnBlue,
 #imageUploadCont #uploadImageFile #uploadLabel {
   width: 100%;
   height: 100%;
-  font-size: 1.5svh;
+  font-size: 1.5dvh;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -258,10 +258,10 @@ button.btnBlue,
 #imagePreviewCont .imageCont {
   position: relative;
   display: inline-block;
-  margin: 0.5svw;
+  margin: 0.5dvw;
 }
 #imagePreviewCont .previewImage {
-  max-height: 20svh;
+  max-height: 20dvh;
 }
 #imagePreviewCont .deleteImageBtn {
   background-color: red;
@@ -299,9 +299,9 @@ a {
 }
 
 dialog {
-  padding: 1svh;
+  padding: 1dvh;
   border: none;
-  border-radius: 2svh;
+  border-radius: 2dvh;
   position: fixed;
   top: 20%;
 }
