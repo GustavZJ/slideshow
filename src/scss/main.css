@@ -251,6 +251,9 @@ button.btnBlue,
   display: none;
 }
 
+#imagePreviewCont {
+  z-index: -1;
+}
 #imagePreviewCont .imageCont {
   position: relative;
   display: inline-block;

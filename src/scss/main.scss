@@ -159,7 +159,7 @@ body {
 #navImgWrapper {
 	.imageBtn {
 		margin: 0.5rem;
-		
+
 		.image-container {
 			position: relative;
 			z-index: -1;
@@ -296,6 +296,8 @@ button,
 
 // Image preview styling
 #imagePreviewCont {
+	z-index: -1;
+
 	.imageCont {
 		position: relative;
 		display: inline-block;
