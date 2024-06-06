@@ -1,13 +1,6 @@
 import { confirmAction } from '/src/js/confirmAction.js'
 import { messageFade } from '/src/js/errorMessage.js'
 
-// Hide delete btn if no images present
-if (!document.getElementById('imagePreviewCont').childElementCount == 0) {
-    document.getElementById('deleteBtn').style.display = 'inline-block';
-    document.getElementById('deleteAllBtn').style.display = 'inline-block';
-    document.getElementById('deletePreviewText').style.display = 'none';
-}
-
 function disableBtns() {
     document.getElementById('deleteBtn').setAttribute('disabled', true);
     for (const child of document.getElementById('imagePreviewCont').children) {
@@ -24,7 +17,6 @@ jQuery(document).ready(function ($) {
     $('input[type="checkbox"]').prop('checked', false);
     document.getElementById('deleteBtn').setAttribute('disabled', true);
     
-    const images = document.getElementsByClassName('imageCont');
     const errorList = [];
     let deleteCount = 0;
     let errMsg = ''
@@ -52,7 +44,7 @@ jQuery(document).ready(function ($) {
                 for (let file in response) {
                     if (response[file] === "success") {
                         deleteCount += 1;
-                        $(`.previewImage[src='../uploads/${file.replace('?', '%3F')}']`).closest('.imageCont').remove();
+                        $(`.previewImage[src='../uploads/${file}']`).closest('.imageCont').remove();
                     } else {
                         errorList.push(file);
                     }

@@ -6,9 +6,16 @@ jQuery(document).ready(function ($) {
         url: '/src/php/loadImages.php',
         success: function(response) {
             for (const file of response) {
+                // Hide delete btn if no images present
+                if (response) {
+                    document.getElementById('deleteBtn').style.display = 'inline-block';
+                    document.getElementById('deleteAllBtn').style.display = 'inline-block';
+                    document.getElementById('deletePreviewText').style.display = 'none';
+                }
+
                 const imageCont = document.createElement('div');
                 imageCont.className = 'imageCont elePointerIcon';
-                imageCont.setAttribute('click', () => checkboxThruDiv(this));
+                imageCont.setAttribute('onclick', () => checkboxThruDiv(this));
 
                 const img = new Image();
                 img.className = 'previewImage';
@@ -19,7 +26,7 @@ jQuery(document).ready(function ($) {
                 checkbox.name = 'files[]';
                 checkbox.value = file;
                 checkbox.setAttribute('type', 'checkbox');
-                checkbox.setAttribute('click', () => event.stopPropagation());
+                checkbox.setAttribute('onclick', (event) => event.stopPropagation());
                 imageCont.appendChild(checkbox);
 
                 $('#imagePreviewCont').append(imageCont);
