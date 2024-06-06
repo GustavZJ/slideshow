@@ -6,7 +6,7 @@ bash update.sh
 
 # Install dependencies
 apt-get update
-apt-get install php python3-qrcode libapache2-mod-php php-curl feh libheif1 libheif-examples imagemagick php-imagick -y
+apt-get install php python3-pyqrcode libapache2-mod-php php-curl feh libheif1 libheif-examples imagemagick php-imagick -y
 
 mkdir "/home/$(sudo -u $SUDO_USER echo $SUDO_USER)/.config/autostart/"
 mkdir uploads
@@ -15,10 +15,8 @@ mkdir temp
 
 hostname=$(hostname)
 
-echo $hostname
 python3 src/py/qrGen.py $hostname
-
-exit        
+      
 
 cp installFiles/defaultphp.ini /var/www/slideshow/php.ini
 cp installFiles/defaultconfig.config /var/www/slideshow/config.config
