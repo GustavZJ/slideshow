@@ -155,6 +155,34 @@ body {
 	}
 }
 
+// Nav image
+#navImgWrapper {
+	&.imageBtn {
+		.image-container {
+			position: relative;
+			z-index: -1;
+
+			img {
+				width: 30svh;
+			}
+
+			.overlay-text {
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				transform: translateX(-50%);
+				color: black;
+				font-size: 1rem;
+				background-color: $blueColor;
+				padding: 0.2svh;
+				border-radius: 0.2svh;
+				width: 100%;
+				text-align: center;
+			}
+		}
+	}
+}
+
 // Class to add pointer icon to ele
 .elePointerIcon {
 	cursor: pointer;
@@ -216,31 +244,6 @@ button,
 
 	&.btnBlue {
 		background-color: $blueColor;
-	}
-
-	&.imageBtn {
-		.image-container {
-			position: relative;
-			z-index: -1;
-
-			img {
-				width: 30svh;
-			}
-
-			.overlay-text {
-				position: absolute;
-				bottom: 0;
-				left: 50%;
-				transform: translateX(-50%);
-				color: black;
-				font-size: 1rem;
-				background-color: $blueColor;
-				padding: 0.2svh;
-				border-radius: 0.2svh;
-				width: 100%;
-				text-align: center;
-			}
-		}
 	}
 }
 

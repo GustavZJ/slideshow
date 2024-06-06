@@ -22,23 +22,25 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 'uploader') {
 ?>
 
 <body>
-    <div>
-        <a class="labelBtn imageBtn" href="/admin/imageManager.php">
+    <div id="navImgWrapper">
+        <a class="imageBtn" href="/admin/imageManager.php">
             <div class="image-container">
                 <img src="/src/pictures/imageManager.png" alt="Billedemanager">
                 <span class="overlay-text">Billedemanager</span>
             </div>
         </a>
 
-        <a class="labelBtn imageBtn" href="/admin/config.php">
+        <a class="imageBtn" href="/admin/config.php">
             <div class="image-container">
                 <img src="/src/pictures/config.png" alt="Configside">
                 <span class="overlay-text">Config</span>
             </div>
         </a>
     </div>
-    <img id="qr" src="/src/pictures/qrcode.png">
-    <p>Dette er en qr-kode til dette website. Den kan printes ud!</p>
+    <div id="qrWrapper">
+        <img id="qr" src="/src/pictures/qrcode.png">
+        <p>Dette er en qr-kode til dette website. Den kan printes ud!</p>
+    </div>
 
     <script src="/src/js/topbar.js"></script>
 </body>
