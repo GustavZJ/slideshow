@@ -2,6 +2,10 @@
 
 sudo rm temp/*
 sudo bash update.sh
+7
+if [ ! -f /var/www/slideshow/uploads/* ]; then
+    bash addtest.sh;
+fi
 
 # Source the configuration file
 source /var/www/slideshow/config.config
