@@ -1,16 +1,16 @@
 import { messageFade } from '/src/js/errorMessage.js';
 
-jQuery(document).ready(function ($) {
-    // Function to allow clicking on image to check checkbox
-    function checkboxThruDiv(target) {
-        if (target.children[1].checked) {
-            target.children[1].checked = false;
-        } else {
-            target.children[1].checked = true;
-            document.getElementById('deleteBtn').removeAttribute('disabled');
-        }
+// Function to allow clicking on image to check checkbox
+function checkboxThruDiv(target) {
+    if (target.children[1].checked) {
+        target.children[1].checked = false;
+    } else {
+        target.children[1].checked = true;
+        document.getElementById('deleteBtn').removeAttribute('disabled');
     }
+}
 
+jQuery(document).ready(function ($) {
     $.ajax({
         type: 'POST',
         url: '/src/php/loadImages.php',
