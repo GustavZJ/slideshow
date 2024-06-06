@@ -14,7 +14,7 @@ jQuery(document).ready(function ($) {
 
                 const imageCont = document.createElement('div');
                 imageCont.className = 'imageCont elePointerIcon';
-                imageCont.addEventListener('onclick', () => {
+                imageCont.addEventListener('click', () => {
                     if (this.children[1].checked) {
                         this.children[1].checked = false;
                     } else {
@@ -32,7 +32,7 @@ jQuery(document).ready(function ($) {
                 checkbox.name = 'files[]';
                 checkbox.value = file;
                 checkbox.setAttribute('type', 'checkbox');
-                checkbox.addEventListener('onclick', (event) => event.stopPropagation());
+                checkbox.addEventListener('click', (event) => event.stopPropagation());
                 imageCont.appendChild(checkbox);
 
                 $('#imagePreviewCont').append(imageCont);
