@@ -20,18 +20,20 @@ if (!isset($_SESSION['role']) || !($_SESSION['role'] == 'admin' || $_SESSION['ro
 ?>
 
 <body>
-    <a class="labelBtn imageBtn" href="/admin/index.php">
-        <div class="image-container">
-            <img src="/src/pictures/admin.png" alt="Adminside">
-            <span class="overlay-text">Adminside</span>
-        </div>
-    </a>
-    <a class="labelBtn imageBtn" href="/upload/index.php">
-        <div class="image-container">
-            <img src="/src/pictures/upload.png" alt="Uploadside">
-            <span class="overlay-text">Uploadside</span>
-        </div>
-    </a>
+    <div id="navImgWrapper">
+        <a class="labelBtn imageBtn" href="/admin/index.php">
+            <div class="image-container">
+                <img src="/src/pictures/admin.png" alt="Adminside">
+                <span class="overlay-text">Adminside</span>
+            </div>
+        </a>
+        <a class="labelBtn imageBtn" href="/upload/index.php">
+            <div class="image-container">
+                <img src="/src/pictures/upload.png" alt="Uploadside">
+                <span class="overlay-text">Uploadside</span>
+            </div>
+        </a>
+    </div>
 
     <img id="qr" src="/src/pictures/qrcode.png">
 
