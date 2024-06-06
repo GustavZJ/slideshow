@@ -5,3 +5,5 @@ php.ini
 config.config
 nothing.here
 message.html
+src/pictures/qrcode.png
+src/pictures/qrcode.svg
