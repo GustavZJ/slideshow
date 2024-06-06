@@ -28,7 +28,7 @@ After everything has installed, you will get instructions on how to setup passwo
 sudo bash install.sh
 
 sudo raspi-config
-```
+```sh
 Go to system options<br>
 Go to hostname<br>
 Choose your local domain<br>
