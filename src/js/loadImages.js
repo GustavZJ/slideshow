@@ -3,7 +3,7 @@ import { messageFade } from '/src/js/errorMessage.js';
 jQuery(document).ready(function ($) {
     $.ajax({
         type: 'POST',
-        url: 'loadImages.php',
+        url: '/src/php/loadImages.php',
         success: function(response) {
             for (const file in response) {
                 const imageCont = document.createElement('div');
