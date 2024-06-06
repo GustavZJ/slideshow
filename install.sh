@@ -15,7 +15,7 @@ mkdir temp
 
 hostname=$(hostname)
 
-python3 src/py/qrGen.py "$hostname.local"
+python3 src/py/qrGen.py "http://$hostname.local"
       
 
 cp installFiles/defaultphp.ini /var/www/slideshow/php.ini

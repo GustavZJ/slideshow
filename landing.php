@@ -35,9 +35,6 @@ if (!isset($_SESSION['role']) || !($_SESSION['role'] == 'admin' || $_SESSION['ro
         </a>
     </div>
 
-    <img id="qr" src="/src/pictures/qrcode.png">
-
-
 
     <script src="/src/js/topbar.js"></script>
 </body>
