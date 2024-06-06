@@ -33,7 +33,7 @@ body {
 	input[type=submit] {
 		margin-left: 0.5dvh;
 		font-size: 1em;
-		padding: 0.15vw 0.5dvh;
+		padding: 0.2dvw 0.6dvh;
 		border-radius: 1em;
 		border: 0;
 		transition: background-color 0.1s ease;
@@ -305,7 +305,6 @@ button,
 		margin: 0.5dvw;
 	}
 
-	// Only set height so that aspect ratio is maintained
 	.previewImage {
 		max-height: 20dvh;
 	}
