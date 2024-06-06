@@ -126,6 +126,27 @@ body {
   align-items: center;
 }
 
+#navImgWrapper.imageBtn .image-container {
+  position: relative;
+  z-index: -1;
+}
+#navImgWrapper.imageBtn .image-container img {
+  width: 30svh;
+}
+#navImgWrapper.imageBtn .image-container .overlay-text {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: black;
+  font-size: 1rem;
+  background-color: #50a9f2;
+  padding: 0.2svh;
+  border-radius: 0.2svh;
+  width: 100%;
+  text-align: center;
+}
+
 .elePointerIcon {
   cursor: pointer;
 }
@@ -187,29 +208,6 @@ button.btnRed,
 button.btnBlue,
 .labelBtn.btnBlue {
   background-color: #50a9f2;
-}
-button.imageBtn .image-container,
-.labelBtn.imageBtn .image-container {
-  position: relative;
-  z-index: -1;
-}
-button.imageBtn .image-container img,
-.labelBtn.imageBtn .image-container img {
-  width: 30svh;
-}
-button.imageBtn .image-container .overlay-text,
-.labelBtn.imageBtn .image-container .overlay-text {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  color: black;
-  font-size: 1rem;
-  background-color: #50a9f2;
-  padding: 0.2svh;
-  border-radius: 0.2svh;
-  width: 100%;
-  text-align: center;
 }
 
 #deleteBtn,
