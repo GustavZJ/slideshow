@@ -14,7 +14,14 @@ jQuery(document).ready(function ($) {
 
                 const imageCont = document.createElement('div');
                 imageCont.className = 'imageCont elePointerIcon';
-                imageCont.addEventListener('click', () => checkboxThruDiv(this));
+                imageCont.addEventListener('click', () => {
+                    if (this.children[1].checked) {
+                        this.children[1].checked = false;
+                    } else {
+                        this.children[1].checked = true;
+                        document.getElementById('deleteBtn').removeAttribute('disabled');
+                    }
+                });
 
                 const img = new Image();
                 img.className = 'previewImage';
@@ -35,14 +42,4 @@ jQuery(document).ready(function ($) {
             messageFade('error', 'Noget gik galt med at loade billeder, prøv at genindlæse siden.');
         }
     })
-    
-    // Function to allow clicking on image to check checkbox
-    function checkboxThruDiv(target) {
-        if (target.children[1].checked) {
-            target.children[1].checked = false;
-        } else {
-            target.children[1].checked = true;
-            document.getElementById('deleteBtn').removeAttribute('disabled');
-        }
-    }
 });
