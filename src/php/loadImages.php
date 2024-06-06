@@ -11,7 +11,7 @@ foreach($images as $image) {
     if (is_file($fullImage)) {
         // URL encode the file path for displaying in the HTML
         $encodedImage = str_replace('?', '%3F', $image);
-        $fullImage = $imagePath . $encodedImage;
+        $fullImage = $imagePath .'/'. $encodedImage;
         array_push($files, htmlspecialchars($fullImage));
     }
 }
