@@ -26,11 +26,6 @@ else if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 ?>
 
     <body>
-    <!-- Placed at top since otherwise it might take too long to appear, while it's waiting for images to load -->
-    <!-- This can be improved later -->
-    <script src="/src/js/topbar.js"></script>
-
-
         <form id="deleteForm" method="get">
             <button id="deleteBtn" class="btnWhite" type="submit" disabled="true">Slet</button>
             <button id="deleteAllBtn" class="btnRed" type="button">Slet alt</button>
@@ -57,6 +52,8 @@ else if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
             </div>
         </form>
 
+        
+        <script src="/src/js/topbar.js"></script>
         <!-- This has to be in a seperate script, otherwise, the import module will break it -->
         <script>
             // Function to allow clicking on image to check checkbox
