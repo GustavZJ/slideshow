@@ -5,7 +5,7 @@ jQuery(document).ready(function ($) {
         type: 'POST',
         url: '/src/php/loadImages.php',
         success: function(response) {
-            for (const file in response) {
+            for (const file of response) {
                 const imageCont = document.createElement('div');
                 imageCont.className = 'imageCont elePointerIcon';
                 imageCont.setAttribute('click', () => checkboxThruDiv(this));
