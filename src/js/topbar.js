@@ -93,6 +93,7 @@ jQuery(document).ready(function ($) {
 
             if (role == 'admin') {
                 // Dropdown menu for non-mobile devices
+                console.log(window.matchMedia('(hover: hover)'));
                 if (window.matchMedia('(hover: hover)')) {
                     const dropdownBtn = document.getElementById('dropdownBtn');
                     const dropdownCont = document.getElementById('dropdownCont');
