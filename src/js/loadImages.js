@@ -15,7 +15,7 @@ jQuery(document).ready(function ($) {
 
                 const imageCont = document.createElement('div');
                 imageCont.className = 'imageCont elePointerIcon';
-                imageCont.setAttribute('onclick', checkboxThruDiv(this));
+                imageCont.addEventListener('click', () => checkboxThruDiv(this));
 
                 const img = new Image();
                 img.className = 'previewImage';
@@ -26,7 +26,7 @@ jQuery(document).ready(function ($) {
                 checkbox.name = 'files[]';
                 checkbox.value = file;
                 checkbox.setAttribute('type', 'checkbox');
-                checkbox.setAttribute('onclick', (event) => event.stopPropagation());
+                checkbox.addEventListener('click', (event) => event.stopPropagation());
                 imageCont.appendChild(checkbox);
 
                 $('#imagePreviewCont').append(imageCont);
