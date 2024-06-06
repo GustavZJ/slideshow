@@ -16,7 +16,7 @@ Config page:
 - Add settings for auto remove ☑
 - Show if auto remove is enable / disabled ☑
 - Ensure config btn enables if checkbox state is changed (Or any other) ☑
-- Show proper success / error message
+- Show proper success / error message ☑
 
 Admin page:
 - Change config settings ☑
@@ -34,13 +34,16 @@ Upload page:
 - Add counter to show how many images very uploaded succesfully, whenever an image encounters an error while uploading ☑
 - Fix error message for when images are denied drop not appearing ☑
 - Add indicator showing max images, so you don't have to upload ☑
-- Fix .heic upload
+- Fix .heic upload ☑
+- Fix files not clearing from file lists in imageManager.js after upload ☑
 
 Website:
 - Improve styling ☑
 - Full responsive for different devices (Need to test if any issue on devices)
 - Better nav (Perhaps a simple top bar with dropdown menus) ☑
 - Fix dropdown on mobile (Or don't since you can still navigate) ☑
+- Fix error dialogs stacking on top of each other ☑
+- Add proper login page ☑
 
 Guide:
 - How to use admin ☑
@@ -49,16 +52,10 @@ Other (Important):
 - Fix post_max_size being out of range (PHP Warning: Invalid "post_max_size" setting. Invalid quantity "4500M": value is out of range, usiing overflow backwards compatibility in Unknown on line 0) ☑
 
 Other (Not very important):
-- Add time outs for PHP functions, incase they take too long
+- Add error message for php timeout error.
 - Move some JS and PHP scripts into the src dirs, for consistency ☑
 - Change names of variables and such so they use same naming convention
 - Do something to avoid confusion about max_image_size input (It shows 'M' in placeholder, but user is not allowed to input it) ☑
 
 Final:
 - Testing
-
-
-
-IMPORTANT:
-- Setup root passwd auto
-- Setup mysql secure install

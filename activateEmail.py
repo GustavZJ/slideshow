@@ -7,10 +7,13 @@ email = input("Choose the gmail, that you want to use: ")
 password = input("Input the special key from your account : ")
 receiver = input("Who is the intended recipient?: ")
 
+if email == "!":
+     redo = False
 
 # This is obviously very safe...
-with open("/var/www/slideshow/nothing.here", "w") as file:
-    file.write(f"{email}\n{password}\n{receiver}")
+if redo:
+    with open("/var/www/slideshow/nothing.here", "w") as file:
+        file.write(f"{email}\n{password}\n{receiver}")
 
 if not email or not password or not receiver:
         print("exiting because of missing info!")

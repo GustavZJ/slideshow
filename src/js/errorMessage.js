@@ -7,35 +7,41 @@ export function messageFade(type, message) {
     }
     
     // Generate unique ID for each dialog
-    const dailogId = `errorDialog-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+    const dialogId = `errorDialog-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
     
     // Create modal
     const errorDialog = document.createElement('dialog');
-    errorDialog.id = dailogId;
+    errorDialog.id = dialogId;
     errorDialog.className = 'errorDialog';
     errorDialog.innerHTML = message;
+    errorDialog.style.backgroundColor = messageModalColor[type.toLowerCase()];
     document.body.appendChild(errorDialog);
-    const errorDialogEle = document.getElementById(dailogId);
+    const errorDialogEle = document.getElementById(dialogId);
 
-    errorDialogEle.style.backgroundColor = messageModalColor[type.toLowerCase()];
-    errorDialogEle.innerHTML = message;
-    errorDialogEle.style.transition = 'opacity 0.25s';
-    errorDialogEle.style.opacity = 0;
+    // Position the dialog dynamically based on the number of visible dialogs
+    const visibleDialogs = document.querySelectorAll('.errorDialog').length;
+    errorDialogEle.style.top = `${20 + (visibleDialogs * 5)}%`;
 
     // This fixes issue with modal not fading in, and instead appearing abruptly
     setTimeout(() => {
         errorDialogEle.style.opacity = 1;
     }, 0);
 
-    
     errorDialogEle.show();
+    
     // Set up fade out and delete timers for this specific modal
-    const fadeTimer = setTimeout(() => {
+    setTimeout(() => {
         errorDialogEle.style.opacity = 0;
         // Only delete after fade out
-        const deleteTimer = setTimeout(() => {
+        setTimeout(() => {
             errorDialogEle.close();
             errorDialogEle.remove();
+
+            // Reposition remaining dialogs to fill the gap
+            const remainingDialogs = document.querySelectorAll('.errorDialog');
+            remainingDialogs.forEach((dialog, index) => {
+                dialog.style.top = `${20 + ((index + 1) * 5)}%`;
+            });
         }, 250);
     }, 5000);
 }

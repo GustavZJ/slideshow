@@ -1,4 +1,5 @@
 import { messageFade } from "./errorMessage.js";
+export { allFiles };
 
 // Image manager
 const uploadImageFile = document.getElementById('uploadImageFile');
@@ -14,8 +15,6 @@ const hiddenImageInput = document.getElementById('hiddenImageInput');
 // Upload image
 function uploadImage(event, files = []) {
     const hiddenFileList = [];
-
-    console.log(event.target.files, files);
 
     // Handle image file input
     if (event.target && event.target.id == 'uploadImageInput') {
@@ -275,43 +274,43 @@ function deleteImagePreview(event) {
     event.target.closest('.imageCont').remove();
 
     // Remove image from file input
-    deleteFiles(null, event.target);
+    deleteFiles(event.target.parentElement.dataset.name);
 }
 
 // Delete file from input
-function deleteFiles(fileName = null, target = null) {
-    // If target is true, delete was called by image delete btn, so we use the targeted image to get the name
-    // Otherwise, the delete function was called because of rejected image
-    if (target) {
-        fileName = target.parentElement.dataset.name;
-    }
-
+function deleteFiles(fileName) {
     // Remove corresponding file from the input files array
     const newFiles = Array.from(uploadImageInput.files);
-    const fileIndex = newFiles.indexOf(fileName)
-    newFiles.splice(fileIndex, 1);
+    const fileIndex = newFiles.findIndex(file => file.name === fileName);
 
-    // Construct a new FileList from the remaining files
-    const newFileList = new DataTransfer();
-    newFiles.forEach(file => {
-        newFileList.items.add(file);
-    });
+    if (fileIndex !== -1) {
+        newFiles.splice(fileIndex, 1);
+        allFiles.splice(fileIndex, 1);
 
-    // Update the input's files property with the new FileList
-    uploadImageInput.files = newFileList.files;
+        // Construct a new FileList from the remaining files
+        const newFileList = new DataTransfer();
+        newFiles.forEach(file => {
+            newFileList.items.add(file);
+        });
 
-    // Disable upload btn if no images remain
-    if (uploadImageInput.files.length == 0) {
-        submitBtn.setAttribute('disabled', true);
-        document.getElementById('clearBtn').setAttribute('disabled', true);
-    }
+        // Update the input's files property with the new FileList
+        uploadImageInput.files = newFileList.files;
 
-    const maxFileUploads = amountText.innerHTML.split('/')[1];
-    amountText.innerHTML = `Billeder: ${uploadImageInput.files.length}/${maxFileUploads}`;
+        // Disable upload btn if no images remain
+        if (uploadImageInput.files.length === 0) {
+            submitBtn.setAttribute('disabled', true);
+            document.getElementById('clearBtn').setAttribute('disabled', true);
+        }
 
-    if (uploadImageInput.files.length && uploadImageInput.files.length <= maxFileUploads && submitBtn.disabled) {
-        amountText.style.color = 'white';
-        console.log('enable');
+        const maxFileUploads = amountText.innerHTML.split('/')[1];
+        amountText.innerHTML = `Billeder: ${uploadImageInput.files.length}/${maxFileUploads}`;
+
+        if (uploadImageInput.files.length && uploadImageInput.files.length <= maxFileUploads && submitBtn.disabled) {
+            amountText.style.color = 'white';
+            console.log('enable');
+        }
+    } else {
+        console.error('File not found in the list.');
     }
 }
 
@@ -325,13 +324,14 @@ function clearAll() {
     for (const img of childrenArray) {
         img.remove();
     }    
-   
+
     allFiles.length = 0;
 
     const maxFileUploads = amountText.innerHTML.split('/')[1];
     amountText.innerHTML = `Billeder: ${uploadImageInput.files.length}/${maxFileUploads}`;
     amountText.style.color = 'white';
 }
+
 
 // Add event listeners, this ensures HTML elements can run function, while script is a module
 window.onload = () => {
@@ -345,7 +345,7 @@ window.onload = () => {
     uploadImageInput.addEventListener('change', event => uploadImage(event))
 
     // Add event listener to clear btn
-    document.getElementById('clearBtn').addEventListener('click', clearAll);
+    document.getElementById('clearBtn').addEventListener('click', () => clearAll());
     
     // Clear everything, to prevent potential issues on refresh
     clearAll();

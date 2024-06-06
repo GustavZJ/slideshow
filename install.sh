@@ -6,7 +6,7 @@ bash update.sh
 
 # Install dependencies
 apt-get update
-apt-get install php mariadb-server php-mysql libapache2-mod-php php-curl feh libheif1 libheif-examples imagemagick php-imagick expect -y
+apt-get install php libapache2-mod-php php-curl feh libheif1 libheif-examples imagemagick php-imagick -y
 
 mkdir "/home/$(sudo -u $SUDO_USER echo $SUDO_USER)/.config/autostart/"
 mkdir uploads
@@ -64,51 +64,38 @@ echo "Admin password configured."
 adminpasswd=$adminpasswd1
 
 
-htpasswd -b -c /etc/apache2/.htpasswd admin $adminpasswd
-htpasswd -b -c /etc/apache2/.htpasswdadmin admin $adminpasswd
+htpasswd -b -B -c /etc/apache2/.htpasswd admin $adminpasswd
+htpasswd -b -B -c /etc/apache2/.htpasswdadmin admin $adminpasswd
 
+uploaderpasswd1="passwd1"
+uploaderpasswd2="passwd2"
+uploaderpasswd=""
 
+while [[ "$uploaderpasswd1" != "$uploaderpasswd2" || "$uploaderpasswd1" == "$adminpasswd" ]]; do
+    echo "Enter the password for the uploader user. This will be needed when uploading pictures. You will not be able to see what you type." 
+    stty -echo
+    read uploaderpasswd1
+    stty echo
 
-echo Enter the password for the upload user. This will be needed when uploading pictures. 
-htpasswd /etc/apache2/.htpasswd uploader
+    echo "Enter the same password for the uploader user again." 
+    stty -echo
+    read uploaderpasswd2
+    stty echo
 
-(
-    sleep 1
-    echo "$adminpasswd"
-    sleep 1
-    echo "$adminpasswd"
-) | sudo passwd
+    if [ "$uploaderpasswd1" != "$uploaderpasswd2" ]; then
+        echo
+        echo "There was an error. The process will restart."
+        echo
+        echo
+    elif [ "$uploaderpasswd1" == "$adminpasswd" ]; then
+        echo
+        echo "You are not allowed to use the same password for both uploader and admin. The process will restart."
+        echo
+        echo
+    fi
+done
 
-
-# Define MySQL root password and other secure installation options
-MYSQL_ROOT_PASSWORD=$adminpasswd
-CHANGE_ROOT_PASSWORD="n"
-REMOVE_ANONYMOUS_USERS="y"
-DISALLOW_ROOT_LOGIN_REMOTELY="y"
-REMOVE_TEST_DATABASE="y"
-RELOAD_PRIVILEGE_TABLES="y"
-stty -echo
-(
-    sleep 1
-    echo "$MYSQL_ROOT_PASSWORD"
-    sleep 1
-    echo "n" # Switch to unix_socket authentication
-    sleep 1
-    echo "$CHANGE_ROOT_PASSWORD"
-    sleep 1
-    echo "$REMOVE_ANONYMOUS_USERS"
-    sleep 1
-    echo "$DISALLOW_ROOT_LOGIN_REMOTELY"
-    sleep 1
-    echo "$REMOVE_TEST_DATABASE"
-    sleep 1
-    echo "$RELOAD_PRIVILEGE_TABLES"
-) | sudo mysql_secure_installation
-stty echo
-# Restart MySQL service
-sudo systemctl restart mysql
-
-# Output success message
-echo "MySQL secure installation completed successfully."
+echo "Uploader password configured."
+uploaderpasswd=$uploaderpasswd1
 
 bash update.sh

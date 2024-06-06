@@ -1,4 +1,5 @@
-import { messageFade } from '/src/js/errorMessage.js'
+import { messageFade } from '/src/js/errorMessage.js';
+import { allFiles } from '/src/js/imageManager.js';
 
 let max_file_uploads = 0;
 
@@ -77,6 +78,7 @@ jQuery(document).ready(function ($) {
                         errMsg = `Fejl:<br>${errMsg}`;
                         messageFade('error', errMsg);
                     }
+                    
                 })();
             },
                 error: function () {
@@ -94,6 +96,7 @@ jQuery(document).ready(function ($) {
         $('#submitBtn').attr('disabled', true);
         $('#clearBtn').attr('disabled', true);
         $('#uploadLabel').css('cursor', 'default');
+        $('.deleteImageBtn').each(function () {$(this).attr('disabled', true)});
         
         // Loading dots, so that you can see it's not frozen incase it's slow
         $("#submitBtn").val('Uploader');
@@ -129,6 +132,7 @@ jQuery(document).ready(function ($) {
                     $('#uploadLabel').css('cursor', 'pointer');
                     $('#submitBtn').attr('disabled', true);
                     $('#clearBtn').attr('disabled', true);
+                    $('.deleteImageBtn').each(function () {$(this).removeAttr('disabled')});
 
                     let allSuccess = true;
                     let errMsg = '';
@@ -161,8 +165,11 @@ jQuery(document).ready(function ($) {
 
                     for (let i = document.getElementById('imagePreviewCont').childElementCount - 1; i >= 0; i--) {
                         document.getElementById('imagePreviewCont').children[i].remove();
-                        document.getElementById('uploadImageInput').value = '';
                     }
+                    document.getElementById('uploadImageInput').value = '';
+                    allFiles.length = 0;
+                    document.getElementById('amountText').innerHTML = `Billeder: ${document.getElementById('uploadImageInput').files.length}/${max_file_uploads}`;
+
                 },
                 error: function () {
                     clearInterval(dots);
@@ -172,6 +179,7 @@ jQuery(document).ready(function ($) {
                     $('#submitBtn').val('Upload');
                     $('#clearBtn').removeAttr('disabled');
                     $('#uploadLabel').css('cursor', 'pointer');
+                    $('.deleteImageBtn').each(function () {$(this).removeAttr('disabled')});
                 }
             });
         }

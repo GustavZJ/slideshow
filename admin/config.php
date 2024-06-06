@@ -8,8 +8,19 @@
     <link rel="icon" type="image/x-icon" href="/src/pictures/favicon.ico">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+    <script type="module" src="/src/js/configEdit.js"></script>
 </head>
+<?php
+session_start();
 
+if (isset($_SESSION['role']) && $_SESSION['role'] == 'uploader') {
+    header("Location: /landing.php");
+}
+
+else if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header("Location: /index.html");
+}
+?>
 <body>
     <form id="configForm" method="get" enctype="multipart/form-data">
         <div id="configCont">
@@ -48,7 +59,6 @@
         <button id="confirmBtn" class="btnWhite" type="submit" disabled="true">Opdater konfig</button>
     </form>
 
-    <script type="module" src="/src/js/configEdit.js"></script>
     <script src="/src/js/topbar.js"></script>
 </body>
 </html>

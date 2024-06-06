@@ -40,9 +40,9 @@ echo "</body>" >> message.html
 
 
 
-if [  -f nothing.here -a "$oldmessage" != "$message" ]; then
-    python3 /var/www/slideshow/src/py/emailSender.py "$subject."
-fi
+# if [  -f nothing.here -a "$oldmessage" != "$message" ]; then
+#     python3 /var/www/slideshow/src/py/emailSender.py "$subject."
+# fi
 
 chmod -R 777 /var/www/slideshow/
 chown -R www-data:www-data /var/www/slideshow/

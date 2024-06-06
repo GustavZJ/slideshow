@@ -8,7 +8,18 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="icon" type="image/x-icon" href="/src/pictures/favicon.ico">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+    <script type="module" src="/src/js/imageManager.js"></script>
+    <script type="module" src="/src/js/uploadImage.js"></script>
 </head>
+
+<?php
+session_start();
+
+if (!isset($_SESSION['role']) || !( $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'uploader') ) {
+    header("Location: /index.html");
+}
+?>
+
 <body>
     <div id="imageUploadCont">
         <form id="uploadForm" method="get" enctype="multipart/form-data">
@@ -30,7 +41,5 @@
 
     <script src="/src/js/topbar.js"></script>
     <script type="module" src="/src/js/errorMessage.js"></script>
-    <script type="module" src="/src/js/imageManager.js"></script>
-    <script type="module" src="/src/js/uploadImage.js"></script>
 </body>
 </html>
