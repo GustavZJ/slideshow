@@ -1,6 +1,6 @@
 import os
 import subprocess
-
+# temp comment
 print("Hello!\nYou chose to enable email notifications.\nWarning!!!\nThis is an advanced feature, and there won't be a guide to use it.\nProceed at you own peril.\n\n")
 
 email = input("Choose the gmail, that you want to use: ")
