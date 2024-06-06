@@ -10,7 +10,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
     <script type="module" src="/src/js/imageManager.js"></script>
     <script type="module" src="/src/js/uploadImage.js"></script>
-    <script src="/src/js/logout.js"></script>
 </head>
 
 <?php
