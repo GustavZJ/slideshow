@@ -14,12 +14,11 @@ jQuery(document).ready(function ($) {
 
                 const imageCont = document.createElement('div');
                 imageCont.className = 'imageCont elePointerIcon';
-                imageCont.addEventListener('click', (event) => {
-                    console.log(event.target);
-                    if (event.target.children[1].checked) {
-                        event.target.children[1].checked = false;
+                imageCont.addEventListener('onclick', () => {
+                    if (this.children[1].checked) {
+                        this.children[1].checked = false;
                     } else {
-                        event.target.children[1].checked = true;
+                        this.children[1].checked = true;
                         document.getElementById('deleteBtn').removeAttribute('disabled');
                     }
                 });
@@ -33,7 +32,7 @@ jQuery(document).ready(function ($) {
                 checkbox.name = 'files[]';
                 checkbox.value = file;
                 checkbox.setAttribute('type', 'checkbox');
-                checkbox.addEventListener('click', (event) => event.stopPropagation());
+                checkbox.addEventListener('onclick', (event) => event.stopPropagation());
                 imageCont.appendChild(checkbox);
 
                 $('#imagePreviewCont').append(imageCont);
