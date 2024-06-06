@@ -37,16 +37,5 @@ else if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
         <script src="/src/js/topbar.js"></script>
         <script type="module" src="/src/js/loadImages.js"></script>
         <!-- This has to be in a seperate script, otherwise, the import module will break it -->
-        <script>
-            // Function to allow clicking on image to check checkbox
-            function checkboxThruDiv(target) {
-                if (target.children[1].checked) {
-                    target.children[1].checked = false;
-                } else {
-                    target.children[1].checked = true;
-                    document.getElementById('deleteBtn').removeAttribute('disabled');
-                }
-            }
-        </script>
     </body>
 </html>
