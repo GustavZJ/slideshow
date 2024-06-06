@@ -2,10 +2,11 @@ import { messageFade } from '/src/js/errorMessage.js';
 
 // Function to allow clicking on image to check checkbox
 function checkboxThruDiv(target) {
-    if (target.children[1].checked) {
-        target.children[1].checked = false;
+    const checkbox = target.querySelector('input[type="checkbox"]');
+    if (checkbox.checked) {
+        checkbox.checked = false;
     } else {
-        target.children[1].checked = true;
+        checkbox.checked = true;
         document.getElementById('deleteBtn').removeAttribute('disabled');
     }
 }
@@ -15,17 +16,19 @@ jQuery(document).ready(function ($) {
         type: 'POST',
         url: '/src/php/loadImages.php',
         success: function(response) {
-            for (const file of response) {
-                // Hide delete btn if no images present
-                if (response) {
-                    document.getElementById('deleteBtn').style.display = 'inline-block';
-                    document.getElementById('deleteAllBtn').style.display = 'inline-block';
-                    document.getElementById('deletePreviewText').style.display = 'none';
-                }
+            // Hide delete btn if no images present
+            if (response.length > 0) {
+                document.getElementById('deleteBtn').style.display = 'inline-block';
+                document.getElementById('deleteAllBtn').style.display = 'inline-block';
+                document.getElementById('deletePreviewText').style.display = 'none';
+            }
 
+            for (const file of response) {
                 const imageCont = document.createElement('div');
                 imageCont.className = 'imageCont elePointerIcon';
-                imageCont.addEventListener('click', () => checkboxThruDiv(this));
+                imageCont.addEventListener('click', function() {
+                    checkboxThruDiv(this);
+                });
 
                 const img = new Image();
                 img.className = 'previewImage';
