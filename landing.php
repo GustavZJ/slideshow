@@ -33,7 +33,7 @@ if (!isset($_SESSION['role']) || !($_SESSION['role'] == 'admin' || $_SESSION['ro
         </div>
     </a>
 
-    <img src="/src/pictures/qrcode.png" alt="QR-kode til websitet">
+    <img id="qr" src="/src/pictures/qrcode.png">
 
 
 

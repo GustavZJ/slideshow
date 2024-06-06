@@ -130,6 +130,10 @@ body {
   cursor: pointer;
 }
 
+#qr {
+  max-height: 10svh;
+}
+
 button,
 .labelBtn {
   margin: 0.5rem;

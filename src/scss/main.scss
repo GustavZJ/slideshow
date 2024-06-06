@@ -18,7 +18,7 @@ body {
 	width: fit-content;
 	grid-template-columns: auto;
 
-	& > * {
+	&>* {
 		margin: 0.25svh;
 	}
 
@@ -53,52 +53,52 @@ body {
 		left: 0;
 		top: 0;
 		margin-left: 0.5svh;
-	
+
 		#dropdownCont {
 			display: none;
 			position: absolute;
 			top: 6svh;
 			background-color: #C0C0C0;
-		
+
 			&.open {
 				animation: growDown 300ms ease-in-out forwards;
 				transform-origin: top center;
 			}
-		
+
 			&.close {
 				animation: shrinkUp 300ms ease-in-out forwards;
 				transform-origin: top center;
 			}
-		
+
 			@keyframes growDown {
 				0% {
 					transform: scaleY(0);
 				}
-		
+
 				80% {
 					transform: scaleY(1.1);
 				}
-		
+
 				100% {
 					transform: scaleY(1);
 				}
 			}
-		
+
 			@keyframes shrinkUp {
 				0% {
 					transform: scaleY(1);
 				}
-		
+
 				20% {
 					transform: scaleY(1.1);
 				}
-		
+
 				100% {
 					transform: scaleY(0);
 				}
 			}
 		}
-	
+
 		a {
 			color: black;
 			height: 6svh;
@@ -107,15 +107,15 @@ body {
 			display: inline-flex;
 			justify-content: center;
 			align-items: center;
-	
+
 			&:not(#dropdownCont a):not(#dropdownBtn) {
 				margin-right: 0.66vw; // Apply margin here so that it doesn't affect dropdown
 			}
-	
+
 			// Active nav marker (Blue bar at bottom of btn)
 			&.active {
 				position: relative;
-	
+
 				&:after {
 					content: "";
 					position: absolute;
@@ -128,7 +128,7 @@ body {
 				}
 			}
 		}
-	
+
 		.expandBtn {
 			display: none;
 			background: none;
@@ -158,6 +158,10 @@ body {
 // Class to add pointer icon to ele
 .elePointerIcon {
 	cursor: pointer;
+}
+
+#qr {
+	max-height: 10svh
 }
 
 // Buttons styling
@@ -341,10 +345,10 @@ a {
 
 // Dialog styling
 dialog {
-    padding: 1svh;
-    border: none;
-    border-radius: 2svh;
-    position: fixed;
+	padding: 1svh;
+	border: none;
+	border-radius: 2svh;
+	position: fixed;
 	top: 20%;
 }
 
