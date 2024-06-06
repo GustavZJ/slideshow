@@ -158,7 +158,7 @@ jQuery(document).ready(function ($) {
                 validateInput();
 
                 if (response.exit_code === 0) {
-                    messageFade("success", "Konfigureringer opdateret successfuldt!");
+                    messageFade("success", "Konfigureringer opdateret successfuldt! Note: Nogen indstillinger vil først tage effekt dagen efter.");
                 } else {
                     messageFade("error", "Ikke alle variable blev sat!");
                 }
