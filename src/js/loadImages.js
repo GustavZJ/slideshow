@@ -15,7 +15,7 @@ jQuery(document).ready(function ($) {
 
                 const imageCont = document.createElement('div');
                 imageCont.className = 'imageCont elePointerIcon';
-                imageCont.setAttribute('onclick', () => checkboxThruDiv(this));
+                imageCont.setAttribute('onclick', checkboxThruDiv(this));
 
                 const img = new Image();
                 img.className = 'previewImage';
