@@ -11,13 +11,15 @@ Requirements:<br>
 4: A display on which the content will be shown<br>
 
 To install:
+After formatting SD card with OS, insert it into the raspberry pi, and boot it up by plugging it in, then follow the set up instructions.
+
+When you are on the desktop, open the terminal by clicking the terminal button in the top left.
 ```
 sudo apt update
 sudo apt install apache2 -y
 cd /var/www
 sudo git clone https://github.com/GustavZJ/slideshow.git
 cd slideshow
-
 ```
 You will now run sudo bash install.sh <br>
 After everything has installed, you will get instructions on how to setup passwords in the terminal <br>
