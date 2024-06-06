@@ -93,27 +93,29 @@ jQuery(document).ready(function ($) {
 
             if (role == 'admin') {
                 // Dropdown menu for non-mobile devices
-                const dropdownBtn = document.getElementById('dropdownBtn');
-                const dropdownCont = document.getElementById('dropdownCont');
-                const expandDropdownBtn = document.getElementById('expandDropdownBtn');
-                let hideTimer;
+                if (window.matchMedia('(hover: hover)')) {
+                    const dropdownBtn = document.getElementById('dropdownBtn');
+                    const dropdownCont = document.getElementById('dropdownCont');
+                    const expandDropdownBtn = document.getElementById('expandDropdownBtn');
+                    let hideTimer;
+                
+                    dropdownBtn.addEventListener('mouseenter', () => {
+                        dropdownCont.style.display = 'grid';
+                        dropdownCont.classList.remove('close');
+                        dropdownCont.classList.add('open');
+                    });
+                
+                    dropdownBtn.addEventListener('mouseleave', () => {
+                        dropdownCont.classList.remove('open');
+                        dropdownCont.classList.add('close');
+                        clearTimeout(hideTimer);
+                        hideTimer = setTimeout(() => {
+                            dropdownCont.style.display = 'none';
+                        }, 300);
+                    });
+                }
             
-                dropdownBtn.addEventListener('mouseenter', () => {
-                    dropdownCont.style.display = 'grid';
-                    dropdownCont.classList.remove('close');
-                    dropdownCont.classList.add('open');
-                });
-            
-                dropdownBtn.addEventListener('mouseleave', () => {
-                    dropdownCont.classList.remove('open');
-                    dropdownCont.classList.add('close');
-                    clearTimeout(hideTimer);
-                    hideTimer = setTimeout(() => {
-                        dropdownCont.style.display = 'none';
-                    }, 300);
-                });
-            
-                // Handle click event for mobile devices
+                // Dropdown menu for mobile devices
                 expandDropdownBtn.addEventListener('click', (e) => {
                     e.preventDefault(); // Prevent the default button action
                     if (dropdownCont.style.display === 'grid') {
