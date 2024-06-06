@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-    $('#topbar').load(function () {
+    $('#topbar').on('load', function () {
         $('#logoutBtn').click(function () {
             $.ajax({
                 type: 'POST',
@@ -9,5 +9,5 @@ jQuery(document).ready(function ($) {
                 }
             });
         });
-    })
+    });
 });
