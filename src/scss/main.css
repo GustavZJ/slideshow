@@ -126,10 +126,10 @@ body {
   align-items: center;
 }
 
-#navImgWrapper.imageBtn {
+#navImgWrapper .imageBtn {
   margin: 0.5rem;
 }
-#navImgWrapper.imageBtn.image-container {
+#navImgWrapper .imageBtn .image-container {
   position: relative;
   z-index: -1;
 }
