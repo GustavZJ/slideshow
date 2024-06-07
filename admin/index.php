@@ -44,7 +44,7 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 'uploader') {
     <button id="recoverBtn" class="btnGreen"> Klik her hvis I eller en anden ved en fejltagelse har slettet alle billeder.</button>
 
     <script src="/src/js/topbar.js"></script>
-    <script src="/src/js/restoreBackup.js"></script>
+    <script src="/src/js/restoreBackup.js" type="module"></script>
 </body>
 
 </html>
