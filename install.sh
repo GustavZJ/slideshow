@@ -102,7 +102,7 @@ done
 
 echo "Uploader password configured."
 uploaderpasswd=$uploaderpasswd1
-htpasswd -b -B -c /etc/apache2/.htpasswd uploader $uploaderpasswd
+htpasswd -b -B /etc/apache2/.htpasswd uploader $uploaderpasswd
 
 
 
