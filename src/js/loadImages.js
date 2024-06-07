@@ -2,8 +2,8 @@ import { messageFade } from '/src/js/errorMessage.js';
 import { disableBtns } from '/src/js/deleteImage.js';
 
 jQuery(document).ready(function ($) {
-    function decodeHtmlEntities(str) {
-        return $('<textarea />').html(str).text();
+    function decodeHtmlEntities(target, str) {
+        return target.html(str).text();
     }
 
     $.ajax({
@@ -31,7 +31,7 @@ jQuery(document).ready(function ($) {
                 const $img = $('<img>', { class: 'previewImage', src: `/uploads/${file}` });
                 const $checkbox = $('<input>', {
                     name: 'files[]',
-                    value: decodeHtmlEntities(file),
+                    value: decodeHtmlEntities(this, file),
                     type: 'checkbox'
                 });
 
