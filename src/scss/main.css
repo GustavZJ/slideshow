@@ -127,6 +127,9 @@ body {
   align-items: center;
 }
 
+#navImgWrapper {
+  z-index: 1;
+}
 #navImgWrapper .imageBtn {
   margin: 0.5rem;
 }
