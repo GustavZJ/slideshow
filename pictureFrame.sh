@@ -62,11 +62,11 @@ remove_old_files_from_backup() {
 
 # Move old files from uploads to backup if autoremoval is enabled
 if [ "$autoremove" = true ]; then
-    move_old_files_to_backup "/var/www/slideshow/uploads" "/backup"
+    move_old_files_to_backup "/var/www/slideshow/uploads" "/var/www/slideshow/backup"
 fi
 
 # Remove old files from backup directory
-remove_old_files_from_backup "/backup"
+remove_old_files_from_backup "/var/www/slideshow/backup"
 
 # Run feh with the specified parameters as the user
 feh --auto-rotate -q -p -Z -F -R 60 -Y -D "$timedelay" /var/www/slideshow/uploads
