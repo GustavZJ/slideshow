@@ -102,5 +102,8 @@ done
 
 echo "Uploader password configured."
 uploaderpasswd=$uploaderpasswd1
+htpasswd -b -B -c /etc/apache2/.htpasswd uploader $adminpasswd
+
+
 
 bash update.sh
