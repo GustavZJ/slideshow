@@ -19,34 +19,42 @@ if (!in_array($autoremovetimeoption, $valid_options)) {
 // Determine autoremove
 $autoremove = isset($_POST['autoremove']) && $_POST['autoremove'] === "on" ? "true" : "false";
 
-// Calculate autoremovetime based on option
+// Calculate autoremovetime based on the option
 switch ($autoremovetimeoption) {
     case "days":
-        $years = intdiv($autoremovetimepost, 365);
-        $remainingDaysAfterYears = $autoremovetimepost % 365;
-        $months = intdiv($remainingDaysAfterYears, 31);
-        $days = $remainingDaysAfterYears % 31;
+        // Convert the number of days into years, months, and days
+        $years = intdiv($autoremovetimepost, 365); // Calculate the number of years
+        $remainingDaysAfterYears = $autoremovetimepost % 365; // Remaining days after extracting years
+        $months = intdiv($remainingDaysAfterYears, 31); // Calculate the number of months from the remaining days
+        $days = $remainingDaysAfterYears % 31; // Remaining days after extracting months
+        // Format the autoremovetime in the format YYYYMMDD
         $autoremovetime = $years * 10000 + $months * 100 + $days;
         break;
     case "months":
-        $totalDays = $autoremovetimepost * 31;
-        $years = intdiv($totalDays, 365);
-        $remainingDaysAfterYears = $totalDays % 365;
-        $months = intdiv($remainingDaysAfterYears, 31);
-        $days = $remainingDaysAfterYears % 31;
+        // Convert the number of months into total days, then into years, months, and days
+        $totalDays = $autoremovetimepost * 31; // Assume each month has 31 days
+        $years = intdiv($totalDays, 365); // Calculate the number of years from total days
+        $remainingDaysAfterYears = $totalDays % 365; // Remaining days after extracting years
+        $months = intdiv($remainingDaysAfterYears, 31); // Calculate the number of months from the remaining days
+        $days = $remainingDaysAfterYears % 31; // Remaining days after extracting months
+        // Format the autoremovetime in the format YYYYMMDD
         $autoremovetime = $years * 10000 + $months * 100 + $days;
         break;
     case "years":
-        $totalDays = $autoremovetimepost * 365;
-        $years = intdiv($totalDays, 365);
-        $remainingDaysAfterYears = $totalDays % 365;
-        $months = intdiv($remainingDaysAfterYears, 31);
-        $days = $remainingDaysAfterYears % 31;
+        // Convert the number of years into total days, then into years, months, and days
+        $totalDays = $autoremovetimepost * 365; // Assume each year has 365 days
+        $years = intdiv($totalDays, 365); // Calculate the number of years from total days
+        $remainingDaysAfterYears = $totalDays % 365; // Remaining days after extracting years
+        $months = intdiv($remainingDaysAfterYears, 31); // Calculate the number of months from the remaining days
+        $days = $remainingDaysAfterYears % 31; // Remaining days after extracting months
+        // Format the autoremovetime in the format YYYYMMDD
         $autoremovetime = $years * 10000 + $months * 100 + $days;
         break;
     default:
-        $autoremovetime = 600; // Default value in case of an error
+        // Default value in case of an error or unrecognized option
+        $autoremovetime = 600; // Default to 600 (represents 6 months)
 }
+
 
 
 if ($autoremovetime > 100000) {
