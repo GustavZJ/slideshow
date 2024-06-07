@@ -44,7 +44,7 @@ move_old_files_to_backup() {
 remove_old_files_from_backup() {
     local dir=$1
     local current_date=$(date +"%Y%m%d")
-    local threshold_date=$((current_date - autoremovetime - 10000))
+    local threshold_date=$((current_date + 10000))
 
     for file in "$dir"/*; do
         file_count=$(ls "$dir" | wc -l)
