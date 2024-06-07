@@ -96,13 +96,13 @@ jQuery(document).ready(function ($) {
             }
 
             if (role == 'admin') {
+                const dropdownBtn = document.getElementById('dropdownBtn');
+                const dropdownCont = document.getElementById('dropdownCont');
+                const expandDropdownBtn = document.getElementById('expandDropdownBtn');
+                let hideTimer;
+
                 // Dropdown menu for non-mobile devices
                 if (window.matchMedia('(hover: hover)').matches) {
-                    const dropdownBtn = document.getElementById('dropdownBtn');
-                    const dropdownCont = document.getElementById('dropdownCont');
-                    const expandDropdownBtn = document.getElementById('expandDropdownBtn');
-                    let hideTimer;
-                
                     dropdownBtn.addEventListener('mouseenter', () => {
                         dropdownCont.style.display = 'grid';
                         dropdownCont.classList.remove('close');
