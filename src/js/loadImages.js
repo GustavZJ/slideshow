@@ -17,6 +17,7 @@ jQuery(document).ready(function ($) {
                 $imageCont.on('click', function(event) {
                     const $checkbox = $(this).find('input[type="checkbox"]');
                     $checkbox.prop('checked', !$checkbox.prop('checked'));
+                    disableBtns();
 
                     if ($checkbox.prop('checked')) {
                         $('#deleteBtn').removeAttr('disabled');
@@ -44,3 +45,4 @@ jQuery(document).ready(function ($) {
         }
     });
 });
+g
