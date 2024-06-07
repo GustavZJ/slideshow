@@ -3,7 +3,7 @@ import { disableBtns } from '/src/js/deleteImage.js';
 
 jQuery(document).ready(function ($) {
     function decodeHtmlEntities(target, str) {
-        return target.html(str).text();
+        return $(target).html(str).text();
     }
 
     $.ajax({
