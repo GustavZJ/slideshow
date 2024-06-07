@@ -2,6 +2,10 @@ import { messageFade } from '/src/js/errorMessage.js';
 import { disableBtns } from '/src/js/deleteImage.js';
 
 jQuery(document).ready(function ($) {
+    function decodeHtmlEntities(str) {
+        return $('<textarea />').html(str).text();
+    }
+
     $.ajax({
         type: 'POST',
         url: '/src/php/loadImages.php',
@@ -27,7 +31,7 @@ jQuery(document).ready(function ($) {
                 const $img = $('<img>', { class: 'previewImage', src: `/uploads/${file}` });
                 const $checkbox = $('<input>', {
                     name: 'files[]',
-                    value: file,
+                    value: decodeHtmlEntities(file),
                     type: 'checkbox'
                 });
 
@@ -45,4 +49,3 @@ jQuery(document).ready(function ($) {
         }
     });
 });
-g
