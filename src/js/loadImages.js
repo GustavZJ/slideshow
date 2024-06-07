@@ -24,7 +24,7 @@ jQuery(document).ready(function ($) {
                     }
                 });
 
-                const $img = $('<img>', { class: 'previewImage', src: file });
+                const $img = $('<img>', { class: 'previewImage', src: `/uploads/${file}` });
                 const $checkbox = $('<input>', {
                     name: 'files[]',
                     value: file,
