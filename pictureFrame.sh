@@ -44,7 +44,7 @@ move_old_files_to_backup() {
 remove_old_files_from_backup() {
     local dir=$1
     local current_date=$(date +"%Y%m%d")
-    local one_year_ago=$(date -d "$current_date + 1 year" +"%Y%m%d")
+    local one_year_ago=$(date -d "$current_date - 1 year" +"%Y%m%d")
 
     for file in "$dir"/*; do
         file_date_str=$(basename "$file" | cut -c1-8)
