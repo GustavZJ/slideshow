@@ -246,6 +246,10 @@ button,
 		background-color: red;
 	}
 
+	&.btnGreen {
+		background-color: green;
+	}
+
 	&.btnBlue {
 		background-color: $blueColor;
 	}

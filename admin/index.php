@@ -41,6 +41,7 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 'uploader') {
         <img id="qr" src="/src/pictures/qrcode.png">
         <p>Dette er en qr-kode til dette website. Den kan printes ud!</p>
     </div>
+    <button id="recoverBtn" class="btnGreen"> Klik her hvis I eller en anden ved en fejltagelse har slettet alle billeder.</button>
 
     <script src="/src/js/topbar.js">
         

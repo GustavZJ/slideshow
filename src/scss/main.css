@@ -211,6 +211,10 @@ button.btnRed,
 .labelBtn.btnRed {
   background-color: red;
 }
+button.btnGreen,
+.labelBtn.btnGreen {
+  background-color: green;
+}
 button.btnBlue,
 .labelBtn.btnBlue {
   background-color: #50a9f2;
