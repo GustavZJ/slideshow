@@ -31,21 +31,23 @@ try {
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['password'])) {
         $password = $_POST['password'];
         $credentials = get_htpasswd_credentials($htpasswd_file);
+        $login_success = false;
 
-        // Check user credentials
-        if (isset($credentials['uploader']) && password_verify($password, $credentials['uploader'])) {
-            $_SESSION['role'] = 'uploader';
-            header('Content-Type: application/json');
-            echo json_encode(['redirect' => '/upload/index.php']);
-            exit();
+        foreach ($credentials as $user => $hash) {
+            if (password_verify($password, $hash)) {
+                $_SESSION['role'] = $user;
+                header('Content-Type: application/json');
+                if ($user == 'admin') {
+                    echo json_encode(['redirect' => '/landing.php']);
+                } else {
+                    echo json_encode(['redirect' => '/upload/index.php']);
+                }
+                $login_success = true;
+                break;
+            }
         }
-        // Check admin credentials
-        elseif (isset($credentials['admin']) && password_verify($password, $credentials['admin'])) {
-            $_SESSION['role'] = 'admin';
-            header('Content-Type: application/json');
-            echo json_encode(['redirect' => '/landing.php']);
-            exit();
-        } else {
+
+        if (!$login_success) {
             $response = ["message" => "Forkert kodeord."];
         }
     }
