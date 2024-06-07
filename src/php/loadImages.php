@@ -10,7 +10,7 @@ foreach($images as $image) {
     $fullImage = $imagePath .'/'. $image;
     if (is_file($fullImage)) {
         // URL encode the file path for displaying in the HTML
-        $encodedImage = rawurlencode($image);
+        $encodedImage = htmlspecialchars($image);
         array_push($files, $encodedImage);
     }
 }
