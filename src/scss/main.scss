@@ -157,10 +157,10 @@ body {
 
 // Nav image
 #navImgWrapper {
-	.imageBtn {
+	&.imageBtn {
 		margin: 0.5rem;
 
-		.image-container {
+		&.image-container {
 			position: relative;
 			z-index: -1;
 
