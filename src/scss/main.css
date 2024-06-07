@@ -47,6 +47,7 @@ body {
 #topbar #navWrapper #dropdownCont {
   display: none;
   position: absolute;
+  z-index: 2;
   top: 6dvh;
   background-color: #C0C0C0;
 }
@@ -131,7 +132,6 @@ body {
 }
 #navImgWrapper .imageBtn .image-container {
   position: relative;
-  z-index: -1;
 }
 #navImgWrapper .imageBtn .image-container img {
   width: 30dvh;
@@ -253,7 +253,6 @@ button.btnBlue,
 
 #imagePreviewCont {
   position: relative;
-  z-index: -1;
 }
 #imagePreviewCont .imageCont {
   position: relative;
