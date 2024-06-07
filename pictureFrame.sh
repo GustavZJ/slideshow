@@ -24,7 +24,7 @@ move_old_files_to_backup() {
     local dir=$1
     local dest=$2
     local current_date=$(date +"%Y%m%d")
-    local threshold_date=$((current_date - autoremovetime))
+    local threshold_date=$(date -d "$current_date - $autoremovetime days" +"%Y%m%d")
 
     for file in "$dir"/*; do
         file_count=$(ls "$dir" | wc -l)
@@ -40,21 +40,18 @@ move_old_files_to_backup() {
     done
 }
 
-# Function to remove old files from backup
+# Function to remove old files from backup older than a year
 remove_old_files_from_backup() {
     local dir=$1
     local current_date=$(date +"%Y%m%d")
-    local threshold_date=$((current_date + 10000))
+    local one_year_ago=$(date -d "$current_date -2 1 year" +"%Y%m%d")
 
     for file in "$dir"/*; do
-        file_count=$(ls "$dir" | wc -l)
-        if [ "$file_count" -gt "$autoremoveamount" ]; then
-            file_date_str=$(basename "$file" | cut -c1-8)
-            if [[ "$file_date_str" =~ ^[0-9]{8}$ ]]; then
-                file_date_int=$(date -d "$file_date_str" +"%Y%m%d")
-                if [ "$file_date_int" -le "$threshold_date" ]; then
-                    rm "$file"
-                fi
+        file_date_str=$(basename "$file" | cut -c1-8)
+        if [[ "$file_date_str" =~ ^[0-9]{8}$ ]]; then
+            file_date_int=$(date -d "$file_date_str" +"%Y%m%d")
+            if [ "$file_date_int" -le "$one_year_ago" ]; then
+                rm "$file"
             fi
         fi
     done
@@ -65,7 +62,7 @@ if [ "$autoremove" = true ]; then
     move_old_files_to_backup "/var/www/slideshow/uploads" "/var/www/slideshow/backup"
 fi
 
-# Remove old files from backup directory
+# Remove old files from backup directory that are older than a year
 remove_old_files_from_backup "/var/www/slideshow/backup"
 
 # Run feh with the specified parameters as the user
