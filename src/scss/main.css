@@ -47,7 +47,7 @@ body {
 #topbar #navWrapper #dropdownCont {
   display: none;
   position: absolute;
-  z-index: 2;
+  z-index: 99;
   top: 6dvh;
   background-color: #C0C0C0;
 }

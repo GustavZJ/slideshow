@@ -16,48 +16,52 @@ jQuery(document).ready(function ($) {
 
             const topbar = document.createElement('div');
             topbar.id = 'topbar';
+
             if (role == "admin") {
-            const navWrapper = document.createElement('div');
-            navWrapper.id = 'navWrapper';
+                const navWrapper = document.createElement('div');
+                navWrapper.id = 'navWrapper';
+                let dropdownEle
 
-            let dropdownEle
-
-            for (const [key, path] of Object.entries(navPaths)) {
-                if (typeof(path) == 'object' && role == 'admin') {
-                    for (const [subkey, subpath] of Object.entries(path)) {
-                        if (subkey == 'index') {
-                            const navEle = createNewElement('a', key, 'navBtns', 'dropdownBtn');
-                            navEle.setAttribute('href', subpath);
-                        
-                            dropdownEle = createNewElement('div', '', '', 'dropdownCont');
-                        
-                            // For mobile devices
-                            const dropdownBtnEle = createNewElement('button', '<i class="fa fa-caret-down"></i>', 'expandBtn', 'expandDropdownBtn');
-                        
-                            navEle.appendChild(dropdownEle);
-                            navWrapper.appendChild(navEle);
-                            navWrapper.appendChild(dropdownBtnEle);
-                        } else {
-                            const navEle = createNewElement('a', subkey, 'navBtns');
-                            navEle.setAttribute('href', subpath);
-                        
-                            const activeNavEle = document.createElement('div');
-                            activeNavEle.className = 'activeNav';
-                            navEle.appendChild(activeNavEle);
-                            dropdownEle.appendChild(navEle);
+                // Create navbtns from nav dict
+                for (const [key, path] of Object.entries(navPaths)) {
+                    if (typeof(path) == 'object') {
+                        // If it's an object, page has subpages, so add dropdown
+                        for (const [subkey, subpath] of Object.entries(path)) {
+                            if (subkey == 'index') {
+                                const navEle = createNewElement('a', key, 'navBtns', 'dropdownBtn');
+                                navEle.setAttribute('href', subpath);
+                            
+                                dropdownEle = createNewElement('div', '', '', 'dropdownCont');
+                            
+                                // For mobile devices
+                                const dropdownBtnEle = createNewElement('button', '<i class="fa fa-caret-down"></i>', 'expandBtn', 'expandDropdownBtn');
+                            
+                                navEle.appendChild(dropdownEle);
+                                navWrapper.appendChild(navEle);
+                                navWrapper.appendChild(dropdownBtnEle);
+                            } else {
+                                const navEle = createNewElement('a', subkey, 'navBtns');
+                                navEle.setAttribute('href', subpath);
+                            
+                                const activeNavEle = document.createElement('div');
+                                activeNavEle.className = 'activeNav';
+                                navEle.appendChild(activeNavEle);
+                                dropdownEle.appendChild(navEle);
+                            }
                         }
+                    } else if (typeof(path) != 'object') {
+                        // Else it's just regular button
+                        const navEle = createNewElement('a', key, 'navBtns');
+                        navEle.setAttribute('href', path);
+                    
+                        const activeNavEle = createNewElement('div', '', 'activeNav');
+                        navEle.appendChild(activeNavEle);
+                        navWrapper.appendChild(navEle);
                     }
-                } else if (typeof(path) != 'object') {
-                    const navEle = createNewElement('a', key, 'navBtns');
-                    navEle.setAttribute('href', path);
-                
-                    const activeNavEle = createNewElement('div', '', 'activeNav');
-                    navEle.appendChild(activeNavEle);
-                    navWrapper.appendChild(navEle);
                 }
+                topbar.appendChild(navWrapper);
             }
-            topbar.appendChild(navWrapper);
-        }
+
             const logoutWrapper = createNewElement('div', '<button class="btnWhite" id="logoutBtn">Log ud</button>', '', 'logoutWrapper');
             topbar.appendChild(logoutWrapper);
 
@@ -92,13 +96,13 @@ jQuery(document).ready(function ($) {
             }
 
             if (role == 'admin') {
+                const dropdownBtn = document.getElementById('dropdownBtn');
+                const dropdownCont = document.getElementById('dropdownCont');
+                const expandDropdownBtn = document.getElementById('expandDropdownBtn');
+                let hideTimer;
+
                 // Dropdown menu for non-mobile devices
                 if (window.matchMedia('(hover: hover)').matches) {
-                    const dropdownBtn = document.getElementById('dropdownBtn');
-                    const dropdownCont = document.getElementById('dropdownCont');
-                    const expandDropdownBtn = document.getElementById('expandDropdownBtn');
-                    let hideTimer;
-                
                     dropdownBtn.addEventListener('mouseenter', () => {
                         dropdownCont.style.display = 'grid';
                         dropdownCont.classList.remove('close');
