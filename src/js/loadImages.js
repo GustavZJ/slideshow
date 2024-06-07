@@ -1,4 +1,6 @@
 import { messageFade } from '/src/js/errorMessage.js';
+import { disableBtns } from '/src/js/deleteImage.js';
+
 jQuery(document).ready(function ($) {
     $.ajax({
         type: 'POST',
@@ -32,7 +34,7 @@ jQuery(document).ready(function ($) {
                 checkbox.name = 'files[]';
                 checkbox.value = file;
                 checkbox.setAttribute('type', 'checkbox');
-                checkbox.addEventListener('click', (event) => event.stopPropagation());
+                checkbox.addEventListener('click', (event) => {event.stopPropagation();disableBtns()});
                 imageCont.appendChild(checkbox);
 
                 $('#imagePreviewCont').append(imageCont);

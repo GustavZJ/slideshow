@@ -1,7 +1,7 @@
 import { confirmAction } from '/src/js/confirmAction.js'
 import { messageFade } from '/src/js/errorMessage.js'
 
-function disableBtns() {
+export function disableBtns() {
     document.getElementById('deleteBtn').setAttribute('disabled', true);
     for (const child of document.getElementById('imagePreviewCont').children) {
         if (child.children[1].checked) {
