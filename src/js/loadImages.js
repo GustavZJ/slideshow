@@ -17,6 +17,7 @@ jQuery(document).ready(function ($) {
                 const imageCont = document.createElement('div');
                 imageCont.className = 'imageCont elePointerIcon';
                 imageCont.addEventListener('click', (event) => {
+                    console.log(event, event.target);
                     if (event.target.children[1].checked) {
                         event.target.children[1].checked = false;
                     } else {
