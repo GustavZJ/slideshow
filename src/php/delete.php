@@ -4,7 +4,7 @@ $docRoot = $_SERVER['DOCUMENT_ROOT'];
 
 $response = array();
 foreach ($_POST['files'] as $file) {
-    if (rename($docRoot . '/uploads/' . $file, $docRoot . '/backup/' . $file)) {
+    if (rename($docRoot . $file, $docRoot . '/backup/' . $file)) {
         $response[$file] = "success";
     } else {
         $response[$file] = "error";
