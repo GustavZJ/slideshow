@@ -42,7 +42,9 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 'uploader') {
         <p>Dette er en qr-kode til dette website. Den kan printes ud!</p>
     </div>
 
-    <script src="/src/js/topbar.js"></script>
+    <script src="/src/js/topbar.js">
+        
+    </script>
 </body>
 
 </html>
