@@ -16,7 +16,7 @@ jQuery(document).ready(function ($) {
 
             const topbar = document.createElement('div');
             topbar.id = 'topbar';
-
+            if (role == "admin") {
             const navWrapper = document.createElement('div');
             navWrapper.id = 'navWrapper';
 
@@ -57,7 +57,7 @@ jQuery(document).ready(function ($) {
                 }
             }
             topbar.appendChild(navWrapper);
-
+        }
             const logoutWrapper = createNewElement('div', '<button class="btnWhite" id="logoutBtn">Log ud</button>', '', 'logoutWrapper');
             topbar.appendChild(logoutWrapper);
 
@@ -132,7 +132,7 @@ jQuery(document).ready(function ($) {
                     }
                 });
             }
-
+            
             $('#logoutBtn').click(function () {
                 $.ajax({
                     type: 'POST',
