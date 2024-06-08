@@ -43,5 +43,4 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 'uploader') {
     <script src="/src/js/topbar.js"></script>
     <script src="/src/js/restoreBackup.js" type="module"></script>
 </body>
-
 </html>

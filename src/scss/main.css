@@ -14,7 +14,7 @@ body {
   grid-template-columns: auto;
 }
 #loginWrapper > * {
-  margin: 0.25dvh;
+  margin: 0.25svh;
 }
 #loginWrapper #inputWrapper {
   display: flex;
@@ -23,9 +23,9 @@ body {
   font-size: 1em;
 }
 #loginWrapper input[type=submit] {
-  margin-left: 0.5dvh;
+  margin-left: 0.5svh;
   font-size: 1em;
-  padding: 0.2dvw 0.6dvh;
+  padding: 0.2svw 0.6svh;
   border-radius: 1em;
   border: 0;
   transition: background-color 0.1s ease;
@@ -33,7 +33,7 @@ body {
 }
 
 #topbar {
-  height: 6dvh;
+  height: 6svh;
   width: 100%;
   background-color: #50a9f2;
   position: relative;
@@ -42,13 +42,13 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  margin-left: 0.5dvh;
+  margin-left: 0.5svh;
 }
 #topbar #navWrapper #dropdownCont {
   display: none;
   position: absolute;
   z-index: 99;
-  top: 6dvh;
+  top: 6svh;
   background-color: #C0C0C0;
 }
 #topbar #navWrapper #dropdownCont.open {
@@ -83,15 +83,15 @@ body {
 }
 #topbar #navWrapper a {
   color: black;
-  height: 6dvh;
-  padding: 0.3dvh;
+  height: 6svh;
+  padding: 0.3svh;
   width: auto;
   display: inline-flex;
   justify-content: center;
   align-items: center;
 }
 #topbar #navWrapper a:not(#dropdownCont a):not(#dropdownBtn) {
-  margin-right: 0.66vw;
+  margin-right: 0.66svw;
 }
 #topbar #navWrapper a.active {
   position: relative;
@@ -101,9 +101,9 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 4dvh;
-  height: 0.5dvh;
-  bottom: 0.5dvh;
+  width: 4svh;
+  height: 0.5svh;
+  bottom: 0.5svh;
   background-color: darkblue;
 }
 #topbar #navWrapper .expandBtn {
@@ -137,7 +137,7 @@ body {
   position: relative;
 }
 #navImgWrapper .imageBtn .image-container img {
-  width: 30dvh;
+  width: 30svh;
 }
 #navImgWrapper .imageBtn .image-container .overlay-text {
   position: absolute;
@@ -147,8 +147,8 @@ body {
   color: black;
   font-size: 1rem;
   background-color: #50a9f2;
-  padding: 0.2dvh;
-  border-radius: 0.2dvh;
+  padding: 0.2svh;
+  border-radius: 0.2svh;
   width: 100%;
   text-align: center;
 }
@@ -158,7 +158,7 @@ body {
 }
 
 #qr {
-  max-height: 30dvh;
+  max-height: 30svh;
 }
 
 button,
@@ -166,7 +166,7 @@ button,
   margin: 0.5rem;
   color: black;
   font-size: 1em;
-  padding: 0.2vw 0.6dvh;
+  padding: 0.2vw 0.6svh;
   border-radius: 1em;
   border: 0;
   transition: background-color 0.1s ease;
@@ -226,12 +226,12 @@ button.btnBlue,
 }
 
 #imageUploadCont {
-  margin-top: 1dvh;
+  margin-top: 1svh;
 }
 #imageUploadCont #uploadImageFile {
   border: dashed gray;
-  width: 40dvh;
-  height: 20dvh;
+  width: 40svh;
+  height: 20svh;
   margin: auto;
   font-style: italic;
 }
@@ -243,7 +243,7 @@ button.btnBlue,
 #imageUploadCont #uploadImageFile #uploadLabel {
   width: 100%;
   height: 100%;
-  font-size: 1.5dvh;
+  font-size: 1.5svh;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -264,10 +264,10 @@ button.btnBlue,
 #imagePreviewCont .imageCont {
   position: relative;
   display: inline-block;
-  margin: 0.5dvw;
+  margin: 0.5svw;
 }
 #imagePreviewCont .previewImage {
-  max-height: 20dvh;
+  max-height: 20svh;
 }
 #imagePreviewCont .deleteImageBtn {
   background-color: red;
@@ -305,9 +305,9 @@ a {
 }
 
 dialog {
-  padding: 1dvh;
+  padding: 1svh;
   border: none;
-  border-radius: 2dvh;
+  border-radius: 2svh;
   position: fixed;
   top: 20%;
 }
