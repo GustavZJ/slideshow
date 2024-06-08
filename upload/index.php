@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION['role']) || !( $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'uploader') ) {
+    header("Location: /index.html");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="dk">
 <head>
@@ -11,15 +17,6 @@
     <script type="module" src="/src/js/imageManager.js"></script>
     <script type="module" src="/src/js/uploadImage.js"></script>
 </head>
-
-<?php
-session_start();
-
-if (!isset($_SESSION['role']) || !( $_SESSION['role'] == 'admin' || $_SESSION['role'] == 'uploader') ) {
-    header("Location: /index.html");
-}
-?>
-
 <body>
     <div id="imageUploadCont">
         <form id="uploadForm" method="get" enctype="multipart/form-data">

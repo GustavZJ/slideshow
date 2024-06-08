@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION['role']) || !($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'uploader')) {
+    header("Location: /index.html");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="dk">
 
@@ -10,15 +16,6 @@
     <link rel="stylesheet" href="src/scss/main.css">
     <link rel="icon" type="image/x-icon" href="/src/pictures/favicon.ico">
 </head>
-
-<?php
-session_start();
-
-if (!isset($_SESSION['role']) || !($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'uploader')) {
-    header("Location: ../index.html");
-}
-?>
-
 <body>
     <div id="navImgWrapper">
         <a class="imageBtn" href="/admin/index.php">
@@ -38,5 +35,4 @@ if (!isset($_SESSION['role']) || !($_SESSION['role'] == 'admin' || $_SESSION['ro
 
     <script src="/src/js/topbar.js"></script>
 </body>
-
 </html>

@@ -1,3 +1,11 @@
+<?php
+if (isset($_SESSION['role']) && $_SESSION['role'] == 'uploader') {
+    header("Location: /landing.php");
+} else if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header("Location: /index.html");
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,30 +20,15 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
     <script type="module" src="/src/js/deleteImage.js"></script>
 </head>
-
-<?php
-session_start();
-
-if (isset($_SESSION['role']) && $_SESSION['role'] == 'uploader') {
-    header("Location: /landing.php");
-}
-
-else if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header("Location: /index.html");
-}
-?>
-
-    <body>
-        <form id="deleteForm" method="get">
-            <button id="deleteBtn" class="btnWhite" type="submit" disabled="true">Slet</button>
-            <button id="deleteAllBtn" class="btnRed" type="button">Slet alt</button>
-            <p id="deletePreviewText">Ingen billeder i systemet</p>
-            <div id="imagePreviewCont"></div>
-        </form>
-
-        
-        <script src="/src/js/topbar.js"></script>
-        <script type="module" src="/src/js/loadImages.js"></script>
-        <!-- This has to be in a seperate script, otherwise, the import module will break it -->
-    </body>
+<body>
+    <form id="deleteForm" method="get">
+        <button id="deleteBtn" class="btnWhite" type="submit" disabled="true">Slet</button>
+        <button id="deleteAllBtn" class="btnRed" type="button">Slet alt</button>
+        <p id="deletePreviewText">Ingen billeder i systemet</p>
+        <div id="imagePreviewCont"></div>
+    </form>
+    
+    <script src="/src/js/topbar.js"></script>
+    <script type="module" src="/src/js/loadImages.js"></script>
+</body>
 </html>

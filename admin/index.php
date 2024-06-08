@@ -1,6 +1,13 @@
+<?php
+if (isset($_SESSION['role']) && $_SESSION['role'] == 'uploader') {
+    header("Location: /landing.php");
+} else if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header("Location: /index.html");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="dk">
-
 <head>
     <meta charset="utf-8">
     <title>Admin</title>
@@ -10,17 +17,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/x-icon" href="/src/pictures/favicon.ico">
 </head>
-
-<?php
-session_start();
-
-if (isset($_SESSION['role']) && $_SESSION['role'] == 'uploader') {
-    header("Location: /landing.php");
-} else if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header("Location: /index.html");
-}
-?>
-
 <body>
     <div id="navImgWrapper">
         <a class="imageBtn" href="/admin/imageManager.php">
