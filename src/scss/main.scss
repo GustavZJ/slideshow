@@ -2,6 +2,7 @@
 $fontStack: Helvetica, sans-serif;
 $primaryColor: #333;
 $blueColor: #50a9f2;
+$dropdownAnimTime: 300ms;
 
 // Styling
 body {
@@ -64,11 +65,11 @@ body {
 			transform-origin: top center;			
 
 			&.open {
-				animation: growDown 1000ms ease-in-out;
+				animation: growDown $dropdownAnimTime ease-in-out;
 			}
 		
 			&.close {
-				animation: shrinkUp 1000ms ease-in-out;
+				animation: shrinkUp $dropdownAnimTime ease-in-out;
 			}
 			
 			@keyframes growDown {
