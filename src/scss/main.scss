@@ -158,7 +158,8 @@ body {
 
 // Nav image
 #navImgWrapper {
-	z-index: 1;
+	position: relative;
+	z-index: 0;
 
 	.imageBtn {
 		margin: 0.5rem;
