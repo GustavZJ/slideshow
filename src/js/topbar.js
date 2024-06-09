@@ -95,11 +95,11 @@ jQuery(document).ready(function ($) {
                 return newEle;
             }
 
+            // Dropdown menu
             if (role == 'admin') {
                 const dropdownBtn = document.getElementById('dropdownBtn');
                 const dropdownCont = document.getElementById('dropdownCont');
                 const expandDropdownBtn = document.getElementById('expandDropdownBtn');
-                let hideTimer;
 
                 // Dropdown menu for non-mobile devices
                 if (window.matchMedia('(hover: hover)').matches) {
@@ -112,10 +112,11 @@ jQuery(document).ready(function ($) {
                     dropdownBtn.addEventListener('mouseleave', () => {
                         dropdownCont.classList.remove('open');
                         dropdownCont.classList.add('close');
-                        clearTimeout(hideTimer);
-                        hideTimer = setTimeout(() => {
-                            dropdownCont.style.display = 'none';
-                        }, 300);
+                        dropdownCont.onanimationend = () => {
+                            if (dropdownCont.classList.contains('close')) {
+                                dropdownCont.style.display = 'none';
+                            }
+                        }
                     });
                 }
             
@@ -125,10 +126,11 @@ jQuery(document).ready(function ($) {
                     if (dropdownCont.style.display === 'grid') {
                         dropdownCont.classList.remove('open');
                         dropdownCont.classList.add('close');
-                        clearTimeout(hideTimer);
-                        hideTimer = setTimeout(() => {
-                            dropdownCont.style.display = 'none';
-                        }, 300);
+                        dropdownCont.onanimationend = () => {
+                            if (dropdownCont.classList.contains('close')) {
+                                dropdownCont.style.display = 'none';
+                            }
+                        }
                     } else {
                         dropdownCont.style.display = 'grid';
                         dropdownCont.classList.remove('close');

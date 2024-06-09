@@ -50,14 +50,14 @@ body {
   z-index: 99;
   top: 6svh;
   background-color: #C0C0C0;
+  animation-fill-mode: both;
+  transform-origin: top center;
 }
 #topbar #navWrapper #dropdownCont.open {
-  animation: growDown 300ms ease-in-out forwards;
-  transform-origin: top center;
+  animation: growDown 1000ms ease-in-out;
 }
 #topbar #navWrapper #dropdownCont.close {
-  animation: shrinkUp 300ms ease-in-out forwards;
-  transform-origin: top center;
+  animation: shrinkUp 1000ms ease-in-out;
 }
 @keyframes growDown {
   0% {
