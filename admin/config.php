@@ -6,7 +6,6 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 'uploader') {
     header("Location: /upload/index.php");
 }
 ?>
-?>
 
 <!DOCTYPE html>
 <html lang="dk">
