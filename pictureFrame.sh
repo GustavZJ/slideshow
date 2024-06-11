@@ -10,7 +10,7 @@ sudo rm -rf temp/*
 sudo bash update.sh
 
 # Check if the uploads directory is empty
-if [ -z "$(ls -A /uploads)" ]; then
+if [ -z "$(ls -A uploads)" ]; then
     bash addtest.sh
 fi
 
@@ -60,14 +60,13 @@ remove_old_files_from_backup() {
     done
 }
 
-# test edit
 # Move old files from uploads to backup if autoremoval is enabled
 if [ "$autoremove" = true ]; then
-    move_old_files_to_backup "/uploads" "/backup"
+    move_old_files_to_backup "uploads" "backup"
 fi
 
 # Remove old files from backup directory that are older than a year
-remove_old_files_from_backup "/backup"
+remove_old_files_from_backup "backup"
 
 # Run feh with the specified parameters as the user
-feh --auto-rotate -q -p -Z -F -R 60 -Y -D "$timedelay" /uploads
+feh --auto-rotate -q -p -Z -F -R 60 -Y -D "$timedelay" uploads
