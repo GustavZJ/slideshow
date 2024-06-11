@@ -70,7 +70,6 @@ adminpasswd=$adminpasswd1
 
 
 htpasswd -b -B -c /etc/apache2/.htpasswd admin $adminpasswd
-htpasswd -b -B -c /etc/apache2/.htpasswdadmin admin $adminpasswd
 
 uploaderpasswd1="passwd1"
 uploaderpasswd2="passwd2"

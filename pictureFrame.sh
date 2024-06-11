@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Go to dir of this script
+cd "$(dirname "$0")"
+
 # Remove all files in the temp directory
 sudo rm -rf temp/*
 
@@ -7,13 +10,13 @@ sudo rm -rf temp/*
 sudo bash update.sh
 
 # Check if the uploads directory is empty
-if [ -z "$(ls -A /var/www/slideshow/uploads)" ]; then
+if [ -z "$(ls -A /uploads)" ]; then
     bash addtest.sh
 fi
 
 # Source the configuration file if it exists
-if [ -f /var/www/slideshow/config.config ]; then
-    source /var/www/slideshow/config.config
+if [ -f config.config ]; then
+    source config.config
 else
     echo "Configuration file not found!"
     exit 1
@@ -59,11 +62,11 @@ remove_old_files_from_backup() {
 
 # Move old files from uploads to backup if autoremoval is enabled
 if [ "$autoremove" = true ]; then
-    move_old_files_to_backup "/var/www/slideshow/uploads" "/var/www/slideshow/backup"
+    move_old_files_to_backup "/uploads" "/backup"
 fi
 
 # Remove old files from backup directory that are older than a year
-remove_old_files_from_backup "/var/www/slideshow/backup"
+remove_old_files_from_backup "/backup"
 
 # Run feh with the specified parameters as the user
-feh --auto-rotate -q -p -Z -F -R 60 -Y -D "$timedelay" /var/www/slideshow/uploads
+feh --auto-rotate -q -p -Z -F -R 60 -Y -D "$timedelay" /uploads
