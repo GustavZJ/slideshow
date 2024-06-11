@@ -60,6 +60,7 @@ remove_old_files_from_backup() {
     done
 }
 
+# test edit
 # Move old files from uploads to backup if autoremoval is enabled
 if [ "$autoremove" = true ]; then
     move_old_files_to_backup "/uploads" "/backup"
