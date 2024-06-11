@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Test
 # Go to dir of this script
 cd "$(dirname "$0")"
 
