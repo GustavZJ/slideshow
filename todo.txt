@@ -4,6 +4,7 @@ Config file:
 - Picture delay time ☑
 - Enable / disable auto removal of image ☑
 - Auto remove image time ☑
+- Fix default remove time being 600 days
 
 Picture frame:
 - Fix issue with images that have had their name changed by the script,
@@ -25,6 +26,8 @@ Admin page:
 - Clear all pictures ☑
 - Add confirm action when deleting all pictures ☑
 - Add error handling for image manager, incase image fails to delete ☑
+- Add reboot button
+- Fix imave manager loading, so checkboxes don't appear when image is not ready
 
 Upload page:
 - Fix issue with HTML not being able to display some images, such as .HEIC (This is gonna be annoying) https://shkspr.mobi/blog/2020/12/coping-with-heic-in-the-browser/ ☑
@@ -44,6 +47,7 @@ Website:
 - Fix dropdown on mobile (Or don't since you can still navigate) ☑
 - Fix error dialogs stacking on top of each other ☑
 - Add proper login page ☑
+- Fix dropdown animation
 
 Guide:
 - How to use admin ☑
